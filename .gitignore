@@ -1,0 +1,38 @@
+.DS_Store
+.env
+.env.*
+!.env.example
+__pycache__/
+*.py[cod]
+.venv/
+.reference-test/
+assets/references/pinterest-storage-state.json
+node_modules/
+.npm/
+.cache/
+.tmp/
+.claude/
+.vercel/
+
+# Generated pipeline outputs and collected source material
+/runs/
+/references/
+/03_image_candidates/
+/04_admin_selection/
+/05_figma_assembly/
+/06_qa_packaging/
+/07_asset_archive/
+/assets/references/
+/design_brain_wiki/training_sessions/**/references/
+
+# Local source-image libraries and large binary artifacts
+/0_자동화 샘플 이미지/
+/화장품 예시 이미지/
+*.png
+*.jpg
+*.jpeg
+*.webp
+*.gif
+*.psd
+*.pdf
+*.zip

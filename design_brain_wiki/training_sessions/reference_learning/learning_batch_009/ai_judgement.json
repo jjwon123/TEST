@@ -1,0 +1,2041 @@
+{
+  "sessionId": "reference_learning_learning_batch_009",
+  "sessionType": "reference_learning_1000_batch",
+  "createdAt": "2026-06-08T13:29:30.818033+00:00",
+  "profile": "reference_learning",
+  "purpose": "Human review batch from the deduplicated 1,000-image reference learning dataset.",
+  "sourceRun": "design_brain_wiki/reference_learning_1000/dataset-index.json",
+  "localModelUsed": false,
+  "judgementMethod": "Existing AI judgement when available; otherwise conservative shortlist first pass.",
+  "wikiSources": [
+    "design_brain_wiki/00_JUDGE_SCHEMA.md",
+    "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+    "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+    "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+    "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+  ],
+  "summary": {
+    "total": 50,
+    "decisionCounts": {
+      "rejected": 4,
+      "shortlist": 46
+    },
+    "sourceCounts": {
+      "pinterest_search": 40,
+      "meta_ad_library": 10
+    },
+    "profileCounts": {
+      "bullion_investment": 10,
+      "cosmetics_skincare": 20,
+      "general": 10,
+      "jewelry_luxury": 10
+    },
+    "needsKiwonReview": 50
+  },
+  "items": [
+    {
+      "id": "learning_ref_55affd6bc0ed",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/001_ref_55affd6bc0ed.jpg",
+      "sourcePath": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q02-한국-금거래소-이벤트-배너-디자인/0003_pin_55affd6bc0.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "rejected",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `rejected`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [
+        "low_resolution"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_55affd6bc0ed",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 1
+    },
+    {
+      "id": "learning_ref_4589b05b6a02",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/002_ref_4589b05b6a02.png",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-32-23_스킨케어-제품/captures/meta_ad_938833025785106.png",
+      "sourceUrl": "",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4589b05b6a02",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 2
+    },
+    {
+      "id": "learning_ref_4ff963dcc46f",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/003_ref_4ff963dcc46f.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__beauty-sale-card-news-design-korea/0004_an-advertisement-for-the-korean-cosmetics-brand_4ff963dcc4.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4ff963dcc46f",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 3
+    },
+    {
+      "id": "learning_ref_4c0731ff07ba",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/004_ref_4c0731ff07ba.jpg",
+      "sourcePath": "runs/_reference_search_benchmark/ampoule-christmas/references/candidates/auto-q01-skincare-cosmetic-product-ad-amp/0003_크리스마스-navidad-그래픽-디자인-음식-그래픽-디자인-정물-사진_4c0731ff07.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4c0731ff07ba",
+      "datasetProfile": "general",
+      "batchOrder": 4
+    },
+    {
+      "id": "learning_ref_83b41a809214",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/005_ref_83b41a809214.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__fine-jewelry-editorial-campaign-design/0019_포함된-이미지_83b41a8092.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_83b41a809214",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 5
+    },
+    {
+      "id": "learning_ref_56186396079f",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/006_ref_56186396079f.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/bullion_investment__financial-education-card-news-design/0028_a-blue-brochure-with-an-image-of-someone-writing_5618639607.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_56186396079f",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 6
+    },
+    {
+      "id": "learning_ref_45ba2270c7ba",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/007_ref_45ba2270c7ba.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-42-36_스킨케어-크림/images/meta_ad_1210480314566140_10_45ba2270c7.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%ED%81%AC%EB%A6%BC&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_45ba2270c7ba",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 7
+    },
+    {
+      "id": "learning_ref_50477357b8bd",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/008_ref_50477357b8bd.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__cosmetic-serum-product-campaign-layout/0020_a-serum-expertly-formulated-to-refine-uneven-or_50477357b8.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_50477357b8bd",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 8
+    },
+    {
+      "id": "learning_ref_4d887b643371",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/009_ref_4d887b643371.jpg",
+      "sourcePath": "runs/2026-05-17_04-36-46_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q05-brand-campaign-design-reference-/0013_소셜-미디어-디자인-결혼식-포스터-패션-그래픽-디자인-이벤트-포스터-패션-포스터-행사_4d887b6433.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4d887b643371",
+      "datasetProfile": "general",
+      "batchOrder": 9
+    },
+    {
+      "id": "learning_ref_83ec03ad913a",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/010_ref_83ec03ad913a.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__fine-jewelry-editorial-campaign-design/0012_fine-jewelry-is-an-expression-of-your-unique-sen_83ec03ad91.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_83ec03ad913a",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 10
+    },
+    {
+      "id": "learning_ref_56398e8941a7",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/011_ref_56398e8941a7.jpg",
+      "sourcePath": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q03-gold-bar-premium-product-photogr/0011_배경화면-branding_56398e8941.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_56398e8941a7",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 11
+    },
+    {
+      "id": "learning_ref_494231f4c263",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/012_ref_494231f4c263.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-24-53_아누아/images/meta_ad_26566328279724796_08_494231f4c2.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EC%95%84%EB%88%84%EC%95%84&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_494231f4c263",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 12
+    },
+    {
+      "id": "learning_ref_507eb779b7e1",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/013_ref_507eb779b7e1.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__skincare-ingredient-benefit-infographic-ad/0009_비타민-질감-레이아웃-디자인-피부관리-광고-크리에이티브-creative-advertis_507eb779b7.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_507eb779b7e1",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 13
+    },
+    {
+      "id": "learning_ref_4f7185431901",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/014_ref_4f7185431901.jpg",
+      "sourcePath": "runs/2026-05-17_04-36-46_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q06-product-promotion-advertising-ph/0011_빈티지-로고-디자인-지구의-날-롤케이크-섬유유연제-미니멀리즘-사진-제품-광고-레이아웃_4f71854319.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4f7185431901",
+      "datasetProfile": "general",
+      "batchOrder": 14
+    },
+    {
+      "id": "learning_ref_89b03d1b25a5",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/015_ref_89b03d1b25a5.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__premium-watch-jewelry-promotion-banner/0018_디자인-그래픽-디자인-포스터-가게-디자인-광고-디자인-소셜-미디어-그래픽-디자인_89b03d1b25.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_89b03d1b25a5",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 15
+    },
+    {
+      "id": "learning_ref_57c532ecdba4",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/016_ref_57c532ecdba4.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/bullion_investment__wealth-management-consultation-advertising-layout/0002_we-understand-growing-long-term-wealth-after-all_57c532ecdb.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_57c532ecdba4",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 16
+    },
+    {
+      "id": "learning_ref_4a0b6b283262",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/017_ref_4a0b6b283262.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-25-20_라운드랩/images/meta_ad_2026966014874094_06_4a0b6b2832.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EB%9D%BC%EC%9A%B4%EB%93%9C%EB%9E%A9&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4a0b6b283262",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 17
+    },
+    {
+      "id": "learning_ref_52135e451e50",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/018_ref_52135e451e50.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__clean-cosmetic-product-photography-campaign/0012_pin_52135e451e.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "rejected",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `rejected`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [
+        "low_resolution"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_52135e451e50",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 18
+    },
+    {
+      "id": "learning_ref_5242827fe8a1",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/019_ref_5242827fe8a1.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/promotion_layout__event-promotion-social-media-carousel-design/0002_carousel-feed-design_5242827fe8.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5242827fe8a1",
+      "datasetProfile": "general",
+      "batchOrder": 19
+    },
+    {
+      "id": "learning_ref_8d1da9b248d5",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/020_ref_8d1da9b248d5.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__fine-jewelry-editorial-campaign-design/0022_a-woman-wearing-gold-bracelets-and-holding-her-h_8d1da9b248.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_8d1da9b248d5",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 20
+    },
+    {
+      "id": "learning_ref_5819c83cc46d",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/021_ref_5819c83cc46d.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/bullion_investment__gold-bar-luxury-product-photography/0022_two-women-holding-up-wine-glasses-with-their-han_5819c83cc4.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5819c83cc46d",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 21
+    },
+    {
+      "id": "learning_ref_4a8244acd8d6",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/022_ref_4a8244acd8d6.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-42-36_스킨케어-크림/images/meta_ad_1210480314566140_02_4a8244acd8.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%ED%81%AC%EB%A6%BC&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4a8244acd8d6",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 22
+    },
+    {
+      "id": "learning_ref_55b93e823609",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/023_ref_55b93e823609.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__cosmetic-serum-product-campaign-layout/0006_an-advertisement-for-hyalu-b5-is-shown-in-three_55b93e8236.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_55b93e823609",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 23
+    },
+    {
+      "id": "learning_ref_53b8ddb769c6",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/024_ref_53b8ddb769c6.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/promotion_layout__event-promotion-social-media-carousel-design/0012_comment-the-word-value-if-you-want-a-free-tool-t_53b8ddb769.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_53b8ddb769c6",
+      "datasetProfile": "general",
+      "batchOrder": 24
+    },
+    {
+      "id": "learning_ref_8df19041d1e6",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/025_ref_8df19041d1e6.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__diamond-product-advertising-photography/0010_the-journey-of-a-cara-diamond-begins-with-meticu_8df19041d1.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_8df19041d1e6",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 25
+    },
+    {
+      "id": "learning_ref_594df4f58937",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/026_ref_594df4f58937.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/bullion_investment__wealth-management-consultation-advertising-layout/0016_a-hand-holding-a-stack-of-coins-with-a-plant-gro_594df4f589.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_594df4f58937",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 26
+    },
+    {
+      "id": "learning_ref_4aa2df4e7837",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/027_ref_4aa2df4e7837.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-32-23_스킨케어-제품/images/meta_ad_1866935524014805_03_4aa2df4e78.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%A0%9C%ED%92%88&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4aa2df4e7837",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 27
+    },
+    {
+      "id": "learning_ref_55d0d49b9510",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/028_ref_55d0d49b9510.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__korean-skincare-promotion-banner-design/0009_an-advertisement-for-the-korean-skin-care-brand_55d0d49b95.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_55d0d49b9510",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 28
+    },
+    {
+      "id": "learning_ref_5428762025ff",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/029_ref_5428762025ff.jpg",
+      "sourcePath": "runs/2026-05-17_04-36-46_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q01-premium-gold-finance-event-banne/0010_the-sale-is-on-50--off-select-styles_5428762025.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5428762025ff",
+      "datasetProfile": "general",
+      "batchOrder": 29
+    },
+    {
+      "id": "learning_ref_9395a3349a1e",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/030_ref_9395a3349a1e.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__fine-jewelry-editorial-campaign-design/0011_a-close-up-of-a-person-with-a-ring-on-their-fing_9395a3349a.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_9395a3349a1e",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 30
+    },
+    {
+      "id": "learning_ref_598928a0b9da",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/031_ref_598928a0b9da.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/bullion_investment__wealth-management-consultation-advertising-layout/0010_a-brochure-with-an-image-of-a-pool-and-shoes_598928a0b9.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_598928a0b9da",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 31
+    },
+    {
+      "id": "learning_ref_4b9928363bb1",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/032_ref_4b9928363bb1.jpg",
+      "sourcePath": "references/meta_ads/benchmarks/2026-06-07_16-58-03_cosmetics-query-strategy-round2/03_화장품-할인/images/meta_ad_1652061979474558_06_4b9928363b.jpg",
+      "sourceUrl": "",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4b9928363bb1",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 32
+    },
+    {
+      "id": "learning_ref_565942bb734c",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/033_ref_565942bb734c.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__skincare-ingredient-benefit-infographic-ad/0025_바디워시-페이지-디자인-화장품-디자인-피부과-웹사이트-디자인-웹사이트-프로모션-광고-포_565942bb73.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_565942bb734c",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 33
+    },
+    {
+      "id": "learning_ref_56cf6318a502",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/034_ref_56cf6318a502.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/promotion_layout__product-launch-campaign-layout-design/0014_a-bottle-with-something-new-on-it-sitting-in-fro_56cf6318a5.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_56cf6318a502",
+      "datasetProfile": "general",
+      "batchOrder": 34
+    },
+    {
+      "id": "learning_ref_9408a38ffb78",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/035_ref_9408a38ffb78.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__premium-watch-jewelry-promotion-banner/0019_cute-arm-candy---in-style-mag-패션-잡지-레이아웃-애슬레저-패션_9408a38ffb.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_9408a38ffb78",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 35
+    },
+    {
+      "id": "learning_ref_59c58b10f3e8",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/036_ref_59c58b10f3e8.jpg",
+      "sourcePath": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q01-premium-gold-investment-campaign/0004_a-series-of-images-showing-the-different-types-o_59c58b10f3.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "rejected",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `rejected`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_59c58b10f3e8",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 36
+    },
+    {
+      "id": "learning_ref_4b9b54a3f7c7",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/037_ref_4b9b54a3f7c7.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-25-20_라운드랩/images/meta_ad_1999922714743634_02_4b9b54a3f7.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EB%9D%BC%EC%9A%B4%EB%93%9C%EB%9E%A9&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4b9b54a3f7c7",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 37
+    },
+    {
+      "id": "learning_ref_5734c7732007",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/038_ref_5734c7732007.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__skincare-ingredient-benefit-infographic-ad/0013_ceramide-skincare-benefits_5734c77320.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5734c7732007",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 38
+    },
+    {
+      "id": "learning_ref_56fbb04500ba",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/039_ref_56fbb04500ba.jpg",
+      "sourcePath": "runs/2026-05-12_04-30-24_봄철-민감-피부-진정-앰플-체험-이벤트/references/candidates/auto-q03-skincare-cosmetic-product-ad-tra/0004_a-bottle-of-gerberia-sitting-next-to-some-yellow_56fbb04500.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_56fbb04500ba",
+      "datasetProfile": "general",
+      "batchOrder": 39
+    },
+    {
+      "id": "learning_ref_94fa48868a74",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/040_ref_94fa48868a74.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__fine-jewelry-editorial-campaign-design/0016_포함된-이미지-make-it-molten_94fa48868a.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_94fa48868a74",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 40
+    },
+    {
+      "id": "learning_ref_5a004e56b8ae",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/041_ref_5a004e56b8ae.jpg",
+      "sourcePath": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q04-골드바-투자-프로모션-배너/0011_the-black-point-app-on-an-iphone-with-gold-coins_5a004e56b8.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5a004e56b8ae",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 41
+    },
+    {
+      "id": "learning_ref_4d13b43b439a",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/042_ref_4d13b43b439a.jpg",
+      "sourcePath": "references/meta_ads/meta-brief-test-individual/01_medicube_06.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EB%A9%94%EB%94%94%ED%81%90%EB%B8%8C&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4d13b43b439a",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 42
+    },
+    {
+      "id": "learning_ref_579d19bb6a07",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/043_ref_579d19bb6a07.jpg",
+      "sourcePath": "runs/2026-06-02_15-40-41_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어/references/candidates/auto-q02-여름-스킨케어-세일-배너-디자인/0011_the-advertisement-for-wards-summer-sale-includes_579d19bb6a.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_579d19bb6a07",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 43
+    },
+    {
+      "id": "learning_ref_57b35b46c053",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/044_ref_57b35b46c053.jpg",
+      "sourcePath": "runs/2026-05-17_04-36-46_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q02-premium-gold-finance-event-banne/0011_an-advertisement-for-a-flower-shop-with-flowers_57b35b46c0.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_57b35b46c053",
+      "datasetProfile": "general",
+      "batchOrder": 44
+    },
+    {
+      "id": "learning_ref_97635b3ec110",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/045_ref_97635b3ec110.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__diamond-product-advertising-photography/0006_무드-보드-아이폰-moda-준보석-백합-사진-고급-보석_97635b3ec1.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_97635b3ec110",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 45
+    },
+    {
+      "id": "learning_ref_5a0adcc65cd5",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/046_ref_5a0adcc65cd5.jpg",
+      "sourcePath": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/references/candidates/auto-q02-luxury-financial-consultation-po/0005_an-advertisement-for-financial-planning-help-wit_5a0adcc65c.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "bullion_investment",
+      "decision": "rejected",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `rejected`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_5a0adcc65cd5",
+      "datasetProfile": "bullion_investment",
+      "batchOrder": 46
+    },
+    {
+      "id": "learning_ref_4d234611bfe0",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/047_ref_4d234611bfe0.jpg",
+      "sourcePath": "references/meta_ads/searches/2026-06-07_17-24-53_아누아/images/meta_ad_26566328279724796_03_4d234611bf.jpg",
+      "sourceUrl": "https://www.facebook.com/ads/library/?active_status=active&ad_type=all&country=KR&q=%EC%95%84%EB%88%84%EC%95%84&search_type=keyword_unordered&media_type=all",
+      "sourceType": "meta_ad_library",
+      "sourceIsPinterest": false,
+      "sourceIsMeta": true,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_4d234611bfe0",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 47
+    },
+    {
+      "id": "learning_ref_58f5319d3ce6",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/048_ref_58f5319d3ce6.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/cosmetics_skincare__skincare-ingredient-benefit-infographic-ad/0005_an-info-sheet-with-different-types-of-vitamins-a_58f5319d3c.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "cosmetics_skincare",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_58f5319d3ce6",
+      "datasetProfile": "cosmetics_skincare",
+      "batchOrder": 48
+    },
+    {
+      "id": "learning_ref_57dc8ed0df17",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/049_ref_57dc8ed0df17.jpg",
+      "sourcePath": "runs/_reference_search_benchmark/ampoule-spring/references/candidates/auto-q01-skincare-cosmetic-product-ad-amp/0003_a-bottle-of-perfume-floating-in-the-water-with-p_57dc8ed0df.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "general",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_57dc8ed0df17",
+      "datasetProfile": "general",
+      "batchOrder": 49
+    },
+    {
+      "id": "learning_ref_a1b28d57956c",
+      "file": "design_brain_wiki/training_sessions/reference_learning/learning_batch_009/references/050_ref_a1b28d57956c.jpg",
+      "sourcePath": "assets/references/inbox/reference-learning-1000/jewelry_luxury__diamond-product-advertising-photography/0008_사진-촬영-사진-디자인-인스타그램-사진-보석-고급-보석-예술_a1b28d5795.jpg",
+      "sourceUrl": "",
+      "sourceType": "pinterest_search",
+      "sourceIsPinterest": true,
+      "sourceIsMeta": false,
+      "sourceSplit": "reference_learning_1000",
+      "category": "jewelry_luxury",
+      "decision": "shortlist",
+      "confidence": 0.75,
+      "reason": "기존 AI 판정 `shortlist`을 마스터 데이터셋에서 다시 검수합니다.",
+      "referenceRole": [
+        "human_review_required"
+      ],
+      "usableElements": [
+        "사람 검수로 활용 범위 확정"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md"
+      ],
+      "seniorDesignerFeedback": "출처와 업종 맥락을 확인하고 selected, shortlist, rejected 중 하나로 교정합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      },
+      "datasetId": "ref_a1b28d57956c",
+      "datasetProfile": "jewelry_luxury",
+      "batchOrder": 50
+    }
+  ]
+}

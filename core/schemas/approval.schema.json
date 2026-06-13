@@ -1,0 +1,22 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Approval Records",
+  "type": "object",
+  "required": ["approvals"],
+  "properties": {
+    "approvals": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["stage_id", "status", "approved_at"],
+        "properties": {
+          "stage_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["approved", "rejected"] },
+          "approver": { "type": "string" },
+          "approved_at": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    }
+  }
+}

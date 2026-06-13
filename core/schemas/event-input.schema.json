@@ -1,0 +1,18 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Input",
+  "type": "object",
+  "required": ["eventName", "objective"],
+  "properties": {
+    "eventName": { "type": "string" },
+    "objective": { "type": "string" },
+    "target": { "type": "string" },
+    "channels": { "type": "array", "items": { "type": "string" } },
+    "schedule": { "type": "object" },
+    "offer": { "type": "string" },
+    "references": { "type": "array", "items": { "type": "string" } },
+    "requiredPhrases": { "type": "array", "items": { "type": "string" } },
+    "bannedWords": { "type": "array", "items": { "type": "string" } }
+  },
+  "additionalProperties": true
+}

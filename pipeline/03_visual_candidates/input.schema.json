@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "03 Visual Candidates Input",
+  "type": "object",
+  "required": ["brief", "content_plan"],
+  "properties": {
+    "brief": { "$ref": "../01_event_brief/output.schema.json" },
+    "content_plan": { "$ref": "../02_content_planning/output.schema.json" },
+    "comfyui_presets": { "type": "array", "items": { "type": "object" } }
+  }
+}

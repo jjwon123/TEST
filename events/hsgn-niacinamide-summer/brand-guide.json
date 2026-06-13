@@ -1,0 +1,41 @@
+{
+  "brandName": "hsgn",
+  "brandSlogan": "skincare about science, skincare about life",
+  "tone": [
+    "과학적",
+    "명료함",
+    "신뢰감",
+    "기능성 강조"
+  ],
+  "styleRules": [
+    "성분 농도와 효능은 과장 없이 수치 기반으로 표현한다.",
+    "클린하고 현대적인 레이아웃을 유지하며 복잡한 디자인 요소는 지양한다.",
+    "오렌지 포인트 컬러(브랜드 컬러)를 일관되게 활용한다.",
+    "제품 패키지 텍스트와 로고를 변형하지 않는다."
+  ],
+  "preferredWords": [
+    "나이아신아마이드",
+    "미백",
+    "성분",
+    "농도",
+    "클린 뷰티",
+    "기능성"
+  ],
+  "avoidWords": [
+    "기적",
+    "완치",
+    "100% 보장",
+    "의학적 치료"
+  ],
+  "visual": {
+    "mood": [
+      "clean",
+      "bright",
+      "scientific",
+      "minimal",
+      "white or soft neutral background"
+    ],
+    "brandColors": ["#FF6B2C", "#FFFFFF", "#F5F5F5"],
+    "typography": "sans-serif, minimal"
+  }
+}

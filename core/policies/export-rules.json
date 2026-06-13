@@ -1,0 +1,6 @@
+{
+  "allowed_formats": ["png", "jpg"],
+  "default_format": "png",
+  "require_dimensions_match_template": true,
+  "require_channel_folder": true
+}

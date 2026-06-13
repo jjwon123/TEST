@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Figma Assembly Plan",
+  "type": "object",
+  "required": ["event_id", "frames"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "figma_file_key": { "type": "string" },
+    "frames": { "type": "array", "items": { "type": "object" } }
+  }
+}

@@ -1,0 +1,40 @@
+{
+  "preset_id": "qwen_candidate_2511",
+  "display_name": "Qwen Image Edit 2511 GGUF — Product Ad Candidate",
+  "purpose": "Generate premium product advertising candidates using Qwen Image Edit 2511 GGUF + FluxKontext. Runs the first-pass KSampler only (no SAM/LaMa inpainting). All three image slots receive the product packshot so Qwen edits it into a campaign scene.",
+  "stage": "03_visual_candidates",
+  "comfyui_required_nodes": [
+    "UnetLoaderGGUF",
+    "CLIPLoader",
+    "VAELoader",
+    "LoraLoader",
+    "TextEncodeQwenImageEditPlus",
+    "FluxKontextImageScale",
+    "FluxKontextMultiReferenceLatentMethod",
+    "ModelSamplingAuraFlow",
+    "CFGNorm",
+    "KSampler",
+    "VAEEncode",
+    "VAEDecode",
+    "SaveImage"
+  ],
+  "models": {
+    "unet": "qwen-image-edit-2511-Q3_K_M.gguf",
+    "clip": "qwen_2.5_vl_7b_fp8_scaled.safetensors",
+    "vae": "qwen_image_vae.safetensors",
+    "lora": "Qwen-Image-Edit-2511-Lightning-8steps-V1.0-bf16.safetensors"
+  },
+  "inputs": {
+    "product_image": "Packshot PNG in ComfyUI/input. Used for all three image reference slots.",
+    "positive_prompt": "Product-locked campaign scene description.",
+    "negative_prompt": "Forbidden elements — distorted packaging, wrong colors, etc.",
+    "seed": "Integer. 0 = randomize on each run.",
+    "steps": "Sampling steps. Default 8 (Lightning LoRA).",
+    "cfg_scale": "CFG strength. Default 1.0 (CFGNorm is applied separately).",
+    "sampler": "Sampler name. Default heun."
+  },
+  "product_safety": {
+    "strategy": "product_pixels_as_reference",
+    "note": "Qwen uses all three image slots as visual context for the edit prompt. The product packshot is not pixel-locked — Qwen regenerates the scene. If strict pixel locking is needed, use product_locked_ad_background_v1 instead."
+  }
+}

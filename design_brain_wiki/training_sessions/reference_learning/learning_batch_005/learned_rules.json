@@ -1,0 +1,78 @@
+{
+  "sessionId": "reference_learning_learning_batch_005",
+  "profile": "reference_learning",
+  "createdAt": "2026-06-10T14:28:30.172812+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 7,
+    "agree": 2,
+    "disagree": 5,
+    "unsure": 0,
+    "overSelected": 0,
+    "overRejected": 0,
+    "abstractFeedback": 7,
+    "accuracy": 0.286,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 2,
+      "rejected": 5
+    },
+    "transitionCounts": {
+      "shortlist->rejected": 5,
+      "shortlist->shortlist": 2
+    },
+    "reasonTagCounts": {}
+  },
+  "rules": [],
+  "examples": [
+    {
+      "id": "learning_ref_28947f8f1af8",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "learning_ref_2a2bbaf35107",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "learning_ref_2b35d74b56f8",
+      "aiDecision": "shortlist",
+      "finalDecision": "shortlist",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보"
+    },
+    {
+      "id": "learning_ref_2c74a57a0c10",
+      "aiDecision": "shortlist",
+      "finalDecision": "shortlist",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보"
+    },
+    {
+      "id": "learning_ref_2cca9cb30915",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "learning_ref_2ce130c20ea9",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "learning_ref_2ac79e1af808",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    }
+  ]
+}

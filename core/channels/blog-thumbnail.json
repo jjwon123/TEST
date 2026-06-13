@@ -1,0 +1,11 @@
+{
+  "channel_id": "blog_thumbnail",
+  "name": "Blog Thumbnail",
+  "aliases": ["blog", "naver_blog"],
+  "planning_order": 10,
+  "default_ratio": "16:9",
+  "default_template": "blog_thumbnail_v1",
+  "supported_templates": ["blog_thumbnail_v1"],
+  "content_roles": ["entry_point"],
+  "qa_requirements": ["title_readability", "safe_crop", "brand_fit"]
+}

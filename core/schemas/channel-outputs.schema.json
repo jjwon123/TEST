@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Channel Outputs",
+  "type": "object",
+  "required": ["stage", "event_id", "outputs"],
+  "properties": {
+    "stage": { "type": "string", "const": "05_figma_assembly" },
+    "event_id": { "type": "string" },
+    "figma_file_key": { "type": "string" },
+    "outputs": { "type": "array", "items": { "type": "object" } }
+  }
+}

@@ -1,0 +1,1293 @@
+{
+  "sessionId": "cosmetics_skincare_pinterest_holdout_003",
+  "sessionType": "pinterest_search_reference",
+  "createdAt": "2026-06-03T02:31:19.393791+00:00",
+  "profile": "cosmetics_skincare",
+  "purpose": "Actual Pinterest/search reference review set for Kiwon review and rule correction.",
+  "sourceRun": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어",
+  "localModelUsed": false,
+  "judgementMethod": "Codex/wiki heuristic first pass over run-collected Pinterest/search references; no Qwen/Ollama visual model call.",
+  "wikiSources": [
+    "design_brain_wiki/00_JUDGE_SCHEMA.md",
+    "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+    "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+    "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+    "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+    "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+    "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+  ],
+  "summary": {
+    "total": 31,
+    "decisionCounts": {
+      "selected": 2,
+      "shortlist": 17,
+      "rejected": 12
+    },
+    "categoryCounts": {
+      "event_sale_layout": 3,
+      "product_mood_reference": 16,
+      "rejection_boundary": 12
+    },
+    "needsKiwonReview": 31
+  },
+  "items": [
+    {
+      "id": "cosmetics_skincare_ref_01",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\01_0011_스킨케어-프로모션-코스메틱-배너-뷰티-프로모션-디자인-비교-레이아웃-화장품-성분-화장품_985dfb7d21.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0011_스킨케어-프로모션-코스메틱-배너-뷰티-프로모션-디자인-비교-레이아웃-화장품-성분-화장품_985dfb7d21.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/766949011589253669/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "event_sale_layout",
+      "decision": "selected",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 세일/혜택 이벤트 구조, 카피 배치 여백, 카드뉴스/배너 제작 해상도가 함께 확인되어 한국 H&B 스킨케어 세일 이벤트의 제작 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "product_category",
+        "sale_event_layout",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "세일/혜택 이벤트 구조",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "한국 H&B 세일의 제품/혜택/카드뉴스 구조가 함께 보여서 여름 스킨케어 이벤트 제작 기준으로 쓸 수 있습니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_02",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\02_0010_the-advertisement-for-dr-ceuraces-new-skin-care_0c18d63268.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0010_the-advertisement-for-dr-ceuraces-new-skin-care_0c18d63268.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/598134394303820207/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_03",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\03_0003_pin_27932a5fa0.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0003_pin_27932a5fa0.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "too_small, weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "rejection_boundary"
+      ],
+      "usableElements": [
+        "부분 참고"
+      ],
+      "riskSignals": [
+        "too_small",
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_04",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\04_0007_peptides-are-the-low-key-overachievers-of-your-r_665c38bc4a.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0007_peptides-are-the-low-key-overachievers-of-your-r_665c38bc4a.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/677369600249277420/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "event_sale_layout",
+      "decision": "selected",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 세일/혜택 이벤트 구조, 카피 배치 여백, 카드뉴스/배너 제작 해상도가 함께 확인되어 한국 H&B 스킨케어 세일 이벤트의 제작 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "product_category",
+        "sale_event_layout",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "세일/혜택 이벤트 구조",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "한국 H&B 세일의 제품/혜택/카드뉴스 구조가 함께 보여서 여름 스킨케어 이벤트 제작 기준으로 쓸 수 있습니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_05",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\05_0012_an-advertisement-for-glow-wedl-cosmetics-featuri_07c5ff5ab7.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q03-뷰티-이벤트-배너\\0012_an-advertisement-for-glow-wedl-cosmetics-featuri_07c5ff5ab7.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8+%EB%B0%B0%EB%84%88",
+      "pinUrl": "https://kr.pinterest.com/pin/806496245817751900/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_06",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\06_0002_pin_30cc957054.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0002_pin_30cc957054.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "too_small 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백"
+      ],
+      "riskSignals": [
+        "too_small"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_07",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\07_0009_an-advertisement-for-cosmetics-products-with-the_9897b55a1a.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0009_an-advertisement-for-cosmetics-products-with-the_9897b55a1a.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/3448137210709176/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "event_sale_layout",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 세일/혜택 이벤트 구조, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "sale_event_layout"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "세일/혜택 이벤트 구조",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_08",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\08_0001_pin_633dffe874.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0001_pin_633dffe874.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "too_small 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백"
+      ],
+      "riskSignals": [
+        "too_small"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_09",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\09_0002_an-advertisement-for-skin-care-products-on-pink_9dc10f0190.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0002_an-advertisement-for-skin-care-products-on-pink_9dc10f0190.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/755690012516642931/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_10",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\10_0012_a-woman-is-holding-up-a-bottle-of-beauty-oil-to_01e28d4a1d.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0012_a-woman-is-holding-up-a-bottle-of-beauty-oil-to_01e28d4a1d.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/3940718420596907/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "too_small 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "too_small"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_11",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\11_0006_an-advertisement-for-the-korean-cosmetics-brand_8c17c07041.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0006_an-advertisement-for-the-korean-cosmetics-brand_8c17c07041.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/146085581656309125/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_12",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\12_0006_an-advertisement-with-water-droplets-on-the-leav_fed6eefbd2.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0006_an-advertisement-with-water-droplets-on-the-leav_fed6eefbd2.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/942026448892318947/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_13",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\13_0005_an-advertisement-for-the-korean-cosmetics-brand_ac95e98595.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0005_an-advertisement-for-the-korean-cosmetics-brand_ac95e98595.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/760193612133051331/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_14",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\14_0007_an-advertisement-for-a-cosmetics-brand-with-cher_c34f1f9d4a.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0007_an-advertisement-for-a-cosmetics-brand-with-cher_c34f1f9d4a.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/33495590974766194/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_15",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\15_0001_an-advertisement-for-the-korean-skin-care-brand_1ad1bfd9e0.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0001_an-advertisement-for-the-korean-skin-care-brand_1ad1bfd9e0.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/900438519259973432/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_16",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\16_0006_an-advertisement-for-torriden-and-its-products_51964cdf4b.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0006_an-advertisement-for-torriden-and-its-products_51964cdf4b.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/633387444310534/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_17",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\17_0005_an-advertisement-for-some-skin-care-products-on_241ec6f160.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q01-스킨케어-이벤트-배너\\0005_an-advertisement-for-some-skin-care-products-on_241ec6f160.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%9D%B4%EB%B2%A4%ED%8A%B8+%EB%B0%B0%EB%84%88",
+      "pinUrl": "https://kr.pinterest.com/pin/7248049394719437/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_18",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\18_0012_an-advertisement-for-the-korean-cosmetics-brand_3f69c0d945.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0012_an-advertisement-for-the-korean-cosmetics-brand_3f69c0d945.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/409335053645496605/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_19",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\19_0011_an-advertisement-for-the-skin-care-brand_04d09497a6.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q04-스킨케어-배너-디자인\\0011_an-advertisement-for-the-skin-care-brand_04d09497a6.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/1127870300473647808/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_20",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\20_0003_the-website-for-skinfood-is-shown-with-different_b4b7e7a695.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0003_the-website-for-skinfood-is-shown-with-different_b4b7e7a695.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/1024217140274663461/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "website_capture 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "website_capture"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_21",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\21_0011_the-body-shop-coup-for-summer-skincare-event-is_9229c9a1d2.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q02-화장품-이벤트-배너\\0011_the-body-shop-coup-for-summer-skincare-event-is_9229c9a1d2.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%9D%B4%EB%B2%A4%ED%8A%B8+%EB%B0%B0%EB%84%88",
+      "pinUrl": "https://kr.pinterest.com/pin/853291460652253002/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_22",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\22_0002_an-advertises-the-use-of-products-for-hair-and-b_5dd2eedea2.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0002_an-advertises-the-use-of-products-for-hair-and-b_5dd2eedea2.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/884253708111251332/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "wrong_product_category 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "wrong_product_category"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_23",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\23_0005_an-advertisement-for-colgates-new-skin-care-line_c6dcd9b626.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q03-뷰티-이벤트-배너\\0005_an-advertisement-for-colgates-new-skin-care-line_c6dcd9b626.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EC%9D%B4%EB%B2%A4%ED%8A%B8+%EB%B0%B0%EB%84%88",
+      "pinUrl": "https://kr.pinterest.com/pin/777574691934124772/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_24",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\24_0005_a-person-holding-a-yellow-tube-with-information_3287d7573c.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0005_a-person-holding-a-yellow-tube-with-information_3287d7573c.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/1084874997745099752/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.72,
+      "reason": "제품/이벤트 적합도 부족 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "rejection_boundary"
+      ],
+      "usableElements": [
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_25",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\25_0010_an-advertisement-for-cosmetics-products-with-dif_3edc8969b6.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0010_an-advertisement-for-cosmetics-products-with-dif_3edc8969b6.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/3377768462446830/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_26",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\26_0011_메디큐브---medicube-화장품광고-뷰티-포스터-뷰티-화보-키비주얼-뷰티-프로모션_b8e9732e81.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q06-뷰티-배너-디자인\\0011_메디큐브---medicube-화장품광고-뷰티-포스터-뷰티-화보-키비주얼-뷰티-프로모션_b8e9732e81.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EB%B7%B0%ED%8B%B0+%EB%B0%B0%EB%84%88+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/39476934230344572/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "rejection_boundary",
+      "decision": "rejected",
+      "confidence": 0.84,
+      "reason": "weak_copy_space 때문에 화장품 세일 레퍼런스 기준에서는 제외합니다.",
+      "referenceRole": [
+        "product_category",
+        "sale_event_layout"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "세일/혜택 이벤트 구조",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [
+        "weak_copy_space"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "스킨케어 세일 이벤트의 제품 신뢰, 혜택 전달, 한국 H&B 감성과 어긋나는 신호가 있어 제외 기준으로 남기는 편이 안전합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_27",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\27_0008_건강기능식품-상세페이지-브랜디-레티놀-레이아웃-템플릿-페이지-디자인-건강식품-세럼-게임_5bef55cc49.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0008_건강기능식품-상세페이지-브랜디-레티놀-레이아웃-템플릿-페이지-디자인-건강식품-세럼-게임_5bef55cc49.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/804455552227550836/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_28",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\28_0008_an-advertisement-for-some-kind-of-cream-in-the-m_76dda4cd42.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0008_an-advertisement-for-some-kind-of-cream-in-the-m_76dda4cd42.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/760193612138926712/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_29",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\29_0010_an-advertisement-for-e-gf-ampoule-with-a-cactus_12edad572c.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0010_an-advertisement-for-e-gf-ampoule-with-a-cactus_12edad572c.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/168533211049318442/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "카피 배치 여백는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_30",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\30_0009_an-advertisement-for-the-new-lorene-facial-care_d39fbdedca.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q07-화장품-카드뉴스-디자인\\0009_an-advertisement-for-the-new-lorene-facial-care_d39fbdedca.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%ED%99%94%EC%9E%A5%ED%92%88+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4+%EB%94%94%EC%9E%90%EC%9D%B8",
+      "pinUrl": "https://kr.pinterest.com/pin/760193612138926707/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "카피 배치 여백, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category",
+        "copy_space"
+      ],
+      "usableElements": [
+        "카피 배치 여백",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "cosmetics_skincare_ref_31",
+      "file": "design_brain_wiki\\training_sessions\\cosmetics_skincare\\pinterest_holdout_003\\references\\31_0004_투닝에-가입하시면-무료로-사용할-수-있어요-템플릿-투닝-카드뉴스-포스터-templete_4bb341e864.jpg",
+      "sourcePath": "runs\\2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어\\references\\candidates\\auto-q08-스킨케어-카드뉴스\\0004_투닝에-가입하시면-무료로-사용할-수-있어요-템플릿-투닝-카드뉴스-포스터-templete_4bb341e864.jpg",
+      "sourceUrl": "https://kr.pinterest.com/search/pins/?q=%EC%8A%A4%ED%82%A8%EC%BC%80%EC%96%B4+%EC%B9%B4%EB%93%9C%EB%89%B4%EC%8A%A4",
+      "pinUrl": "https://kr.pinterest.com/pin/802766702369696614/",
+      "sourceIsPinterest": true,
+      "sourceSplit": "actual_reference",
+      "category": "product_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.72,
+      "reason": "제품/스킨케어 카테고리 신호, 카드뉴스/배너 제작 해상도는 참고 가능하지만 제품, 혜택, 한국형 카드뉴스 위계 중 일부가 약해 후보로 둡니다.",
+      "referenceRole": [
+        "product_category"
+      ],
+      "usableElements": [
+        "제품/스킨케어 카테고리 신호",
+        "카드뉴스/배너 제작 해상도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md",
+        "design_brain_wiki/05_industry_playbooks/deep/cosmetics_skincare_v0_2.md"
+      ],
+      "seniorDesignerFeedback": "화장품 무드나 제품 표현은 참고 가능하지만, 혜택 구조와 한국형 세일 위계가 약해 단독 selected로는 부족합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    }
+  ]
+}

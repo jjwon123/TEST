@@ -1,0 +1,111 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Asset Archive — Canonical Index Entry",
+  "description": "One record in assets/indexes/global-index.json. Each asset from each run produces one entry. Upserted by asset_id.",
+  "type": "object",
+  "required": [
+    "asset_id",
+    "event_id",
+    "event_type",
+    "channel_id",
+    "template_family",
+    "intended_use",
+    "visual_keywords",
+    "qa_status",
+    "reuse_score",
+    "reuse_recommended_for",
+    "source_candidate_id",
+    "source_run_id",
+    "archived_at"
+  ],
+  "properties": {
+    "asset_id": {
+      "type": "string",
+      "description": "Primary key: {event_id}__{frame_id}. Used for upsert deduplication."
+    },
+    "event_id":        { "type": "string" },
+    "event_type": {
+      "type": "string",
+      "description": "Semantic category of the event: investment_consulting, product_launch, seasonal_sale, etc."
+    },
+    "channel_id":      { "type": "string" },
+    "template_family": {
+      "type": "string",
+      "description": "Registry-backed template_id when known; otherwise legacy family name or unknown."
+    },
+    "template_id": {
+      "type": "string",
+      "description": "Validated template_id from core/templates when template inference succeeds."
+    },
+    "template_inference_source": {
+      "type": "string",
+      "description": "Where the archive handler inferred template identity from."
+    },
+    "template_inference_warning": {
+      "type": "string",
+      "description": "Reason template inference fell back or failed, if any."
+    },
+    "intended_use": {
+      "type": "string",
+      "description": "Role of this asset within its template: hook, benefit, how_to, cta, thumbnail, etc."
+    },
+    "visual_keywords": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Searchable visual descriptors derived from channel, frame name, and brand guide mood."
+    },
+    "tags": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Tagging-policy tags: channel:*, format:*, visual-role:*, objective:*, season:*, brand-tone:*, reuse:*"
+    },
+    "qa_status": {
+      "type": "string",
+      "enum": ["pass", "fail", "warn"],
+      "description": "Only pass items enter the reusable index."
+    },
+    "reuse_score": {
+      "type": "number",
+      "minimum": 0.0,
+      "maximum": 1.0,
+      "description": "Deterministic score: qa_pass(0.3) + channel_suitability(0.1) + template_stability(0.1) - event_specificity_penalty(0–0.3). >= 0.7 → reusable."
+    },
+    "reuse_score_breakdown": {
+      "type": "object",
+      "description": "Auditable breakdown so the score can be reproduced or replaced by a model later.",
+      "properties": {
+        "qa_pass":                    { "type": "number" },
+        "channel_suitability":        { "type": "number" },
+        "template_stability":         { "type": "number" },
+        "event_specificity_penalty":  { "type": "number" },
+        "template_inference_source":  { "type": "string" },
+        "template_inference_warning": { "type": "string" }
+      }
+    },
+    "reuse_recommended_for": {
+      "type": "array",
+      "items": { "type": "string" },
+      "description": "Channel IDs or event_types this asset is recommended for in future events."
+    },
+    "reuse_status": {
+      "type": "string",
+      "enum": ["reusable", "limited_reuse", "not_reusable"]
+    },
+    "source_candidate_id": {
+      "type": "string",
+      "description": "candidate_id from 03_visual_candidates, if available."
+    },
+    "source_run_id": { "type": "string" },
+    "archive_path_approved": { "type": "string" },
+    "archive_path_reusable": { "type": "string" },
+    "dimensions": {
+      "type": "object",
+      "properties": {
+        "width":  { "type": "integer" },
+        "height": { "type": "integer" }
+      }
+    },
+    "archived_at":  { "type": "string", "format": "date-time" },
+    "updated_at":   { "type": "string", "format": "date-time" }
+  }
+}

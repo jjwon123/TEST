@@ -1,0 +1,1257 @@
+{
+  "sessionId": "bullion_investment_session_001",
+  "sessionType": "seed_test",
+  "createdAt": "2026-05-31T07:36:33.319137+00:00",
+  "profile": "bullion_investment",
+  "purpose": "Seed reference sanity-check set. This is not an actual Pinterest collection session.",
+  "sourceRun": "",
+  "localModelUsed": false,
+  "judgementMethod": "Codex/wiki heuristic first pass over local seed metadata; no Qwen/Ollama visual model call.",
+  "wikiSources": [
+    "design_brain_wiki/00_JUDGE_SCHEMA.md",
+    "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+    "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+    "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+    "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+    "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+    "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+    "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+  ],
+  "summary": {
+    "total": 30,
+    "decisionCounts": {
+      "selected": 7,
+      "shortlist": 20,
+      "rejected": 3
+    },
+    "categoryCounts": {
+      "product_reference": 10,
+      "finance_mood_reference": 10,
+      "poster_layout_reference": 7,
+      "bad_reference": 3
+    },
+    "needsKiwonReview": 30
+  },
+  "items": [
+    {
+      "id": "bullion_ref_01",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\01_product_reference_01_silver_coin_tube_product.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_01_silver_coin_tube_product.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "금속 소재감",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 금속 소재감, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_02",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\02_product_reference_02_silver_coin_product_angle.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_02_silver_coin_product_angle.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "조명 기준",
+        "금속 소재감"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 조명 기준, 금속 소재감에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_03",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\03_product_reference_03_silver_coin_obverse.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_03_silver_coin_obverse.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_04",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\04_product_reference_04_silver_coin_slab_product.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_04_silver_coin_slab_product.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_05",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\05_product_reference_05_silver_krugerrand_obverse.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_05_silver_krugerrand_obverse.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "금속 소재감"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 금속 소재감에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_06",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\06_product_reference_06_silver_krugerrand_slab.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_06_silver_krugerrand_slab.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_07",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\07_product_reference_07_silver_philharmonic_obverse.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_07_silver_philharmonic_obverse.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "조명 기준",
+        "금속 소재감"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 조명 기준, 금속 소재감에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_08",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\08_product_reference_08_silver_philharmonic_reverse.jpg",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_08_silver_philharmonic_reverse.jpg",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "금속 소재감"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 금속 소재감에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_09",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\09_product_reference_09_bullion_coin_tube_case.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_09_bullion_coin_tube_case.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_10",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\10_product_reference_10_precious_metal_eagle_coin.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\product_reference\\product_reference_10_precious_metal_eagle_coin.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "product_reference",
+      "decision": "shortlist",
+      "confidence": 0.76,
+      "reason": "불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다.",
+      "referenceRole": [
+        "product_identity"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "조명 기준",
+        "금속 소재감"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 조명 기준, 금속 소재감에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 불리언 제품 정체성과 소재 기준은 좋지만 카피 여백/상담 이벤트 구조가 부족해 제품 보조 레퍼런스가 맞습니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_11",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\11_finance_mood_reference_01_private_banking_navy_gold.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_01_private_banking_navy_gold.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "조명 기준"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 조명 기준에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_12",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\12_finance_mood_reference_02_wealth_management_graph.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_02_wealth_management_graph.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_13",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\13_finance_mood_reference_03_calm_trust_consultation.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_03_calm_trust_consultation.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "조명 기준"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 조명 기준에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_14",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\14_finance_mood_reference_04_premium_asset_dashboard.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_04_premium_asset_dashboard.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_15",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\15_finance_mood_reference_05_dark_navy_gold_finance.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_05_dark_navy_gold_finance.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "조명 기준"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 조명 기준에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_16",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\16_finance_mood_reference_06_abstract_finance_background.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_06_abstract_finance_background.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood",
+        "poster_layout"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 카피 여백/캠페인 레이아웃, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_17",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\17_finance_mood_reference_07_investment_signal_gold.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_07_investment_signal_gold.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_18",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\18_finance_mood_reference_08_secure_consultation_mood.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_08_secure_consultation_mood.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "조명 기준"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 조명 기준에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_19",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\19_finance_mood_reference_09_high_trust_financial_campaign.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_09_high_trust_financial_campaign.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 구도에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_20",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\20_finance_mood_reference_10_gold_market_advisory_mood.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\finance_mood_reference\\finance_mood_reference_10_gold_market_advisory_mood.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "finance_mood_reference",
+      "decision": "shortlist",
+      "confidence": 0.78,
+      "reason": "금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다.",
+      "referenceRole": [
+        "finance_mood"
+      ],
+      "usableElements": [
+        "금융 신뢰 무드",
+        "조명 기준"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 금융 신뢰 무드, 조명 기준에는 유용하지만 단독 selected로 쓰기에는 부족합니다. 금융 신뢰 무드는 유용하지만 제품 정체성이나 실제 이벤트 레이아웃이 부족해 단독 selected로는 약합니다. 제품 정체성, 금융 신뢰 무드, 포스터 레이아웃 중 빠진 축을 다른 레퍼런스로 보강해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_21",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\21_poster_layout_reference_01_consultation_event_poster.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_01_consultation_event_poster.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_22",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\22_poster_layout_reference_02_blank_headline_area.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_02_blank_headline_area.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_23",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\23_poster_layout_reference_03_minimal_sns_banner.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_03_minimal_sns_banner.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_24",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\24_poster_layout_reference_04_product_and_copy_space.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_04_product_and_copy_space.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "product_identity",
+        "poster_layout"
+      ],
+      "usableElements": [
+        "불리언 제품 정체성",
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 불리언 제품 정체성, 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_25",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\25_poster_layout_reference_05_premium_cardnews_cover.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_05_premium_cardnews_cover.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_26",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\26_poster_layout_reference_06_clean_campaign_layout.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_06_clean_campaign_layout.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_27",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\27_poster_layout_reference_07_finance_notice_banner.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\good\\poster_layout_reference\\poster_layout_reference_07_finance_notice_banner.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "good_seed",
+      "category": "poster_layout_reference",
+      "decision": "selected",
+      "confidence": 0.86,
+      "reason": "카피 여백과 캠페인 레이아웃 기준이 분명해 카드뉴스/배너 제작 방향 기준으로 삼을 수 있습니다.",
+      "referenceRole": [
+        "poster_layout"
+      ],
+      "usableElements": [
+        "카피 여백/캠페인 레이아웃",
+        "구도"
+      ],
+      "riskSignals": [],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 카피 여백/캠페인 레이아웃, 구도가 분명해서 금 투자 상담 카드뉴스나 상담 신청 배너의 방향 기준으로 쓸 수 있습니다. 다만 실제 제작에서는 fake text 없이 한국어 헤드라인을 후작업으로 얹고, 제품/카피/CTA 위계를 유지해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_28",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\28_instagram_cardnews_01__key_visual_c01.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\bad\\instagram_cardnews_01__key_visual_c01.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "bad_seed",
+      "category": "bad_reference",
+      "decision": "rejected",
+      "confidence": 0.94,
+      "reason": "bad seed와 일치하는 캐릭터/장난감/가짜 텍스트/비금융 신호가 있어 금융 투자 상담 브랜드 기준을 통과하지 못합니다.",
+      "referenceRole": [
+        "rejection_boundary"
+      ],
+      "usableElements": [],
+      "riskSignals": [
+        "mascot_character",
+        "toy_3d",
+        "fake_text",
+        "not_financial",
+        "not_premium",
+        "wrong_event_tone"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 mascot_character, toy_3d, fake_text, not_financial, not_premium, wrong_event_tone 신호가 강해 bullion_investment의 금융 신뢰 기준을 통과하지 못합니다. 예쁘거나 눈에 띄더라도 캐릭터/장난감/fake text 방향은 rejected seed로 남기고 다음 검색과 생성에서 차단해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_29",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\29_instagram_cardnews_01__key_visual_c02.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\bad\\instagram_cardnews_01__key_visual_c02.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "bad_seed",
+      "category": "bad_reference",
+      "decision": "rejected",
+      "confidence": 0.94,
+      "reason": "bad seed와 일치하는 캐릭터/장난감/가짜 텍스트/비금융 신호가 있어 금융 투자 상담 브랜드 기준을 통과하지 못합니다.",
+      "referenceRole": [
+        "rejection_boundary"
+      ],
+      "usableElements": [],
+      "riskSignals": [
+        "mascot_character",
+        "toy_3d",
+        "fake_text",
+        "not_financial",
+        "not_premium",
+        "wrong_event_tone"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 mascot_character, toy_3d, fake_text, not_financial, not_premium, wrong_event_tone 신호가 강해 bullion_investment의 금융 신뢰 기준을 통과하지 못합니다. 예쁘거나 눈에 띄더라도 캐릭터/장난감/fake text 방향은 rejected seed로 남기고 다음 검색과 생성에서 차단해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    },
+    {
+      "id": "bullion_ref_30",
+      "file": "design_brain_wiki\\training_sessions\\bullion_investment\\session_001\\references\\30_instagram_cardnews_01__key_visual_c03.png",
+      "sourcePath": "assets\\reference_training\\bullion_investment\\bad\\instagram_cardnews_01__key_visual_c03.png",
+      "sourceUrl": "",
+      "pinUrl": "",
+      "sourceIsPinterest": false,
+      "sourceSplit": "bad_seed",
+      "category": "bad_reference",
+      "decision": "rejected",
+      "confidence": 0.94,
+      "reason": "bad seed와 일치하는 캐릭터/장난감/가짜 텍스트/비금융 신호가 있어 금융 투자 상담 브랜드 기준을 통과하지 못합니다.",
+      "referenceRole": [
+        "rejection_boundary"
+      ],
+      "usableElements": [],
+      "riskSignals": [
+        "mascot_character",
+        "toy_3d",
+        "fake_text",
+        "not_financial",
+        "not_premium",
+        "wrong_event_tone"
+      ],
+      "wikiSources": [
+        "design_brain_wiki/00_JUDGE_SCHEMA.md",
+        "design_brain_wiki/REFERENCE_JUDGE_RUBRIC.json",
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/05_industry_playbooks/deep/bullion_investment_v0_2.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/03_reference_judgement/shortlist_criteria.md",
+        "design_brain_wiki/03_reference_judgement/rejected_criteria.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "seniorDesignerFeedback": "이 레퍼런스는 mascot_character, toy_3d, fake_text, not_financial, not_premium, wrong_event_tone 신호가 강해 bullion_investment의 금융 신뢰 기준을 통과하지 못합니다. 예쁘거나 눈에 띄더라도 캐릭터/장난감/fake text 방향은 rejected seed로 남기고 다음 검색과 생성에서 차단해야 합니다.",
+      "kiwonReview": {
+        "agree": "",
+        "disagree": "",
+        "unsure": "",
+        "correctDecision": "",
+        "kiwonReason": "",
+        "ruleToUpdate": ""
+      }
+    }
+  ]
+}

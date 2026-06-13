@@ -1,0 +1,222 @@
+{
+  "profile": "bullion_investment",
+  "created_at": "2026-05-30",
+  "source": "local curated product assets plus generated non-ComfyUI seed references for mood and layout",
+  "categories": {
+    "product_reference": "Locks gold/silver/bullion product identity and premium metallic material cues.",
+    "finance_mood_reference": "Locks calm premium finance, wealth management, private banking, and trust mood cues.",
+    "poster_layout_reference": "Locks event poster, cardnews, consultation banner, blank headline area, and copy-safe composition cues."
+  },
+  "items": [
+    {
+      "filename": "product_reference/product_reference_01_silver_coin_tube_product.png",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "product photography", "premium metallic reflection", "no character", "no fake text"],
+      "whyGood": "Clear bullion coin product cue with neutral product focus and no playful or character-driven mood.",
+      "usefulFor": ["product_identity", "product_scene", "composition", "material_texture"]
+    },
+    {
+      "filename": "product_reference/product_reference_02_silver_coin_product_angle.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "luxury product photography", "metal texture", "investment product"],
+      "whyGood": "Precious-metal product angle supports investment identity and product clarity.",
+      "usefulFor": ["product_identity", "product_scene", "lighting", "material_texture"]
+    },
+    {
+      "filename": "product_reference/product_reference_03_silver_coin_obverse.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "focal product", "premium metal", "no fake text"],
+      "whyGood": "Single coin focal point suitable for serious financial product reference.",
+      "usefulFor": ["product_identity", "product_scene", "composition"]
+    },
+    {
+      "filename": "product_reference/product_reference_04_silver_coin_slab_product.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "product slab", "investment product", "premium product", "no character"],
+      "whyGood": "Product-protection context reads as collectible bullion, not lifestyle or toy.",
+      "usefulFor": ["product_identity", "product_scene", "composition"]
+    },
+    {
+      "filename": "product_reference/product_reference_05_silver_krugerrand_obverse.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "focal product", "wealth management"],
+      "whyGood": "Recognizable bullion coin style with simple product-first composition.",
+      "usefulFor": ["product_identity", "product_scene", "material_texture"]
+    },
+    {
+      "filename": "product_reference/product_reference_06_silver_krugerrand_slab.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "investment product", "premium metal"],
+      "whyGood": "Serious product reference with collectible precious-metal cue.",
+      "usefulFor": ["product_identity", "product_scene", "composition"]
+    },
+    {
+      "filename": "product_reference/product_reference_07_silver_philharmonic_obverse.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "metal texture", "calm trust"],
+      "whyGood": "Clean coin reference with sober tone and usable metal texture.",
+      "usefulFor": ["product_identity", "product_scene", "material_texture", "lighting"]
+    },
+    {
+      "filename": "product_reference/product_reference_08_silver_philharmonic_reverse.jpg",
+      "category": "product_reference",
+      "tags": ["silver coin", "bullion product", "premium metal", "luxury product photography"],
+      "whyGood": "Precious-metal detail and premium product cue without off-category elements.",
+      "usefulFor": ["product_identity", "product_scene", "material_texture"]
+    },
+    {
+      "filename": "product_reference/product_reference_09_bullion_coin_tube_case.png",
+      "category": "product_reference",
+      "tags": ["bullion product", "silver coin", "wealth management", "product photography"],
+      "whyGood": "Bulk bullion product context fits asset/investment messaging better than lifestyle scenes.",
+      "usefulFor": ["product_identity", "product_scene", "composition"]
+    },
+    {
+      "filename": "product_reference/product_reference_10_precious_metal_eagle_coin.png",
+      "category": "product_reference",
+      "tags": ["precious metal", "bullion product", "gold coin", "premium finance"],
+      "whyGood": "Precious-metal product cue is suitable for fallback and premium investment visual language.",
+      "usefulFor": ["product_identity", "product_scene", "material_texture", "lighting"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_01_private_banking_navy_gold.png",
+      "category": "finance_mood_reference",
+      "tags": ["private banking mood", "dark navy gold finance visual", "premium finance", "calm trust"],
+      "whyGood": "Dark navy and gold visual language anchors premium wealth-management mood.",
+      "usefulFor": ["mood", "lighting", "color", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_02_wealth_management_graph.png",
+      "category": "finance_mood_reference",
+      "tags": ["wealth management", "investment graph", "premium finance", "calm trust"],
+      "whyGood": "Abstract graph and restrained palette support financial advisory context.",
+      "usefulFor": ["mood", "composition", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_03_calm_trust_consultation.png",
+      "category": "finance_mood_reference",
+      "tags": ["financial consultation", "calm trust", "premium finance", "dark navy"],
+      "whyGood": "Consultation mood without people, mascots, or noisy lifestyle props.",
+      "usefulFor": ["mood", "lighting", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_04_premium_asset_dashboard.png",
+      "category": "finance_mood_reference",
+      "tags": ["asset management", "premium dashboard", "gold market advisory", "finance visual"],
+      "whyGood": "Suggests market analysis and asset guidance without readable text.",
+      "usefulFor": ["mood", "composition", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_05_dark_navy_gold_finance.png",
+      "category": "finance_mood_reference",
+      "tags": ["dark navy", "gold", "finance visual", "premium wealth management"],
+      "whyGood": "Locks the dark navy/gold/white finance palette for brand-safe visuals.",
+      "usefulFor": ["mood", "color", "lighting"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_06_abstract_finance_background.png",
+      "category": "finance_mood_reference",
+      "tags": ["abstract finance background", "calm trust", "premium financial campaign"],
+      "whyGood": "Useful when no product close-up is needed but finance tone must remain clear.",
+      "usefulFor": ["mood", "composition", "headline_space"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_07_investment_signal_gold.png",
+      "category": "finance_mood_reference",
+      "tags": ["investment signal", "gold market", "wealth management", "premium finance"],
+      "whyGood": "Gold signal line gives investment direction while staying abstract and serious.",
+      "usefulFor": ["mood", "composition", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_08_secure_consultation_mood.png",
+      "category": "finance_mood_reference",
+      "tags": ["secure consultation", "private banking", "calm trust", "premium finance"],
+      "whyGood": "Secure advisory mood supports consultation campaigns without stock-photo feeling.",
+      "usefulFor": ["mood", "lighting", "financial_trust"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_09_high_trust_financial_campaign.png",
+      "category": "finance_mood_reference",
+      "tags": ["high trust financial campaign", "wealth management", "dark navy gold"],
+      "whyGood": "High-trust palette and visual rhythm fit financial event communication.",
+      "usefulFor": ["mood", "composition", "color"]
+    },
+    {
+      "filename": "finance_mood_reference/finance_mood_reference_10_gold_market_advisory_mood.png",
+      "category": "finance_mood_reference",
+      "tags": ["gold market advisory", "financial consultation", "calm trust", "premium finance"],
+      "whyGood": "Connects gold market context with professional advisory tone.",
+      "usefulFor": ["mood", "financial_trust", "lighting"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_01_consultation_event_poster.png",
+      "category": "poster_layout_reference",
+      "tags": ["premium consultation event poster", "blank headline area", "minimal poster layout"],
+      "whyGood": "Shows event poster hierarchy with a reserved headline area and product zone.",
+      "usefulFor": ["composition", "headline_space", "campaign_layout"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_02_blank_headline_area.png",
+      "category": "poster_layout_reference",
+      "tags": ["blank headline area", "copy-safe layout", "minimal SNS banner layout"],
+      "whyGood": "Explicitly seeds Korean headline-safe composition.",
+      "usefulFor": ["composition", "headline_space"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_03_minimal_sns_banner.png",
+      "category": "poster_layout_reference",
+      "tags": ["minimal SNS banner layout", "clean campaign layout", "premium finance"],
+      "whyGood": "Supports compact social/event banner composition without fake text.",
+      "usefulFor": ["composition", "headline_space", "campaign_layout"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_04_product_and_copy_space.png",
+      "category": "poster_layout_reference",
+      "tags": ["product visual plus blank text space", "copy-safe negative space", "campaign layout"],
+      "whyGood": "Balances product cue and empty copy area for cardnews or feed creative.",
+      "usefulFor": ["composition", "headline_space", "product_identity"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_05_premium_cardnews_cover.png",
+      "category": "poster_layout_reference",
+      "tags": ["premium cardnews cover", "blank headline area", "gold investment poster"],
+      "whyGood": "Seeds cardnews cover structure with premium finance tone.",
+      "usefulFor": ["composition", "headline_space", "campaign_layout"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_06_clean_campaign_layout.png",
+      "category": "poster_layout_reference",
+      "tags": ["clean campaign layout", "minimal poster layout", "empty text area"],
+      "whyGood": "Useful for simple campaign creatives where typography is added later.",
+      "usefulFor": ["composition", "headline_space"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_07_finance_notice_banner.png",
+      "category": "poster_layout_reference",
+      "tags": ["finance notice banner", "consultation event poster", "copy-safe area"],
+      "whyGood": "Connects financial notice structure with serious event communication.",
+      "usefulFor": ["composition", "headline_space", "campaign_layout"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_08_gold_investment_poster.png",
+      "category": "poster_layout_reference",
+      "tags": ["gold investment poster", "premium consultation event poster", "product visual"],
+      "whyGood": "Combines precious-metal product cue with event poster composition.",
+      "usefulFor": ["composition", "headline_space", "product_identity"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_09_luxury_event_layout.png",
+      "category": "poster_layout_reference",
+      "tags": ["luxury event layout", "dark navy gold", "blank headline area"],
+      "whyGood": "Preserves luxury event feel while keeping a clear text-safe zone.",
+      "usefulFor": ["composition", "headline_space", "mood"]
+    },
+    {
+      "filename": "poster_layout_reference/poster_layout_reference_10_empty_text_area_composition.png",
+      "category": "poster_layout_reference",
+      "tags": ["empty headline area", "blank text space", "minimal SNS banner layout"],
+      "whyGood": "Directly anchors no-readable-text layout for later Korean overlay.",
+      "usefulFor": ["composition", "headline_space", "campaign_layout"]
+    }
+  ]
+}

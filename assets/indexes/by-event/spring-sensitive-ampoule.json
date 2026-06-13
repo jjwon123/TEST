@@ -1,0 +1,199 @@
+{
+  "event_id": "spring-sensitive-ampoule",
+  "updated_at": "2026-05-08T16:36:58.373440+00:00",
+  "assets": [
+    {
+      "asset_id": "spring-sensitive-ampoule__instagram_cardnews_01_output",
+      "event_id": "spring-sensitive-ampoule",
+      "event_type": "general",
+      "channel_id": "instagram_cardnews",
+      "template_family": "instagram_cardnews_5slide_v1",
+      "template_id": "instagram_cardnews_5slide_v1",
+      "template_inference_source": "final-package-manifest.template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "hydrating",
+        "transparent",
+        "white background",
+        "instagram_cardnews",
+        "instagram_cardnews_5slide_v1"
+      ],
+      "tags": [
+        "channel:instagram_cardnews",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "final-package-manifest.template_id"
+      },
+      "reuse_recommended_for": [
+        "instagram_cardnews",
+        "instagram_feed",
+        "threads_image"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "instagram_cardnews_01__key_visual_c01",
+      "source_run_id": "2026-05-08_15-29-33_봄철-민감-피부-진정-앰플-체험-이벤트",
+      "archive_path_approved": "approved/spring-sensitive-ampoule/instagram_cardnews_01_output.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T16:36:58.373440+00:00"
+    },
+    {
+      "asset_id": "spring-sensitive-ampoule__instagram_feed_01_output",
+      "event_id": "spring-sensitive-ampoule",
+      "event_type": "general",
+      "channel_id": "instagram_feed",
+      "template_family": "instagram_feed_single_v1",
+      "template_id": "instagram_feed_single_v1",
+      "template_inference_source": "final-package-manifest.template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "hydrating",
+        "transparent",
+        "white background",
+        "instagram_feed",
+        "instagram_feed_single_v1"
+      ],
+      "tags": [
+        "channel:instagram_feed",
+        "format:1080x1350",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "final-package-manifest.template_id"
+      },
+      "reuse_recommended_for": [
+        "instagram_feed",
+        "instagram_cardnews",
+        "threads_image"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "instagram_feed_01__key_visual_c01",
+      "source_run_id": "2026-05-08_15-29-33_봄철-민감-피부-진정-앰플-체험-이벤트",
+      "archive_path_approved": "approved/spring-sensitive-ampoule/instagram_feed_01_output.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1350
+      },
+      "archived_at": "2026-05-08T16:36:58.373440+00:00"
+    },
+    {
+      "asset_id": "spring-sensitive-ampoule__blog_thumbnail_01_output",
+      "event_id": "spring-sensitive-ampoule",
+      "event_type": "general",
+      "channel_id": "blog_thumbnail",
+      "template_family": "blog_thumbnail_v1",
+      "template_id": "blog_thumbnail_v1",
+      "template_inference_source": "final-package-manifest.template_id",
+      "template_inference_warning": "",
+      "intended_use": "thumbnail",
+      "visual_keywords": [
+        "clean",
+        "hydrating",
+        "transparent",
+        "white background",
+        "blog_thumbnail",
+        "blog_thumbnail_v1",
+        "thumbnail"
+      ],
+      "tags": [
+        "channel:blog_thumbnail",
+        "format:1280x720",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "final-package-manifest.template_id"
+      },
+      "reuse_recommended_for": [
+        "blog_thumbnail",
+        "blog_inline_image",
+        "brunch_cover"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "blog_thumbnail_01__cover_c01",
+      "source_run_id": "2026-05-08_15-29-33_봄철-민감-피부-진정-앰플-체험-이벤트",
+      "archive_path_approved": "approved/spring-sensitive-ampoule/blog_thumbnail_01_output.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "archived_at": "2026-05-08T16:36:58.373440+00:00"
+    },
+    {
+      "asset_id": "spring-sensitive-ampoule__blog_inline_image_01_output",
+      "event_id": "spring-sensitive-ampoule",
+      "event_type": "general",
+      "channel_id": "blog_inline_image",
+      "template_family": "blog_inline_image_v1",
+      "template_id": "blog_inline_image_v1",
+      "template_inference_source": "final-package-manifest.template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "hydrating",
+        "transparent",
+        "white background",
+        "blog_inline_image",
+        "blog_inline_image_v1"
+      ],
+      "tags": [
+        "channel:blog_inline_image",
+        "format:1200x900",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "final-package-manifest.template_id"
+      },
+      "reuse_recommended_for": [
+        "blog_inline_image",
+        "blog_thumbnail",
+        "brunch_cover"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "blog_inline_image_01__support_c01",
+      "source_run_id": "2026-05-08_15-29-33_봄철-민감-피부-진정-앰플-체험-이벤트",
+      "archive_path_approved": "approved/spring-sensitive-ampoule/blog_inline_image_01_output.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1200,
+        "height": 900
+      },
+      "archived_at": "2026-05-08T16:36:58.373440+00:00"
+    }
+  ]
+}

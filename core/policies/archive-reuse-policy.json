@@ -1,0 +1,96 @@
+{
+  "_comment": "Handler reads this file — do not hardcode classification logic in run_asset_archive.py.",
+
+  "qa_filter": {
+    "allowed_statuses": ["pass"],
+    "blocker_severities": ["blocker", "error"],
+    "description": "Only QA-pass assets enter the archive. Per-frame issues with blocker/error severity exclude that frame even if the overall report is pass."
+  },
+
+  "reuse_score": {
+    "description": "Deterministic rule-based score. All weights are additive. Penalty is subtracted. Range 0.0–1.0.",
+    "components": {
+      "qa_pass": {
+        "weight": 0.3,
+        "condition": "qa_status == pass"
+      },
+      "channel_suitability": {
+        "weight": 0.1,
+        "reuse_friendly_channels": [
+          "instagram_cardnews",
+          "instagram_feed",
+          "blog_thumbnail",
+          "blog_inline_image",
+          "threads_image",
+          "twitter_image",
+          "brunch_cover"
+        ],
+        "description": "Channels suited for reuse across multiple events."
+      },
+      "template_stability": {
+        "weight": 0.1,
+        "stable_template_families": [
+          "instagram_cardnews_5slide_v1",
+          "instagram_cardnews_7slide_v1",
+          "instagram_feed_single_v1",
+          "blog_thumbnail_v1",
+          "blog_inline_image_v1",
+          "community_notice_banner_v1",
+          "brunch_cover_v1",
+          "card_news",
+          "single_feed",
+          "blog_thumbnail",
+          "blog_section"
+        ],
+        "description": "Templates that don't change structure event-to-event."
+      },
+      "event_specificity_penalty": {
+        "max_penalty": 0.3,
+        "penalty_keywords": ["이벤트", "기간", "한정", "마감", "D-", "모집", "신청"],
+        "per_keyword_penalty": 0.1,
+        "description": "Each specificity keyword found in frame_name or intended_use reduces score by per_keyword_penalty, up to max_penalty."
+      }
+    },
+    "reusable_threshold": 0.7,
+    "limited_reuse_threshold": 0.4
+  },
+
+  "reuse_recommendation": {
+    "description": "Channels to recommend for reuse, keyed by source channel.",
+    "channel_affinities": {
+      "instagram_cardnews": ["instagram_cardnews", "instagram_feed", "threads_image"],
+      "instagram_feed": ["instagram_feed", "instagram_cardnews", "threads_image"],
+      "blog_thumbnail": ["blog_thumbnail", "blog_inline_image", "brunch_cover"],
+      "blog_inline_image": ["blog_inline_image", "blog_thumbnail", "brunch_cover"],
+      "threads_image": ["threads_image", "twitter_image", "instagram_feed"],
+      "twitter_image": ["twitter_image", "threads_image"],
+      "brunch_cover": ["brunch_cover", "blog_thumbnail"]
+    },
+    "event_type_affinities": {
+      "investment_consulting": ["investment_consulting", "financial_education"],
+      "seasonal_sale": ["seasonal_sale", "product_launch"],
+      "product_launch": ["product_launch", "seasonal_sale"]
+    }
+  },
+
+  "visual_keywords": {
+    "description": "Keywords derived from these sources in order.",
+    "sources": ["brand_guide.visual.mood", "channel_id", "template_family", "intended_use"]
+  },
+
+  "tagging": {
+    "prefixes": ["channel:", "format:", "visual-role:", "objective:", "season:", "brand-tone:", "reuse:"],
+    "auto_tags": {
+      "channel": "channel:{channel_id}",
+      "format":  "format:{width}x{height}",
+      "reuse":   "reuse:{reuse_status}"
+    }
+  },
+
+  "destination_dirs": {
+    "approved": "assets/approved/{event_id}/",
+    "reusable": "assets/reusable/{channel_id}/{template_family}/",
+    "global_index": "assets/indexes/global-index.json",
+    "event_index":  "assets/indexes/by-event/{event_id}.json"
+  }
+}

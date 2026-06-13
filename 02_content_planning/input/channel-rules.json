@@ -1,0 +1,95 @@
+{
+  "instagram": {
+    "channelName": "Instagram",
+    "primaryGoal": "짧은 시간 안에 이벤트 관심을 만들고 상담 신청으로 연결한다.",
+    "deliverables": [
+      {
+        "type": "card_news",
+        "name": "인스타 카드뉴스",
+        "quantity": 5,
+        "ratio": "1:1",
+        "purpose": "이벤트 핵심 메시지를 단계적으로 설명한다.",
+        "slides": [
+          "후킹",
+          "문제 제시",
+          "혜택 설명",
+          "참여 방법",
+          "CTA"
+        ],
+        "imageNeed": "메인 키비주얼 1종과 상세 배경 이미지 2~3종"
+      },
+      {
+        "type": "feed_single",
+        "name": "인스타 피드 단일 이미지",
+        "quantity": 1,
+        "ratio": "1:1",
+        "purpose": "이벤트를 한 장으로 빠르게 공지한다.",
+        "imageNeed": "텍스트 여백이 있는 메인 공지형 이미지"
+      }
+    ]
+  },
+  "naver_blog": {
+    "channelName": "Naver Blog",
+    "primaryGoal": "검색 유입 고객에게 이벤트 신뢰성과 상세 정보를 제공한다.",
+    "deliverables": [
+      {
+        "type": "blog_thumbnail",
+        "name": "네이버 블로그 썸네일",
+        "quantity": 1,
+        "ratio": "16:9",
+        "purpose": "검색 결과와 본문 상단에서 이벤트 주제를 명확하게 전달한다.",
+        "imageNeed": "신뢰감 있는 표지 이미지와 넓은 제목 영역"
+      },
+      {
+        "type": "blog_section_image",
+        "name": "블로그 본문 섹션 이미지",
+        "quantity": 2,
+        "ratio": "16:9",
+        "purpose": "혜택과 참여 방법을 본문 중간에서 시각적으로 보조한다.",
+        "imageNeed": "정보형 그래픽 또는 보조 비주얼"
+      }
+    ]
+  },
+  "community": {
+    "channelName": "Community",
+    "primaryGoal": "공지 성격으로 핵심 조건과 참여 방법을 명확하게 전달한다.",
+    "deliverables": [
+      {
+        "type": "notice_image",
+        "name": "커뮤니티 공지 이미지",
+        "quantity": 1,
+        "ratio": "4:5",
+        "purpose": "이벤트 조건, 기간, CTA를 한눈에 정리한다.",
+        "imageNeed": "가독성 높은 공지형 배경 이미지"
+      }
+    ]
+  },
+  "threads": {
+    "channelName": "Threads",
+    "primaryGoal": "짧은 문장과 간결한 이미지로 이벤트 인지를 만든다.",
+    "deliverables": [
+      {
+        "type": "short_social_image",
+        "name": "스레드용 짧은 이미지",
+        "quantity": 2,
+        "ratio": "1.91:1",
+        "purpose": "핵심 메시지와 CTA를 짧게 전달한다.",
+        "imageNeed": "짧은 문구가 들어갈 여백 중심 이미지"
+      }
+    ]
+  },
+  "brunch": {
+    "channelName": "Brunch",
+    "primaryGoal": "브랜드의 관점과 스토리를 담은 커버형 콘텐츠를 만든다.",
+    "deliverables": [
+      {
+        "type": "cover_image",
+        "name": "브런치 커버",
+        "quantity": 1,
+        "ratio": "16:9",
+        "purpose": "이벤트를 정보형 글의 주제로 자연스럽게 소개한다.",
+        "imageNeed": "차분한 무드의 에디토리얼 커버 이미지"
+      }
+    ]
+  }
+}

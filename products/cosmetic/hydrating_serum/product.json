@@ -1,0 +1,16 @@
+{
+  "product_id": "hydrating_serum",
+  "brand_name": "LANDING",
+  "product_name": "Hydrating Serum",
+  "category": "cosmetic",
+  "main_image": "packshot.png",
+  "mask_image": "product_mask.png",
+  "description": "Transparent cosmetic serum bottle with minimal premium label.",
+  "tone": ["clean", "natural", "premium", "botanical"],
+  "forbidden": ["cheap", "plastic toy look", "overly glossy", "fake label text"],
+  "recommended_workflows": [
+    "product_locked_ad_background_v1",
+    "cosmetic_event_hero",
+    "instagram_feed_visual"
+  ]
+}

@@ -1,0 +1,64 @@
+{
+  "version": "2026-06-10",
+  "name": "여름 H&B 뷰티 세일 나이아신아마이드 집중 케어",
+  "activeRun": "2026-06-03_02-26-24_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어",
+  "batchPrefix": "brief_beauty_batch",
+  "profile": "cosmetics_skincare",
+  "market": "KR",
+  "allowedSources": [
+    "pinterest_search",
+    "meta_ad_library"
+  ],
+  "minimumShortSide": 500,
+  "minimumLongSide": 600,
+  "aspectRatioRange": [
+    0.55,
+    1.9
+  ],
+  "excludeForeignMetaAds": true,
+  "excludeDenseCardNews": true,
+  "briefIntent": {
+    "product": [
+      "스킨케어",
+      "화장품",
+      "세럼",
+      "나이아신아마이드",
+      "미백",
+      "skincare",
+      "serum",
+      "beauty"
+    ],
+    "campaign": [
+      "세일",
+      "할인",
+      "증정",
+      "프로모션",
+      "이벤트",
+      "sale",
+      "promotion",
+      "offer"
+    ],
+    "visual": [
+      "밝음",
+      "클린",
+      "화이트",
+      "오렌지",
+      "여름",
+      "bright",
+      "clean",
+      "white",
+      "orange",
+      "summer"
+    ]
+  },
+  "hardReject": [
+    "wrong_profile",
+    "disallowed_source",
+    "foreign_market",
+    "dense_card_news",
+    "broken_image",
+    "low_resolution",
+    "extreme_aspect_ratio",
+    "website_capture"
+  ]
+}

@@ -1,0 +1,15 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Brand Guide",
+  "type": "object",
+  "required": ["brandName"],
+  "properties": {
+    "brandName": { "type": "string" },
+    "voice": { "type": "object" },
+    "visual": { "type": "object" },
+    "requiredPhrases": { "type": "array", "items": { "type": "string" } },
+    "bannedWords": { "type": "array", "items": { "type": "string" } },
+    "brandSafety": { "type": "object" }
+  },
+  "additionalProperties": true
+}

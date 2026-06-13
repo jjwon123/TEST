@@ -1,0 +1,66 @@
+{
+  "version": "2026-06-10",
+  "principle": "Collect Meta ads from known advertisers first. Expand the registry only after a small batch produces useful matching creatives.",
+  "sources": [
+    "https://www.loreal.com/en/our-global-brands-portfolio/",
+    "https://stories.amorepacific.com/en/amorepacific-group-marks-80th-anniversary-unveils-new-vision-slogan-create-new-beauty/",
+    "https://www.richemont.com/our-maisons/",
+    "https://www.lvmh.com/en/our-maisons/watches-jewelry"
+  ],
+  "profiles": {
+    "cosmetics_skincare": {
+      "label": "화장품·스킨케어",
+      "defaultCountry": "KR",
+      "defaultCreativeProfile": "brand_campaign",
+      "brands": [
+        {"id": "medicube", "name": "Medicube", "query": "메디큐브", "advertiserAliases": ["메디큐브", "Medicube", "메디큐브 에이지알"], "market": "KR", "roles": ["promotion", "product", "performance"]},
+        {"id": "anua", "name": "Anua", "query": "아누아", "advertiserAliases": ["아누아", "Anua"], "market": "KR", "roles": ["product", "ingredient", "clean"]},
+        {"id": "round-lab", "name": "ROUND LAB", "query": "라운드랩", "advertiserAliases": ["라운드랩", "ROUND LAB", "Round Lab"], "market": "KR", "roles": ["product", "clean", "ingredient"]},
+        {"id": "dr-g", "name": "Dr.G", "query": "닥터지", "advertiserAliases": ["닥터지", "Dr.G", "Dr G"], "market": "KR", "roles": ["derma", "product", "ingredient"]},
+        {"id": "torriden", "name": "Torriden", "query": "토리든", "advertiserAliases": ["토리든", "Torriden"], "market": "KR", "roles": ["product", "ingredient", "clean"]},
+        {"id": "numbuzin", "name": "numbuzin", "query": "넘버즈인", "advertiserAliases": ["넘버즈인", "numbuzin"], "market": "KR", "roles": ["ingredient", "performance", "promotion"]},
+        {"id": "dalba", "name": "d'Alba", "query": "달바", "advertiserAliases": ["달바", "d'Alba", "dAlba"], "market": "KR", "roles": ["premium", "product", "campaign"]},
+        {"id": "laneige", "name": "LANEIGE", "query": "라네즈", "advertiserAliases": ["라네즈", "LANEIGE", "Laneige"], "market": "KR", "roles": ["campaign", "product", "global"]},
+        {"id": "sulwhasoo", "name": "Sulwhasoo", "query": "설화수", "advertiserAliases": ["설화수", "Sulwhasoo"], "market": "KR", "roles": ["luxury", "campaign", "product"]},
+        {"id": "innisfree", "name": "innisfree", "query": "이니스프리", "advertiserAliases": ["이니스프리", "innisfree"], "market": "KR", "roles": ["campaign", "promotion", "product"]},
+        {"id": "aestura", "name": "AESTURA", "query": "에스트라", "advertiserAliases": ["에스트라", "AESTURA", "Aestura"], "market": "KR", "roles": ["derma", "product", "ingredient"]},
+        {"id": "skin1004", "name": "SKIN1004", "query": "스킨1004", "advertiserAliases": ["스킨1004", "SKIN1004"], "market": "KR", "roles": ["ingredient", "product", "global"]},
+        {"id": "cosrx", "name": "COSRX", "query": "코스알엑스", "advertiserAliases": ["코스알엑스", "COSRX"], "market": "KR", "roles": ["ingredient", "product", "global"]},
+        {"id": "beauty-of-joseon", "name": "Beauty of Joseon", "query": "조선미녀", "advertiserAliases": ["조선미녀", "Beauty of Joseon"], "market": "KR", "roles": ["campaign", "ingredient", "global"]},
+        {"id": "celimax", "name": "celimax", "query": "셀리맥스", "advertiserAliases": ["셀리맥스", "celimax"], "market": "KR", "roles": ["ingredient", "product", "performance"]},
+        {"id": "manyo", "name": "ma:nyo", "query": "마녀공장", "advertiserAliases": ["마녀공장", "ma:nyo", "manyofactory", "manyo"], "market": "KR", "roles": ["ingredient", "promotion", "product"]},
+        {"id": "la-roche-posay", "name": "La Roche-Posay", "query": "라로슈포제", "advertiserAliases": ["라로슈포제", "La Roche-Posay", "La Roche Posay"], "market": "KR", "roles": ["derma", "global", "product"]},
+        {"id": "kiehls", "name": "Kiehl's", "query": "키엘", "advertiserAliases": ["키엘", "Kiehl's", "Kiehls"], "market": "KR", "roles": ["premium", "global", "product"]},
+        {"id": "the-ordinary", "name": "The Ordinary", "query": "The Ordinary", "advertiserAliases": ["The Ordinary"], "market": "KR", "roles": ["ingredient", "global", "product"]},
+        {"id": "clinique", "name": "Clinique", "query": "크리니크", "advertiserAliases": ["크리니크", "Clinique"], "market": "KR", "roles": ["global", "campaign", "product"]}
+      ]
+    },
+    "jewelry_luxury": {
+      "label": "주얼리·럭셔리",
+      "defaultCountry": "KR",
+      "defaultCreativeProfile": "brand_campaign",
+      "brands": [
+        {"id": "tiffany", "name": "Tiffany & Co.", "query": "Tiffany & Co.", "advertiserAliases": ["Tiffany & Co.", "Tiffany and Co", "티파니"], "market": "KR", "roles": ["high-jewelry", "campaign", "product"]},
+        {"id": "cartier", "name": "Cartier", "query": "Cartier", "advertiserAliases": ["Cartier", "까르띠에"], "market": "KR", "roles": ["high-jewelry", "campaign", "heritage"]},
+        {"id": "van-cleef", "name": "Van Cleef & Arpels", "query": "Van Cleef & Arpels", "advertiserAliases": ["Van Cleef & Arpels", "Van Cleef and Arpels", "반클리프 아펠"], "market": "KR", "roles": ["high-jewelry", "campaign", "heritage"]},
+        {"id": "bvlgari", "name": "BVLGARI", "query": "BVLGARI", "advertiserAliases": ["BVLGARI", "Bulgari", "불가리"], "market": "KR", "roles": ["high-jewelry", "campaign", "product"]},
+        {"id": "chaumet", "name": "Chaumet", "query": "Chaumet", "advertiserAliases": ["Chaumet", "쇼메"], "market": "KR", "roles": ["high-jewelry", "campaign", "heritage"]},
+        {"id": "boucheron", "name": "Boucheron", "query": "Boucheron", "advertiserAliases": ["Boucheron", "부쉐론"], "market": "KR", "roles": ["high-jewelry", "campaign", "craft"]},
+        {"id": "piaget", "name": "Piaget", "query": "Piaget", "advertiserAliases": ["Piaget", "피아제"], "market": "KR", "roles": ["high-jewelry", "campaign", "watch"]},
+        {"id": "buccellati", "name": "Buccellati", "query": "Buccellati", "advertiserAliases": ["Buccellati", "부첼라티"], "market": "KR", "roles": ["high-jewelry", "craft", "heritage"]},
+        {"id": "graff", "name": "Graff", "query": "Graff", "advertiserAliases": ["Graff", "그라프"], "market": "KR", "roles": ["diamond", "high-jewelry", "campaign"]},
+        {"id": "harry-winston", "name": "Harry Winston", "query": "Harry Winston", "advertiserAliases": ["Harry Winston", "해리 윈스턴"], "market": "KR", "roles": ["diamond", "high-jewelry", "campaign"]},
+        {"id": "chopard", "name": "Chopard", "query": "Chopard", "advertiserAliases": ["Chopard", "쇼파드"], "market": "KR", "roles": ["high-jewelry", "campaign", "watch"]},
+        {"id": "mikimoto", "name": "MIKIMOTO", "query": "MIKIMOTO", "advertiserAliases": ["MIKIMOTO", "Mikimoto", "미키모토"], "market": "KR", "roles": ["pearl", "campaign", "product"]},
+        {"id": "swarovski", "name": "Swarovski", "query": "Swarovski", "advertiserAliases": ["Swarovski", "스와로브스키"], "market": "KR", "roles": ["fashion-jewelry", "promotion", "campaign"]},
+        {"id": "pandora", "name": "Pandora", "query": "Pandora jewelry", "advertiserAliases": ["Pandora", "판도라"], "market": "KR", "roles": ["fashion-jewelry", "promotion", "campaign"]},
+        {"id": "de-beers", "name": "De Beers", "query": "De Beers", "advertiserAliases": ["De Beers", "드비어스"], "market": "KR", "roles": ["diamond", "high-jewelry", "campaign"]},
+        {"id": "messika", "name": "Messika", "query": "Messika", "advertiserAliases": ["Messika", "메시카"], "market": "KR", "roles": ["diamond", "campaign", "modern"]},
+        {"id": "fred", "name": "FRED", "query": "FRED jewelry", "advertiserAliases": ["FRED", "Fred Paris", "프레드"], "market": "KR", "roles": ["high-jewelry", "campaign", "modern"]},
+        {"id": "tasaki", "name": "TASAKI", "query": "TASAKI", "advertiserAliases": ["TASAKI", "Tasaki", "타사키"], "market": "KR", "roles": ["pearl", "campaign", "product"]},
+        {"id": "golden-dew", "name": "Golden Dew", "query": "골든듀", "advertiserAliases": ["골든듀", "Golden Dew", "GoldenDew"], "market": "KR", "roles": ["local", "promotion", "product"]},
+        {"id": "didier-dubot", "name": "Didier Dubot", "query": "디디에두보", "advertiserAliases": ["디디에두보", "Didier Dubot"], "market": "KR", "roles": ["local", "campaign", "product"]}
+      ]
+    }
+  }
+}

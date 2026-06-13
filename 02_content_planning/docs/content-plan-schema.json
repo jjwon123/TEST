@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Plan",
+  "type": "object",
+  "required": [
+    "projectStage",
+    "brief",
+    "channelPlans",
+    "deliverables",
+    "imageNeeds",
+    "nextStepInput"
+  ],
+  "properties": {
+    "projectStage": {
+      "type": "string"
+    },
+    "brief": {
+      "type": "object"
+    },
+    "channelPlans": {
+      "type": "array"
+    },
+    "deliverables": {
+      "type": "array"
+    },
+    "imageNeeds": {
+      "type": "array"
+    },
+    "nextStepInput": {
+      "type": "object"
+    }
+  }
+}

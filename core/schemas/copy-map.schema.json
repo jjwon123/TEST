@@ -1,0 +1,41 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Copy Map",
+  "type": "object",
+  "required": ["stage", "event_id", "items"],
+  "properties": {
+    "stage": { "type": "string", "const": "05_figma_assembly" },
+    "event_id": { "type": "string" },
+    "items": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["frame_id", "text_slot", "text_value", "source_stage", "source_field"],
+        "properties": {
+          "frame_id": { "type": "string" },
+          "output_id": { "type": "string" },
+          "deliverable_id": { "type": "string" },
+          "text_slot": { "type": "string" },
+          "text_value": { "type": "string" },
+          "source_stage": {
+            "type": "string",
+            "enum": ["01_event_brief", "02_content_planning", "04_admin_selection", "manual_override"]
+          },
+          "source_field": { "type": "string" },
+          "template_id": { "type": "string" },
+          "fit_status": { "type": "string", "enum": ["fits", "too_long", "unchecked"] },
+          "slot_role": { "type": "string" },
+          "allocation_rule": { "type": "string" },
+          "required_phrase_applied": { "type": "boolean" },
+          "required_phrases_applied": {
+            "type": "array",
+            "items": { "type": "string" }
+          },
+          "text_value_original": { "type": "string" },
+          "refinement_applied": { "type": "boolean" },
+          "refinement_rule": { "type": "string" }
+        }
+      }
+    }
+  }
+}

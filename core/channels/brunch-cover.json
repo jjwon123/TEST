@@ -1,0 +1,11 @@
+{
+  "channel_id": "brunch_cover",
+  "name": "Brunch Cover",
+  "aliases": ["brunch"],
+  "planning_order": 10,
+  "default_ratio": "16:9",
+  "default_template": "brunch_cover_v1",
+  "supported_templates": ["brunch_cover_v1"],
+  "content_roles": ["editorial_cover"],
+  "qa_requirements": ["editorial_tone", "title_readability"]
+}

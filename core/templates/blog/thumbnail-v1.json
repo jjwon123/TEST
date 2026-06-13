@@ -1,0 +1,24 @@
+{
+  "template_id": "blog_thumbnail_v1",
+  "channel_id": "blog_thumbnail",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "16:9",
+  "text_slots": ["title", "subtitle"],
+  "visual_slots": ["background"],
+  "max_text_length": {
+    "title": 36,
+    "subtitle": 60
+  },
+  "safe_area": {
+    "top": 80,
+    "right": 96,
+    "bottom": 80,
+    "left": 96
+  },
+  "cta_slot": null,
+  "export_rule": {
+    "format": "png",
+    "scale": 2
+  }
+}

@@ -1,0 +1,33 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "product_input.png",
+      "upload": "image"
+    }
+  },
+  "2": {
+    "class_type": "ProductLockedAdComposite",
+    "inputs": {
+      "product_image": ["1", 0],
+      "product_mask": ["1", 1],
+      "width": 1024,
+      "height": 1280,
+      "background_style": "pharma_blue_rank",
+      "product_scale": 0.58,
+      "x_percent": 0.5,
+      "y_percent": 0.58,
+      "shadow_opacity": 0.3,
+      "shadow_blur": 42,
+      "shadow_offset_y": 24,
+      "accent_color": "#B9D9F2"
+    }
+  },
+  "3": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["2", 0],
+      "filename_prefix": "ProductLockedAd/product_locked_ad_background_v1"
+    }
+  }
+}

@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "05 Figma Assembly Input",
+  "type": "object",
+  "required": ["brief", "content_plan", "selected_assets", "templates"],
+  "properties": {
+    "brief": { "type": "object" },
+    "content_plan": { "type": "object" },
+    "selected_assets": { "type": "object" },
+    "templates": { "type": "array", "items": { "type": "object" } }
+  }
+}

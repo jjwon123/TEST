@@ -1,0 +1,25 @@
+{
+  "template_id": "instagram_cardnews_5slide_v1",
+  "channel_id": "instagram_cardnews",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "1:1",
+  "text_slots": ["headline", "body", "cta"],
+  "visual_slots": ["background", "support_visual"],
+  "max_text_length": {
+    "headline": 28,
+    "body": 80,
+    "cta": 16
+  },
+  "safe_area": {
+    "top": 96,
+    "right": 72,
+    "bottom": 96,
+    "left": 72
+  },
+  "cta_slot": "cta",
+  "export_rule": {
+    "format": "png",
+    "scale": 2
+  }
+}

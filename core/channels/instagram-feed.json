@@ -1,0 +1,11 @@
+{
+  "channel_id": "instagram_feed",
+  "name": "Instagram Feed",
+  "aliases": ["instagram", "insta"],
+  "planning_order": 20,
+  "default_ratio": "4:5",
+  "default_template": "instagram_feed_single_v1",
+  "supported_templates": ["instagram_feed_single_v1"],
+  "content_roles": ["single_announcement", "campaign_reminder"],
+  "qa_requirements": ["cta_presence", "text_readability", "safe_crop"]
+}

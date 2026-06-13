@@ -1,0 +1,350 @@
+{
+  "reviews": {
+    "learning_ref_8819acf6a252": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:22:58.321367+00:00"
+    },
+    "learning_ref_10fd34d6af53": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:00.416484+00:00"
+    },
+    "learning_ref_5cb07246d8d2": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:01.030248+00:00"
+    },
+    "learning_ref_22e7203f4312": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:03.183382+00:00"
+    },
+    "learning_ref_5972ffe40ae5": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:03.801386+00:00"
+    },
+    "learning_ref_1601d79a118c": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:06.473974+00:00"
+    },
+    "learning_ref_1b430a650dd4": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:07.033449+00:00"
+    },
+    "learning_ref_8e7307954ebd": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:08.566250+00:00"
+    },
+    "learning_ref_13342bdc9ab2": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:09.057378+00:00"
+    },
+    "learning_ref_62416d100a9c": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:25.606493+00:00"
+    },
+    "learning_ref_23cb623f1e59": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:23:26.136015+00:00"
+    },
+    "learning_ref_124ba6879a01": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:22.925000+00:00"
+    },
+    "learning_ref_5a1064fa26de": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:23.498278+00:00"
+    },
+    "learning_ref_1baecca21e36": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:38.236967+00:00"
+    },
+    "learning_ref_1348265db746": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:38.824874+00:00"
+    },
+    "learning_ref_634544658a6a": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:42.438243+00:00"
+    },
+    "learning_ref_268b933a461a": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:43.012424+00:00"
+    },
+    "learning_ref_14ef122c3bca": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:44.700221+00:00"
+    },
+    "learning_ref_613303a50b80": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:45.356946+00:00"
+    },
+    "learning_ref_1bd4151e8d90": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:47.174218+00:00"
+    },
+    "learning_ref_93d2bbcbf17e": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:47.847402+00:00"
+    },
+    "learning_ref_14a66fc90dfb": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:50.710373+00:00"
+    },
+    "learning_ref_26e7e074e36a": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:24:51.410232+00:00"
+    },
+    "learning_ref_1707f92c7ef6": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:36.814837+00:00"
+    },
+    "learning_ref_74f0ac8dda8d": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:37.559988+00:00"
+    },
+    "learning_ref_1d732fc7fa26": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:41.819563+00:00"
+    },
+    "learning_ref_155a1143adf3": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:42.382654+00:00"
+    },
+    "learning_ref_6aa1434c815e": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:44.597236+00:00"
+    },
+    "learning_ref_27ae66897db8": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:45.301787+00:00"
+    },
+    "learning_ref_18cbd0cba596": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:47.212230+00:00"
+    },
+    "learning_ref_92310abcf5ea": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:25:47.722733+00:00"
+    },
+    "learning_ref_1e7c508e1cb1": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:01.094326+00:00"
+    },
+    "learning_ref_a13cc79c4ae6": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:01.772042+00:00"
+    },
+    "learning_ref_15b1059f65a4": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:04.036888+00:00"
+    },
+    "learning_ref_6baf1774e75b": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:04.742547+00:00"
+    },
+    "learning_ref_2aad1a75d66b": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:07.220556+00:00"
+    },
+    "learning_ref_19b80010b16e": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:07.911029+00:00"
+    },
+    "learning_ref_950a4baab4cb": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:10.228835+00:00"
+    },
+    "learning_ref_1fc712ccd17b": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:10.934088+00:00"
+    },
+    "learning_ref_1712d9199d88": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:26:12.836932+00:00"
+    }
+  },
+  "profile": "reference_learning",
+  "sessionId": "learning_batch_003",
+  "updatedAt": "2026-06-10T14:26:12.836932+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 40,
+    "agree": 1,
+    "disagree": 39,
+    "unsure": 0,
+    "overSelected": 1,
+    "overRejected": 0,
+    "abstractFeedback": 40,
+    "accuracy": 0.025,
+    "finalDecisionCounts": {
+      "selected": 2,
+      "shortlist": 0,
+      "rejected": 38
+    },
+    "transitionCounts": {
+      "rejected->rejected": 1,
+      "selected->rejected": 1,
+      "shortlist->rejected": 36,
+      "shortlist->selected": 2
+    },
+    "reasonTagCounts": {}
+  }
+}

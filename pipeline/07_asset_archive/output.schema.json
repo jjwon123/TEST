@@ -1,0 +1,75 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "07 Asset Archive — Output",
+  "type": "object",
+  "required": ["stage", "schema_version", "event_id", "source_run_id", "archived_at", "assets"],
+  "properties": {
+    "stage":          { "type": "string", "const": "07_asset_archive" },
+    "schema_version": { "type": "string" },
+    "event_id":       { "type": "string" },
+    "source_run_id":  { "type": "string" },
+    "archived_at":    { "type": "string", "format": "date-time" },
+    "summary": {
+      "type": "object",
+      "properties": {
+        "completion_status": { "type": "string", "enum": ["done", "done_no_assets"] },
+        "total_assets":    { "type": "integer" },
+        "approved":        { "type": "integer" },
+        "reusable":        { "type": "integer" },
+        "qa_filtered_out": { "type": "integer" }
+      }
+    },
+    "assets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": [
+          "asset_id", "event_id", "event_type", "channel_id",
+          "template_family", "intended_use", "visual_keywords",
+          "qa_status", "reuse_score", "reuse_recommended_for",
+          "source_candidate_id", "source_run_id", "archived_at"
+        ],
+        "properties": {
+          "asset_id":              { "type": "string" },
+          "event_id":              { "type": "string" },
+          "event_type":            { "type": "string" },
+          "channel_id":            { "type": "string" },
+          "template_family":       { "type": "string" },
+          "template_id":           { "type": "string" },
+          "template_inference_source": { "type": "string" },
+          "template_inference_warning": { "type": "string" },
+          "intended_use":          { "type": "string" },
+          "visual_keywords":       { "type": "array", "items": { "type": "string" } },
+          "tags":                  { "type": "array", "items": { "type": "string" } },
+          "qa_status":             { "type": "string", "enum": ["pass", "fail", "warn"] },
+          "reuse_score":           { "type": "number", "minimum": 0.0, "maximum": 1.0 },
+          "reuse_score_breakdown": {
+            "type": "object",
+            "properties": {
+              "qa_pass":              { "type": "number" },
+              "channel_suitability":  { "type": "number" },
+              "template_stability":   { "type": "number" },
+              "event_specificity_penalty": { "type": "number" },
+              "template_inference_source": { "type": "string" },
+              "template_inference_warning": { "type": "string" }
+            }
+          },
+          "reuse_recommended_for": { "type": "array", "items": { "type": "string" } },
+          "reuse_status":          { "type": "string", "enum": ["reusable", "limited_reuse", "not_reusable"] },
+          "source_candidate_id":   { "type": "string" },
+          "source_run_id":         { "type": "string" },
+          "archive_path_approved": { "type": "string" },
+          "archive_path_reusable": { "type": "string" },
+          "dimensions": {
+            "type": "object",
+            "properties": {
+              "width":  { "type": "integer" },
+              "height": { "type": "integer" }
+            }
+          },
+          "archived_at": { "type": "string", "format": "date-time" }
+        }
+      }
+    }
+  }
+}

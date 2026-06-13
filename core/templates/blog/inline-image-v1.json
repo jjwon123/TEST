@@ -1,0 +1,13 @@
+{
+  "template_id": "blog_inline_image_v1",
+  "channel_id": "blog_inline_image",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "4:3",
+  "text_slots": ["caption"],
+  "visual_slots": ["main_visual"],
+  "max_text_length": { "caption": 60 },
+  "safe_area": { "top": 64, "right": 64, "bottom": 64, "left": 64 },
+  "cta_slot": null,
+  "export_rule": { "format": "png", "scale": 2 }
+}

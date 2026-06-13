@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LoopStudio · 콘텐츠 제작 콘솔</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="shell">
+      <aside class="sidebar">
+        <div class="brand">
+          <div>
+            <strong>LoopStudio</strong>
+            <span>콘텐츠 제작 콘솔</span>
+          </div>
+        </div>
+        <button class="nav-cta nav-item" data-view="new-event">새 이벤트</button>
+        <nav>
+          <span class="nav-group">제작</span>
+          <button class="nav-item active" data-view="dashboard">작업 현황</button>
+          <button class="nav-item" data-view="new-event">이벤트 생성</button>
+          <button class="nav-item" data-view="run-detail">진행 상세</button>
+          <button class="nav-item" data-view="references">작업 레퍼런스</button>
+          <button class="nav-item" data-view="ad-reference">Meta 광고 수집</button>
+          <span class="nav-group">검수·훈련</span>
+          <button class="nav-item" data-view="training">판단 훈련</button>
+          <span class="nav-group">산출물</span>
+          <button class="nav-item" data-view="prompts">프롬프트</button>
+          <button class="nav-item" data-view="images">이미지 선택</button>
+          <button class="nav-item" data-view="package">최종 패키지</button>
+          <span class="nav-group">시스템</span>
+          <button class="nav-item" data-view="activity">활동 로그</button>
+          <button class="nav-item" data-view="settings">설정</button>
+        </nav>
+        <div class="sidebar-status"><i></i> ComfyUI 상태 확인</div>
+      </aside>
+
+      <main class="workspace">
+        <header class="topbar">
+          <div class="top-search"><span>이벤트, run, 레퍼런스 검색</span></div>
+          <div class="top-actions">
+            <select id="eventSelect"></select>
+            <button id="runSelectedEvent" class="primary">01-03 자동 실행</button>
+            <button id="refreshButton">새로고침</button>
+          </div>
+        </header>
+
+        <div class="content">
+          <div class="page-heading">
+            <div>
+              <h1 id="pageTitle">작업 현황</h1>
+              <p id="pageSubtitle">전체 제작 파이프라인 상태와 다음 작업</p>
+            </div>
+          </div>
+
+          <section id="globalProgress" class="global-progress"></section>
+          <section id="jobs" class="jobs hidden"></section>
+          <section id="jobLogPanel" class="job-log-panel hidden"></section>
+
+          <section class="view active" id="dashboardView">
+            <div class="summary-grid">
+              <div class="metric"><span>전체 작업</span><strong id="metricRuns">0</strong></div>
+              <div class="metric"><span>프롬프트 준비</span><strong id="metricPrompt">0</strong></div>
+              <div class="metric"><span>선택 레퍼런스</span><strong id="metricRefs">0</strong></div>
+              <div class="metric"><span>생성 이미지</span><strong id="metricGenerated">0</strong></div>
+            </div>
+            <div class="panel">
+              <div class="panel-head"><h2>제작 작업 (Runs)</h2><span id="runCount"></span></div>
+              <div id="runList" class="run-list"></div>
+            </div>
+          </section>
+
+          <section class="view" id="new-eventView">
+            <div class="panel form-panel">
+              <div class="panel-head"><h2>이벤트 생성</h2><span>event-input.json과 brand-guide.json 생성</span></div>
+              <form id="eventForm" class="event-form">
+                <label>이벤트명<input name="eventName" required placeholder="봄맞이 금 투자 상담 이벤트" /></label>
+                <label>브랜드명<input name="brandName" placeholder="브랜드 또는 매장명" /></label>
+                <label>상품 라이브러리<select id="productSelect" name="productLibraryId"></select></label>
+                <div id="productPreview" class="product-preview"></div>
+                <label>이벤트 목적<textarea name="purpose"></textarea></label>
+                <label>타깃 고객<textarea name="target"></textarea></label>
+                <label>상품/서비스<input name="productOrService" /></label>
+                <label>혜택/오퍼<textarea name="offer"></textarea></label>
+                <label>톤앤매너<input name="toneAndManner" /></label>
+                <label>필수 문구<textarea name="requiredPhrases"></textarea></label>
+                <label>금지 표현<textarea name="bannedWords"></textarea></label>
+                <label>레퍼런스 방향<textarea name="referenceDirection"></textarea></label>
+                <div class="date-row">
+                  <label>시작일<input name="startDate" type="date" /></label>
+                  <label>종료일<input name="endDate" type="date" /></label>
+                  <label>발행일<input name="publishDate" type="date" /></label>
+                </div>
+                <button class="primary" type="submit">이벤트 생성</button>
+              </form>
+            </div>
+          </section>
+
+          <section class="view" id="run-detailView"><div id="runDetail"></div></section>
+
+          <section class="view" id="referencesView">
+            <div class="panel control-panel">
+              <div class="panel-head"><div><h2>작업 레퍼런스</h2><span>현재 작업에 연결된 후보를 확인하고 수집·검수합니다</span></div><span id="referenceCount"></span></div>
+              <div class="control-grid">
+                <label>검색 쿼리 수<input id="refQueryLimit" type="number" min="1" value="1" /></label>
+                <label>쿼리별 이미지<input id="refPerQueryLimit" type="number" min="1" value="3" /></label>
+                <label>최종 선택 수<input id="refSelectCount" type="number" min="1" value="1" /></label>
+                <label>Qwen 검수 수<input id="refReviewLimit" type="number" min="1" value="1" /></label>
+              </div>
+              <div class="chip-row action-row">
+                <button id="runReferencePipeline" class="primary">수집 + Qwen 검수</button>
+                <button data-open-folder="reference_candidates">후보 폴더 열기</button>
+                <button data-open-folder="selected_references">선택 폴더 열기</button>
+              </div>
+            </div>
+            <div class="panel"><div id="referenceGrid" class="reference-grid"></div></div>
+          </section>
+
+          <section class="view" id="ad-referenceView">
+            <div class="panel control-panel">
+              <div class="panel-head"><div><h2>Meta 광고 수집</h2><span>Meta 광고 라이브러리에서 새 소재를 수집해 작업 레퍼런스로 연결합니다</span></div><span id="metaAdCount"></span></div>
+              <div class="control-grid">
+                <label>브랜드 / 검색어<input id="metaAdQuery" placeholder="예: 메디큐브, 나이아신아마이드 세럼" /></label>
+                <label>국가<select id="metaAdCountry"><option value="KR">KR</option><option value="US">US</option><option value="JP">JP</option></select></label>
+                <label>광고 유형<select id="metaAdCategory"><option value="all">All</option></select></label>
+                <label>광고 성격<select id="metaAdCreativeProfile"><option value="product_visual">클린 제품 비주얼 · Qwen 필터</option><option value="single_image_ad">단일 광고 이미지 · 캐러셀 제외</option><option value="brand_campaign">브랜드 캠페인 · 최대 3장</option><option value="promotion_structure">프로모션 구조 · 최대 5장</option><option value="all">전체 원본</option></select></label>
+                <label>광고 수<input id="metaAdLimit" type="number" min="1" max="100" value="10" /></label>
+              </div>
+              <div class="chip-row action-row">
+                <label class="chip"><input id="metaAdQwen" type="checkbox" checked /> Qwen 성격 판정</label>
+                <label class="chip"><input id="metaAdHeadless" type="checkbox" /> 백그라운드 실행</label>
+                <label class="chip"><input id="metaAdConnectRun" type="checkbox" checked /> 현재 작업 레퍼런스로 연결</label>
+                <label class="chip"><input id="metaAdAdvertiserMatch" type="checkbox" /> 검색어와 광고주명 일치</label>
+                <button id="collectMetaAds" class="primary">Meta 광고 수집</button>
+                <button id="createMixedTraining">Pinterest + Meta 판단 훈련 만들기</button>
+                <button data-open-path="references/meta_ads">저장 폴더 열기</button>
+              </div>
+              <div class="panel-head meta-brand-head"><div><h2>검증 브랜드 묶음 수집</h2><span>브랜드 광고주명이 일치하는 결과만 별도 저장합니다</span></div></div>
+              <div class="control-grid">
+                <label>업종<select id="metaBrandProfile"><option value="cosmetics_skincare">화장품·스킨케어 20개</option><option value="jewelry_luxury">주얼리·럭셔리 20개</option></select></label>
+                <label>이번 수집 브랜드 수<input id="metaBrandLimit" type="number" min="1" max="30" value="3" /></label>
+                <label>브랜드별 광고 수<input id="metaBrandAdsPerBrand" type="number" min="1" max="20" value="3" /></label>
+                <button id="collectMetaBrandRegistry" class="primary">브랜드 묶음 소량 수집</button>
+              </div>
+            </div>
+            <div class="panel"><div id="metaAdGrid" class="reference-grid"></div></div>
+          </section>
+
+          <section class="view" id="trainingView">
+            <section class="panel reference-learning-panel"><div id="referenceLearningSummary"></div></section>
+            <div class="panel control-panel">
+              <div class="panel-head">
+                <div><h2>판단 훈련</h2><span id="trainingSessionMeta">교정 데이터를 저장합니다</span></div>
+                <select id="trainingSessionSelect"></select>
+              </div>
+              <div id="trainingStatusFilters" class="training-status-filters"></div>
+              <div id="trainingMetaFilters" class="training-meta-filters hidden"></div>
+              <div id="trainingSummary" class="score-grid"></div>
+            </div>
+            <section class="panel training-quick-panel"><div id="trainingQuickReview"></div></section>
+            <div class="training-layout">
+              <section class="panel training-list-panel"><div id="trainingItemList" class="training-item-list"></div></section>
+              <section class="panel training-preview-panel"><div id="trainingPreview"></div></section>
+              <aside class="panel training-review-panel"><div id="trainingReviewForm"></div></aside>
+            </div>
+          </section>
+
+          <section class="view" id="promptsView">
+            <div class="panel"><div class="panel-head"><h2>프롬프트</h2><span id="promptCount"></span></div><div id="promptList" class="prompt-list"></div></div>
+          </section>
+
+          <section class="view" id="imagesView">
+            <div class="panel control-panel">
+              <div class="panel-head"><div><h2>이미지 선택</h2><span id="comfyStatus">ComfyUI 확인 중</span></div><span id="imageCount"></span></div>
+              <div class="control-grid">
+                <label>재생성 그룹<select id="generationGroup"></select></label>
+                <label>생성 모드<select id="generationMode"><option value="live">ComfyUI 실생성</option><option value="placeholder">임시 이미지</option></select></label>
+              </div>
+              <div class="chip-row action-row">
+                <button id="runComfyGeneration" class="primary">선택 그룹 생성</button>
+                <button id="runAllComfyGeneration">전체 생성</button>
+                <button id="finishImageSelection" class="primary">선택 완료</button>
+                <button data-open-folder="generated_images">이미지 폴더 열기</button>
+                <button data-open-folder="run">작업 폴더 열기</button>
+              </div>
+            </div>
+            <div class="image-review-layout">
+              <section class="panel image-browser"><div id="imageGrid" class="image-grid"></div></section>
+              <section class="panel image-preview-panel"><div id="selectedImagePreview" class="selected-image-preview"></div></section>
+              <aside class="panel image-inspector"><div id="imageInspector"></div></aside>
+            </div>
+          </section>
+
+          <section class="view" id="packageView">
+            <div class="panel package-panel">
+              <div class="panel-head"><h2>최종 패키지</h2><span>production-package 산출물</span></div>
+              <div id="packageSummary"></div>
+              <div class="chip-row action-row"><button id="createPackage" class="primary">패키지 생성</button><button data-open-folder="package">패키지 폴더 열기</button></div>
+            </div>
+          </section>
+
+          <section class="view" id="activityView">
+            <div class="panel control-panel">
+              <div class="panel-head">
+                <div><h2>활동 로그</h2><span>실행, 생성, 오류 기록을 시간순으로 확인합니다</span></div>
+                <span id="activityCount"></span>
+              </div>
+              <div id="activityFilters" class="activity-filters"></div>
+            </div>
+            <div class="activity-layout">
+              <section class="panel"><div id="activityTimeline" class="activity-timeline"></div></section>
+              <aside class="panel activity-summary-panel"><div id="activitySummary"></div></aside>
+            </div>
+          </section>
+
+          <section class="view" id="settingsView">
+            <div class="panel">
+              <div class="panel-head"><h2>설정</h2><span>기본 실행 옵션</span></div>
+              <div class="settings-grid">
+                <label>검색 쿼리 수<input id="queryLimit" type="number" value="1" min="1" /></label>
+                <label>쿼리별 이미지<input id="perQueryLimit" type="number" value="3" min="1" /></label>
+                <label>선택 수<input id="selectCount" type="number" value="1" min="1" /></label>
+                <label>검수 수<input id="reviewLimit" type="number" value="1" min="1" /></label>
+              </div>
+            </div>
+          </section>
+        </div>
+      </main>
+    </div>
+    <div id="metaAdModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="metaAdModalTitle">
+      <section class="modal-panel meta-ad-modal">
+        <div class="modal-head">
+          <div>
+            <span class="eyebrow">광고 상세</span>
+            <h2 id="metaAdModalTitle">Meta 광고</h2>
+          </div>
+          <button id="closeMetaAdModal" type="button">닫기</button>
+        </div>
+        <div id="metaAdModalBody"></div>
+      </section>
+    </div>
+    <div id="imagePreviewModal" class="modal-backdrop hidden" role="dialog" aria-modal="true" aria-labelledby="imagePreviewModalTitle">
+      <section class="modal-panel image-preview-modal">
+        <div class="modal-head">
+          <h2 id="imagePreviewModalTitle">이미지 원본 보기</h2>
+          <button id="closeImagePreviewModal" type="button">닫기</button>
+        </div>
+        <div class="image-preview-modal-body">
+          <img id="imagePreviewModalImage" alt="" />
+        </div>
+      </section>
+    </div>
+    <div id="toast" class="toast hidden"></div>
+    <script src="/app.js"></script>
+  </body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "1": {
+    "class_type": "LoadImage",
+    "inputs": {
+      "image": "hsgn_blue_base.png"
+    }
+  },
+  "2": {
+    "class_type": "KoreanReferencePosterTypographyOverlay",
+    "inputs": {
+      "image": ["1", 0],
+      "headline": "\ud53c\ubd80 \uc7a5\ubcbd\ubd80\ud130 \uad11\ucc44\uae4c\uc9c0\n\uadfc\ubcf8\uc801\uc778 \ube44\ud0c0\ubbfc \ucf00\uc5b4\ub97c\n\uc2dc\uc791\ud558\uace0 \uc2f6\ub2e4\uba74?",
+      "subheadline": "\ud601\uc2e0\uae30\ub2d8 \ube44\ud0c0\ubbfc \ubca0\ub9ac\uc5b4 \uc2dc\ub108\uc9c0 \ud06c\ub9bc",
+      "brand_line": "HSGN  |  PURE VITAMIN E EXTREME BARRIER SYNERGY CREAM",
+      "footer": "* \ubcf8 \uc774\ubbf8\uc9c0\ub294 \ud14c\uc2a4\ud2b8\uc6a9 \uc2dc\uc548\uc785\ub2c8\ub2e4. \uc2e4\uc81c \uace0\uc9c0 \ubb38\uad6c\ub294 \uac80\uc218 \ud6c4 \ud655\uc815\ud569\ub2c8\ub2e4.",
+      "font_path": "C:/Windows/Fonts/malgunbd.ttf",
+      "regular_font_path": "C:/Windows/Fonts/malgun.ttf",
+      "top_y_percent": 0.055,
+      "footer_y_percent": 0.86,
+      "headline_size": 42,
+      "subheadline_size": 18,
+      "footer_size": 11,
+      "text_color": "#FFFFFF",
+      "shadow_color": "#004E7E"
+    }
+  },
+  "3": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["2", 0],
+      "filename_prefix": "TypographyTests/hsgn_reference_typography_overlay_v1"
+    }
+  }
+}

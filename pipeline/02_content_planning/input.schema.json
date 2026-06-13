@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "02 Content Planning Input",
+  "type": "object",
+  "required": ["brief"],
+  "properties": {
+    "brief": { "type": "object" },
+    "channel_rules": { "type": "array", "items": { "type": "object" } },
+    "template_metadata": { "type": "array", "items": { "type": "object" } }
+  }
+}

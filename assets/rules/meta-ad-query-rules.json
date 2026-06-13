@@ -1,0 +1,70 @@
+{
+  "version": "2026-06-07",
+  "principle": "Meta Ad Library searches live ad copy and advertisers, not design inspiration descriptions.",
+  "queryTiers": [
+    {
+      "tier": 1,
+      "type": "competitor_brand",
+      "purpose": "Collect stable real campaign creatives from known advertisers.",
+      "examples": ["메디큐브", "아누아", "Celladix"],
+      "priority": "high"
+    },
+    {
+      "tier": 2,
+      "type": "product_or_ingredient",
+      "purpose": "Collect category and benefit messaging patterns.",
+      "examples": ["나이아신아마이드 세럼", "미백 세럼", "비타민C 앰플"],
+      "priority": "high"
+    },
+    {
+      "tier": 3,
+      "type": "category_plus_offer",
+      "purpose": "Collect sale, CTA, benefit hierarchy, and retail promotion structures.",
+      "examples": ["스킨케어 세일", "화장품 할인", "세럼 할인"],
+      "priority": "high"
+    },
+    {
+      "tier": 4,
+      "type": "own_brand",
+      "purpose": "Check whether the brand currently has searchable Meta ads.",
+      "examples": ["hsgn"],
+      "priority": "low"
+    }
+  ],
+  "avoidAsPrimaryQuery": [
+    "스킨케어 이벤트 배너 디자인",
+    "화장품 카드뉴스 디자인",
+    "뷰티 배너 디자인"
+  ],
+  "recommendedCosmeticsQueries": [
+    "메디큐브",
+    "나이아신아마이드 세럼",
+    "스킨케어 세일",
+    "화장품 할인"
+  ],
+  "collectionRule": {
+    "queriesPerEvent": 4,
+    "adsPerQuery": 10,
+    "maxImagesPerAd": 10,
+    "requireHumanOrJudgeFilter": true
+  },
+  "creativeProfiles": {
+    "product_visual": {
+      "label": "클린 제품 비주얼",
+      "rule": "Qwen creative_type=clean_product_visual, product_focus>=70, text_density<=40, no carousel or video",
+      "default": true
+    },
+    "single_image_ad": {
+      "label": "단일 광고 이미지",
+      "rule": "Exclude carousel and video, but text-heavy price ads may remain"
+    },
+    "brand_campaign": {
+      "label": "브랜드 캠페인",
+      "rule": "Keep up to 3 images per ad"
+    },
+    "promotion_structure": {
+      "label": "프로모션 구조",
+      "rule": "Keep up to 5 images per ad for offer, CTA, and hierarchy reference"
+    }
+  }
+}

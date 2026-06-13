@@ -1,0 +1,13 @@
+{
+  "template_id": "instagram_feed_single_v1",
+  "channel_id": "instagram_feed",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "4:5",
+  "text_slots": ["headline", "subcopy", "cta"],
+  "visual_slots": ["main_visual"],
+  "max_text_length": { "headline": 32, "subcopy": 70, "cta": 16 },
+  "safe_area": { "top": 96, "right": 72, "bottom": 96, "left": 72 },
+  "cta_slot": "cta",
+  "export_rule": { "format": "png", "scale": 2 }
+}

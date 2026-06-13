@@ -1,0 +1,135 @@
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-width: 340px;
+  font-family: Arial, sans-serif;
+  color: #171717;
+  background: #f7f7f4;
+}
+
+.panel {
+  padding: 14px;
+}
+
+header {
+  margin-bottom: 12px;
+}
+
+h1 {
+  margin: 0 0 4px;
+  font-size: 18px;
+  font-weight: 700;
+}
+
+p {
+  margin: 0;
+  line-height: 1.4;
+}
+
+#pageStatus,
+#message,
+#logList {
+  color: #555;
+  font-size: 12px;
+}
+
+.preset-bar,
+.actions {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.preset-bar {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.actions {
+  grid-template-columns: 1fr 1fr;
+}
+
+#nativeButton {
+  grid-column: 1 / -1;
+  background: #8a2be2;
+}
+
+.controls {
+  display: grid;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.controls label {
+  display: grid;
+  grid-template-columns: 1fr 96px;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.toggles {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 12px;
+}
+
+input[type="number"] {
+  width: 96px;
+  padding: 6px 8px;
+  border: 1px solid #cfcfc8;
+  border-radius: 6px;
+  background: #fff;
+}
+
+button {
+  min-height: 34px;
+  border: 0;
+  border-radius: 6px;
+  background: #111;
+  color: #fff;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+  background: #aaa;
+}
+
+.preset {
+  background: #e0dfd8;
+  color: #222;
+}
+
+.preset.active {
+  background: #111;
+  color: #fff;
+}
+
+.status {
+  display: grid;
+  gap: 8px;
+  font-size: 12px;
+}
+
+.metrics {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 6px;
+}
+
+progress {
+  width: 100%;
+  height: 10px;
+}
+
+#logList {
+  margin: 0;
+  padding-left: 18px;
+  max-height: 84px;
+  overflow: auto;
+}

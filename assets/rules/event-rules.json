@@ -1,0 +1,95 @@
+{
+  "version": "2026-05-28",
+  "profiles": {
+    "bullion_investment": {
+      "detectKeywords": [
+        "bullion",
+        "gold",
+        "silver",
+        "investment",
+        "consultation",
+        "asset management",
+        "finance",
+        "gold bar",
+        "gold coin",
+        "precious metal",
+        "골드",
+        "실버",
+        "금거래소",
+        "금융",
+        "투자",
+        "금 투자",
+        "금 시세",
+        "실물 금",
+        "투자 상담",
+        "자산",
+        "시세"
+      ],
+      "eventTypes": [
+        "investment consultation",
+        "gold market guide",
+        "asset management consultation",
+        "bullion product campaign",
+        "premium finance campaign"
+      ],
+      "mustHave": [
+        "seriousness filter",
+        "product/category relevance filter",
+        "risk-level gate",
+        "blank text area"
+      ],
+      "mustNotHave": [
+        "children or toy event tone",
+        "cute character promotion",
+        "camping or picnic scene",
+        "random package product cue",
+        "fake typography as design centerpiece"
+      ]
+    },
+    "cosmetics_skincare": {
+      "detectKeywords": [
+        "cosmetic",
+        "cosmetics",
+        "skincare",
+        "beauty",
+        "serum",
+        "ampoule",
+        "cream",
+        "niacinamide",
+        "brightening",
+        "화장품",
+        "스킨케어",
+        "뷰티",
+        "세럼",
+        "앰플",
+        "크림",
+        "나이아신아마이드",
+        "미백",
+        "피부",
+        "H&B",
+        "올영",
+        "올리브영",
+        "뷰티 세일"
+      ],
+      "eventTypes": [
+        "beauty retail sale",
+        "summer skincare promotion",
+        "ingredient-focused serum campaign",
+        "H&B store style promotion",
+        "gift-with-purchase campaign"
+      ],
+      "mustHave": [
+        "cosmetic product/category relevance",
+        "benefit and offer hierarchy",
+        "clean beauty tone",
+        "Korean retail sale layout"
+      ],
+      "mustNotHave": [
+        "medical treatment claim",
+        "miracle or guaranteed result claim",
+        "direct imitation of specific H&B store brand",
+        "altered product logo or fake package text"
+      ]
+    }
+  }
+}

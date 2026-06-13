@@ -1,0 +1,6 @@
+{
+  "output_pattern": "{event_id}_{channel_id}_{deliverable_id}_{version}.{ext}",
+  "version_pattern": "v{number:02d}",
+  "allowed_extensions": ["png", "jpg", "json", "md"],
+  "case": "lowercase-kebab-or-snake"
+}

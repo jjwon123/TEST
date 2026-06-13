@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Visual Plan",
+  "type": "object",
+  "required": ["event_id", "visual_roles", "candidate_strategy"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "visual_roles": { "type": "array", "items": { "type": "object" } },
+    "candidate_strategy": { "type": "object" },
+    "engine": { "type": "string", "default": "comfyui" }
+  }
+}

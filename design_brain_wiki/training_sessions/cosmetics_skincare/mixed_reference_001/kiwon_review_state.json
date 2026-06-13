@@ -1,0 +1,273 @@
+{
+  "reviews": {
+    "cosmetics_skincare_ref_01": {
+      "status": "agree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:09.167553+00:00"
+    },
+    "cosmetics_skincare_ref_02": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:09.193812+00:00"
+    },
+    "cosmetics_skincare_ref_05": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:11.152623+00:00"
+    },
+    "cosmetics_skincare_ref_06": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:11.174651+00:00"
+    },
+    "cosmetics_skincare_ref_09": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:13.183428+00:00"
+    },
+    "cosmetics_skincare_ref_10": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:13.204561+00:00"
+    },
+    "cosmetics_skincare_ref_11": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:14.662945+00:00"
+    },
+    "cosmetics_skincare_ref_12": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:14.681978+00:00"
+    },
+    "cosmetics_skincare_ref_13": {
+      "status": "disagree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:16.807405+00:00"
+    },
+    "cosmetics_skincare_ref_14": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:16.826112+00:00"
+    },
+    "cosmetics_skincare_ref_15": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:18.774945+00:00"
+    },
+    "cosmetics_skincare_ref_16": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:18.793054+00:00"
+    },
+    "cosmetics_skincare_ref_17": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:20.113672+00:00"
+    },
+    "cosmetics_skincare_ref_18": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:20.136289+00:00"
+    },
+    "cosmetics_skincare_ref_19": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:22.127817+00:00"
+    },
+    "cosmetics_skincare_ref_20": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:22.148466+00:00"
+    },
+    "cosmetics_skincare_ref_21": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:24.519682+00:00"
+    },
+    "cosmetics_skincare_ref_22": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:24.544084+00:00"
+    },
+    "cosmetics_skincare_ref_23": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:26.247152+00:00"
+    },
+    "cosmetics_skincare_ref_24": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:26.268297+00:00"
+    },
+    "cosmetics_skincare_ref_25": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:27.888991+00:00"
+    },
+    "cosmetics_skincare_ref_26": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:27.911258+00:00"
+    },
+    "cosmetics_skincare_ref_27": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:29.664296+00:00"
+    },
+    "cosmetics_skincare_ref_28": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:29.684892+00:00"
+    },
+    "cosmetics_skincare_ref_29": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:31.141399+00:00"
+    },
+    "cosmetics_skincare_ref_30": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:31.160490+00:00"
+    },
+    "cosmetics_skincare_ref_07": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:32.934652+00:00"
+    },
+    "cosmetics_skincare_ref_08": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:32.952250+00:00"
+    },
+    "cosmetics_skincare_ref_03": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:33.928354+00:00"
+    },
+    "cosmetics_skincare_ref_04": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-13T09:59:33.952673+00:00"
+    }
+  },
+  "profile": "cosmetics_skincare",
+  "sessionId": "mixed_reference_001",
+  "updatedAt": "2026-06-13T09:59:33.952673+00:00",
+  "summary": {
+    "total": 30,
+    "reviewed": 30,
+    "agree": 11,
+    "disagree": 19,
+    "unsure": 0,
+    "overSelected": 1,
+    "overRejected": 1,
+    "abstractFeedback": 30,
+    "accuracy": 0.367,
+    "finalDecisionCounts": {
+      "selected": 4,
+      "shortlist": 6,
+      "rejected": 20
+    },
+    "transitionCounts": {
+      "rejected->rejected": 5,
+      "rejected->shortlist": 1,
+      "selected->rejected": 1,
+      "selected->selected": 1,
+      "shortlist->rejected": 14,
+      "shortlist->selected": 3,
+      "shortlist->shortlist": 5
+    },
+    "reasonTagCounts": {}
+  }
+}

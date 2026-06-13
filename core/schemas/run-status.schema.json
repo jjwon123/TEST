@@ -1,0 +1,19 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Run Status",
+  "type": "object",
+  "required": ["run_id", "event_id", "current_stage", "run_state", "stage_status"],
+  "properties": {
+    "run_id": { "type": "string" },
+    "event_id": { "type": "string" },
+    "run_state": { "type": "string" },
+    "current_stage": { "type": "string" },
+    "stage_status": {
+      "type": "object",
+      "additionalProperties": {
+        "type": "string"
+      }
+    },
+    "updated_at": { "type": "string" }
+  }
+}

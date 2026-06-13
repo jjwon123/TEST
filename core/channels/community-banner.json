@@ -1,0 +1,11 @@
+{
+  "channel_id": "community_banner",
+  "name": "Community Notice Banner",
+  "aliases": ["community"],
+  "planning_order": 10,
+  "default_ratio": "16:9",
+  "default_template": "community_notice_banner_v1",
+  "supported_templates": ["community_notice_banner_v1"],
+  "content_roles": ["notice", "participation_guide"],
+  "qa_requirements": ["required_phrases_present", "cta_presence"]
+}

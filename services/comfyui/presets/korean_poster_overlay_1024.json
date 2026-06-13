@@ -1,0 +1,12 @@
+{
+  "preset_id": "korean_poster_overlay_1024",
+  "description": "Composes Korean poster typography onto a 1024x1024 clean base image through ComfyUI KoreanTextOverlay nodes.",
+  "required_fields": ["base_image", "headline", "subheadline", "ratio"],
+  "output_role": "poster_candidate",
+  "comfyui_nodes": ["LoadImage", "KoreanTextOverlay", "SaveImage"],
+  "default_base_image": "qwen_image_edit_1024.png",
+  "output_size": {
+    "width": 1024,
+    "height": 1024
+  }
+}

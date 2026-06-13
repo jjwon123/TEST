@@ -1,0 +1,218 @@
+{
+  "sessionId": "meta_brand_review_001",
+  "auditType": "manual_visual_meta_character_review",
+  "auditedAt": "2026-06-11",
+  "scope": {
+    "totalImages": 100,
+    "method": "Four numbered contact sheets reviewed in full, followed by original-size inspection of representative and boundary images.",
+    "sourceJudgementModified": false
+  },
+  "classificationPriority": [
+    "reject_noise",
+    "card_news",
+    "promotion_text_heavy",
+    "device",
+    "jewelry_craft",
+    "jewelry_product",
+    "model_lifestyle",
+    "brand_campaign",
+    "product_clean"
+  ],
+  "categoryDefinitions": {
+    "product_clean": "Cosmetics product is the clear visual subject; price, discount, giveaway, and information-panel structures do not dominate.",
+    "brand_campaign": "Brand-world or campaign concept is the primary value, rather than direct product selling or instructional information.",
+    "promotion_text_heavy": "Price, discount, gift, bundle, ranking, limited-time offer, or purchase CTA is a dominant visual hierarchy.",
+    "card_news": "Designed to be read as an explanatory slide: comparison, feature point, mechanism, proof, testimonial, or multi-panel information.",
+    "device": "Beauty device itself is the primary visual subject without a dominant explanatory card structure.",
+    "model_lifestyle": "A person, portrait, wearing scene, or lifestyle use scene is the primary visual subject.",
+    "jewelry_product": "Jewelry product still life, macro, or display is the primary visual subject.",
+    "jewelry_craft": "Jewelry-making, setting, or craft process is the primary visual subject.",
+    "reject_noise": "Broken, irrelevant, unusable, or non-reference visual noise."
+  },
+  "statistics": {
+    "product_clean": 5,
+    "brand_campaign": 7,
+    "promotion_text_heavy": 34,
+    "card_news": 10,
+    "device": 7,
+    "model_lifestyle": 19,
+    "jewelry_product": 16,
+    "jewelry_craft": 2,
+    "reject_noise": 0
+  },
+  "classifications": {
+    "product_clean": [
+      "005_dalba_82e809a2ad.jpg",
+      "028_manyo_f56a11e531.jpg",
+      "031_skin1004_efefc6f7b4.jpg",
+      "032_sulwhasoo_a676b35bf6.jpg",
+      "044_dr-g_f595686ca3.jpg"
+    ],
+    "brand_campaign": [
+      "014_sulwhasoo_e1014e0739.jpg",
+      "017_cartier_3986d0b682.jpg",
+      "022_tiffany_27d2799c55.jpg",
+      "035_cartier_82447fce4c.jpg",
+      "053_tiffany_98abd8549a.jpg",
+      "069_tiffany_9ac65dff1a.jpg",
+      "070_van-cleef_1b3ac912fc.jpg"
+    ],
+    "promotion_text_heavy": [
+      "001_aestura_0f09edf3ec.jpg",
+      "002_anua_dd3847cb1d.jpg",
+      "003_beauty-of-joseon_4ee567b3e4.jpg",
+      "004_cosrx_ecd13ffaa4.jpg",
+      "006_dr-g_2dbee0e815.jpg",
+      "007_innisfree_e32a480569.jpg",
+      "009_manyo_6bbcd4a11c.jpg",
+      "011_numbuzin_22bf7850fb.jpg",
+      "012_round-lab_dca69bd303.jpg",
+      "013_skin1004_a0dc608b01.jpg",
+      "015_torriden_9a4e92ff79.jpg",
+      "024_anua_10d7f68854.jpg",
+      "025_beauty-of-joseon_7052706ee1.jpg",
+      "026_dr-g_e681b25550.jpg",
+      "027_la-roche-posay_2d6441fce6.jpg",
+      "030_round-lab_d99ab79d8e.jpg",
+      "033_torriden_39ebc6f734.jpg",
+      "042_anua_b1a8058faf.jpg",
+      "043_beauty-of-joseon_bceb15359a.jpg",
+      "045_la-roche-posay_bf58b85ac3.jpg",
+      "047_round-lab_107653cf9f.jpg",
+      "048_skin1004_08d76cf86f.jpg",
+      "049_torriden_3532d03f1e.jpg",
+      "058_round-lab_232cf80c9b.jpg",
+      "064_anua_daa65ba3e5.jpg",
+      "066_round-lab_582c07a894.jpg",
+      "067_torriden_aabcb44139.jpg",
+      "072_round-lab_a4926ddafa.jpg",
+      "073_torriden_3c9b4fa642.jpg",
+      "078_round-lab_b95a46670d.jpg",
+      "082_round-lab_853de6888c.jpg",
+      "086_round-lab_654174a635.jpg",
+      "090_round-lab_854b522783.jpg",
+      "093_round-lab_97838e1a3f.jpg"
+    ],
+    "card_news": [
+      "008_la-roche-posay_5e533c50d4.jpg",
+      "046_medicube_ed899af229.jpg",
+      "056_la-roche-posay_3c6292deed.jpg",
+      "057_medicube_ab0aea873f.jpg",
+      "059_torriden_a7f1c303d2.jpg",
+      "077_medicube_2bb8708af0.jpg",
+      "081_medicube_c6def42a65.jpg",
+      "098_medicube_2d1e8f290e.jpg",
+      "099_medicube_d0f6768ea3.jpg",
+      "100_medicube_f9e27c8550.jpg"
+    ],
+    "device": [
+      "010_medicube_1601d79a11.jpg",
+      "029_medicube_cd3bda341b.jpg",
+      "065_medicube_a4fa5e689c.jpg",
+      "071_medicube_775f1e6a00.jpg",
+      "085_medicube_92f30ea77c.jpg",
+      "094_medicube_9f0b1a5467.jpg",
+      "097_medicube_75adcd3ed9.jpg"
+    ],
+    "model_lifestyle": [
+      "019_didier-dubot_1b9723394e.jpg",
+      "020_messika_14592a62e7.jpg",
+      "021_tasaki_7b65f8c8e3.jpg",
+      "037_didier-dubot_a95386a7f4.jpg",
+      "038_messika_ba107cadd3.jpg",
+      "039_tasaki_2acc67ba19.jpg",
+      "055_anua_b164bcd428.jpg",
+      "061_didier-dubot_e62a9ad34d.jpg",
+      "068_didier-dubot_23cf34bfad.jpg",
+      "074_didier-dubot_1d733d0389.jpg",
+      "079_didier-dubot_35d3f7a16c.jpg",
+      "083_didier-dubot_49803b562a.jpg",
+      "084_van-cleef_a9d6c01624.jpg",
+      "087_didier-dubot_c8857144fa.jpg",
+      "089_medicube_f0cc9050bb.jpg",
+      "091_didier-dubot_eb11d8e8b4.jpg",
+      "092_medicube_d219a3fdf5.jpg",
+      "095_medicube_6d940f1206.jpg",
+      "096_medicube_24ee8b5894.jpg"
+    ],
+    "jewelry_product": [
+      "016_boucheron_89c44b0e75.jpg",
+      "018_chaumet_1ba3a0f7dc.jpg",
+      "034_boucheron_0e26b0a380.jpg",
+      "036_chaumet_48b6fa7f70.jpg",
+      "040_tiffany_41625aa751.jpg",
+      "041_van-cleef_3eb4acd27e.jpg",
+      "050_boucheron_6f420bcc22.jpg",
+      "051_chaumet_642c888fc7.jpg",
+      "052_didier-dubot_51547e7f31.jpg",
+      "054_van-cleef_0e4f7be740.jpg",
+      "060_chaumet_b8948e83ac.jpg",
+      "062_tiffany_d03d0da144.jpg",
+      "075_tiffany_25e5e57cf0.jpg",
+      "076_van-cleef_7052876a70.jpg",
+      "080_van-cleef_004c48f2f5.jpg",
+      "088_van-cleef_a11683bc1c.jpg"
+    ],
+    "jewelry_craft": [
+      "023_van-cleef_d9a718be30.jpg",
+      "063_van-cleef_21a8636923.jpg"
+    ],
+    "reject_noise": []
+  },
+  "boundaryRules": {
+    "cosmeticsPromotionExclusion": [
+      "Exclude from clean product and brand-campaign reference pools when price, percentage, bundle notation, giveaway, ranking, or limited-time purchase CTA is one of the top two visual focal points.",
+      "Treat large numerals such as 1+1, 53%, 29%, 10,000 won range, or a crossed/compared price as promotion even when the product occupies substantial area.",
+      "Treat Olive Young sale badges and bottom purchase bars as supporting evidence; a badge alone is not enough if product imagery remains clearly dominant.",
+      "Promotion images may remain useful in a dedicated commerce/promotion reference pool, but should not train clean brand visual direction."
+    ],
+    "cardNewsExclusion": [
+      "Exclude when the image must be read sequentially or analytically: Point labels, numbered principles, before/after proof, comparison columns, mechanism diagrams, certificates, charts, or multi-panel explanations.",
+      "A single headline plus product is not card news; it becomes card news when explanatory blocks or evidence panels are the primary structure.",
+      "Device images with feature explanation panels are card news, while device hero shots or launch key visuals remain device.",
+      "Card-news images may be retained only for educational carousel planning, not for clean key-visual or brand-campaign training."
+    ]
+  },
+  "representativeOriginalsInspected": [
+    {
+      "file": "010_medicube_1601d79a11.jpg",
+      "classification": "device",
+      "finding": "Large comparison headline is present, but the visual is still a device launch/key visual rather than a multi-panel explanatory slide."
+    },
+    {
+      "file": "014_sulwhasoo_e1014e0739.jpg",
+      "classification": "brand_campaign",
+      "finding": "Collaboration/exhibition concept and brand world dominate; it is not a product-sales card."
+    },
+    {
+      "file": "017_cartier_3986d0b682.jpg",
+      "classification": "brand_campaign",
+      "finding": "Panther concept and event identity dominate without direct jewelry selling."
+    },
+    {
+      "file": "023_van-cleef_d9a718be30.jpg",
+      "classification": "jewelry_craft",
+      "finding": "Close-up stone-setting process is the entire visual subject."
+    },
+    {
+      "file": "046_medicube_ed899af229.jpg",
+      "classification": "card_news",
+      "finding": "Point label and side-by-side connector explanation require reading as an information slide."
+    },
+    {
+      "file": "059_torriden_a7f1c303d2.jpg",
+      "classification": "card_news",
+      "finding": "PR-team versus social-team comparison structure is explanatory rather than a clean product visual."
+    },
+    {
+      "file": "077_medicube_2bb8708af0.jpg",
+      "classification": "card_news",
+      "finding": "Mechanism claim plus proof panels and measurements make it a dense evidence card."
+    },
+    {
+      "file": "098_medicube_2d1e8f290e.jpg",
+      "classification": "card_news",
+      "finding": "Numbered principle and comparison columns clearly form a carousel information slide."
+    }
+  ]
+}

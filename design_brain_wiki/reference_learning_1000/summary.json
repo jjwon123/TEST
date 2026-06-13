@@ -1,0 +1,39 @@
+{
+  "target": 1000,
+  "discoveredFiles": 2072,
+  "exactUniqueImages": 1268,
+  "exactDuplicatesRemoved": 804,
+  "nearDuplicatesFlagged": 49,
+  "reviewableUniqueImages": 117,
+  "excludedByBriefGate": 1149,
+  "remainingToTarget": 883,
+  "reviewedImages": 16,
+  "unreviewedImages": 101,
+  "reviewProgress": 0.1368,
+  "sourceCounts": {
+    "pinterest_search": 59,
+    "meta_ad_library": 58
+  },
+  "profileCounts": {
+    "cosmetics_skincare": 117
+  },
+  "poolCounts": {
+    "creative_candidate": 117
+  },
+  "hardRejectReasonCounts": {
+    "extreme_aspect_ratio": 127,
+    "dense_card_news": 142,
+    "wrong_profile": 668,
+    "wrong_category": 313,
+    "low_resolution": 396,
+    "foreign_market": 20,
+    "disallowed_source": 595,
+    "website_capture": 67
+  },
+  "decisionCounts": {
+    "selected": 16,
+    "shortlist": 76,
+    "rejected": 25
+  },
+  "batchCount": 3
+}

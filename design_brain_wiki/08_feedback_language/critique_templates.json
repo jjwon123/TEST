@@ -1,0 +1,19 @@
+{
+  "selected": [
+    "이 레퍼런스는 {strength} 때문에 {brand_or_event_goal}에 적합합니다. {practical_reason}가 있어 {channel}로 확장하기 좋습니다.",
+    "{brand_signal}이 살아 있고 {risk_signal}이 낮아 selected 기준으로 둘 수 있습니다."
+  ],
+  "shortlist": [
+    "{strength}은 좋지만 {missing_criterion}이 부족해 selected보다 {role} shortlist가 맞습니다.",
+    "브랜드 톤은 일부 맞지만 {risk_or_gap} 때문에 최종 방향 기준으로 쓰기에는 보완이 필요합니다."
+  ],
+  "rejected": [
+    "이 레퍼런스는 {bad_signal}이 강해 {brand_or_industry_standard}을 통과하지 못합니다.",
+    "{risk_signal} 때문에 실제 제작물로 쓰면 {practical_failure}가 발생할 가능성이 큽니다."
+  ],
+  "direction": [
+    "현재 방향은 {current_strength}은 있지만 {missing_axis}가 약합니다. 다음 단계에서는 {next_reference_type}을 보강해야 합니다.",
+    "{bad_signal}은 차단된 상태지만 {coverage_gap}이 부족하므로 04 제작 전 레퍼런스 기준을 더 좁혀야 합니다."
+  ]
+}
+

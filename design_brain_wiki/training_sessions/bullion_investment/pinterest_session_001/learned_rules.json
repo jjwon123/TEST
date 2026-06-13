@@ -1,0 +1,85 @@
+{
+  "sessionId": "bullion_investment_pinterest_session_001",
+  "profile": "bullion_investment",
+  "createdAt": "2026-06-07T08:28:19.667016+00:00",
+  "summary": {
+    "total": 30,
+    "reviewed": 8,
+    "agree": 0,
+    "disagree": 8,
+    "unsure": 0,
+    "overSelected": 4,
+    "overRejected": 0,
+    "abstractFeedback": 0,
+    "accuracy": 0.0,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 0,
+      "rejected": 8
+    },
+    "transitionCounts": {
+      "selected->rejected": 4,
+      "shortlist->rejected": 4
+    },
+    "reasonTagCounts": {}
+  },
+  "rules": [],
+  "examples": [
+    {
+      "id": "bullion_ref_01",
+      "aiDecision": "selected",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_02",
+      "aiDecision": "selected",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_03",
+      "aiDecision": "selected",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_04",
+      "aiDecision": "selected",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_05",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_06",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_07",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "bullion_ref_08",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    }
+  ]
+}

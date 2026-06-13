@@ -1,0 +1,147 @@
+{
+  "version": "2026-05-28",
+  "profiles": {
+    "bullion_investment": {
+      "searchQueries": [
+        "한국 금 투자 상담 카드뉴스 디자인",
+        "한국 금거래소 이벤트 배너 디자인",
+        "실물 금 투자 상담 인스타 카드뉴스",
+        "골드바 투자 프로모션 배너",
+        "금 시세 상담 카드뉴스 디자인",
+        "금 자산관리 상담 이벤트 디자인",
+        "프리미엄 금융 상담 배너 한국",
+        "자산관리 세미나 카드뉴스 디자인",
+        "투자 상담 신청 배너 디자인",
+        "네이버 블로그 금 투자 대표 이미지",
+        "한국 금융 이벤트 포스터 디자인",
+        "골드바 제품 사진 레퍼런스",
+        "금화 골드바 제품컷",
+        "프리미엄 금융 카드뉴스 레이아웃",
+        "상담 신청 CTA 배너 디자인",
+        "gold investment korean card news design",
+        "korean finance consultation banner",
+        "korean gold bar investment ad"
+      ],
+      "fallbackDirections": [
+        "premium financial campaign",
+        "gold bar product photography",
+        "gold coin investment visual",
+        "minimal luxury poster layout",
+        "abstract finance background",
+        "blank headline area"
+      ],
+      "moodKeywords": [
+        "premium",
+        "calm",
+        "financial-trust"
+      ],
+      "compositionKeywords": [
+        "clear-focal-product",
+        "copy-safe-negative-space",
+        "poster-layout-empty-text-area"
+      ],
+      "lightingKeywords": [
+        "premium-contrast",
+        "soft-studio-light"
+      ],
+      "colorPalette": [
+        "dark navy",
+        "gold",
+        "white"
+      ],
+      "materialTexture": [
+        "metallic",
+        "paper-editorial"
+      ],
+      "promptHints": [
+        "premium financial consultation campaign",
+        "gold bullion or precious metal investment visual language",
+        "gold bar product photography",
+        "gold coin investment visual",
+        "high-trust finance brand mood",
+        "minimal luxury poster layout",
+        "abstract finance background",
+        "poster layout with empty text area",
+        "blank space for Korean headline",
+        "no readable text",
+        "no fake typography"
+      ],
+      "selectionGates": {
+        "brandFit": 7,
+        "eventFit": 7,
+        "productRelevance": 7,
+        "seriousnessFit": 6,
+        "riskLevelMax": 4
+      }
+    },
+    "cosmetics_skincare": {
+      "searchQueries": [
+        "스킨케어 이벤트 배너",
+        "화장품 이벤트 배너",
+        "뷰티 이벤트 배너",
+        "스킨케어 배너 디자인",
+        "화장품 배너 디자인",
+        "뷰티 배너 디자인",
+        "화장품 카드뉴스 디자인",
+        "스킨케어 카드뉴스",
+        "화장품 프로모션 배너",
+        "스킨케어 프로모션 배너",
+        "화장품 증정 이벤트",
+        "화장품 할인 배너"
+      ],
+      "fallbackDirections": [
+        "bright Korean beauty retail sale",
+        "clean skincare promotion layout",
+        "serum product hero with offer badge",
+        "summer brightening care mood",
+        "clear benefit and gift hierarchy"
+      ],
+      "moodKeywords": [
+        "bright",
+        "clean",
+        "summer",
+        "retail-sale",
+        "functional-skincare"
+      ],
+      "compositionKeywords": [
+        "product-hero",
+        "benefit-badge",
+        "offer-hierarchy",
+        "card-news-layout",
+        "copy-safe-negative-space"
+      ],
+      "lightingKeywords": [
+        "bright-clean-light",
+        "soft-studio-light"
+      ],
+      "colorPalette": [
+        "white",
+        "light gray",
+        "orange",
+        "fresh accent"
+      ],
+      "materialTexture": [
+        "cosmetic-gloss",
+        "clean package",
+        "summer skincare"
+      ],
+      "promptHints": [
+        "Korean H&B style summer beauty sale without copying a specific store brand",
+        "clean skincare retail promotion",
+        "serum product hero",
+        "bright white background with orange accent",
+        "benefit badge for discount and gift",
+        "clear Korean headline space",
+        "no medical treatment claim",
+        "do not copy Olive Young or other store logos"
+      ],
+      "selectionGates": {
+        "brandFit": 7,
+        "eventFit": 7,
+        "productRelevance": 7,
+        "seriousnessFit": 5,
+        "riskLevelMax": 4
+      }
+    }
+  }
+}

@@ -1,0 +1,115 @@
+# Correction Summary - cosmetics_skincare_pinterest_session_001
+
+- Profile: `cosmetics_skincare`
+- Reviewed: 100/100
+- Accuracy: 0.15
+- Final distribution: {'selected': 29, 'shortlist': 12, 'rejected': 59}
+- Transitions: {'rejected->rejected': 1, 'rejected->selected': 1, 'rejected->shortlist': 1, 'selected->rejected': 26, 'selected->selected': 9, 'selected->shortlist': 6, 'shortlist->rejected': 32, 'shortlist->selected': 19, 'shortlist->shortlist': 5}
+- Reason tags: {}
+
+## Learned Rules
+
+- `soften_rejected_to_shortlist`: 명확한 hard reject 신호가 없고 부분 참고 가치가 있으면 rejected보다 shortlist를 우선한다.
+
+## Reviewed Examples
+
+- `cosmetics_skincare_ref_01` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_02` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_03` rejected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_04` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_05` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_06` rejected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_07` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_08` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_09` rejected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_10` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_11` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_12` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_13` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_14` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_15` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_16` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_17` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_18` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_19` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_20` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_21` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_22` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_23` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_24` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_25` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_26` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_27` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_28` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_29` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_30` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_31` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_32` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_33` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_34` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_35` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_36` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_37` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_38` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_39` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_40` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_41` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_42` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_43` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_44` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_45` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_46` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_47` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_48` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_49` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_50` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_51` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_52` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_53` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_54` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_55` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_56` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_57` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_58` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_59` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_60` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_61` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_62` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_63` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_64` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_65` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_66` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_67` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_68` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_69` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_70` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_71` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_72` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_73` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_74` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_75` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_76` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_77` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_78` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_79` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_80` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_81` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_82` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_83` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_84` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_85` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_86` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_87` selected -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `cosmetics_skincare_ref_88` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_89` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_90` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_91` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_92` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_93` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_94` selected -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `cosmetics_skincare_ref_95` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_96` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_97` selected -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_98` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `cosmetics_skincare_ref_99` selected -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `cosmetics_skincare_ref_100` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택

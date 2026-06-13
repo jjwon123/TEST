@@ -1,0 +1,18 @@
+{
+  "states": [
+    "created",
+    "briefing",
+    "brief_review",
+    "planning",
+    "plan_review",
+    "candidate_generating",
+    "selection_pending",
+    "assembling",
+    "qa_pending",
+    "archived",
+    "archived_no_assets",
+    "failed"
+  ],
+  "initial": "created",
+  "terminal": ["archived", "archived_no_assets", "failed"]
+}

@@ -1,0 +1,26 @@
+{
+  "profile": "meta_brand_review",
+  "sessions": [
+    {
+      "sessionId": "meta_brand_review_001",
+      "total": 100,
+      "reviewed": 100,
+      "reviewStatus": "reviewed",
+      "accuracy": 0.52,
+      "aiDecisionCounts": {
+        "shortlist": 100
+      },
+      "finalDecisionCounts": {
+        "selected": 19,
+        "shortlist": 52,
+        "rejected": 29
+      },
+      "transitionCounts": {
+        "shortlist->shortlist": 52,
+        "shortlist->rejected": 29,
+        "shortlist->selected": 19
+      },
+      "sourceRun": "references/meta_ads/brand_registry_runs"
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "channel_id": "blog_inline_image",
+  "name": "Blog Inline Image",
+  "aliases": ["blog", "naver_blog"],
+  "planning_order": 20,
+  "default_ratio": "4:3",
+  "default_template": "blog_inline_image_v1",
+  "supported_templates": ["blog_inline_image_v1"],
+  "content_roles": ["section_break", "explanation_support"],
+  "qa_requirements": ["context_fit", "file_size"]
+}

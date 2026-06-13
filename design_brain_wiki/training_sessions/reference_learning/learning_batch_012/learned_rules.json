@@ -1,0 +1,42 @@
+{
+  "sessionId": "reference_learning_learning_batch_012",
+  "profile": "reference_learning",
+  "createdAt": "2026-06-08T14:14:22.902874+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 2,
+    "agree": 2,
+    "disagree": 0,
+    "unsure": 0,
+    "overSelected": 0,
+    "overRejected": 0,
+    "abstractFeedback": 2,
+    "accuracy": 1.0,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 2,
+      "rejected": 0
+    },
+    "transitionCounts": {
+      "shortlist->shortlist": 2
+    },
+    "reasonTagCounts": {}
+  },
+  "rules": [],
+  "examples": [
+    {
+      "id": "learning_ref_6d940f120601",
+      "aiDecision": "shortlist",
+      "finalDecision": "shortlist",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보"
+    },
+    {
+      "id": "learning_ref_7f02d339dd44",
+      "aiDecision": "shortlist",
+      "finalDecision": "shortlist",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보"
+    }
+  ]
+}

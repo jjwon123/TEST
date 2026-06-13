@@ -1,0 +1,54 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "QA Packaging Output",
+  "type": "object",
+  "required": ["stage", "event_id", "qa_status", "issues", "package_manifest"],
+  "properties": {
+    "stage": { "type": "string", "const": "06_qa_packaging" },
+    "event_id": { "type": "string" },
+    "qa_status": { "type": "string", "enum": ["pass", "pass_with_warnings", "revision_required", "failed"] },
+    "issues": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["issue_id", "status", "suggested_fix_stage", "affected_item_id", "source_trace"],
+        "properties": {
+          "issue_id": { "type": "string" },
+          "status": { "type": "string", "enum": ["pass", "warning", "fail", "overridden"] },
+          "qa_failed": { "type": "boolean" },
+          "severity": { "type": "string", "enum": ["blocker", "major", "minor", "info"] },
+          "message": { "type": "string" },
+          "suggested_fix_stage": {
+            "type": "string",
+            "enum": [
+              "01_event_brief",
+              "02_content_planning",
+              "03_reference_research",
+              "03_visual_candidates",
+              "04_visual_candidates",
+              "04_admin_selection",
+              "05_admin_selection",
+              "05_figma_assembly",
+              "06_qa_packaging"
+            ]
+          },
+          "affected_item_id": { "type": "string" },
+          "source_trace": {
+            "type": "object",
+            "required": ["source_stage", "source_field"],
+            "properties": {
+              "source_stage": { "type": "string" },
+              "source_field": { "type": "string" },
+              "frame_id": { "type": "string" },
+              "output_id": { "type": "string" },
+              "text_slot": { "type": "string" }
+            }
+          }
+        }
+      }
+    },
+    "package_manifest": { "type": "object" },
+    "revision_needed": { "type": "array", "items": { "type": "object" } },
+    "approval_status": { "type": "string", "enum": ["draft", "review_pending", "approved", "rejected"] }
+  }
+}

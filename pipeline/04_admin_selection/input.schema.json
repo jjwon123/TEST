@@ -1,0 +1,11 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "04 Admin Selection Input",
+  "type": "object",
+  "required": ["candidate_manifest"],
+  "properties": {
+    "candidate_manifest": { "type": "object" },
+    "preview_files": { "type": "array", "items": { "type": "string" } },
+    "content_plan": { "$ref": "../02_content_planning/output.schema.json" }
+  }
+}

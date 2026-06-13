@@ -1,0 +1,11 @@
+{
+  "channel_id": "twitter_image",
+  "name": "Twitter/X Image",
+  "aliases": ["twitter", "x"],
+  "planning_order": 10,
+  "default_ratio": "16:9",
+  "default_template": null,
+  "supported_templates": [],
+  "content_roles": ["announcement", "traffic_driver"],
+  "qa_requirements": ["mobile_crop", "title_readability"]
+}

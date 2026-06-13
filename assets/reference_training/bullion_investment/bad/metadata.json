@@ -1,0 +1,33 @@
+{
+  "profile": "bullion_investment",
+  "created_at": "2026-05-28",
+  "source_run": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트",
+  "source_group": "instagram_cardnews_01__key_visual",
+  "decision": "bad_reference",
+  "tags": [
+    "mascot_character",
+    "toy_3d",
+    "childish_mood",
+    "fake_text",
+    "not_financial",
+    "not_premium",
+    "wrong_event_tone"
+  ],
+  "files": [
+    {
+      "file": "instagram_cardnews_01__key_visual_c01.png",
+      "source": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/03_visual_candidates/previews/instagram_cardnews_01__key_visual_c01.png",
+      "reason": "mascot/character and cute 3D style; not premium financial."
+    },
+    {
+      "file": "instagram_cardnews_01__key_visual_c02.png",
+      "source": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/03_visual_candidates/previews/instagram_cardnews_01__key_visual_c02.png",
+      "reason": "mascot/character, fake broken poster text, random package-like object."
+    },
+    {
+      "file": "instagram_cardnews_01__key_visual_c03.png",
+      "source": "runs/2026-05-27_13-51-31_봄맞이-금-투자-상담-이벤트/03_visual_candidates/previews/instagram_cardnews_01__key_visual_c03.png",
+      "reason": "mascot/character, fake broken text, toy-like colorful object."
+    }
+  ]
+}

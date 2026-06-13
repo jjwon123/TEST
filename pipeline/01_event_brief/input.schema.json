@@ -1,0 +1,33 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "01 Event Brief Input",
+  "type": "object",
+  "required": ["event_input", "brand_guide"],
+  "properties": {
+    "event_input": {
+      "type": "object",
+      "required": ["eventName"],
+      "properties": {
+        "eventName": { "type": "string" },
+        "objective": { "type": "string" },
+        "purpose": { "type": "string" },
+        "channels": { "type": "array", "items": { "type": "string" } },
+        "schedule": { "type": "object" },
+        "offer": { "type": "string" },
+        "target": { "type": "string" }
+      },
+      "additionalProperties": true
+    },
+    "brand_guide": {
+      "type": "object",
+      "required": ["brandName"],
+      "properties": {
+        "brandName": { "type": "string" },
+        "tone": { "type": ["string", "array"] },
+        "requiredPhrases": { "type": "array", "items": { "type": "string" } },
+        "bannedWords": { "type": "array", "items": { "type": "string" } }
+      },
+      "additionalProperties": true
+    }
+  }
+}

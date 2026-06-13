@@ -1,0 +1,47 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Selected Assets",
+  "type": "object",
+  "required": ["eventId", "selectedAssets", "regenerationRequests", "approvalStatus"],
+  "properties": {
+    "eventId": { "type": "string" },
+    "selectedAssets": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["id", "channel", "type", "prompt", "status"],
+        "properties": {
+          "id": { "type": "string" },
+          "channel": { "type": "string" },
+          "type": { "type": "string" },
+          "prompt": { "type": "string" },
+          "status": { "type": "string", "enum": ["selected", "rejected", "regenerate", "hold"] },
+          "sourceFile": { "type": "string" },
+          "deliverableId": { "type": "string" },
+          "promptId": { "type": "string" },
+          "regenerationGroup": { "type": "string" },
+          "note": { "type": "string" }
+        }
+      }
+    },
+    "regenerationRequests": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["groupId", "reason", "requestedBy", "requestedAt", "status"],
+        "properties": {
+          "groupId": { "type": "string" },
+          "reason": { "type": "string" },
+          "requestedBy": { "type": "string" },
+          "requestedAt": { "type": "string" },
+          "status": { "type": "string", "enum": ["requested", "suggested", "queued", "running", "completed", "rejected"] },
+          "stageId": { "type": "string", "enum": ["03_visual_candidates", "04_visual_candidates"] },
+          "candidateIds": { "type": "array", "items": { "type": "string" } },
+          "workflowCommand": { "type": "string" }
+        }
+      }
+    },
+    "summary": { "type": "object" },
+    "approvalStatus": { "type": "string", "enum": ["draft", "review_pending", "approved", "rejected"] }
+  }
+}

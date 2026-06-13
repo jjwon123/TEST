@@ -1,0 +1,1089 @@
+{
+  "created_at": "2026-05-31T06:55:06.822922+00:00",
+  "testSet": "design_brain_wiki\\tests\\reference_judge_sample_set.json",
+  "rubric": "design_brain_wiki\\REFERENCE_JUDGE_RUBRIC.json",
+  "summary": {
+    "profiles": 3,
+    "total": 18,
+    "correct": 18,
+    "accuracy": 1.0,
+    "deepFeedback": 18,
+    "feedbackDepthRate": 1.0,
+    "status": "pass"
+  },
+  "profiles": [
+    {
+      "profile": "bullion_investment",
+      "eventContext": "금 투자 상담 이벤트, 인스타그램 카드뉴스와 상담 신청 배너",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/04_channel_usability/cardnews.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "summary": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1.0,
+        "deepFeedback": 6,
+        "feedbackDepthRate": 1.0
+      },
+      "results": [
+        {
+          "id": "bullion_good_01",
+          "title": "Dark navy gold bar consultation poster",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 10,
+            "brandSystemFit": 7,
+            "scalability": 7,
+            "distinctiveness": 7,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 8,
+            "copySpace": 6,
+            "visualHierarchy": 7,
+            "typographyRisk": 0,
+            "colorDiscipline": 7,
+            "channelFit": 7
+          },
+          "signals": [
+            "gold_bar",
+            "premium",
+            "dark_navy",
+            "financial_consultation",
+            "blank_headline_area",
+            "minimal_layout",
+            "calm_trust",
+            "no_fake_text"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 blank_headline_area, calm_trust, dark_navy 신호가 분명해서 금융 투자 브랜드의 신뢰와 프리미엄 상담 톤에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 6점, layoutUsability 8점이라 금 투자 상담 카드뉴스 메인 또는 상담 신청 배너로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 205,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "카드뉴스",
+              "배너",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        },
+        {
+          "id": "bullion_good_02",
+          "title": "Gold coin investment banner",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 9,
+            "brandSystemFit": 8,
+            "scalability": 8,
+            "distinctiveness": 8,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 9,
+            "copySpace": 9,
+            "visualHierarchy": 7,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 8
+          },
+          "signals": [
+            "gold_coin",
+            "wealth_management",
+            "soft_studio_light",
+            "copy_space",
+            "product_identity",
+            "premium",
+            "cta_space"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 copy_space, cta_space, gold_coin 신호가 분명해서 금융 투자 브랜드의 신뢰와 프리미엄 상담 톤에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 9점, layoutUsability 9점이라 금 투자 상담 카드뉴스 메인 또는 상담 신청 배너로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 195,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "카드뉴스",
+              "배너",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        },
+        {
+          "id": "bullion_amb_01",
+          "title": "Luxury gold abstract background",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 7,
+            "eventFit": 7,
+            "industryTrust": 6,
+            "brandSystemFit": 6,
+            "scalability": 6,
+            "distinctiveness": 6,
+            "premiumSignal": 6,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 7,
+            "copySpace": 6,
+            "visualHierarchy": 6,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 6
+          },
+          "signals": [
+            "premium",
+            "abstract_background",
+            "blank_headline_area",
+            "weak_product_identity",
+            "decorative"
+          ],
+          "role": "무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 무드/신뢰, 레이아웃/카피 여백 관점에서는 참고 가치가 있지만 업종 신뢰감이 약합니다 때문에 selected로 올리기에는 부족합니다. 제품 질감, 금융 무드, 포스터 레이아웃 중 일부 보조 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 162,
+            "criteriaHits": [
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        },
+        {
+          "id": "bullion_amb_02",
+          "title": "Gold bars close-up crop",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 6,
+            "eventFit": 6,
+            "industryTrust": 8,
+            "brandSystemFit": 4,
+            "scalability": 3,
+            "distinctiveness": 8,
+            "premiumSignal": 6,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 3,
+            "copySpace": 0,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 2
+          },
+          "signals": [
+            "gold_bar",
+            "product_identity",
+            "realistic_metal",
+            "low_copy_space",
+            "tight_crop"
+          ],
+          "role": "제품 정체성",
+          "feedback": "이 레퍼런스는 제품 정체성 관점에서는 참고 가치가 있지만 카피 여백이 부족합니다 때문에 selected로 올리기에는 부족합니다. 제품 질감, 금융 무드, 포스터 레이아웃 중 일부 보조 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 151,
+            "criteriaHits": [
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        },
+        {
+          "id": "bullion_bad_01",
+          "title": "Cute gold mascot camping scene",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -3,
+            "eventFit": -3,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 8,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "mascot",
+            "cute",
+            "toy_3d",
+            "camping",
+            "picnic",
+            "fake_text",
+            "not_financial"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 camping, cute, fake_text, mascot 신호가 강해 금융 투자 브랜드의 신뢰와 프리미엄 상담 톤을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 8점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 172,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        },
+        {
+          "id": "bullion_bad_02",
+          "title": "Casino gold jackpot typography",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -2,
+            "eventFit": -2,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 8,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "fake_text",
+            "casino",
+            "jackpot",
+            "unreadable_typography",
+            "hype",
+            "not_trustworthy"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 casino, fake_text, hype, jackpot 신호가 강해 금융 투자 브랜드의 신뢰와 프리미엄 상담 톤을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 8점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 172,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+            "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+            "design_brain_wiki/04_channel_usability/cardnews.md",
+            "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "cosmetics_skincare",
+      "eventContext": "스킨케어 신제품/상담형 카드뉴스와 랜딩 페이지",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+        "design_brain_wiki/01_design_principles/typography.md",
+        "design_brain_wiki/04_channel_usability/landing_page.md",
+        "design_brain_wiki/08_feedback_language/direction_feedback.md"
+      ],
+      "summary": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1.0,
+        "deepFeedback": 6,
+        "feedbackDepthRate": 1.0
+      },
+      "results": [
+        {
+          "id": "skincare_good_01",
+          "title": "Clinical warm serum product layout",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 10,
+            "brandSystemFit": 6,
+            "scalability": 6,
+            "distinctiveness": 7,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 7,
+            "copySpace": 6,
+            "visualHierarchy": 6,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 6
+          },
+          "signals": [
+            "clean",
+            "serum",
+            "product_identity",
+            "clinical_warm",
+            "blank_headline_area",
+            "efficacy_trust",
+            "soft_light"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 blank_headline_area, clean, clinical_warm 신호가 분명해서 화장품 효능 신뢰와 깨끗한 제품 설득력에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 6점, layoutUsability 7점이라 스킨케어 신제품 카드뉴스 메인 또는 랜딩 히어로로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 200,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "카드뉴스",
+              "랜딩",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        },
+        {
+          "id": "skincare_good_02",
+          "title": "Texture and ingredient card layout",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 10,
+            "brandSystemFit": 8,
+            "scalability": 8,
+            "distinctiveness": 8,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 9,
+            "copySpace": 9,
+            "visualHierarchy": 7,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 8
+          },
+          "signals": [
+            "texture",
+            "ingredient",
+            "clean",
+            "benefit_copy_space",
+            "dermocosmetic",
+            "layout_zone",
+            "premium"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 benefit_copy_space, clean, dermocosmetic 신호가 분명해서 화장품 효능 신뢰와 깨끗한 제품 설득력에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 9점, layoutUsability 9점이라 스킨케어 신제품 카드뉴스 메인 또는 랜딩 히어로로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 199,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "카드뉴스",
+              "랜딩",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        },
+        {
+          "id": "skincare_amb_01",
+          "title": "Soft spa mood with flowers",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 4,
+            "eventFit": 4,
+            "industryTrust": 5,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 4,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 4
+          },
+          "signals": [
+            "spa",
+            "pastel",
+            "fresh",
+            "flowers",
+            "weak_product_identity",
+            "weak_efficacy_trust"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 부분 참고 관점에서는 참고 가치가 있지만 카피 여백이 부족합니다 때문에 selected로 올리기에는 부족합니다. 제형감, 성분 무드, 보조 배경 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 137,
+            "criteriaHits": [
+              "무드",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        },
+        {
+          "id": "skincare_amb_02",
+          "title": "Macro cream texture only",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 7,
+            "eventFit": 6,
+            "industryTrust": 7,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 7,
+            "premiumSignal": 6,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 3,
+            "copySpace": 0,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 4
+          },
+          "signals": [
+            "texture",
+            "premium",
+            "clean_light",
+            "no_package",
+            "low_copy_space",
+            "partial_reference"
+          ],
+          "role": "제품 정체성, 무드/신뢰",
+          "feedback": "이 레퍼런스는 제품 정체성, 무드/신뢰 관점에서는 참고 가치가 있지만 카피 여백이 부족합니다 때문에 selected로 올리기에는 부족합니다. 제형감, 성분 무드, 보조 배경 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 145,
+            "criteriaHits": [
+              "제품",
+              "무드",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        },
+        {
+          "id": "skincare_bad_01",
+          "title": "Overpromised medical before-after",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -2,
+            "eventFit": -2,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 8,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "fake_text",
+            "before_after",
+            "medical_claim",
+            "unrealistic_skin",
+            "claim_risk",
+            "trust_risk"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 before_after, claim_risk, fake_text, medical_claim 신호가 강해 화장품 효능 신뢰와 깨끗한 제품 설득력을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 8점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 187,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "제품",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        },
+        {
+          "id": "skincare_bad_02",
+          "title": "Cheap splash discount banner",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -2,
+            "eventFit": -2,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 3,
+            "typographyRisk": 8,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "cheap_discount",
+            "crowded_layout",
+            "unreadable_typography",
+            "low_premium",
+            "water_splash",
+            "fake_text"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 cheap_discount, crowded_layout, fake_text, low_premium 신호가 강해 화장품 효능 신뢰와 깨끗한 제품 설득력을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 8점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 191,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "제품",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+            "design_brain_wiki/01_design_principles/typography.md",
+            "design_brain_wiki/04_channel_usability/landing_page.md",
+            "design_brain_wiki/08_feedback_language/direction_feedback.md"
+          ]
+        }
+      ]
+    },
+    {
+      "profile": "jewelry_luxury",
+      "eventContext": "주얼리 럭셔리 컬렉션 캠페인, 인스타그램/배너/랜딩 히어로",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+        "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+        "design_brain_wiki/01_design_principles/whitespace_composition.md",
+        "design_brain_wiki/04_channel_usability/banner.md"
+      ],
+      "summary": {
+        "total": 6,
+        "correct": 6,
+        "accuracy": 1.0,
+        "deepFeedback": 6,
+        "feedbackDepthRate": 1.0
+      },
+      "results": [
+        {
+          "id": "jewelry_good_01",
+          "title": "Diamond ring controlled shadow hero",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 10,
+            "brandSystemFit": 6,
+            "scalability": 6,
+            "distinctiveness": 9,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 7,
+            "copySpace": 6,
+            "visualHierarchy": 6,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 6
+          },
+          "signals": [
+            "diamond",
+            "ring",
+            "precise_highlight",
+            "controlled_shadow",
+            "negative_space",
+            "material_quality",
+            "premium"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 controlled_shadow, diamond, material_quality 신호가 분명해서 주얼리 럭셔리의 소재 신뢰와 절제된 프리미엄 톤에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 6점, layoutUsability 7점이라 럭셔리 컬렉션 캠페인 메인 비주얼 또는 배너 히어로로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 210,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "배너",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        },
+        {
+          "id": "jewelry_good_02",
+          "title": "Gold necklace editorial crop",
+          "expectedDecision": "selected",
+          "actualDecision": "selected",
+          "correct": true,
+          "scores": {
+            "brandFit": 10,
+            "eventFit": 10,
+            "industryTrust": 9,
+            "brandSystemFit": 7,
+            "scalability": 7,
+            "distinctiveness": 8,
+            "premiumSignal": 10,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 8,
+            "copySpace": 6,
+            "visualHierarchy": 7,
+            "typographyRisk": 0,
+            "colorDiscipline": 7,
+            "channelFit": 7
+          },
+          "signals": [
+            "gold_necklace",
+            "warm_directional_light",
+            "copy_space",
+            "restrained_background",
+            "premium",
+            "material_quality"
+          ],
+          "role": "제품 정체성, 무드/신뢰, 레이아웃/카피 여백",
+          "feedback": "이 레퍼런스는 copy_space, gold_necklace, material_quality 신호가 분명해서 주얼리 럭셔리의 소재 신뢰와 절제된 프리미엄 톤에 맞습니다. 제품 정체성, 무드/신뢰, 레이아웃/카피 여백 기준이 함께 살아 있고 copySpace 6점, layoutUsability 8점이라 럭셔리 컬렉션 캠페인 메인 비주얼 또는 배너 히어로로 확장하기 좋습니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 209,
+            "criteriaHits": [
+              "copySpace",
+              "layoutUsability",
+              "제품",
+              "무드",
+              "레이아웃",
+              "카피",
+              "신뢰"
+            ],
+            "useCaseHits": [
+              "배너",
+              "메인"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        },
+        {
+          "id": "jewelry_amb_01",
+          "title": "Sparkle detail macro",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 4,
+            "eventFit": 4,
+            "industryTrust": 6,
+            "brandSystemFit": 4,
+            "scalability": 3,
+            "distinctiveness": 6,
+            "premiumSignal": 4,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 3,
+            "copySpace": 0,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 2
+          },
+          "signals": [
+            "gemstone",
+            "sparkle",
+            "material_detail",
+            "tight_crop",
+            "low_copy_space",
+            "partial_reference"
+          ],
+          "role": "제품 정체성",
+          "feedback": "이 레퍼런스는 제품 정체성 관점에서는 참고 가치가 있지만 카피 여백이 부족합니다 때문에 selected로 올리기에는 부족합니다. 소재 디테일, 조명, 착용 무드 보조 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 141,
+            "criteriaHits": [
+              "제품",
+              "무드",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        },
+        {
+          "id": "jewelry_amb_02",
+          "title": "Elegant model hand pose",
+          "expectedDecision": "shortlist",
+          "actualDecision": "shortlist",
+          "correct": true,
+          "scores": {
+            "brandFit": 6,
+            "eventFit": 5,
+            "industryTrust": 7,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 6,
+            "premiumSignal": 5,
+            "cheapSignalRisk": 0,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 6,
+            "channelFit": 4
+          },
+          "signals": [
+            "hand_pose",
+            "ring",
+            "soft_light",
+            "weak_product_focus",
+            "elegant_mood"
+          ],
+          "role": "제품 정체성, 무드/신뢰",
+          "feedback": "이 레퍼런스는 제품 정체성, 무드/신뢰 관점에서는 참고 가치가 있지만 카피 여백이 부족합니다 때문에 selected로 올리기에는 부족합니다. 소재 디테일, 조명, 착용 무드 보조 기준으로만 쓰고, 메인 방향으로 쓰려면 카피 여백과 업종 신뢰 신호를 보강해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 148,
+            "criteriaHits": [
+              "제품",
+              "무드",
+              "카피",
+              "신뢰",
+              "업종",
+              "selected"
+            ],
+            "useCaseHits": [
+              "메인",
+              "보조"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        },
+        {
+          "id": "jewelry_bad_01",
+          "title": "Fantasy plastic gem render",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -2,
+            "eventFit": -2,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 5,
+            "typographyRisk": 0,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "plastic_material",
+            "fantasy_render",
+            "rainbow_glow",
+            "cheap_gift_box",
+            "excessive_sparkle",
+            "low_credibility"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 cheap_gift_box, excessive_sparkle, fantasy_render, low_credibility 신호가 강해 주얼리 럭셔리의 소재 신뢰와 절제된 프리미엄 톤을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 0점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 208,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        },
+        {
+          "id": "jewelry_bad_02",
+          "title": "Crowded sale poster jewelry",
+          "expectedDecision": "rejected",
+          "actualDecision": "rejected",
+          "correct": true,
+          "scores": {
+            "brandFit": -2,
+            "eventFit": -2,
+            "industryTrust": 0,
+            "brandSystemFit": 4,
+            "scalability": 4,
+            "distinctiveness": 5,
+            "premiumSignal": 0,
+            "cheapSignalRisk": 10,
+            "layoutUsability": 5,
+            "copySpace": 3,
+            "visualHierarchy": 3,
+            "typographyRisk": 8,
+            "colorDiscipline": 0,
+            "channelFit": 4
+          },
+          "signals": [
+            "fake_text",
+            "discount_badge",
+            "crowded_layout",
+            "cheap_signal",
+            "low_whitespace",
+            "sale_poster"
+          ],
+          "role": "부분 참고",
+          "feedback": "이 레퍼런스는 cheap_signal, crowded_layout, discount_badge, fake_text 신호가 강해 주얼리 럭셔리의 소재 신뢰와 절제된 프리미엄 톤을 통과하지 못합니다. 특히 cheapSignalRisk 10점, typographyRisk 8점이라 다음 검색/생성에서는 해당 방향을 rejected seed로 차단해야 합니다.",
+          "feedbackDepth": {
+            "pass": true,
+            "length": 197,
+            "criteriaHits": [
+              "cheapSignalRisk",
+              "typographyRisk",
+              "신뢰",
+              "rejected"
+            ],
+            "useCaseHits": [
+              "검색",
+              "생성"
+            ],
+            "genericHits": []
+          },
+          "wikiSources": [
+            "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+            "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+            "design_brain_wiki/01_design_principles/whitespace_composition.md",
+            "design_brain_wiki/04_channel_usability/banner.md"
+          ]
+        }
+      ]
+    }
+  ],
+  "nextActions": [
+    "샘플 테스트는 통과. 다음 단계는 이 evaluator를 03_reference_research report에 연결."
+  ]
+}

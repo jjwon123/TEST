@@ -1,0 +1,25 @@
+{
+  "manifest_version": 3,
+  "name": "Pinterest Board Collector",
+  "version": "0.2.0",
+  "description": "Collect and download images from the Pinterest board currently open in Chrome.",
+  "permissions": ["activeTab", "tabs", "scripting", "downloads", "storage", "nativeMessaging"],
+  "host_permissions": [
+    "https://*.pinterest.com/*",
+    "https://*.pinimg.com/*"
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Pinterest Board Collector"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://*.pinterest.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ]
+}

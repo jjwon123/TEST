@@ -1,0 +1,11 @@
+{
+  "channel_id": "threads_image",
+  "name": "Threads Image",
+  "aliases": ["threads"],
+  "planning_order": 10,
+  "default_ratio": "1:1",
+  "default_template": null,
+  "supported_templates": [],
+  "content_roles": ["short_context", "conversation_starter"],
+  "qa_requirements": ["low_text_density", "message_clarity"]
+}

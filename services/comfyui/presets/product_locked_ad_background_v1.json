@@ -1,0 +1,31 @@
+{
+  "preset_id": "product_locked_ad_background_v1",
+  "display_name": "Product Locked Ad Background Workflow V1",
+  "purpose": "Keep the original product pixels locked while creating a studio-style advertising background, contact shadow, and final canvas composition.",
+  "stage": "03_visual_candidates",
+  "comfyui_required_nodes": [
+    "LoadImage",
+    "ProductLockedAdComposite",
+    "SaveImage"
+  ],
+  "custom_nodes": [
+    "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-ProductLockedAd"
+  ],
+  "inputs": {
+    "product_image": "File name inside ComfyUI/input. Prefer transparent PNG or product photo with clean background.",
+    "ratio": "1:1, 4:5, 4:3, or 16:9.",
+    "background_style": "cosmetic_studio, pharma_blue_rank, luxury_stone, spring_clean, dark_premium, or warm_editorial.",
+    "product_scale": "Product bounding size relative to canvas.",
+    "product_x_percent": "Horizontal product anchor, 0.0 left to 1.0 right.",
+    "product_y_percent": "Vertical product anchor, 0.0 top to 1.0 bottom."
+  },
+  "product_safety": {
+    "product_pixels": "Original product RGB is only resized and pasted; no generative repaint is applied.",
+    "label_logo": "Preserved from the product source image.",
+    "risk": "If the source has no alpha channel, the full rectangular image is treated as product."
+  },
+  "next_versions": {
+    "v2": "Replace or enhance procedural background with Qwen/Flux background generation and add IC-Light relighting.",
+    "v3": "Add mask edge repair, detail transfer, upscale, and PSD/Figma handoff."
+  }
+}

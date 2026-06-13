@@ -1,0 +1,189 @@
+{
+  "last_node_id": 8,
+  "last_link_id": 7,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "LoadImage",
+      "pos": [-760, 120],
+      "size": [315, 314],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "IMAGE", "type": "IMAGE", "links": [1, 2, 3]},
+        {"name": "MASK", "type": "MASK", "links": []}
+      ],
+      "properties": {"Node name for S&R": "LoadImage"},
+      "widgets_values": ["hsgn_blue_base.png", "image"]
+    },
+    {
+      "id": 2,
+      "type": "KoreanReferencePosterTypographyOverlay",
+      "pos": [-360, -260],
+      "size": [500, 520],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [{"name": "image", "type": "IMAGE", "link": 1}],
+      "outputs": [
+        {"name": "image", "type": "IMAGE", "links": [4]},
+        {"name": "text_mask", "type": "MASK", "links": []}
+      ],
+      "properties": {"Node name for S&R": "KoreanReferencePosterTypographyOverlay"},
+      "widgets_values": [
+        "\ud53c\ubd80 \uc7a5\ubcbd\ubd80\ud130 \uad11\ucc44\uae4c\uc9c0\n\uadfc\ubcf8\uc801\uc778 \ube44\ud0c0\ubbfc \ucf00\uc5b4\ub97c\n\uc2dc\uc791\ud558\uace0 \uc2f6\ub2e4\uba74?",
+        "\ud601\uc2e0\uae30\ub2d8 \ube44\ud0c0\ubbfc \ubca0\ub9ac\uc5b4 \uc2dc\ub108\uc9c0 \ud06c\ub9bc",
+        "HSGN  |  PURE VITAMIN E EXTREME BARRIER SYNERGY CREAM",
+        "* \ubcf8 \uc774\ubbf8\uc9c0\ub294 \ud14c\uc2a4\ud2b8\uc6a9 \uc2dc\uc548\uc785\ub2c8\ub2e4. \uc2e4\uc81c \uace0\uc9c0 \ubb38\uad6c\ub294 \uac80\uc218 \ud6c4 \ud655\uc815\ud569\ub2c8\ub2e4.",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/Pretendard-Bold.otf",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/Pretendard-Medium.otf",
+        0.055,
+        0.86,
+        42,
+        18,
+        11,
+        "#FFFFFF",
+        "#004E7E"
+      ]
+    },
+    {
+      "id": 3,
+      "type": "KoreanReferencePosterTypographyOverlay",
+      "pos": [-360, 340],
+      "size": [500, 520],
+      "flags": {},
+      "order": 2,
+      "mode": 0,
+      "inputs": [{"name": "image", "type": "IMAGE", "link": 2}],
+      "outputs": [
+        {"name": "image", "type": "IMAGE", "links": [5]},
+        {"name": "text_mask", "type": "MASK", "links": []}
+      ],
+      "properties": {"Node name for S&R": "KoreanReferencePosterTypographyOverlay"},
+      "widgets_values": [
+        "\ud53c\ubd80 \uc7a5\ubcbd\ubd80\ud130 \uad11\ucc44\uae4c\uc9c0\n\uadfc\ubcf8\uc801\uc778 \ube44\ud0c0\ubbfc \ucf00\uc5b4\ub97c\n\uc2dc\uc791\ud558\uace0 \uc2f6\ub2e4\uba74?",
+        "\ud601\uc2e0\uae30\ub2d8 \ube44\ud0c0\ubbfc \ubca0\ub9ac\uc5b4 \uc2dc\ub108\uc9c0 \ud06c\ub9bc",
+        "HSGN  |  PURE VITAMIN E EXTREME BARRIER SYNERGY CREAM",
+        "* \ubcf8 \uc774\ubbf8\uc9c0\ub294 \ud14c\uc2a4\ud2b8\uc6a9 \uc2dc\uc548\uc785\ub2c8\ub2e4. \uc2e4\uc81c \uace0\uc9c0 \ubb38\uad6c\ub294 \uac80\uc218 \ud6c4 \ud655\uc815\ud569\ub2c8\ub2e4.",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/GmarketSansBold.otf",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/GmarketSansMedium.otf",
+        0.055,
+        0.86,
+        40,
+        18,
+        11,
+        "#FFFFFF",
+        "#004E7E"
+      ]
+    },
+    {
+      "id": 4,
+      "type": "KoreanReferencePosterTypographyOverlay",
+      "pos": [-360, 940],
+      "size": [500, 520],
+      "flags": {},
+      "order": 3,
+      "mode": 0,
+      "inputs": [{"name": "image", "type": "IMAGE", "link": 3}],
+      "outputs": [
+        {"name": "image", "type": "IMAGE", "links": [6]},
+        {"name": "text_mask", "type": "MASK", "links": []}
+      ],
+      "properties": {"Node name for S&R": "KoreanReferencePosterTypographyOverlay"},
+      "widgets_values": [
+        "\ud53c\ubd80 \uc7a5\ubcbd\ubd80\ud130 \uad11\ucc44\uae4c\uc9c0\n\uadfc\ubcf8\uc801\uc778 \ube44\ud0c0\ubbfc \ucf00\uc5b4\ub97c\n\uc2dc\uc791\ud558\uace0 \uc2f6\ub2e4\uba74?",
+        "\ud601\uc2e0\uae30\ub2d8 \ube44\ud0c0\ubbfc \ubca0\ub9ac\uc5b4 \uc2dc\ub108\uc9c0 \ud06c\ub9bc",
+        "HSGN  |  PURE VITAMIN E EXTREME BARRIER SYNERGY CREAM",
+        "* \ubcf8 \uc774\ubbf8\uc9c0\ub294 \ud14c\uc2a4\ud2b8\uc6a9 \uc2dc\uc548\uc785\ub2c8\ub2e4. \uc2e4\uc81c \uace0\uc9c0 \ubb38\uad6c\ub294 \uac80\uc218 \ud6c4 \ud655\uc815\ud569\ub2c8\ub2e4.",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/GmarketSansMedium.otf",
+        "D:/CD/fc_comfyui/ComfyUI_windows_portable_soylab/ComfyUI/custom_nodes/ComfyUI-KoreanTextOverlay/fonts/GmarketSansLight.otf",
+        0.055,
+        0.86,
+        40,
+        18,
+        11,
+        "#FFFFFF",
+        "#004E7E"
+      ]
+    },
+    {
+      "id": 5,
+      "type": "SaveImage",
+      "pos": [260, -210],
+      "size": [315, 270],
+      "flags": {},
+      "order": 4,
+      "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 4}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveImage"},
+      "widgets_values": ["TypographyTests/font_compare/01_pretendard_bold_medium"]
+    },
+    {
+      "id": 6,
+      "type": "SaveImage",
+      "pos": [260, 390],
+      "size": [315, 270],
+      "flags": {},
+      "order": 5,
+      "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 5}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveImage"},
+      "widgets_values": ["TypographyTests/font_compare/02_gmarket_bold_medium"]
+    },
+    {
+      "id": 7,
+      "type": "SaveImage",
+      "pos": [260, 990],
+      "size": [315, 270],
+      "flags": {},
+      "order": 6,
+      "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 6}],
+      "outputs": [],
+      "properties": {"Node name for S&R": "SaveImage"},
+      "widgets_values": ["TypographyTests/font_compare/03_gmarket_medium_light"]
+    }
+  ],
+  "links": [
+    [1, 1, 0, 2, 0, "IMAGE"],
+    [2, 1, 0, 3, 0, "IMAGE"],
+    [3, 1, 0, 4, 0, "IMAGE"],
+    [4, 2, 0, 5, 0, "IMAGE"],
+    [5, 3, 0, 6, 0, "IMAGE"],
+    [6, 4, 0, 7, 0, "IMAGE"]
+  ],
+  "groups": [
+    {
+      "title": "Pretendard Bold + Medium",
+      "bounding": [-390, -320, 1010, 640],
+      "color": "#3f789e",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Gmarket Sans Bold + Medium",
+      "bounding": [-390, 280, 1010, 640],
+      "color": "#a66a29",
+      "font_size": 24,
+      "flags": {}
+    },
+    {
+      "title": "Gmarket Sans Medium + Light",
+      "bounding": [-390, 880, 1010, 640],
+      "color": "#6f7f3f",
+      "font_size": 24,
+      "flags": {}
+    }
+  ],
+  "config": {},
+  "extra": {
+    "workflow_name": "HSGN Typography Font Compare V1",
+    "workflow_description": "Compare Pretendard and Gmarket Sans typography using the same Korean reference poster overlay.",
+    "ds": {"scale": 0.75, "offset": [870, 240]}
+  },
+  "version": 0.4
+}

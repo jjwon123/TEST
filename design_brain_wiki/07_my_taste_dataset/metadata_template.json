@@ -1,0 +1,28 @@
+{
+  "profile": "",
+  "items": [
+    {
+      "filename": "",
+      "brandProfile": "",
+      "eventType": "",
+      "decision": "good | bad | shortlist",
+      "category": "",
+      "tags": [],
+      "why": "",
+      "usefulFor": [],
+      "riskSignals": [],
+      "scoreHints": {
+        "brandFit": 0,
+        "eventFit": 0,
+        "industryTrust": 0,
+        "layoutUsability": 0,
+        "copySpace": 0,
+        "premiumSignal": 0,
+        "cheapSignalRisk": 0,
+        "typographyRisk": 0
+      },
+      "feedbackExample": ""
+    }
+  ]
+}
+

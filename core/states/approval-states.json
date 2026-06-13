@@ -1,0 +1,4 @@
+{
+  "states": ["not_required", "pending", "approved", "rejected"],
+  "initial": "pending"
+}

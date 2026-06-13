@@ -1,0 +1,17 @@
+{
+  "required_checks": [
+    "file_exists",
+    "dimensions_match",
+    "format_allowed",
+    "forbidden_phrases_absent",
+    "required_phrases_present",
+    "cta_present_when_required"
+  ],
+  "severity_defaults": {
+    "file_exists": "blocker",
+    "dimensions_match": "blocker",
+    "forbidden_phrases_absent": "blocker",
+    "required_phrases_present": "major",
+    "cta_present_when_required": "major"
+  }
+}

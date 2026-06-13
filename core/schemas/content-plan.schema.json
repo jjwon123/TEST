@@ -1,0 +1,39 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Content Plan",
+  "type": "object",
+  "required": [
+    "stage",
+    "schema_version",
+    "event_id",
+    "event_name",
+    "brief",
+    "channel_plans",
+    "deliverables",
+    "image_needs",
+    "strategy_summary",
+    "research_context",
+    "reasoning_trace",
+    "quality_assessment",
+    "open_questions",
+    "approval_status",
+    "created_at"
+  ],
+  "properties": {
+    "stage": { "type": "string", "const": "02_content_planning" },
+    "schema_version": { "type": "string" },
+    "event_id": { "type": "string" },
+    "event_name": { "type": "string" },
+    "brief": { "type": "object" },
+    "channel_plans": { "type": "array", "items": { "type": "object" } },
+    "deliverables": { "type": "array", "items": { "type": "object" } },
+    "image_needs": { "type": "array", "items": { "type": "object" } },
+    "strategy_summary": { "type": "object" },
+    "research_context": { "type": "object" },
+    "reasoning_trace": { "type": "object" },
+    "quality_assessment": { "type": "object" },
+    "open_questions": { "type": "array", "items": { "type": "string" } },
+    "approval_status": { "type": "string", "enum": ["draft", "review_pending", "approved", "rejected"] },
+    "created_at": { "type": "string" }
+  }
+}

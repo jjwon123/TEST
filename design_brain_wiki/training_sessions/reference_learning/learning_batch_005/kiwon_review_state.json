@@ -1,0 +1,84 @@
+{
+  "reviews": {
+    "learning_ref_28947f8f1af8": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:11.290401+00:00"
+    },
+    "learning_ref_2a2bbaf35107": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:11.922253+00:00"
+    },
+    "learning_ref_2b35d74b56f8": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:16.980509+00:00"
+    },
+    "learning_ref_2c74a57a0c10": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:17.642433+00:00"
+    },
+    "learning_ref_2cca9cb30915": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:20.955075+00:00"
+    },
+    "learning_ref_2ce130c20ea9": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:21.570772+00:00"
+    },
+    "learning_ref_2ac79e1af808": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:28:30.170812+00:00"
+    }
+  },
+  "profile": "reference_learning",
+  "sessionId": "learning_batch_005",
+  "updatedAt": "2026-06-10T14:28:30.170812+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 7,
+    "agree": 2,
+    "disagree": 5,
+    "unsure": 0,
+    "overSelected": 0,
+    "overRejected": 0,
+    "abstractFeedback": 7,
+    "accuracy": 0.286,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 2,
+      "rejected": 5
+    },
+    "transitionCounts": {
+      "shortlist->rejected": 5,
+      "shortlist->shortlist": 2
+    },
+    "reasonTagCounts": {}
+  }
+}

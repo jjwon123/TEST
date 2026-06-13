@@ -1,0 +1,361 @@
+{
+  "event_id": "event",
+  "updated_at": "2026-05-08T15:24:49.438688+00:00",
+  "assets": [
+    {
+      "asset_id": "event__instagram_card_news_01_slide_01",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "card_news",
+      "intended_use": "hook",
+      "visual_keywords": [
+        "instagram",
+        "card_news",
+        "hook"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_card_news_01_slide_01.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__instagram_card_news_01_slide_02",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "card_news",
+      "intended_use": "problem",
+      "visual_keywords": [
+        "instagram",
+        "card_news",
+        "problem"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_card_news_01_slide_02.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__instagram_card_news_01_slide_03",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "card_news",
+      "intended_use": "benefit",
+      "visual_keywords": [
+        "instagram",
+        "card_news",
+        "benefit"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_card_news_01_slide_03.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__instagram_card_news_01_slide_04",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "card_news",
+      "intended_use": "how_to",
+      "visual_keywords": [
+        "instagram",
+        "card_news",
+        "how_to"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_card_news_01_slide_04.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__instagram_card_news_01_slide_05",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "card_news",
+      "intended_use": "cta",
+      "visual_keywords": [
+        "instagram",
+        "card_news",
+        "cta"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_card_news_01_slide_05.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__instagram_feed_single_02",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "instagram",
+      "template_family": "unknown",
+      "intended_use": "content",
+      "visual_keywords": [
+        "instagram"
+      ],
+      "tags": [
+        "channel:instagram",
+        "format:1080x1080",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.4,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.0,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "instagram",
+        "threads"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/instagram_feed_single_02.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1080
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__naver_blog_blog_thumbnail_01",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "naver_blog",
+      "template_family": "blog_thumbnail",
+      "intended_use": "thumbnail",
+      "visual_keywords": [
+        "naver_blog",
+        "blog_thumbnail",
+        "thumbnail"
+      ],
+      "tags": [
+        "channel:naver_blog",
+        "format:1280x720",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "naver_blog",
+        "brunch"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/naver_blog_blog_thumbnail_01.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__naver_blog_blog_section_image_02",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "naver_blog",
+      "template_family": "blog_section",
+      "intended_use": "section",
+      "visual_keywords": [
+        "naver_blog",
+        "blog_section",
+        "section"
+      ],
+      "tags": [
+        "channel:naver_blog",
+        "format:1280x720",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "naver_blog",
+        "brunch"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/naver_blog_blog_section_image_02.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1280,
+        "height": 720
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    },
+    {
+      "asset_id": "event__community_notice_image_01",
+      "event_id": "event",
+      "event_type": "general",
+      "channel_id": "community",
+      "template_family": "unknown",
+      "intended_use": "content",
+      "visual_keywords": [
+        "community"
+      ],
+      "tags": [
+        "channel:community",
+        "format:1080x1350",
+        "reuse:not_reusable"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.3,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.0,
+        "template_stability": 0.0,
+        "event_specificity_penalty": -0.0
+      },
+      "reuse_recommended_for": [
+        "community"
+      ],
+      "reuse_status": "not_reusable",
+      "source_candidate_id": "",
+      "source_run_id": "2026-04-18T06-35-58-238Z_봄맞이_금_투자_상담_이벤트",
+      "archive_path_approved": "approved/event/community_notice_image_01.png",
+      "archive_path_reusable": "",
+      "dimensions": {
+        "width": 1080,
+        "height": 1350
+      },
+      "archived_at": "2026-05-08T15:24:49.438688+00:00"
+    }
+  ]
+}

@@ -1,0 +1,30 @@
+{
+  "brandName": "여의도 금거래소",
+  "eventName": "테스트 자동화 이벤트",
+  "purpose": "신규 고객 상담 신청을 늘리고 실물 금 투자에 대한 관심을 높인다.",
+  "target": "금 투자에 관심은 있지만 구매 경험이 적은 30~50대 예비 고객",
+  "channels": [
+    "instagram",
+    "naver_blog",
+    "community"
+  ],
+  "schedule": {
+    "startDate": "2026-04-20",
+    "endDate": "2026-04-30",
+    "publishDate": "2026-04-19"
+  },
+  "offer": "상담 신청 고객에게 금 시세 가이드 PDF와 방문 상담 우선 예약 혜택 제공",
+  "references": [
+    "기존 봄 프로모션 카드뉴스",
+    "네이버 블로그 투자 가이드형 콘텐츠"
+  ],
+  "requiredPhrases": [
+    "상담 신청",
+    "실물 금"
+  ],
+  "bannedWords": [
+    "원금 보장",
+    "무조건 수익"
+  ],
+  "notes": "과장된 투자 표현은 피하고 신뢰감 있는 안내형 톤을 유지한다."
+}

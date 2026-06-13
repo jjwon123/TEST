@@ -1,0 +1,203 @@
+{
+  "event_id": "hsgn-niacinamide-summer",
+  "updated_at": "2026-05-25T10:26:53.341382+00:00",
+  "assets": [
+    {
+      "asset_id": "hsgn-niacinamide-summer__instagram_cardnews_01__key_visual_c01",
+      "event_id": "hsgn-niacinamide-summer",
+      "event_type": "general",
+      "channel_id": "instagram_cardnews",
+      "template_family": "instagram_cardnews_5slide_v1",
+      "template_id": "instagram_cardnews_5slide_v1",
+      "template_inference_source": "content-plan.deliverables[].template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "bright",
+        "scientific",
+        "minimal",
+        "white or soft neutral background",
+        "instagram_cardnews",
+        "instagram_cardnews_5slide_v1"
+      ],
+      "tags": [
+        "channel:instagram_cardnews",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "content-plan.deliverables[].template_id"
+      },
+      "reuse_recommended_for": [
+        "instagram_cardnews",
+        "instagram_feed",
+        "threads_image"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-05-18_14-33-54_여름-미백-집중-케어-나이아신아마이드-이벤트",
+      "archive_path_approved": "approved/hsgn-niacinamide-summer/instagram_cardnews_01__key_visual_c01.png",
+      "archive_path_reusable": "",
+      "source_export_path": "03_visual_candidates\\previews\\instagram_cardnews_01__key_visual_c01.png",
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "archived_at": "2026-05-25T10:26:53.341382+00:00"
+    },
+    {
+      "asset_id": "hsgn-niacinamide-summer__instagram_feed_01__key_visual_c01",
+      "event_id": "hsgn-niacinamide-summer",
+      "event_type": "general",
+      "channel_id": "instagram_feed",
+      "template_family": "instagram_feed_single_v1",
+      "template_id": "instagram_feed_single_v1",
+      "template_inference_source": "content-plan.deliverables[].template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "bright",
+        "scientific",
+        "minimal",
+        "white or soft neutral background",
+        "instagram_feed",
+        "instagram_feed_single_v1"
+      ],
+      "tags": [
+        "channel:instagram_feed",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "content-plan.deliverables[].template_id"
+      },
+      "reuse_recommended_for": [
+        "instagram_feed",
+        "instagram_cardnews",
+        "threads_image"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-05-18_14-33-54_여름-미백-집중-케어-나이아신아마이드-이벤트",
+      "archive_path_approved": "approved/hsgn-niacinamide-summer/instagram_feed_01__key_visual_c01.png",
+      "archive_path_reusable": "",
+      "source_export_path": "03_visual_candidates\\previews\\instagram_feed_01__key_visual_c01.png",
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "archived_at": "2026-05-25T10:26:53.341382+00:00"
+    },
+    {
+      "asset_id": "hsgn-niacinamide-summer__blog_thumbnail_01__cover_c01",
+      "event_id": "hsgn-niacinamide-summer",
+      "event_type": "general",
+      "channel_id": "blog_thumbnail",
+      "template_family": "blog_thumbnail_v1",
+      "template_id": "blog_thumbnail_v1",
+      "template_inference_source": "content-plan.deliverables[].template_id",
+      "template_inference_warning": "",
+      "intended_use": "thumbnail",
+      "visual_keywords": [
+        "clean",
+        "bright",
+        "scientific",
+        "minimal",
+        "white or soft neutral background",
+        "blog_thumbnail",
+        "blog_thumbnail_v1",
+        "thumbnail"
+      ],
+      "tags": [
+        "channel:blog_thumbnail",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "content-plan.deliverables[].template_id"
+      },
+      "reuse_recommended_for": [
+        "blog_thumbnail",
+        "blog_inline_image",
+        "brunch_cover"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-05-18_14-33-54_여름-미백-집중-케어-나이아신아마이드-이벤트",
+      "archive_path_approved": "approved/hsgn-niacinamide-summer/blog_thumbnail_01__cover_c01.png",
+      "archive_path_reusable": "",
+      "source_export_path": "03_visual_candidates\\previews\\blog_thumbnail_01__cover_c01.png",
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "archived_at": "2026-05-25T10:26:53.341382+00:00"
+    },
+    {
+      "asset_id": "hsgn-niacinamide-summer__blog_inline_image_01__support_c01",
+      "event_id": "hsgn-niacinamide-summer",
+      "event_type": "general",
+      "channel_id": "blog_inline_image",
+      "template_family": "blog_inline_image_v1",
+      "template_id": "blog_inline_image_v1",
+      "template_inference_source": "content-plan.deliverables[].template_id",
+      "template_inference_warning": "",
+      "intended_use": "content",
+      "visual_keywords": [
+        "clean",
+        "bright",
+        "scientific",
+        "minimal",
+        "white or soft neutral background",
+        "blog_inline_image",
+        "blog_inline_image_v1"
+      ],
+      "tags": [
+        "channel:blog_inline_image",
+        "reuse:limited_reuse"
+      ],
+      "qa_status": "pass",
+      "reuse_score": 0.5,
+      "reuse_score_breakdown": {
+        "qa_pass": 0.3,
+        "channel_suitability": 0.1,
+        "template_stability": 0.1,
+        "event_specificity_penalty": -0.0,
+        "template_inference_source": "content-plan.deliverables[].template_id"
+      },
+      "reuse_recommended_for": [
+        "blog_inline_image",
+        "blog_thumbnail",
+        "brunch_cover"
+      ],
+      "reuse_status": "limited_reuse",
+      "source_candidate_id": "",
+      "source_run_id": "2026-05-18_14-33-54_여름-미백-집중-케어-나이아신아마이드-이벤트",
+      "archive_path_approved": "approved/hsgn-niacinamide-summer/blog_inline_image_01__support_c01.png",
+      "archive_path_reusable": "",
+      "source_export_path": "03_visual_candidates\\previews\\blog_inline_image_01__support_c01.png",
+      "dimensions": {
+        "width": 0,
+        "height": 0
+      },
+      "archived_at": "2026-05-25T10:26:53.341382+00:00"
+    }
+  ]
+}

@@ -1,0 +1,169 @@
+{
+  "version": "2026-05-31",
+  "purpose": "Senior Designer Brain Wiki reference judgement sample set",
+  "profiles": [
+    {
+      "profile": "bullion_investment",
+      "eventContext": "금 투자 상담 이벤트, 인스타그램 카드뉴스와 상담 신청 배너",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/bullion_investment.md",
+        "design_brain_wiki/03_reference_judgement/selected_criteria.md",
+        "design_brain_wiki/04_channel_usability/cardnews.md",
+        "design_brain_wiki/08_feedback_language/senior_designer_critique_phrases.md"
+      ],
+      "candidates": [
+        {
+          "id": "bullion_good_01",
+          "title": "Dark navy gold bar consultation poster",
+          "description": "A premium dark navy poster layout with a real gold bar on a stone surface, controlled metallic reflection, wide blank headline area on the left, calm private banking mood, no readable text.",
+          "signals": ["gold_bar", "premium", "dark_navy", "financial_consultation", "blank_headline_area", "minimal_layout", "calm_trust", "no_fake_text"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "bullion_good_02",
+          "title": "Gold coin investment banner",
+          "description": "Gold coin stack photographed with soft studio lighting, white and navy negative space, conservative wealth management tone, product clearly reads as bullion investment, space for Korean headline and CTA.",
+          "signals": ["gold_coin", "wealth_management", "soft_studio_light", "copy_space", "product_identity", "premium", "cta_space"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "bullion_amb_01",
+          "title": "Luxury gold abstract background",
+          "description": "Elegant dark gold abstract wave background with premium feeling and enough blank space, but no visible gold bar, coin, consultation cue, or financial product identity.",
+          "signals": ["premium", "abstract_background", "blank_headline_area", "weak_product_identity", "decorative"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "bullion_amb_02",
+          "title": "Gold bars close-up crop",
+          "description": "Very strong bullion product close-up with realistic metal texture, but the crop is tight, headline space is almost absent, and it would be difficult to use as cardnews main visual.",
+          "signals": ["gold_bar", "product_identity", "realistic_metal", "low_copy_space", "tight_crop"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "bullion_bad_01",
+          "title": "Cute gold mascot camping scene",
+          "description": "Cute 3D mascot holding a gold coin near a small camping tent, picnic props, toy-like material, playful bright colors, fake poster text in the background.",
+          "signals": ["mascot", "cute", "toy_3d", "camping", "picnic", "fake_text", "not_financial"],
+          "expectedDecision": "rejected"
+        },
+        {
+          "id": "bullion_bad_02",
+          "title": "Casino gold jackpot typography",
+          "description": "Flashy gold typography, casino-like lights, jackpot mood, fake numbers and unreadable text, more like a game promotion than a financial consultation event.",
+          "signals": ["fake_text", "casino", "jackpot", "unreadable_typography", "hype", "not_trustworthy"],
+          "expectedDecision": "rejected"
+        }
+      ]
+    },
+    {
+      "profile": "cosmetics_skincare",
+      "eventContext": "스킨케어 신제품/상담형 카드뉴스와 랜딩 페이지",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/cosmetics_skincare.md",
+        "design_brain_wiki/01_design_principles/typography.md",
+        "design_brain_wiki/04_channel_usability/landing_page.md",
+        "design_brain_wiki/08_feedback_language/direction_feedback.md"
+      ],
+      "candidates": [
+        {
+          "id": "skincare_good_01",
+          "title": "Clinical warm serum product layout",
+          "description": "Clean serum bottle product photography on a white surface, soft warm clinical light, subtle texture swatch, clear blank area for headline, credible skincare efficacy mood without exaggerated claims.",
+          "signals": ["clean", "serum", "product_identity", "clinical_warm", "blank_headline_area", "efficacy_trust", "soft_light"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "skincare_good_02",
+          "title": "Texture and ingredient card layout",
+          "description": "Minimal skincare texture close-up with ingredient cue, structured layout zone for benefit copy, bright clean lighting, premium but approachable dermocosmetic tone.",
+          "signals": ["texture", "ingredient", "clean", "benefit_copy_space", "dermocosmetic", "layout_zone", "premium"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "skincare_amb_01",
+          "title": "Soft spa mood with flowers",
+          "description": "Soft pastel bathroom spa mood with flowers and water, pleasant and fresh, but product is missing and efficacy trust is weak for a skincare launch or consultation campaign.",
+          "signals": ["spa", "pastel", "fresh", "flowers", "weak_product_identity", "weak_efficacy_trust"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "skincare_amb_02",
+          "title": "Macro cream texture only",
+          "description": "Beautiful cream texture macro with clean light and premium feel, but no package, no brand cue, and limited room for a complete cardnews message.",
+          "signals": ["texture", "premium", "clean_light", "no_package", "low_copy_space", "partial_reference"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "skincare_bad_01",
+          "title": "Overpromised medical before-after",
+          "description": "Dramatic before-after skin claim with fake labels, medical device mood, unrealistic flawless skin, high legal and trust risk for cosmetics advertising.",
+          "signals": ["fake_text", "before_after", "medical_claim", "unrealistic_skin", "claim_risk", "trust_risk"],
+          "expectedDecision": "rejected"
+        },
+        {
+          "id": "skincare_bad_02",
+          "title": "Cheap splash discount banner",
+          "description": "Crowded neon discount banner with many product boxes, water splash, unreadable sale typography, low premium signal, no calm skincare credibility.",
+          "signals": ["cheap_discount", "crowded_layout", "unreadable_typography", "low_premium", "water_splash", "fake_text"],
+          "expectedDecision": "rejected"
+        }
+      ]
+    },
+    {
+      "profile": "jewelry_luxury",
+      "eventContext": "주얼리 럭셔리 컬렉션 캠페인, 인스타그램/배너/랜딩 히어로",
+      "wikiSources": [
+        "design_brain_wiki/05_industry_playbooks/jewelry_luxury.md",
+        "design_brain_wiki/02_brand_strategy/premium_vs_cheap.md",
+        "design_brain_wiki/01_design_principles/whitespace_composition.md",
+        "design_brain_wiki/04_channel_usability/banner.md"
+      ],
+      "candidates": [
+        {
+          "id": "jewelry_good_01",
+          "title": "Diamond ring controlled shadow hero",
+          "description": "Diamond ring on a restrained charcoal surface, precise highlight, controlled shadow, elegant negative space for headline, product scale and material quality are clear.",
+          "signals": ["diamond", "ring", "precise_highlight", "controlled_shadow", "negative_space", "material_quality", "premium"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "jewelry_good_02",
+          "title": "Gold necklace editorial crop",
+          "description": "Luxury necklace photographed with warm directional light, restrained background, enough side space for campaign copy, premium material reads clearly without excessive sparkle.",
+          "signals": ["gold_necklace", "warm_directional_light", "copy_space", "restrained_background", "premium", "material_quality"],
+          "expectedDecision": "selected"
+        },
+        {
+          "id": "jewelry_amb_01",
+          "title": "Sparkle detail macro",
+          "description": "Beautiful gemstone sparkle macro with high material detail, but the crop is too tight and does not leave room for headline or campaign structure.",
+          "signals": ["gemstone", "sparkle", "material_detail", "tight_crop", "low_copy_space", "partial_reference"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "jewelry_amb_02",
+          "title": "Elegant model hand pose",
+          "description": "Elegant hand pose with a ring and soft skin tone, but product identity is slightly secondary and the layout would need stronger product focus for a collection hero.",
+          "signals": ["hand_pose", "ring", "soft_light", "weak_product_focus", "elegant_mood"],
+          "expectedDecision": "shortlist"
+        },
+        {
+          "id": "jewelry_bad_01",
+          "title": "Fantasy plastic gem render",
+          "description": "Overly shiny fantasy render with plastic-like diamonds, rainbow glow, decorative stars, cheap gift-box mood, not credible as luxury jewelry.",
+          "signals": ["plastic_material", "fantasy_render", "rainbow_glow", "cheap_gift_box", "excessive_sparkle", "low_credibility"],
+          "expectedDecision": "rejected"
+        },
+        {
+          "id": "jewelry_bad_02",
+          "title": "Crowded sale poster jewelry",
+          "description": "Crowded red sale poster with many jewelry items, fake discount text, loud badge graphics, no premium whitespace, product value feels cheap.",
+          "signals": ["fake_text", "discount_badge", "crowded_layout", "cheap_signal", "low_whitespace", "sale_poster"],
+          "expectedDecision": "rejected"
+        }
+      ]
+    }
+  ]
+}
+

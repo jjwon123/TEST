@@ -1,0 +1,42 @@
+{
+  "reviewer": "admin",
+  "reviewedAt": "2026-05-12T00:00:00+09:00",
+  "decisions": [
+    {
+      "candidateId": "instagram_cardnews_01__key_visual_c01",
+      "status": "selected",
+      "reason": "카드뉴스 메인 커버로 쓰기 좋은 구조와 충분한 텍스트 여백"
+    },
+    {
+      "candidateId": "instagram_cardnews_01__key_visual_c02",
+      "status": "regenerate",
+      "reason": "메인 오브젝트는 좋지만 상단 타이틀 여백을 더 확보할 필요가 있음",
+      "request": "상단 35%를 더 비우고 제품 초점을 하단으로 낮춘 버전 생성"
+    },
+    {
+      "candidateId": "instagram_cardnews_01__key_visual_c03",
+      "status": "rejected",
+      "reason": "텍스트 오버레이 후보로는 시각 밀도가 높음"
+    },
+    {
+      "candidateId": "instagram_feed_01__key_visual_c01",
+      "status": "selected",
+      "reason": "단일 피드 공지형 CTA 이미지로 가장 명료함"
+    },
+    {
+      "candidateId": "blog_thumbnail_01__cover_c01",
+      "status": "selected",
+      "reason": "썸네일 타이틀 배치에 필요한 넓은 좌측 여백이 있음"
+    },
+    {
+      "candidateId": "blog_inline_image_01__support_c01",
+      "status": "selected",
+      "reason": "본문 설명형 이미지를 보조하기에 무드가 과하지 않음"
+    },
+    {
+      "candidateId": "blog_inline_image_01__support_c02",
+      "status": "hold",
+      "reason": "세부 카피 확정 이후 재검토"
+    }
+  ]
+}

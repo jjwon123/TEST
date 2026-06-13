@@ -1,0 +1,78 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "07 Asset Archive — Input",
+  "type": "object",
+  "required": ["final_package_manifest", "qa_report"],
+  "properties": {
+    "final_package_manifest": {
+      "type": "array",
+      "description": "06_qa_packaging final-package-manifest.json — array of frame records",
+      "items": {
+        "type": "object",
+        "required": ["frameId", "channel", "exportFileName", "finalPackagePath"],
+        "properties": {
+          "frameId":          { "type": "string" },
+          "frameName":        { "type": "string" },
+          "channel":          { "type": "string" },
+          "channelName":      { "type": "string" },
+          "deliverableId":    { "type": "string" },
+          "template_id":      { "type": "string" },
+          "width":            { "type": "integer" },
+          "height":           { "type": "integer" },
+          "exportFileName":   { "type": "string" },
+          "sourceExportPath": { "type": "string" },
+          "finalPackagePath": { "type": "string" },
+          "channelPackagePath":{ "type": "string" }
+        }
+      }
+    },
+    "qa_report": {
+      "type": "object",
+      "description": "06_qa_packaging qa-report.json",
+      "required": ["summary"],
+      "properties": {
+        "summary": {
+          "type": "object",
+          "required": ["status"],
+          "properties": {
+            "status":   { "type": "string", "enum": ["pass", "fail", "warn"] },
+            "frames":   { "type": "integer" },
+            "issues":   { "type": "integer" },
+            "blocking": { "type": "integer" }
+          }
+        },
+        "issues": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "frameId":  { "type": "string" },
+              "severity": { "type": "string" },
+              "message":  { "type": "string" }
+            }
+          }
+        },
+        "packageManifest": { "type": "array" }
+      }
+    },
+    "selected_assets": {
+      "type": "object",
+      "description": "04_admin_selection selected-assets.json — optional, enriches visual_keywords",
+      "properties": {
+        "selections": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "properties": {
+              "deliverableId": { "type": "string" },
+              "selectedFile":  { "type": "string" },
+              "filePath":      { "type": "string" },
+              "reusedFor":     { "type": "array", "items": { "type": "string" } },
+              "notes":         { "type": "string" }
+            }
+          }
+        }
+      }
+    }
+  }
+}

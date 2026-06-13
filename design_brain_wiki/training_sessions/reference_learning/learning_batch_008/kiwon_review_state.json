@@ -1,0 +1,44 @@
+{
+  "reviews": {
+    "learning_ref_3e8be418e7ce": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:30:06.940076+00:00"
+    },
+    "learning_ref_49d634bb66eb": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-10T14:30:07.719016+00:00"
+    }
+  },
+  "profile": "reference_learning",
+  "sessionId": "learning_batch_008",
+  "updatedAt": "2026-06-10T14:30:07.719016+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 2,
+    "agree": 0,
+    "disagree": 2,
+    "unsure": 0,
+    "overSelected": 1,
+    "overRejected": 0,
+    "abstractFeedback": 2,
+    "accuracy": 0.0,
+    "finalDecisionCounts": {
+      "selected": 1,
+      "shortlist": 0,
+      "rejected": 1
+    },
+    "transitionCounts": {
+      "selected->rejected": 1,
+      "shortlist->selected": 1
+    },
+    "reasonTagCounts": {}
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "template_id": "community_notice_banner_v1",
+  "channel_id": "community_banner",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "16:9",
+  "text_slots": ["headline", "details", "cta"],
+  "visual_slots": ["background"],
+  "max_text_length": { "headline": 34, "details": 90, "cta": 18 },
+  "safe_area": { "top": 72, "right": 96, "bottom": 72, "left": 96 },
+  "cta_slot": "cta",
+  "export_rule": { "format": "png", "scale": 2 }
+}

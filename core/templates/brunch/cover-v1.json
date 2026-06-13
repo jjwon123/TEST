@@ -1,0 +1,13 @@
+{
+  "template_id": "brunch_cover_v1",
+  "channel_id": "brunch_cover",
+  "figma_file_key": "",
+  "figma_node_id": "",
+  "ratio": "16:9",
+  "text_slots": ["title", "subtitle"],
+  "visual_slots": ["cover_visual"],
+  "max_text_length": { "title": 34, "subtitle": 64 },
+  "safe_area": { "top": 80, "right": 96, "bottom": 80, "left": 96 },
+  "cta_slot": null,
+  "export_rule": { "format": "png", "scale": 2 }
+}

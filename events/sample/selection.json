@@ -1,0 +1,35 @@
+{
+  "reviewer": "admin",
+  "reviewedAt": "2026-04-17",
+  "rules": {
+    "defaultStatus": "pending",
+    "allowMultipleSelectedPerDeliverable": false
+  },
+  "decisions": [
+    {
+      "candidateId": "instagram_card_news_01_v01",
+      "status": "selected",
+      "reason": "카드뉴스 표지와 상세 슬라이드로 확장하기 좋은 메인 키비주얼 방향"
+    },
+    {
+      "candidateId": "instagram_feed_single_02_v01",
+      "status": "selected",
+      "reason": "단일 공지 이미지에 적합한 명확한 구성"
+    },
+    {
+      "candidateId": "naver_blog_blog_thumbnail_01_v01",
+      "status": "selected",
+      "reason": "블로그 썸네일로 쓰기 좋은 넓은 제목 영역"
+    },
+    {
+      "candidateId": "naver_blog_blog_section_image_02_v01",
+      "status": "selected",
+      "reason": "본문 중간 정보 이미지로 활용 가능"
+    },
+    {
+      "candidateId": "community_notice_image_01_v01",
+      "status": "selected",
+      "reason": "공지형 이미지에 필요한 가독성 확보 가능"
+    }
+  ]
+}

@@ -1,0 +1,5 @@
+{
+  "claim_policy": "Do not add unsupported financial, medical, legal, scarcity, or guarantee claims.",
+  "visual_policy": "Reject visuals that conflict with brand guide, event context, or platform safety.",
+  "approval_policy": "Human approval is required before crossing major gates."
+}

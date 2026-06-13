@@ -1,0 +1,92 @@
+{
+  "version": "2026-05-28",
+  "profiles": {
+    "bullion_investment": {
+      "brandRole": "premium precious-metal investment and consultation brand",
+      "personality": [
+        "calm",
+        "trustworthy",
+        "precise",
+        "premium",
+        "finance-literate"
+      ],
+      "visualPrinciples": [
+        "Use gold bars, gold coins, bullion products, consultation desks, financial documents, or abstract finance backgrounds as core cues.",
+        "Keep layouts serious, calm, minimal, and suitable for investment consultation.",
+        "Reserve clear blank space for Korean headline composition.",
+        "Use references for mood, composition, color, light, and material texture only."
+      ],
+      "allowedDirections": [
+        "premium gold investment",
+        "financial consultation",
+        "wealth management",
+        "luxury product photography",
+        "gold bar",
+        "gold coin",
+        "bullion product",
+        "calm trust",
+        "minimal poster layout",
+        "dark navy",
+        "gold",
+        "white",
+        "blank space for Korean headline"
+      ],
+      "disallowedDirections": [
+        "mascot",
+        "cute",
+        "toy",
+        "kawaii",
+        "character",
+        "camping",
+        "picnic",
+        "theme park",
+        "wine bottle",
+        "package box",
+        "fake text",
+        "unreadable typography",
+        "childish 3d",
+        "game-like UI"
+      ]
+    },
+    "cosmetics_skincare": {
+      "brandRole": "clean functional skincare promotion brand",
+      "personality": [
+        "bright",
+        "clean",
+        "benefit-focused",
+        "science-backed",
+        "retail-friendly"
+      ],
+      "visualPrinciples": [
+        "Use cosmetic product, serum bottle, ingredient cue, clean skin-care layout, benefit badge, and gift/discount hierarchy as core cues.",
+        "Keep the tone bright and promotional, but avoid childish or cluttered coupon design.",
+        "Use Korean card news or H&B sale layout as inspiration without copying a specific store logo, color system, or campaign name.",
+        "Reserve clear blank space for Korean headline and offer information.",
+        "Use references for layout, hierarchy, mood, lighting, color, and product staging only."
+      ],
+      "allowedDirections": [
+        "summer skincare sale",
+        "functional serum promotion",
+        "niacinamide brightening care",
+        "clean beauty",
+        "Korean H&B sale mood",
+        "discount badge",
+        "gift-with-purchase",
+        "white background",
+        "orange accent",
+        "clear CTA"
+      ],
+      "disallowedDirections": [
+        "medical treatment claim",
+        "miracle cure",
+        "guaranteed whitening",
+        "direct Olive Young imitation",
+        "store logo copy",
+        "fake product label",
+        "altered package text",
+        "dark heavy mood",
+        "cheap toy-like product"
+      ]
+    }
+  }
+}

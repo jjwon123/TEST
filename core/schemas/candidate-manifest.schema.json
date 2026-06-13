@@ -1,0 +1,51 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Candidate Manifest",
+  "type": "object",
+  "required": ["event_id", "regeneration_groups", "candidates"],
+  "properties": {
+    "event_id": { "type": "string" },
+    "regeneration_groups": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["group_id", "stage_id", "scope", "candidate_ids"],
+        "properties": {
+          "group_id": { "type": "string" },
+          "stage_id": { "type": "string", "const": "03_visual_candidates" },
+          "scope": { "type": "string" },
+          "deliverable_id": { "type": "string" },
+          "visual_role": { "type": "string" },
+          "candidate_ids": { "type": "array", "items": { "type": "string" } },
+          "regenerate_command": { "type": "string" }
+        }
+      }
+    },
+    "candidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["candidate_id", "deliverable_id", "regeneration_group", "status"],
+        "properties": {
+          "candidate_id": { "type": "string" },
+          "deliverable_id": { "type": "string" },
+          "regeneration_group": { "type": "string" },
+          "visual_role": { "type": "string" },
+          "channel_id": { "type": "string" },
+          "ratio": { "type": "string" },
+          "preview_path": { "type": "string" },
+          "image_path": { "type": "string" },
+          "source_prompt_id": { "type": "string" },
+          "workflow_preset": { "type": "string" },
+          "generation_status": { "type": "string" },
+          "generation_error": { "type": "string" },
+          "generation_mode": { "type": "string" },
+          "materialized_at": { "type": "string" },
+          "comfyui_submission": { "type": "object" },
+          "text_safety": { "type": "object" },
+          "status": { "type": "string" }
+        }
+      }
+    }
+  }
+}

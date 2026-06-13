@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="popup.css">
+    <title>Pinterest Board Collector</title>
+  </head>
+  <body>
+    <main class="panel">
+      <header>
+        <h1>Pin Collector</h1>
+        <p id="pageStatus">Open a Pinterest board tab.</p>
+      </header>
+
+      <section class="preset-bar" aria-label="Safety preset">
+        <button class="preset active" type="button" data-preset="safe">Safe</button>
+        <button class="preset" type="button" data-preset="gentle">Gentle</button>
+        <button class="preset" type="button" data-preset="manual">Manual</button>
+      </section>
+
+      <section class="controls">
+        <label>
+          Max images
+          <input id="limitInput" type="number" min="1" max="200" value="20">
+        </label>
+        <label>
+          Scroll rounds
+          <input id="scrollInput" type="number" min="0" max="40" value="3">
+        </label>
+        <label>
+          Min delay ms
+          <input id="minDelayInput" type="number" min="1000" max="30000" step="500" value="4000">
+        </label>
+        <label>
+          Max delay ms
+          <input id="maxDelayInput" type="number" min="1000" max="60000" step="500" value="8000">
+        </label>
+      </section>
+
+      <section class="toggles">
+        <label>
+          <input id="originalInput" type="checkbox">
+          Original quality
+        </label>
+        <label>
+          <input id="skipDuplicateInput" type="checkbox" checked>
+          Skip duplicates
+        </label>
+      </section>
+
+      <section class="actions">
+        <button id="nativeButton" type="button">Originals via gallery-dl</button>
+        <button id="startButton" type="button">Start Safe Download</button>
+        <button id="scanButton" type="button">Scan Only</button>
+        <button id="stopButton" type="button" disabled>Stop</button>
+        <button id="resetButton" type="button">Reset</button>
+      </section>
+
+      <section class="status">
+        <div class="metrics">
+          <span><strong id="countValue">0</strong> found</span>
+          <span><strong id="doneValue">0</strong> done</span>
+          <span><strong id="failValue">0</strong> failed</span>
+        </div>
+        <progress id="progress" max="100" value="0"></progress>
+        <p id="message">Idle</p>
+        <ol id="logList"></ol>
+      </section>
+    </main>
+    <script src="popup.js"></script>
+  </body>
+</html>

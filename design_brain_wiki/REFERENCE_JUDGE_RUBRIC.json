@@ -1,0 +1,66 @@
+{
+  "version": "2026-05-30",
+  "purpose": "Senior Designer Brain Wiki 기반 reference judgement rubric",
+  "decisionLabels": ["selected", "shortlist", "rejected"],
+  "scoreScale": {
+    "min": 0,
+    "max": 10,
+    "riskFields": ["cheapSignalRisk", "typographyRisk"]
+  },
+  "fields": [
+    "brandFit",
+    "eventFit",
+    "industryTrust",
+    "brandSystemFit",
+    "scalability",
+    "distinctiveness",
+    "premiumSignal",
+    "cheapSignalRisk",
+    "layoutUsability",
+    "copySpace",
+    "visualHierarchy",
+    "typographyRisk",
+    "colorDiscipline",
+    "channelFit"
+  ],
+  "selectedGate": {
+    "brandFit": 8,
+    "eventFit": 8,
+    "industryTrust": 7,
+    "layoutUsability": 7,
+    "copySpace": 6,
+    "cheapSignalRiskMax": 3,
+    "typographyRiskMax": 3
+  },
+  "profileSpecificFields": {
+    "cosmetics_skincare": [
+      "localHBSaleFit",
+      "benefitHierarchy",
+      "productTrust",
+      "claimSafety",
+      "productionUsability",
+      "foreignSaleRisk",
+      "genericMockupRisk"
+    ]
+  },
+  "learnedCorrectionRules": {
+    "cosmetics_skincare": {
+      "source": "design_brain_wiki/training_sessions/cosmetics_skincare/pinterest_session_001/correction_summary.md",
+      "selectedRoleCoverageMin": 3,
+      "searchQueryFitWeight": "low",
+      "copySpaceHardReject": false,
+      "shortlistDefinition": "only when product-only, layout-only, or mood-only role is explicitly useful",
+      "selectedMustNotBe": [
+        "foreign sale mood",
+        "generic cosmetic mockup",
+        "background-first summer mood",
+        "AI artifact or broken text"
+      ]
+    }
+  },
+  "feedbackTone": {
+    "voice": "senior designer",
+    "style": "clear, practical, evidence-based, not vague praise",
+    "mustExplain": ["why it fits", "why it fails", "where it can be used", "what to change"]
+  }
+}

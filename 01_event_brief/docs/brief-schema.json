@@ -1,0 +1,68 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Event Brief",
+  "type": "object",
+  "required": [
+    "projectStage",
+    "brandName",
+    "eventName",
+    "eventSummary",
+    "coreMessages",
+    "toneAndManner",
+    "contentGuidelines",
+    "constraints",
+    "source"
+  ],
+  "properties": {
+    "projectStage": {
+      "type": "string"
+    },
+    "brandName": {
+      "type": "string"
+    },
+    "eventName": {
+      "type": "string"
+    },
+    "eventSummary": {
+      "type": "string"
+    },
+    "coreMessages": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "toneAndManner": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "contentGuidelines": {
+      "type": "array",
+      "items": {
+        "type": "string"
+      }
+    },
+    "constraints": {
+      "type": "object",
+      "properties": {
+        "requiredPhrases": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        },
+        "bannedWords": {
+          "type": "array",
+          "items": {
+            "type": "string"
+          }
+        }
+      }
+    },
+    "source": {
+      "type": "object"
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "sessionId": "reference_learning_learning_batch_007",
+  "profile": "reference_learning",
+  "createdAt": "2026-06-10T14:30:00.009789+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 2,
+    "agree": 0,
+    "disagree": 2,
+    "unsure": 0,
+    "overSelected": 1,
+    "overRejected": 0,
+    "abstractFeedback": 2,
+    "accuracy": 0.0,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 0,
+      "rejected": 2
+    },
+    "transitionCounts": {
+      "selected->rejected": 1,
+      "shortlist->rejected": 1
+    },
+    "reasonTagCounts": {}
+  },
+  "rules": [],
+  "examples": [
+    {
+      "id": "learning_ref_31a771644290",
+      "aiDecision": "selected",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    },
+    {
+      "id": "learning_ref_399432902a22",
+      "aiDecision": "shortlist",
+      "finalDecision": "rejected",
+      "reasonTags": [],
+      "kiwonReason": "빠른 비교에서 둘 다 제외"
+    }
+  ]
+}

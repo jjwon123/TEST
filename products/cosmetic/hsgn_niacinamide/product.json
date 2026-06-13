@@ -1,0 +1,16 @@
+{
+  "product_id": "hsgn_niacinamide",
+  "brand_name": "hsgn",
+  "product_name": "Niacinamide 100,000ppm",
+  "category": "cosmetic",
+  "main_image": "niacinamide_packshot.png",
+  "mask_image": "",
+  "description": "hsgn 나이아신아마이드 100,000ppm 세럼. 오렌지 캡, 흰색 보틀, 성분 농도 강조 패키지. 혁신개념 로고.",
+  "tone": ["scientific", "bold", "clean", "functional", "brightening"],
+  "forbidden": ["dark moody lighting", "blurry product", "text on product altered", "orange color removed"],
+  "recommended_workflows": [
+    "qwen_candidate_2511",
+    "cosmetic_event_hero",
+    "instagram_feed_visual"
+  ]
+}

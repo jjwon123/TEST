@@ -1,0 +1,227 @@
+{
+  "reviews": {
+    "bullion_ref_01": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:42.911573+00:00"
+    },
+    "bullion_ref_02": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:42.926727+00:00"
+    },
+    "bullion_ref_03": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:46.823837+00:00"
+    },
+    "bullion_ref_04": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:46.837851+00:00"
+    },
+    "bullion_ref_05": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:51.271279+00:00"
+    },
+    "bullion_ref_06": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:51.284910+00:00"
+    },
+    "bullion_ref_07": {
+      "status": "agree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:54.575539+00:00"
+    },
+    "bullion_ref_08": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:54.588550+00:00"
+    },
+    "bullion_ref_09": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:57.647999+00:00"
+    },
+    "bullion_ref_10": {
+      "status": "agree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:58:57.661514+00:00"
+    },
+    "bullion_ref_11": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:04.734805+00:00"
+    },
+    "bullion_ref_12": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:04.752218+00:00"
+    },
+    "bullion_ref_13": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:06.758372+00:00"
+    },
+    "bullion_ref_14": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:06.771232+00:00"
+    },
+    "bullion_ref_15": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:10.575304+00:00"
+    },
+    "bullion_ref_16": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:10.589315+00:00"
+    },
+    "bullion_ref_17": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:12.168219+00:00"
+    },
+    "bullion_ref_18": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:12.180730+00:00"
+    },
+    "bullion_ref_19": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:14.255151+00:00"
+    },
+    "bullion_ref_20": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:14.268995+00:00"
+    },
+    "bullion_ref_21": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:19.326648+00:00"
+    },
+    "bullion_ref_22": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:19.340192+00:00"
+    },
+    "bullion_ref_23": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:27.111398+00:00"
+    },
+    "bullion_ref_24": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:27.125917+00:00"
+    },
+    "bullion_ref_25": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:29.518881+00:00"
+    },
+    "bullion_ref_26": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:29.534050+00:00"
+    },
+    "bullion_ref_27": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:30.863639+00:00"
+    },
+    "bullion_ref_28": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:30.877184+00:00"
+    },
+    "bullion_ref_29": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:36.071452+00:00"
+    },
+    "bullion_ref_30": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "updatedAt": "2026-05-31T07:59:40.094214+00:00"
+    }
+  },
+  "profile": "bullion_investment",
+  "sessionId": "pinterest_kr_session_001",
+  "updatedAt": "2026-05-31T07:59:40.094214+00:00",
+  "summary": {
+    "total": 30,
+    "reviewed": 30,
+    "agree": 11,
+    "disagree": 19,
+    "unsure": 0,
+    "overSelected": 8,
+    "overRejected": 1,
+    "abstractFeedback": 0
+  }
+}

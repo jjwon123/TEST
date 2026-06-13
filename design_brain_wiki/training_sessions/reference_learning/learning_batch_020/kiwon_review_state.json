@@ -1,0 +1,143 @@
+{
+  "reviews": {
+    "learning_ref_e8aee58a75c6": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:27.089572+00:00"
+    },
+    "learning_ref_d85d2e29bc57": {
+      "status": "agree",
+      "correctDecision": "shortlist",
+      "kiwonReason": "빠른 비교에서 둘 다 참고 후보",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:27.107351+00:00"
+    },
+    "learning_ref_fee635df4006": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:29.033686+00:00"
+    },
+    "learning_ref_e8fc3ec77da9": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:29.047687+00:00"
+    },
+    "learning_ref_da8e2f7a3d5e": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:31.249880+00:00"
+    },
+    "learning_ref_ff3e30ba8f8e": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:31.265880+00:00"
+    },
+    "learning_ref_e98d1f3f4175": {
+      "status": "disagree",
+      "correctDecision": "selected",
+      "kiwonReason": "빠른 비교에서 더 적합한 레퍼런스로 선택",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:33.793231+00:00"
+    },
+    "learning_ref_dab659516ad1": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 상대적으로 부적합",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:33.811231+00:00"
+    },
+    "learning_ref_ffa841c3a43e": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:36.017429+00:00"
+    },
+    "learning_ref_ea8e53f94a5d": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:36.033431+00:00"
+    },
+    "learning_ref_db15e57f81eb": {
+      "status": "agree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:37.825087+00:00"
+    },
+    "learning_ref_eb1d355e749d": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:37.840089+00:00"
+    },
+    "learning_ref_dc8b047faa85": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:39.377624+00:00"
+    },
+    "learning_ref_eb47706fb95c": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-08T14:16:39.393857+00:00"
+    }
+  },
+  "profile": "reference_learning",
+  "sessionId": "learning_batch_020",
+  "updatedAt": "2026-06-08T14:16:39.393857+00:00",
+  "summary": {
+    "total": 50,
+    "reviewed": 14,
+    "agree": 3,
+    "disagree": 11,
+    "unsure": 0,
+    "overSelected": 1,
+    "overRejected": 0,
+    "abstractFeedback": 14,
+    "accuracy": 0.214,
+    "finalDecisionCounts": {
+      "selected": 2,
+      "shortlist": 2,
+      "rejected": 10
+    },
+    "transitionCounts": {
+      "rejected->rejected": 1,
+      "selected->rejected": 1,
+      "shortlist->rejected": 8,
+      "shortlist->selected": 2,
+      "shortlist->shortlist": 2
+    },
+    "reasonTagCounts": {}
+  }
+}

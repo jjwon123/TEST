@@ -1,0 +1,12 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "06 QA Packaging Input",
+  "type": "object",
+  "required": ["qa_rules"],
+  "properties": {
+    "channel_outputs": { "$ref": "../05_figma_assembly/output.schema.json" },
+    "selected_assets": { "$ref": "../04_admin_selection/output.schema.json" },
+    "export_files": { "type": "array", "items": { "type": "string" } },
+    "qa_rules": { "type": "object" }
+  }
+}

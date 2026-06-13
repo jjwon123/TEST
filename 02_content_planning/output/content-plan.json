@@ -1,0 +1,125 @@
+{
+  "eventName": "봄맞이 금 투자 상담 이벤트",
+  "publishDate": "2026-04-19",
+  "channelPriority": ["instagram", "naver_blog", "community"],
+  "channels": [
+    {
+      "channelId": "instagram",
+      "channelName": "Instagram",
+      "primaryGoal": "관심 있는 예비 고객의 감성을 건드려 상담 신청 행동으로 연결한다.",
+      "deliverables": [
+        {
+          "id": "instagram_card_news_01",
+          "type": "card_news",
+          "name": "인스타 카드뉴스",
+          "quantity": 5,
+          "ratio": "1:1",
+          "purpose": "실물 금 투자에 관심은 있지만 시작 못 한 타깃의 공감을 얻고, 전문 상담이라는 해결책으로 자연스럽게 이어지게 한다.",
+          "copyDirection": "차분하고 공감형. 강요 없이 '이런 분들에게 도움이 됩니다' 톤. 슬라이드마다 한 가지 메시지만.",
+          "imageNeed": "메인 키비주얼 1종(금 오브젝트 + 여백 중심), 상세 배경 2종(상담 분위기, 정보형 그래픽)",
+          "slides": [
+            {
+              "slideNo": 1,
+              "role": "후킹",
+              "keyMessage": "금 투자, 마음은 있는데 어디서 시작할지 모르겠나요?",
+              "subNote": "타깃의 고민을 그대로 질문으로 던진다. 이미지는 메인 키비주얼."
+            },
+            {
+              "slideNo": 2,
+              "role": "문제 제시",
+              "keyMessage": "실물 금, 막막하게 느껴지는 데는 이유가 있습니다",
+              "subNote": "어디서 구매할지, 얼마부터 가능한지 모르는 상황 공감. 정보형 배경 이미지."
+            },
+            {
+              "slideNo": 3,
+              "role": "혜택 설명",
+              "keyMessage": "여의도 금거래소 전문가와 상담하면 나에게 맞는 방법을 찾을 수 있어요",
+              "subNote": "시세 가이드 PDF 혜택 언급. 상담 분위기 이미지."
+            },
+            {
+              "slideNo": 4,
+              "role": "참여 방법",
+              "keyMessage": "상담 신청은 간단합니다",
+              "subNote": "3단계 이내로 참여 방법 정리. 정보형 그래픽 배경."
+            },
+            {
+              "slideNo": 5,
+              "role": "CTA",
+              "keyMessage": "봄맞이 이벤트 기간 4/19 ~ 5/10, 지금 상담 신청하세요",
+              "subNote": "메인 키비주얼 재사용 또는 단색 배경. 마감일과 CTA 강조."
+            }
+          ]
+        },
+        {
+          "id": "instagram_feed_single_01",
+          "type": "feed_single",
+          "name": "인스타 피드 단일 이미지",
+          "quantity": 1,
+          "ratio": "1:1",
+          "purpose": "이벤트 정보를 한 장에 빠르게 전달하는 공지형. 카드뉴스 비구매 이용자 커버.",
+          "copyDirection": "이벤트명, 기간, 혜택, CTA를 한 장에 압축. 읽는 시간 5초 이내.",
+          "imageNeed": "텍스트 영역이 넓은 메인 공지형 이미지. 금 오브젝트 + 깔끔한 배경.",
+          "slides": []
+        }
+      ]
+    },
+    {
+      "channelId": "naver_blog",
+      "channelName": "Naver Blog",
+      "primaryGoal": "검색 유입 고객에게 이벤트 상세 정보와 브랜드 신뢰성을 충분히 전달한다.",
+      "deliverables": [
+        {
+          "id": "naver_blog_thumbnail_01",
+          "type": "blog_thumbnail",
+          "name": "네이버 블로그 썸네일",
+          "quantity": 1,
+          "ratio": "16:9",
+          "purpose": "검색 결과 목록에서 클릭을 유도하고 본문 상단에서 이벤트 주제를 명확히 전달한다.",
+          "copyDirection": "제목형 카피. '실물 금 투자 상담 이벤트 — 여의도 금거래소' 같은 명확한 정보 전달.",
+          "imageNeed": "신뢰감 있는 표지 이미지. 제목 텍스트가 들어갈 넓은 여백. 금 오브젝트 또는 차분한 오피스 분위기.",
+          "slides": []
+        },
+        {
+          "id": "naver_blog_section_01",
+          "type": "blog_section_image",
+          "name": "블로그 본문 섹션 이미지 — 혜택 안내",
+          "quantity": 1,
+          "ratio": "16:9",
+          "purpose": "본문 중간에서 이벤트 혜택(시세 가이드 PDF + 우선 예약)을 시각적으로 보조한다.",
+          "copyDirection": "혜택 내용을 요약하는 인포그래픽형. 텍스트 중심 레이아웃.",
+          "imageNeed": "정보형 그래픽. 심플한 배경에 혜택 아이콘/텍스트 배치 가능한 여백.",
+          "slides": []
+        },
+        {
+          "id": "naver_blog_section_02",
+          "type": "blog_section_image",
+          "name": "블로그 본문 섹션 이미지 — 참여 방법",
+          "quantity": 1,
+          "ratio": "16:9",
+          "purpose": "상담 신청 방법을 본문 하단에서 시각적으로 안내한다.",
+          "copyDirection": "단계별 프로세스 안내형. 1·2·3 순서로 간결하게.",
+          "imageNeed": "프로세스 표현에 적합한 단순 배경. 아이콘과 텍스트 삽입 공간 확보.",
+          "slides": []
+        }
+      ]
+    },
+    {
+      "channelId": "community",
+      "channelName": "Community",
+      "primaryGoal": "이벤트 조건·기간·참여 방법을 빠르게 파악할 수 있도록 공지 형식으로 전달한다.",
+      "deliverables": [
+        {
+          "id": "community_notice_01",
+          "type": "notice_image",
+          "name": "커뮤니티 공지 이미지",
+          "quantity": 1,
+          "ratio": "4:5",
+          "purpose": "공지 게시물에 첨부해 이벤트 핵심 정보를 한눈에 전달한다.",
+          "copyDirection": "공지형. 이벤트명 + 기간 + 혜택 + CTA를 계층적으로 배치. 군더더기 없이.",
+          "imageNeed": "가독성 높은 공지형 배경. 텍스트 블록이 들어갈 넓은 단색 또는 단순 배경 영역.",
+          "slides": []
+        }
+      ]
+    }
+  ]
+}

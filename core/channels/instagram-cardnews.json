@@ -1,0 +1,12 @@
+{
+  "channel_id": "instagram_cardnews",
+  "name": "Instagram Card News",
+  "aliases": ["instagram", "insta"],
+  "planning_order": 10,
+  "default_ratio": "1:1",
+  "default_template": "instagram_cardnews_5slide_v1",
+  "supported_templates": ["instagram_cardnews_5slide_v1", "instagram_cardnews_7slide_v1"],
+  "typical_slides": [5, 7],
+  "content_roles": ["hook", "problem", "benefit", "how_to_join", "cta"],
+  "qa_requirements": ["slide_order", "cta_presence", "text_readability"]
+}

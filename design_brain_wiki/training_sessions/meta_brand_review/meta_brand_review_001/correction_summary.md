@@ -1,0 +1,115 @@
+# Correction Summary - meta_brand_review_001
+
+- Profile: `meta_brand_review`
+- Reviewed: 100/100
+- Accuracy: 0.52
+- Final distribution: {'selected': 19, 'shortlist': 52, 'rejected': 29}
+- Transitions: {'shortlist->rejected': 29, 'shortlist->selected': 19, 'shortlist->shortlist': 52}
+- Reason tags: {'wrong_category': 1}
+
+## Learned Rules
+
+- `hard_reject_visual_defects`: 저해상도, 웹페이지 캡처, 카테고리 오류, 가짜 텍스트 위험은 selected로 올리지 않는다.
+
+## Reviewed Examples
+
+- `meta_brand_ref_001` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_002` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_003` shortlist -> rejected | tags: wrong_category | QA 저장 기능 점검: rejected
+- `meta_brand_ref_006` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_007` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_011` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_012` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_013` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_014` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_015` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_016` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_017` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_018` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_019` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_020` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_021` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_022` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_023` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_024` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_025` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_026` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_027` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_028` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_029` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_030` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_031` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_032` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_033` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_034` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_035` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_036` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_037` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_038` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_039` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_040` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_041` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_042` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_043` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_044` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_045` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_046` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_047` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_048` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_049` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_050` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_051` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_052` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_053` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_054` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_055` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_056` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_057` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_058` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_059` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_060` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_061` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_062` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_063` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_064` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_065` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_066` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_067` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_068` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_069` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_070` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_071` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_072` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_073` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_074` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_075` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_076` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_077` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_078` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_079` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_080` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_081` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_082` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_083` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_084` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_085` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_086` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_087` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_088` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_089` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_090` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_091` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_092` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_093` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_094` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_095` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_096` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_097` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_098` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_099` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_100` shortlist -> rejected | tags: - | 빠른 비교에서 둘 다 제외
+- `meta_brand_ref_009` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택
+- `meta_brand_ref_010` shortlist -> rejected | tags: - | 빠른 비교에서 상대적으로 부적합
+- `meta_brand_ref_005` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_008` shortlist -> shortlist | tags: - | 빠른 비교에서 둘 다 참고 후보
+- `meta_brand_ref_004` shortlist -> selected | tags: - | 빠른 비교에서 더 적합한 레퍼런스로 선택

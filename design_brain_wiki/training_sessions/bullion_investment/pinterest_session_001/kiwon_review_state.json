@@ -1,0 +1,92 @@
+{
+  "reviews": {
+    "bullion_ref_01": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:16.868284+00:00"
+    },
+    "bullion_ref_02": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:16.884682+00:00"
+    },
+    "bullion_ref_03": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:18.004386+00:00"
+    },
+    "bullion_ref_04": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:18.019403+00:00"
+    },
+    "bullion_ref_05": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:18.659954+00:00"
+    },
+    "bullion_ref_06": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:18.672480+00:00"
+    },
+    "bullion_ref_07": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:19.652501+00:00"
+    },
+    "bullion_ref_08": {
+      "status": "disagree",
+      "correctDecision": "rejected",
+      "kiwonReason": "빠른 비교에서 둘 다 제외",
+      "ruleToUpdate": "",
+      "reasonTags": [],
+      "updatedAt": "2026-06-07T08:28:19.666014+00:00"
+    }
+  },
+  "profile": "bullion_investment",
+  "sessionId": "pinterest_session_001",
+  "updatedAt": "2026-06-07T08:28:19.666014+00:00",
+  "summary": {
+    "total": 30,
+    "reviewed": 8,
+    "agree": 0,
+    "disagree": 8,
+    "unsure": 0,
+    "overSelected": 4,
+    "overRejected": 0,
+    "abstractFeedback": 0,
+    "accuracy": 0.0,
+    "finalDecisionCounts": {
+      "selected": 0,
+      "shortlist": 0,
+      "rejected": 8
+    },
+    "transitionCounts": {
+      "selected->rejected": 4,
+      "shortlist->rejected": 4
+    },
+    "reasonTagCounts": {}
+  }
+}

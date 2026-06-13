@@ -1,0 +1,10 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "Image Prompts",
+  "type": "object",
+  "required": ["engine", "prompts"],
+  "properties": {
+    "engine": { "type": "string", "const": "comfyui" },
+    "prompts": { "type": "array", "items": { "type": "object" } }
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "preset_id": "campaign_keyvisual",
+  "description": "General campaign key visual preset for event hero and cover assets.",
+  "required_fields": ["positive_prompt", "negative_prompt", "ratio"],
+  "output_role": "keyvisual"
+}
