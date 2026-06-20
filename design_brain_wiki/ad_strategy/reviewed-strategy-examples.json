@@ -1,0 +1,1560 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-06-14T12:39:15.261919+00:00",
+  "examples": [
+    {
+      "id": "meta_strategy_72bd847c74de",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "ร้านไทยในเกาหลี ขายทุกอย่าง",
+        "libraryId": "1012126761259843",
+        "copyHash": "72bd847c74deb6729f6a2f0cfb774f181b6311388420b494ea4c32b14f0e7cde",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_16-51-59_anua-skincare\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_5f5b96ed9faa",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "เครื่องสำอางค์ไทย ในเกาหลี",
+        "libraryId": "831797226280593",
+        "copyHash": "5f5b96ed9faaec187ff5fd37023a7b47b84d6d6456f6675e2d5fb6c117cfc4da",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_16-51-59_anua-skincare\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_bfb657459374",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 에이지알",
+        "libraryId": "1033710632284309",
+        "copyHash": "bfb65745937493d4ba2c1077dd1600c7950dedd50455a6c0d3e403cc55cbdd6f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-36_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_175e53db284d",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 에이지알",
+        "libraryId": "1213016573997607",
+        "copyHash": "175e53db284d0541890cca214cc58f05ce223f7d2d516773b08558bf452ccd30",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-36_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_e4cc7f845ed4",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "하우파머시 페이지는 슬기로운피부생활과(와) 함께합니다",
+        "libraryId": "1009044331553410",
+        "copyHash": "e4cc7f845ed49d8a193892d3e7acff17409765f0a661a993b0db85d5a0e43cae",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-58_나이아신아마이드-세럼\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "problem_empathy",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "reason_to_believe",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_efb685eab9c4",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Showma in Korea 페이지는 Celladix 셀라딕스과(와) 함께합니다",
+        "libraryId": "885616857552270",
+        "copyHash": "efb685eab9c4815b24023883126aa788ac767013ca456775fb72159e1fa9c54f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-04-21_스킨케어-세일\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase, discount",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_a525e68b18bc",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "조희진 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "864356912940543",
+        "copyHash": "a525e68b18bc4d6a5eb360253d56d63dc0ffa083223956fd99e6ac7fe1e71637",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-04-21_스킨케어-세일\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "specific_value",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase, discount, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_c740273d4bf3",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "일단 사봐.",
+        "libraryId": "1667767777914313",
+        "copyHash": "c740273d4bf3a94482bcc72b26a3bf4a23790e53da8aa3f157dcf4d6ae885420",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "exclusivity",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "exclusive"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_92eb8ed12195",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "",
+        "libraryId": "1013326501219960",
+        "copyHash": "92eb8ed121958739974325b27e73e710366c3f829a07e152b94b9027d7010b97",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "specific_value",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_32b0be94d6bf",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Dailybeautydrop 데일리뷰티드롭",
+        "libraryId": "1014797641054230",
+        "copyHash": "32b0be94d6bf4532545052388d2a3f27660a2eff1a56f54bafc239427c354c54",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "direct"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_3cccbdf1fab2",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "아직도 안샀음?",
+        "libraryId": "1429628225634114",
+        "copyHash": "3cccbdf1fab29050b76927e3dffa3ff1865d5d7a90053fc6b13e9afda56a2276",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_e403ef765a50",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "마케터 조쉬 페이지는 스프레이과(와) 함께합니다",
+        "libraryId": "26566328279724796",
+        "copyHash": "e403ef765a50bb39fb03952abb998a8bdbc86ced531848363f164df583023795",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "direct"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_49f59c26c17c",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "0umzlm 페이지는 에이지이엔티과(와) 함께합니다",
+        "libraryId": "1286333186948243",
+        "copyHash": "49f59c26c17ce9a62b9b07688eb9e15fcda224434ef90ea486405dc13297380f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "specific_value",
+      "persuasionSequence": [
+        "hook",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_1f8a94752e43",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "알콩달콤",
+        "libraryId": "2026966014874094",
+        "copyHash": "1f8a94752e432937d8ce7b5ef51ee743dbf16bc2bdb37928452057d53ab0d14b",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "exclusivity, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "exclusive"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_5d552b737763",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "오늘의 팁",
+        "libraryId": "1999922714743634",
+        "copyHash": "5d552b737763a9b211870ee73632f76df013f84386526ec6cfad2760780a0d03",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_d424bedee751",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "네이버플러스 스토어",
+        "libraryId": "977694535041968",
+        "copyHash": "d424bedee751a7ea255ac08d3febd1e6a4c2ece859747cf17001e5d3b286cece",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "direct"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_9a3420348458",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1435225310840809",
+        "copyHash": "9a3420348458ec95263b6f941a927932f844f1fc2e2bcecad205d5346c3934dd",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_a2871ffcf118",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "681125901716085",
+        "copyHash": "a2871ffcf11898e846ecc1c44161444b01802b708df0b3a477fb11ed62ae1712",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_2ac8b5557526",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1341848630597222",
+        "copyHash": "2ac8b5557526f97e5c496176ae11677419334f9a7f10ecfc739549cf30b8467d",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "news_announcement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_85ff40c85196",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "e_s.e.in_ 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "3143280422520763",
+        "copyHash": "85ff40c85196f9d690fdbafaab2d0e243602419f25e1f48c175355b56e8b5de3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_586629efedbd",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "849907564535504",
+        "copyHash": "586629efedbdf2120be6cb44e3c48baaaf5b6fc1d8a3550d7f667edb7f987b7e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_0a7f970910b5",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1279134973559065",
+        "copyHash": "0a7f970910b557fa24ca86e7c7cbe6d8d698d9164b14e1e2ec34f64b7abc8e70",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_52b813e7594f",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "_heanut_ 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "25505400005754637",
+        "copyHash": "52b813e7594f0762fe064fa09ad24e7ef80412eddaa4f0e60c391ce6190a4040",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "news_announcement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "bundle_value",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_86b9b2601c7b",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "소연ソヨン 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1384725559734495",
+        "copyHash": "86b9b2601c7b15298ec6e866bab5e0d258b074304e6b45855f1936cb75674ed3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_d13b45c79c86",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "",
+        "libraryId": "2208294993249718",
+        "copyHash": "d13b45c79c8679cf2e1a6565fe36ad0c0c6ab27f78d057902199bf40f27d57e2",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "specific_value",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_00908833a7d1",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Pixelpure",
+        "libraryId": "1668753967704182",
+        "copyHash": "00908833a7d123d554d401f96fdb9f40f555dd0d9f5339e7d84499e887fca9e9",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "exclusivity, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "conversational",
+        "credible",
+        "exclusive"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_48ce1cd52094",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "yuuhyemin 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1618021042639404",
+        "copyHash": "48ce1cd52094fc195160ab746434b96669baa61697483995b8d1040bcdfca834",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_5fcebd59146a",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "kim_knick 페이지는 Formulain과(와) 함께합니다",
+        "libraryId": "1866935524014805",
+        "copyHash": "5fcebd59146a18a2577457ce45aeaecd1818005baccbbe52acf3eead6210dab0",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_528588cff265",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "",
+        "libraryId": "938833025785106",
+        "copyHash": "528588cff265b24792049af6fb66b33d2e5d681af16f5d8873a91be201afcb32",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_e65e893d02f8",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "kylie17.0 페이지는 대라과(와) 함께합니다",
+        "libraryId": "1707560930425714",
+        "copyHash": "e65e893d02f88690a889d703c8612bc3ac213f9d3e0cf69d1dcea893c2586b66",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "reason_to_believe",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase, discount",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_62b3899186ef",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Funandsweet_day",
+        "libraryId": "1146830890911175",
+        "copyHash": "62b3899186ef69fdcec2d06d692fce54573ff318935600c3a6440710eacaa723",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "exclusivity",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "exclusive"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_92c496927f30",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "dental_ok_",
+        "libraryId": "450962503964181",
+        "copyHash": "92c496927f308e65111beb42ebc5d141a648d5097cde46dbbbe650e947571dbb",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_6597b0a61351",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "bbang._.zzin 페이지는 셀인샷과(와) 함께합니다",
+        "libraryId": "1210480314566140",
+        "copyHash": "6597b0a61351d605bc3ac1597c145388274cb69b107e8cb38461f6af4bbbd315",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_3f42a9ae1d5d",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "네이버플러스 스토어",
+        "libraryId": "1873336346656075",
+        "copyHash": "3f42a9ae1d5d29224c49bffb5276afaf3240a216b4e6412fa99b4aeb27479f5f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "problem_empathy",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "reason_to_believe",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_b4235f7fd4c4",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "harii_bok 페이지는 plalink과(와) 함께합니다",
+        "libraryId": "857846534027060",
+        "copyHash": "b4235f7fd4c456358dc810a319002b8aee9d20f0826c3b248c70e3c90cf97d0d",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_0a356c0f04bd",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Meditherapy_official",
+        "libraryId": "2007706630140925",
+        "copyHash": "0a356c0f04bd0b4bce1ceea7c6a4960097e5c3a1b387326c9286f664c0289cfa",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase, discount, risk_reversal, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific",
+        "conversational"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_2299219c1a47",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "뷰티트렌드",
+        "libraryId": "1454588552091375",
+        "copyHash": "2299219c1a470ef0f4789336a8853621fd77eab76d9b76886516826d28746b9e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "problem_empathy",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "conversational"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_e27023a08e37",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "바노바기코스메틱/banobagicosmetic",
+        "libraryId": "960195010120459",
+        "copyHash": "e27023a08e37e911a2f40e6b0aa135ac4a8233190077b6faa238820ea8c87a5a",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "offer_first",
+      "persuasionSequence": [
+        "hook",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "gift_with_purchase",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_b80af33ded13",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "쿠팡 Coupang",
+        "libraryId": "1582202579995627",
+        "copyHash": "b80af33ded1385b6349a1955c80c37bdd3d7176e6e5ef88a70860f950d9ba1f3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "problem_empathy",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_2a76c3d30758",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "Herbalife",
+        "libraryId": "952018277730145",
+        "copyHash": "2a76c3d30758e4e8a1abc3e3b4db8443736efa79836c7557667785e9c63df351",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_9812b4533d3d",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "whiteORA",
+        "libraryId": "842872155183254",
+        "copyHash": "9812b4533d3d7b308bf797833d488dbcc0ec7dc0d04d750d0b08c347c4a5dce4",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-51-48_스킨케어-세럼\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "question_or_challenge",
+      "persuasionSequence": [
+        "hook",
+        "problem_recognition",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_b2760da71c95",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "_xlluvia 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1968273104049501",
+        "copyHash": "b2760da71c956ec82cecb24dd174b3f88681a622572964aa0f4519edaa519d7e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-22-51_스킨케어-크림\\collected-ads.json"
+      },
+      "eventType": "branding",
+      "funnelStage": "awareness",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "cta"
+      ],
+      "offerMechanism": "",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_d8f6734b6980",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "315.8 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "2149881822461830",
+        "copyHash": "d8f6734b698069fcae1aa9c043d49cbc23ba9a7d00c3bc8796c24427f9d7349f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_ff7bf32e149b",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "kylie17.0 페이지는 프리메라과(와) 함께합니다",
+        "libraryId": "2066838650936734",
+        "copyHash": "ff7bf32e149b1550a69938bd023f21af55740474b9f2220082f27ef6103af42e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "soft_action",
+      "toneTraits": [
+        "specific",
+        "credible"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_fc7e0425c8d4",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "JM솔루션",
+        "libraryId": "3532710123572488",
+        "copyHash": "fc7e0425c8d487f93909f69c67a29af070642af47d21b110c6c230f9b45465c3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "specific_value",
+      "persuasionSequence": [
+        "hook",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount",
+      "proofMechanism": "",
+      "ctaType": "learn_more",
+      "toneTraits": [
+        "specific"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    },
+    {
+      "id": "meta_strategy_9a92c79ad041",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "brand": "헤일로 뷰티",
+        "libraryId": "2471178293318551",
+        "copyHash": "9a92c79ad0417fe05238e6cd7ff0fbbec97764a5271c09f3c123c3fda5120998",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      },
+      "eventType": "promotion",
+      "funnelStage": "conversion",
+      "targetInsight": "",
+      "hookMechanism": "brand_statement",
+      "persuasionSequence": [
+        "hook",
+        "reason_to_believe",
+        "usage_or_routine",
+        "offer",
+        "cta"
+      ],
+      "offerMechanism": "discount, bundle_value",
+      "proofMechanism": "",
+      "ctaType": "purchase",
+      "toneTraits": [
+        "specific",
+        "credible",
+        "exclusive"
+      ],
+      "channelFit": [],
+      "review": {
+        "decision": "unreviewed",
+        "scores": {},
+        "reasonTags": [],
+        "reviewNote": "Legacy pattern; human review required."
+      }
+    }
+  ]
+}

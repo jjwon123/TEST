@@ -2,7 +2,7 @@
 
 ## Run Flow
 
-`created -> briefing -> brief_review -> planning -> plan_review -> candidate_generating -> selection_pending -> assembling -> qa_pending -> archived`
+`created -> briefing -> brief_review -> planning -> plan_review -> reference_research -> reference_ready -> candidate_generating -> selection_pending -> qa_pending -> review_pending -> archived|archived_no_assets`
 
 ## Locking Rule
 

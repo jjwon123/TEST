@@ -15,13 +15,14 @@
     "product_image": "File name inside ComfyUI/input. Prefer transparent PNG or product photo with clean background.",
     "ratio": "1:1, 4:5, 4:3, or 16:9.",
     "background_style": "cosmetic_studio, pharma_blue_rank, luxury_stone, spring_clean, dark_premium, or warm_editorial.",
-    "product_scale": "Product bounding size relative to canvas.",
+    "product_scale": "Visible alpha-bounded product size relative to canvas.",
     "product_x_percent": "Horizontal product anchor, 0.0 left to 1.0 right.",
     "product_y_percent": "Vertical product anchor, 0.0 top to 1.0 bottom."
   },
   "product_safety": {
     "product_pixels": "Original product RGB is only resized and pasted; no generative repaint is applied.",
     "label_logo": "Preserved from the product source image.",
+    "transparent_padding": "Transparent canvas padding is cropped before the product is resized.",
     "risk": "If the source has no alpha channel, the full rectangular image is treated as product."
   },
   "next_versions": {

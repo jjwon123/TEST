@@ -1,0 +1,32 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AdStrategyExample",
+  "type": "object",
+  "required": ["id", "industry", "sourceType", "eventType", "funnelStage", "targetInsight", "hookMechanism", "persuasionSequence", "review"],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "industry": { "type": "string", "enum": ["cosmetics_skincare", "jewelry_luxury"] },
+    "sourceType": { "type": "string", "enum": ["meta_ad", "internal", "human_written"] },
+    "sourceRef": { "type": "object" },
+    "eventType": { "type": "string", "enum": ["launch", "seasonal", "promotion", "education", "branding"] },
+    "funnelStage": { "type": "string", "enum": ["awareness", "consideration", "conversion", "retention"] },
+    "targetInsight": { "type": "string" },
+    "hookMechanism": { "type": "string" },
+    "persuasionSequence": { "type": "array", "items": { "type": "string" } },
+    "offerMechanism": { "type": "string" },
+    "proofMechanism": { "type": "string" },
+    "ctaType": { "type": "string" },
+    "toneTraits": { "type": "array", "items": { "type": "string" } },
+    "channelFit": { "type": "array", "items": { "type": "string" } },
+    "review": {
+      "type": "object",
+      "required": ["decision", "scores", "reasonTags"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["unreviewed", "selected", "shortlist", "rejected"] },
+        "scores": { "type": "object" },
+        "reasonTags": { "type": "array", "items": { "type": "string" } },
+        "reviewNote": { "type": "string" }
+      }
+    }
+  }
+}

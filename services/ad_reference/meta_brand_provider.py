@@ -61,12 +61,18 @@ def add_meta_brand_references(
     """Select brief-fit Meta references, copy them into the run, and merge the manifest."""
     context = build_brief_context(brief, content_plan)
     session = read_json(session_path, default={})
+    human_reviews = read_json(session_path.with_name("kiwon_review_state.json"), default={"reviews": {}}).get("reviews", {})
     audit_path = character_audit_path or session_path.with_name(DEFAULT_CHARACTER_AUDIT.name)
     creative_types = load_creative_types(audit_path)
     excluded_counts = Counter(
         value for value in creative_types.values() if value in DEFAULT_EXCLUDED_CREATIVE_TYPES
     )
-    ranked = rank_candidates(session.get("items", []), context, creative_types=creative_types)
+    ranked = rank_candidates(
+        session.get("items", []),
+        context,
+        creative_types=creative_types,
+        human_reviews=human_reviews,
+    )
     selected = select_candidates(ranked, limit=limit)
 
     assets = list(manifest.get("assets", [])) if isinstance(manifest, dict) else []
@@ -118,6 +124,7 @@ def add_meta_brand_references(
         imported,
         audit_path=audit_path,
         excluded_counts=excluded_counts,
+        human_reviews=human_reviews,
     )
     return merged, evidence
 
@@ -146,10 +153,17 @@ def rank_candidates(
     context: dict[str, Any],
     *,
     creative_types: dict[str, str] | None = None,
+    human_reviews: dict[str, Any] | None = None,
 ) -> list[dict[str, Any]]:
     creative_types = creative_types or {}
+    human_reviews = human_reviews or {}
     ranked = [
-        _score_candidate(item, context, creative_types.get(Path(str(item.get("file") or "")).name, ""))
+        _score_candidate(
+            item,
+            context,
+            creative_types.get(Path(str(item.get("file") or "")).name, ""),
+            human_reviews.get(str(item.get("id") or ""), {}),
+        )
         for item in items
         if isinstance(item, dict)
     ]
@@ -158,10 +172,12 @@ def rank_candidates(
         for candidate in ranked
         if candidate["categoryScore"] > 0
         and candidate["creativeType"] not in DEFAULT_EXCLUDED_CREATIVE_TYPES
+        and candidate["finalDecision"] != "rejected"
     ]
     return sorted(
         ranked,
         key=lambda candidate: (
+            candidate["finalDecision"] == "selected",
             candidate["advertiserMatchType"] == "direct",
             candidate["score"],
             candidate["roleScore"],
@@ -202,6 +218,7 @@ def build_evidence(
     *,
     audit_path: Path,
     excluded_counts: Counter[str],
+    human_reviews: dict[str, Any],
 ) -> dict[str, Any]:
     selected_ids = {candidate["item"].get("id") for candidate in selected}
     return {
@@ -218,9 +235,16 @@ def build_evidence(
                     "partnerPenalty": 10,
                     "reviewQualityPenalty": 12,
                     "excludedCreativeTypes": sorted(DEFAULT_EXCLUDED_CREATIVE_TYPES),
+                    "humanFinalDecisionPriority": True,
+                    "humanRejectedExcluded": True,
                 },
                 "characterAuditPath": _relative_to_root(audit_path),
                 "excludedByCreativeType": dict(excluded_counts),
+                "humanReviewCount": sum(1 for review in human_reviews.values() if review.get("status")),
+                "humanRejectedCount": sum(
+                    1 for review in human_reviews.values()
+                    if review.get("status") and review.get("correctDecision") == "rejected"
+                ),
                 "context": context,
                 "candidateCount": len(ranked),
                 "selectedCount": len(selected),
@@ -235,8 +259,19 @@ def build_evidence(
     }
 
 
-def _score_candidate(item: dict[str, Any], context: dict[str, Any], creative_type: str = "") -> dict[str, Any]:
+def _score_candidate(
+    item: dict[str, Any],
+    context: dict[str, Any],
+    creative_type: str = "",
+    human_review: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     creative_type = creative_type or str(item.get("creativeType") or "")
+    human_review = human_review or {}
+    final_decision = (
+        str(human_review.get("correctDecision") or "").strip().lower()
+        if human_review.get("status")
+        else ""
+    ) or str(item.get("decision") or "shortlist").strip().lower()
     category_score = 45 if item.get("category") in context.get("categories", []) else 0
     brand = str(context.get("brand") or "").casefold()
     brand_name = str(item.get("brandName") or "").casefold()
@@ -258,6 +293,8 @@ def _score_candidate(item: dict[str, Any], context: dict[str, Any], creative_typ
         "advertiserAdjustment": advertiser_adjustment,
         "qualityAdjustment": quality_adjustment,
         "creativeType": creative_type,
+        "finalDecision": final_decision,
+        "humanReviewApplied": bool(human_review.get("status")),
     }
 
 
@@ -296,6 +333,8 @@ def _evidence_candidate(candidate: dict[str, Any]) -> dict[str, Any]:
         "advertiserMatchType": candidate["advertiserMatchType"],
         "registryQuality": item.get("registryQuality", ""),
         "creativeType": candidate.get("creativeType", ""),
+        "finalDecision": candidate.get("finalDecision", ""),
+        "humanReviewApplied": candidate.get("humanReviewApplied", False),
         "score": candidate["score"],
         "scoreBreakdown": {
             "category": candidate["categoryScore"],

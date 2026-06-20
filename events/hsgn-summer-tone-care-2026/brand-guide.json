@@ -1,0 +1,61 @@
+{
+  "brandName": "HSGN",
+  "brandSlogan": "skincare about science, skincare about life",
+  "tone": [
+    "명료한",
+    "깨끗한",
+    "성분 중심",
+    "과장 없는",
+    "데일리 루틴형"
+  ],
+  "styleRules": [
+    "성분 농도는 사실 정보로 다루되 효능을 보장하는 표현으로 확장하지 않는다.",
+    "여름철 피부 인상 고민을 공감하되 불안이나 콤플렉스를 과하게 자극하지 않는다.",
+    "카피는 짧고 선명하게 쓰고, 제품명과 혜택은 한눈에 보이게 배치한다.",
+    "오렌지 포인트 컬러는 강조 정보에만 사용하고 전체 톤은 깨끗하게 유지한다.",
+    "브랜드 슬로건의 과학적 인상을 살리되 논문/임상/전문가 권위는 확인 전 사용하지 않는다."
+  ],
+  "preferredWords": [
+    "성분 농도",
+    "데일리 톤 케어",
+    "여름 루틴",
+    "맑아 보이는 피부 인상",
+    "가볍게 시작하는 케어",
+    "HSGN 오렌지 포인트"
+  ],
+  "avoidWords": [
+    "기적",
+    "완치",
+    "100% 보장",
+    "무조건",
+    "의학적 치료",
+    "임상 증명",
+    "최저가 보장",
+    "올리브영 1위"
+  ],
+  "brandSafety": {
+    "disallowed": [
+      "미백 치료나 질병 치료처럼 보이는 표현",
+      "확인되지 않은 가격, 기간, 순위, 리뷰 수",
+      "경쟁사 또는 유통사 고유 캠페인명을 직접 모방하는 표현",
+      "피부 상태에 대한 공포를 과하게 조장하는 표현"
+    ]
+  },
+  "visual": {
+    "mood": [
+      "clean beauty",
+      "summer skincare",
+      "ingredient-focused",
+      "white and soft gray background",
+      "orange accent",
+      "generous text-safe space"
+    ],
+    "brandColors": [
+      "#FF6B2C",
+      "#FFFFFF",
+      "#F5F5F5",
+      "#222222"
+    ],
+    "typography": "bold Korean sans-serif for headlines, clean sans-serif for supporting copy"
+  }
+}

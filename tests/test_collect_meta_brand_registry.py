@@ -170,6 +170,9 @@ class MetaBrandRegistryCollectionTests(unittest.TestCase):
 
         self.assertEqual(1, manifest["summary"]["excludedImages"])
         self.assertEqual(0, manifest["summary"]["acceptedImages"])
+        batch_dir = Path(manifest["batchDir"])
+        payload = json.loads((batch_dir / "brands" / "alpha" / "accepted-ads.json").read_text(encoding="utf-8"))
+        self.assertEqual("card_news", payload["excludedItems"][0]["excludedMedia"][0]["creativeType"])
 
 
 if __name__ == "__main__":

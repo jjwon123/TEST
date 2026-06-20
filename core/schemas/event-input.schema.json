@@ -2,10 +2,15 @@
   "$schema": "https://json-schema.org/draft/2020-12/schema",
   "title": "Event Input",
   "type": "object",
-  "required": ["eventName", "objective"],
+  "required": ["eventName"],
+  "anyOf": [
+    { "required": ["objective"] },
+    { "required": ["purpose"] }
+  ],
   "properties": {
-    "eventName": { "type": "string" },
-    "objective": { "type": "string" },
+    "eventName": { "type": "string", "minLength": 1 },
+    "objective": { "type": "string", "minLength": 1 },
+    "purpose": { "type": "string", "minLength": 1 },
     "target": { "type": "string" },
     "channels": { "type": "array", "items": { "type": "string" } },
     "schedule": { "type": "object" },

@@ -5,6 +5,16 @@ const state = {
   trainingSessions: [],
   metaAdCollections: [],
   metaBrandRegistry: null,
+  metaBrandMetrics: null,
+  metaBrandStrategy: null,
+  metaSourceMixMetrics: null,
+  operationsReadiness: null,
+  repeatedOperations: null,
+  adStrategyQuality: null,
+  adStrategyExamples: [],
+  marketingSignals: null,
+  planningBenchmark: null,
+  planningReviewPacket: null,
   referenceLearning: null,
   trainingDetail: null,
   selectedTrainingKey: null,
@@ -142,7 +152,17 @@ async function load() {
   state.trainingSessions = data.trainingSessions || [];
   state.metaAdCollections = data.metaAdCollections || [];
   state.metaBrandRegistry = data.metaBrandRegistry || null;
+  state.metaBrandMetrics = data.metaBrandMetrics || null;
+  state.metaBrandStrategy = data.metaBrandStrategy || null;
+  state.metaSourceMixMetrics = data.metaSourceMixMetrics || null;
+  state.operationsReadiness = data.operationsReadiness || null;
+  state.repeatedOperations = data.repeatedOperations || null;
   state.referenceLearning = data.referenceLearning || null;
+  state.adStrategyQuality = data.adStrategyQuality || null;
+  state.adStrategyExamples = data.adStrategyExamples || [];
+  state.marketingSignals = data.marketingSignals || null;
+  state.planningBenchmark = data.planningBenchmark || null;
+  state.planningReviewPacket = data.planningReviewPacket || null;
   state.jobs = data.jobs || [];
   state.comfy = data.comfy || null;
   if (!state.selectedRunId && route.runId && state.runs.some((run) => run.run_id === route.runId)) {
@@ -208,6 +228,7 @@ function render() {
   renderRunDetail();
   renderReferences();
   renderAdReferences();
+  renderMetaBrandMetrics();
   renderTraining();
   renderPrompts();
   renderImages();
@@ -376,8 +397,10 @@ function renderRunDetail() {
   const done = new Set(manifest.completed_steps || []);
   const nextButtons = nextActionButtons(manifest);
   const errorRecovery = manifest.has_errors ? renderErrorRecovery(manifest) : "";
+  const planningReview = renderPlanningReview(state.detail.planning || {});
   container.innerHTML = `
     ${errorRecovery}
+    ${renderAdPlanningReviewPacketPanel()}
     <div class="panel">
       <div class="panel-head">
         <div>
@@ -413,11 +436,88 @@ function renderRunDetail() {
         </aside>
       </div>
     </div>
+    ${planningReview}
   `;
   qsa("[data-view-shortcut]").forEach((button) => button.addEventListener("click", () => setView(button.dataset.viewShortcut)));
   qsa("[data-run-stage]").forEach((button) => button.addEventListener("click", () => runStage(button.dataset.runStage)));
+  qsa("[data-select-planning-concept]").forEach((button) => button.addEventListener("click", () => selectPlanningConcept(button.dataset.selectPlanningConcept)));
+  qs("#approvePlanningCopy")?.addEventListener("click", approvePlanningCopy);
+  qs("#approvePlanningStage")?.addEventListener("click", approvePlanningStage);
   qsa("[data-error-job-log]").forEach((button) => button.addEventListener("click", () => showJobLog(button.dataset.errorJobLog)));
   bindFolderButtons();
+}
+
+function renderPlanningReview(planning) {
+  const candidates = planning.conceptCandidates?.candidates || [];
+  if (!candidates.length) return "";
+  const selectedId = planning.conceptReview?.selectedConceptId || "";
+  const copyOutputs = planning.copyPackage?.outputs || [];
+  const copyApproved = planning.copyReview?.approved === true;
+  const critical = Number(planning.scorecard?.criticalErrorCount || 0);
+  const qualityIssues = planning.scorecard?.issues || [];
+  return `
+    <section class="panel">
+      <div class="panel-head">
+        <div><h2>광고 기획 검수</h2><span>콘셉트 선택과 최종 카피 승인 후 다음 단계가 열립니다.</span></div>
+        <span class="badge ${critical ? "error" : copyApproved ? "approved" : "warning"}">치명 오류 ${escapeHtml(critical)}</span>
+      </div>
+      ${qualityIssues.length ? `<div class="quality-artifact evidence-warning"><strong>수정 필요</strong><p>${qualityIssues.map((item) => escapeHtml(issueMessageKo(item))).join("<br>")}</p></div>` : ""}
+      <div class="quality-artifact-grid">
+        ${candidates.map((item) => `
+          <article class="quality-artifact ${item.conceptId === selectedId ? "evidence-pass" : ""}">
+            <div class="quality-artifact-head"><strong>${escapeHtml(item.name)}</strong><span>${escapeHtml(conceptAxisLabel(item.axis))}</span></div>
+            <p><b>인사이트</b> ${escapeHtml(item.targetInsight)}</p>
+            <p><b>약속</b> ${escapeHtml(item.corePromise)}</p>
+            <p><b>설득</b> ${escapeHtml((item.persuasionSequence || []).join(" → "))}</p>
+            <p><b>예상 효과</b> ${escapeHtml(item.expectedEffect)}</p>
+            <button class="${item.conceptId === selectedId ? "" : "primary"}" data-select-planning-concept="${escapeHtml(item.conceptId)}">${item.conceptId === selectedId ? "선택됨" : "이 콘셉트 선택"}</button>
+          </article>
+        `).join("")}
+      </div>
+      <h3>완성 카피 패키지</h3>
+      ${copyOutputs.length ? `<div class="planning-copy-grid">${copyOutputs.map(renderPlanningCopyCard).join("")}</div>` : `<p class="muted">콘셉트를 선택하면 채널별 완성 카피가 생성됩니다.</p>`}
+      ${copyOutputs.length ? `<div class="control-grid">${STRATEGY_RUBRIC.map(([key, label]) => `<label>${escapeHtml(label)}<input type="number" min="1" max="5" value="${escapeHtml(planning.scorecard?.rubric?.[key] || 3)}" data-planning-human-score="${escapeHtml(key)}"></label>`).join("")}</div>` : ""}
+      <div class="chip-row action-row">
+        ${copyOutputs.length && !copyApproved ? `<button id="approvePlanningCopy" class="primary">최종 카피 승인</button>` : ""}
+        ${copyApproved ? `<button id="approvePlanningStage" class="primary">기획 단계 승인하고 03 열기</button>` : ""}
+      </div>
+    </section>
+  `;
+}
+
+async function selectPlanningConcept(conceptId) {
+  const data = await api(`/api/runs/${encodeURIComponent(state.selectedRunId)}/planning/concept`, {
+    method: "POST",
+    body: JSON.stringify({ conceptId, reasonTags: ["good_structure"], reviewNote: "Selected in planning console." }),
+  });
+  state.detail = data.detail;
+  toast("콘셉트를 선택하고 채널별 카피를 생성했습니다.");
+  render();
+}
+
+async function approvePlanningCopy() {
+  const edits = (state.detail.planning?.copyPackage?.outputs || []).map((output) => ({
+    channelId: output.channelId,
+    originalCopy: output.copy || {},
+    editedCopy: output.copy || {},
+  }));
+  const data = await api(`/api/runs/${encodeURIComponent(state.selectedRunId)}/planning/copy-review`, {
+    method: "POST",
+    body: JSON.stringify({ approved: true, edits, scores: Object.fromEntries(qsa("[data-planning-human-score]").map((node) => [node.dataset.planningHumanScore, Number(node.value)])), reasonTags: ["strong_product_link"], reviewNote: "Reviewed and approved in planning console." }),
+  });
+  state.detail = data.detail;
+  toast("최종 카피를 승인했습니다.");
+  render();
+}
+
+async function approvePlanningStage() {
+  const data = await api(`/api/runs/${encodeURIComponent(state.selectedRunId)}/approve`, {
+    method: "POST",
+    body: JSON.stringify({ stage: "02_content_planning", note: "Concept and final copy approved in console." }),
+  });
+  state.detail = data.detail;
+  toast("기획 단계를 승인하고 다음 단계를 열었습니다.");
+  render();
 }
 
 function renderErrorRecovery(manifest) {
@@ -536,6 +636,94 @@ function renderAdReferences() {
     button.addEventListener("click", () => openMetaAdModal(items[Number(button.dataset.metaAdDetail)]));
   });
   bindReferenceImagePreviews();
+}
+
+function percent(value) {
+  return value == null ? "-" : `${(Number(value) * 100).toFixed(1)}%`;
+}
+
+function percentagePoints(value) {
+  return value == null ? "-" : `${Number(value) >= 0 ? "+" : ""}${(Number(value) * 100).toFixed(1)}%p`;
+}
+
+function renderMetaBrandMetrics() {
+  const container = qs("#metaBrandMetrics");
+  if (!container) return;
+  const profiles = Object.values(state.metaBrandMetrics?.latestByProfile || {});
+  if (!profiles.length) {
+    container.innerHTML = `<div class="image-empty">아직 측정 가능한 브랜드 수집 배치가 없습니다.</div>`;
+    return;
+  }
+  const sourceMix = state.metaSourceMixMetrics || {};
+  const sourceMixHtml = (sourceMix.recommendedQueries || []).length ? `
+    <article class="quality-evidence-panel">
+      <div class="panel-head"><div><h3>클린 제품 비주얼 보완 공급원</h3><span>Qwen 검수 완료 일반 쿼리</span></div><span class="badge approved">검증됨</span></div>
+      <div class="chip-row">
+        ${(sourceMix.recommendedQueries || []).map((item) => `
+          <button type="button" class="chip" data-meta-fallback-query="${escapeHtml(item.query)}">${escapeHtml(item.query)} · 클린 ${percent(item.cleanProductRate)} (${escapeHtml(item.cleanProductVisuals)}/${escapeHtml(item.reviewedMedia)})</button>
+        `).join("")}
+      </div>
+      <div class="meta-row"><strong>보완 공급원 전체:</strong> Qwen 검수 ${escapeHtml(sourceMix.reviewedMedia || 0)}장 · 클린 제품 비주얼 ${escapeHtml(sourceMix.cleanProductVisuals || 0)}장 · 회수율 ${percent(sourceMix.cleanProductRate)}</div>
+      ${(sourceMix.collectionPlan || []).length ? `<div class="meta-row"><strong>자동 수집 대기:</strong> ${(sourceMix.collectionPlan || []).map((item) => escapeHtml(item.query)).join(" · ")}</div>` : ""}
+      <div class="chip-row">${(sourceMix.collectionPlan || []).length
+        ? `<button type="button" id="collectMetaSourceMix" class="primary">보완 쿼리 자동 수집 + Qwen 검수</button>`
+        : `<span class="badge approved">보완 쿼리 표본 검증 완료</span>`}</div>
+      <p>브랜드 묶음 수집이 클린 제품 비주얼에 제한적일 때 위 상품·성분 쿼리를 병행합니다.</p>
+    </article>
+  ` : "";
+  container.innerHTML = sourceMixHtml + profiles.map((batch) => {
+    const warningMessages = (batch.warnings || []).map((item) => item.message).join(" ");
+    const recommended = state.metaBrandStrategy?.profiles?.[batch.profile]?.recommended || [];
+    const recommendedBatch = state.metaBrandStrategy?.recommendedBatch || {};
+    const benchmark = state.metaBrandMetrics?.benchmarkByProfile?.[batch.profile];
+    const adaptivePerformance = state.metaBrandMetrics?.adaptivePerformanceByProfile?.[batch.profile];
+    const creativeTypes = Object.entries(batch.creativeTypeCounts || {}).slice(0, 6)
+      .map(([name, count]) => `<span class="chip">${escapeHtml(name)} ${escapeHtml(count)}</span>`).join("");
+    return `
+      <article class="quality-evidence-panel">
+        <div class="panel-head">
+          <div><h3>${escapeHtml(batch.profile)}</h3><span>${escapeHtml(batch.batchId)}</span></div>
+          <span class="badge ${batch.status === "pass" ? "approved" : "error"}">${batch.status === "pass" ? "정상" : `경고 ${batch.warnings.length}`}</span>
+        </div>
+        <div class="score-grid">
+          <div>광고주 일치율<strong>${percent(batch.rates.advertiserMatchRate)}</strong></div>
+          <div>성격 검수 통과율<strong>${percent(batch.rates.creativeAcceptanceRate)}</strong></div>
+          <div>브랜드 커버리지<strong>${percent(batch.rates.brandCoverageRate)}</strong></div>
+          <div>최상위 브랜드 비중<strong>${percent(batch.rates.topBrandShare)}</strong></div>
+          <div>통과 이미지<strong>${escapeHtml(batch.summary.acceptedImages)}</strong></div>
+          <div>통과 0개 브랜드<strong>${escapeHtml(batch.zeroAcceptedBrands)}</strong></div>
+        </div>
+        <div class="chip-row">${creativeTypes}</div>
+        ${recommended.length ? `
+          <div class="meta-row"><strong>누적 증거 기준 다음 추천:</strong> ${recommended.slice(0, 5)
+            .map((item) => `${escapeHtml(item.brand)} (${escapeHtml(item.reason)})`).join(" · ")}</div>
+        ` : ""}
+        <div class="meta-row"><strong>권장 검증 배치:</strong> 브랜드 ${escapeHtml(recommendedBatch.brandLimit ?? 5)}개 × 광고 ${escapeHtml(recommendedBatch.adsPerBrand ?? 5)}개 · 최소 원본 광고 ${escapeHtml(recommendedBatch.minimumRawAds ?? 20)}개</div>
+        ${benchmark && benchmark.batchId !== batch.batchId ? `
+          <div class="meta-row"><strong>대규모 기준 배치:</strong> ${escapeHtml(benchmark.batchId)} · 통과 ${escapeHtml(benchmark.summary.acceptedImages)}장 · 브랜드 커버리지 ${percent(benchmark.rates.brandCoverageRate)}</div>
+        ` : ""}
+        ${adaptivePerformance ? `
+          <div class="meta-row"><strong>적응형 누적 ${escapeHtml(adaptivePerformance.batchCount)}배치:</strong> 통과율 ${percent(adaptivePerformance.rates.creativeAcceptanceRate)} · 브랜드 커버리지 ${percent(adaptivePerformance.rates.brandCoverageRate)} · 기준 대비 ${percentagePoints(adaptivePerformance.deltaVsBenchmark.creativeAcceptanceRate)} / ${percentagePoints(adaptivePerformance.deltaVsBenchmark.brandCoverageRate)}</div>
+          <p><strong>공급원 판정:</strong> ${escapeHtml(adaptivePerformance.operatingDecision.message)}</p>
+        ` : ""}
+        ${warningMessages ? `<p><strong>확인 필요:</strong> ${escapeHtml(warningMessages)}</p>` : ""}
+      </article>
+    `;
+  }).join("");
+  qsa("[data-meta-fallback-query]").forEach((button) => button.addEventListener("click", () => {
+    qs("#metaAdQuery").value = button.dataset.metaFallbackQuery || "";
+    qs("#metaAdCreativeProfile").value = "product_visual";
+    toast(`${button.dataset.metaFallbackQuery} 쿼리를 일반 Meta 수집에 준비했습니다.`);
+  }));
+  qs("#collectMetaSourceMix")?.addEventListener("click", async () => {
+    const job = await api("/api/meta-source-mix/collect", {
+      method: "POST",
+      body: JSON.stringify({ queryLimit: 2, adsPerQuery: 5 }),
+    });
+    state.jobs.push(job);
+    renderJobs();
+    toast("표본이 부족한 상품·성분 쿼리 자동 수집과 Qwen 검수를 시작했습니다.");
+  });
 }
 
 function bindReferenceImagePreviews() {
@@ -1567,44 +1755,44 @@ function renderPackage() {
 
 function statusKo(value) {
   const labels = {
-    prompt_ready: "Prompt ready",
-    reference_ready: "References ready",
-    assets_selected: "Assets selected",
-    qa_ready: "QA ready",
-    archived: "Archived",
-    created: "Created",
-    brief_review: "Brief review",
-    plan_review: "Plan review",
-    selection_pending: "Selection pending",
-    review_pending: "Review pending",
-    qa_pending: "QA pending",
-    approved: "Approved",
-    done: "Done",
-    locked: "Locked",
-    not_started: "Not started",
-    pending: "Pending",
-    generated: "Generated",
-    placeholder: "Placeholder",
-    failed: "Failed",
-    prompt_only: "Prompt only",
-    selected: "Selected",
-    shortlist: "Shortlist",
-    rejected: "Rejected",
-    hold: "Hold",
-    regenerate: "Regenerate",
-    unreviewed: "Unreviewed",
-    agree: "Match",
-    disagree: "Corrected",
-    unsure: "Unsure",
-    running: "Running",
-    queued: "Queued",
-    requested: "Requested",
-    completed: "Completed",
-    pass: "Pass",
-    present: "Present",
-    warning: "Warning",
-    fail: "Fail",
-    missing: "Missing",
+    prompt_ready: "프롬프트 준비",
+    reference_ready: "레퍼런스 준비",
+    assets_selected: "이미지 선택됨",
+    qa_ready: "QA 준비",
+    archived: "아카이브 완료",
+    created: "생성됨",
+    brief_review: "브리프 검수",
+    plan_review: "기획 검수",
+    selection_pending: "선택 필요",
+    review_pending: "검수 대기",
+    qa_pending: "QA 대기",
+    approved: "승인됨",
+    done: "완료",
+    locked: "잠김",
+    not_started: "시작 전",
+    pending: "대기",
+    generated: "생성됨",
+    placeholder: "임시 생성",
+    failed: "실패",
+    prompt_only: "프롬프트만",
+    selected: "선택",
+    shortlist: "보류",
+    rejected: "거절",
+    hold: "보류",
+    regenerate: "재생성",
+    unreviewed: "검수 대기",
+    agree: "맞음",
+    disagree: "수정",
+    unsure: "애매",
+    running: "실행 중",
+    queued: "대기 중",
+    requested: "요청됨",
+    completed: "완료",
+    pass: "통과",
+    present: "있음",
+    warning: "주의",
+    fail: "실패",
+    missing: "누락",
   };
   return labels[value] || value || "-";
 }
@@ -1741,13 +1929,15 @@ qs("#collectMetaAds").addEventListener("click", async () => {
 qs("#collectMetaBrandRegistry").addEventListener("click", async () => {
   const profile = qs("#metaBrandProfile").value;
   const profileData = state.metaBrandRegistry?.profiles?.[profile];
-  const brandLimit = Number(qs("#metaBrandLimit").value || 3);
+  const brandLimit = Number(qs("#metaBrandLimit").value || 5);
   const job = await api("/api/meta-brand-registry/collect", {
     method: "POST",
     body: JSON.stringify({
       profile,
+      strategy: qs("#metaBrandStrategy").value,
+      mediaType: qs("#metaBrandMediaType").value,
       brandLimit,
-      adsPerBrand: Number(qs("#metaBrandAdsPerBrand").value || 3),
+      adsPerBrand: Number(qs("#metaBrandAdsPerBrand").value || 5),
       country: qs("#metaAdCountry").value,
       headful: !qs("#metaAdHeadless").checked,
     }),
@@ -1872,14 +2062,139 @@ function renderGlobalProgress() {
   container.innerHTML = renderStageProgress(state.detail?.manifest, true);
 }
 
-function renderDashboard() {
-  qs("#dashboardView").innerHTML = `
-    <div class="summary-grid">
-      <div class="metric"><span>전체 작업</span><strong id="metricRuns">0</strong></div>
-      <div class="metric"><span>프롬프트 준비</span><strong id="metricPrompt">0</strong></div>
-      <div class="metric"><span>선택 레퍼런스</span><strong id="metricRefs">0</strong></div>
-      <div class="metric"><span>생성 이미지</span><strong id="metricGenerated">0</strong></div>
+function renderAdPlanningReviewPacketPanel() {
+  const reviewPacket = state.planningReviewPacket || {};
+  const reviewSummary = reviewPacket.summary || {};
+  const waitingCases = reviewPacket.benchmarkReviewQueue || [];
+  const conceptPending = waitingCases.filter((item) => item.status === "concept_selection_pending").length;
+  const copyPending = waitingCases.filter((item) => item.status === "human_review_pending").length;
+  const warningCount = (reviewSummary.blockers || []).length;
+  return `
+    <div class="panel planning-desk-hero">
+      <div class="panel-head">
+        <div>
+          <h2>광고 기획 검수 데스크</h2>
+          <span>이미지 제작 전에 콘셉트와 채널별 문구를 사람이 읽는 기획안 형태로 검수합니다.</span>
+        </div>
+      </div>
+      <div class="planning-todo-grid">
+        <div><span>검수 대기 이벤트</span><strong>${escapeHtml(waitingCases.length)}</strong></div>
+        <div><span>콘셉트 선택 필요</span><strong>${escapeHtml(conceptPending)}</strong></div>
+        <div><span>카피 승인 필요</span><strong>${escapeHtml(copyPending)}</strong></div>
+        <div><span>품질 경고</span><strong>${escapeHtml(warningCount)}</strong></div>
+      </div>
+      <div class="planning-status-note ${warningCount ? "evidence-warning" : "evidence-pass"}">
+        <strong>${escapeHtml(reviewStatusLabel(reviewSummary.status))}</strong>
+        <p>${escapeHtml(reviewStatusHelp(reviewSummary))}</p>
+      </div>
+      <div class="chip-row">
+        <button data-run-planning-pilot="${escapeHtml(reviewSummary.pilotLimit || 5)}">파일럿 5건 새로고침</button>
+      </div>
     </div>
+  `;
+}
+
+function reviewStatusLabel(status = "") {
+  return ({
+    human_review_setup_incomplete: "사람 검수 준비 중",
+    candidate_generation_attempted: "기획 초안 준비됨",
+    blocked_waiting_for_api_key: "외부 모델 대기",
+    incomplete: "검수 미완료",
+    pass: "목표 통과",
+    not_ready: "준비 전",
+  })[status] || "검수 상태 확인 필요";
+}
+
+function reviewStatusHelp(summary = {}) {
+  const blockers = summary.blockers || [];
+  if (blockers.includes("STRATEGY_REVIEW_BELOW_30")) return "참고 전략 검수가 부족합니다. 메인 검수는 진행할 수 있지만, 고급 데이터 검수에서 전략 30건을 채워야 품질 목표가 열립니다.";
+  if (blockers.includes("PILOT_HUMAN_REVIEWS_INCOMPLETE")) return "파일럿 이벤트의 콘셉트 선택과 최종 카피 평가가 아직 끝나지 않았습니다.";
+  if ((summary.pilotCandidateReady || summary.pilotExternalReady || 0) === 0) return "아직 검수할 기획 초안이 없습니다. 파일럿을 먼저 생성하세요.";
+  return "현재 생성된 기획안을 검수할 수 있습니다.";
+}
+
+function blockerLabel(id = "") {
+  return ({
+    STRATEGY_REVIEW_BELOW_30: "참고 전략 검수 부족",
+    PILOT_HUMAN_REVIEWS_INCOMPLETE: "파일럿 사람 평가 미완료",
+    PILOT_CANDIDATE_RESULTS_INCOMPLETE: "파일럿 후보 기획 부족",
+    PILOT_EXTERNAL_RESULTS_INCOMPLETE: "파일럿 후보 기획 부족",
+  })[id] || id;
+}
+
+function planningCaseTitle(item = {}) {
+  return item.eventName || ({
+    "season-monsoon-barrier": "장마철 수분 장벽 리셋",
+    "season-summer-brightening": "여름 칙칙함 케어 루틴",
+    "season-winter-dryness": "겨울 보습 루틴 캠페인",
+    "season-spring-sensitive": "봄철 민감 피부 진정 루틴",
+    "promotion-gift": "수분 앰플 구매 사은 행사",
+  })[item.caseId] || String(item.caseId || "").replaceAll("-", " ");
+}
+
+function planningCaseStageLabel(item = {}) {
+  if (item.external?.status === "complete" || item.status === "human_review_pending") return "최종 카피 검수";
+  if (item.external?.status === "concept_review_pending" || item.status === "concept_selection_pending") return "콘셉트 선택";
+  return "기획 준비";
+}
+
+function planningNextActionLabel(item = {}) {
+  if (item.external?.status === "complete" || item.status === "human_review_pending") return "채널별 문구를 읽고 승인 또는 수정 요청을 남기세요.";
+  if (item.external?.status === "concept_review_pending" || item.status === "concept_selection_pending") return "콘셉트 3안 중 하나를 선택하면 채널별 문구를 만들 수 있습니다.";
+  if (item.nextAction) return item.nextAction.replace("Select one concept before copy generation.", "콘셉트 1개를 선택하면 채널별 문구를 만들 수 있습니다.");
+  return "파일럿을 새로고침해 기획 초안을 준비하세요.";
+}
+
+function renderDashboard() {
+  const readiness = state.operationsReadiness || {};
+  const readinessSummary = readiness.summary || {};
+  const metaMetrics = state.metaBrandMetrics || {};
+  const metaWarnings = (metaMetrics.warnings || []).length;
+  const repeated = state.repeatedOperations?.summary || {};
+  const nextTerminal = state.repeatedOperations?.nextTerminalCandidates?.[0];
+  const strategyQuality = state.adStrategyQuality || {};
+  const benchmarkCases = state.planningBenchmark?.cases || [];
+  const reviewPacket = state.planningReviewPacket || {};
+  const reviewSummary = reviewPacket.summary || {};
+  qs("#dashboardView").innerHTML = `
+    ${renderAdPlanningReviewPacketPanel()}
+    ${renderPlanningReviewDesk(benchmarkCases, reviewPacket)}
+    ${renderMarketingSignalReviewDesk()}
+    <div class="panel">
+      <div class="panel-head"><div><h2>전체 제작 현황</h2><span>이미지와 레퍼런스 진행률은 참고용으로만 확인합니다.</span></div></div>
+      <div class="summary-grid">
+        <div class="metric"><span>전체 작업</span><strong id="metricRuns">0</strong></div>
+        <div class="metric"><span>프롬프트 준비</span><strong id="metricPrompt">0</strong></div>
+        <div class="metric"><span>선택 레퍼런스</span><strong id="metricRefs">0</strong></div>
+        <div class="metric"><span>생성 이미지</span><strong id="metricGenerated">0</strong></div>
+      </div>
+    </div>
+    <details class="panel advanced-panel">
+      <summary><strong>고급 정보 / 데이터 검수</strong><span>전략 학습, CSV, 운영 지표처럼 실무 검수에 바로 필요하지 않은 정보</span></summary>
+      ${renderAdvancedDataReview(strategyQuality)}
+      <div class="score-grid">
+        <div>자동 운영 감사<strong>${escapeHtml(readiness.status || "미측정")}</strong></div>
+        <div>종료 상태 작업<strong>${escapeHtml(readinessSummary.terminalRuns ?? "-")}</strong></div>
+        <div>잘못된 이벤트 입력<strong>${escapeHtml(readinessSummary.invalidEvents ?? "-")}</strong></div>
+        <div>승격 학습 규칙<strong>${escapeHtml(readinessSummary.promotedLearnedRules ?? "-")}</strong></div>
+        <div>Meta 배치<strong>${escapeHtml(metaMetrics.batchCount ?? "-")}</strong></div>
+        <div>Meta 운영 경고<strong>${escapeHtml(metaWarnings)}</strong></div>
+        <div>전략 검수 진행률<strong>${percent(strategyQuality.reviewProgress || 0)}</strong></div>
+        <div>선택 전략<strong>${escapeHtml(strategyQuality.decisions?.selected || 0)}</strong></div>
+        <div>교정 카피<strong>${escapeHtml(strategyQuality.corrections || 0)}</strong></div>
+        <div>평균 사람 평가<strong>${escapeHtml(strategyQuality.averageHumanScore || 0)}</strong></div>
+        <div>무수정 승인율<strong>${percent(strategyQuality.unchangedApprovalRate || 0)}</strong></div>
+        <div>벤치마크 검수<strong>${escapeHtml(strategyQuality.benchmark?.reviewed || 0)}/${escapeHtml(strategyQuality.benchmark?.cases || 20)}</strong></div>
+        <div>후보 결과 생성<strong>${escapeHtml(strategyQuality.benchmark?.candidateGenerated || strategyQuality.benchmark?.externalGenerated || 0)}/${escapeHtml(strategyQuality.benchmark?.cases || 20)}</strong></div>
+        <div>치명 오류<strong>${escapeHtml(strategyQuality.benchmark?.criticalErrors || 0)} (${escapeHtml(strategyQuality.benchmark?.criticalErrorEvaluatedCases || 0)}/${escapeHtml(strategyQuality.benchmark?.cases || 20)} 평가)</strong></div>
+        <div>평균 지연<strong>${escapeHtml(strategyQuality.benchmark?.averageLatencyMs || 0)}ms</strong></div>
+        <div>품질 목표 감사<strong>${escapeHtml(strategyQuality.goalAudit?.summary?.goalPassed || 0)}/${escapeHtml(strategyQuality.goalAudit?.summary?.goalTotal || 7)} · ${escapeHtml(strategyQuality.goalAudit?.status || "incomplete")}</strong></div>
+        <div>자동화 구간 반복 이벤트<strong>${escapeHtml(repeated.automationCheckpointEvents ?? "-")}/3</strong></div>
+        <div>최종 종료 이벤트<strong>${escapeHtml(repeated.terminalSuccessEvents ?? "-")}/3</strong></div>
+        <div>실패 후 복구 run<strong>${escapeHtml(repeated.recoveredRuns ?? "-")}/1</strong></div>
+        ${nextTerminal ? `<div class="wide">다음 최종 종료 후보<strong>${escapeHtml(nextTerminal.eventName)} · ${escapeHtml(nextTerminal.currentStage || nextTerminal.runState)}</strong></div>` : ""}
+      </div>
+    </details>
     <div class="panel">
       <div class="panel-head">
         <h2>최근 작업</h2>
@@ -1893,6 +2208,14 @@ function renderDashboard() {
   qs("#metricRefs").textContent = state.runs.reduce((sum, run) => sum + Number(run.selected_reference_count || 0), 0);
   qs("#metricGenerated").textContent = state.runs.reduce((sum, run) => sum + Number(run.generated_image_count || 0), 0);
   qs("#runCount").textContent = `${state.runs.length}개 작업`;
+  qsa("[data-strategy-review]").forEach((button) => button.addEventListener("click", () => reviewAdStrategy(button.dataset.strategyReview, button.dataset.strategyDecision)));
+  qsa("[data-signal-review]").forEach((button) => button.addEventListener("click", () => reviewMarketingSignal(button.dataset.signalReview, button.dataset.signalDecision)));
+  qsa("[data-signal-job]").forEach((button) => button.addEventListener("click", () => runMarketingSignalJob(button.dataset.signalJob, marketingSignalJobPayload(button.dataset.signalJob))));
+  qsa("[data-build-insight-brief]").forEach((button) => button.addEventListener("click", () => buildMarketingInsightBrief()));
+  qsa("[data-benchmark-review]").forEach((button) => button.addEventListener("click", () => reviewPlanningBenchmark(button.dataset.benchmarkReview)));
+  qsa("[data-benchmark-concept]").forEach((button) => button.addEventListener("click", () => selectPlanningBenchmarkConcept(button.dataset.benchmarkCase, button.dataset.benchmarkConcept)));
+  qsa("[data-run-planning-pilot]").forEach((button) => button.addEventListener("click", () => runPlanningPilot(button.dataset.runPlanningPilot)));
+  qsa("[data-review-sheet-action]").forEach((button) => button.addEventListener("click", () => runAdStrategyReviewSheet(button.dataset.reviewSheetAction)));
 
   qs("#runList").innerHTML = state.runs
     .map((run) => {
@@ -1920,6 +2243,659 @@ function renderDashboard() {
     .join("");
 
   qsa("[data-open-run]").forEach((button) => button.addEventListener("click", () => loadRun(button.dataset.openRun)));
+}
+
+function renderPlanningReviewDesk(benchmarkCases = [], reviewPacket = {}) {
+  const caseMap = new Map(benchmarkCases.map((item) => [item.caseId, item]));
+  const queue = (reviewPacket.benchmarkReviewQueue || [])
+    .slice(0, 5)
+    .map((item) => ({ ...item, ...(caseMap.get(item.caseId) || {}) }));
+  const reviewable = queue.length ? queue : benchmarkCases.filter((item) => ["concept_review_pending", "complete"].includes(item.external?.status)).slice(0, 5);
+  return `
+    <div class="panel planning-review-panel">
+      <div class="panel-head">
+        <div>
+          <h2>이벤트 기획 검수</h2>
+          <span>각 이벤트를 열어 콘셉트 3안과 최종 문구를 순서대로 확인합니다.</span>
+        </div>
+      </div>
+      <div class="planning-case-list">
+        ${reviewable.map(renderPlanningReviewCase).join("") || `<p class="muted">검수할 파일럿 이벤트가 아직 없습니다. 위의 파일럿 새로고침을 먼저 실행하세요.</p>`}
+      </div>
+    </div>
+  `;
+}
+
+function renderMarketingSignalReviewDesk() {
+  const packet = state.marketingSignals || {};
+  const metrics = packet.metrics || {};
+  const insight = packet.insightBrief || {};
+  const queue = packet.reviewQueue || packet.signals || [];
+  const decisions = metrics.decisions || {};
+  const selected = Number(decisions.selected || 0);
+  const minimum = Number(insight.minimumSelectedSignals || 3);
+  return `
+    <div class="panel marketing-signal-panel">
+      <div class="panel-head">
+        <div>
+          <h2>마케팅 신호 검수</h2>
+          <span>무작위로 모은 고객·계절·채널 가설을 골라 실제 기획 근거로 승격합니다.</span>
+        </div>
+      </div>
+      <div class="planning-todo-grid signal-summary-grid">
+        <div>전체 신호<strong>${escapeHtml(metrics.total || 0)}</strong></div>
+        <div>검수 대기<strong>${escapeHtml(decisions.unreviewed || 0)}</strong></div>
+        <div>선택 신호<strong>${escapeHtml(decisions.selected || 0)}</strong></div>
+        <div>보류 신호<strong>${escapeHtml(decisions.shortlist || 0)}</strong></div>
+      </div>
+      <div class="chip-row signal-job-actions">
+        <button data-signal-job="random_seed">랜덤 신호 50개 더 모으기</button>
+        <button data-signal-job="export">검수 CSV 내보내기</button>
+        <button data-signal-job="import_dry_run">CSV 검증</button>
+        <button data-signal-job="import_apply">CSV 반영</button>
+      </div>
+      <div class="insight-brief-status ${selected >= minimum ? "ready" : "blocked"}">
+        <div>
+          <strong>기획 근거 패킷</strong>
+          <p>${escapeHtml(insightBriefStatusText(insight, selected, minimum))}</p>
+        </div>
+        <button data-build-insight-brief ${selected < minimum ? "disabled" : ""}>InsightBrief 만들기</button>
+      </div>
+      <div class="signal-review-list">
+        ${queue.slice(0, 12).map(renderMarketingSignalCard).join("") || `<p class="muted">검수할 마케팅 신호가 없습니다. 랜덤 수집을 먼저 실행하세요.</p>`}
+      </div>
+    </div>
+  `;
+}
+
+function renderMarketingSignalCard(signal = {}) {
+  const review = signal.review || {};
+  const recommendation = signal.reviewRecommendation || {};
+  return `
+    <article class="signal-card">
+      <div class="signal-card-head">
+        <div>
+          <span class="eyebrow">${escapeHtml(signalSourceLabel(signal.sourceType))} · ${escapeHtml(evidenceTypeLabel(signal.evidenceType))}</span>
+          <h3>${escapeHtml(signal.targetSegment || "타깃 미정")}</h3>
+        </div>
+        <div class="signal-badge-stack">
+          <span class="badge evidence-pass">${escapeHtml(recommendation.label || "검토 후보")} ${escapeHtml(recommendation.score || "-")}/10</span>
+          <span class="badge decision-${escapeHtml(review.decision || "unreviewed")}">${escapeHtml(statusKo(review.decision || "unreviewed"))}</span>
+        </div>
+      </div>
+      <p><b>원 신호</b>${escapeHtml(signal.signalText || "-")}</p>
+      ${recommendation.reasons?.length ? `<p class="signal-recommendation"><b>추천 이유</b>${recommendation.reasons.map(escapeHtml).join(" · ")}</p>` : ""}
+      <p><b>기획 가설</b>${escapeHtml(signal.normalizedInsight || "-")}</p>
+      <div class="signal-meta">
+        <span>주제 ${escapeHtml(marketingTopicLabel(signal.topic))}</span>
+        <span>강도 ${escapeHtml(signal.strength || 0)}/5</span>
+        <span>신선도 ${escapeHtml(signal.freshness || 0)}/5</span>
+        <span>신뢰도 ${escapeHtml(signal.confidence || 0)}/5</span>
+      </div>
+      ${signal.riskFlags?.length ? `<p class="signal-risk"><b>주의</b>${signal.riskFlags.map(signalRiskLabel).map(escapeHtml).join(", ")}</p>` : ""}
+      <div class="signal-reason-tags">
+        ${["useful_target", "useful_trend", "useful_season", "useful_channel", "too_generic", "needs_source"].map((tag) => `<label><input type="checkbox" data-signal-reason="${escapeHtml(signal.id)}" value="${tag}"> ${escapeHtml(marketingReasonTagLabel(tag))}</label>`).join("")}
+      </div>
+      <label class="note-field">검수 메모 <input type="text" data-signal-note="${escapeHtml(signal.id)}" placeholder="왜 선택/보류/거절하는지"></label>
+      <div class="chip-row">
+        <button data-signal-review="${escapeHtml(signal.id)}" data-signal-decision="selected">선택</button>
+        <button data-signal-review="${escapeHtml(signal.id)}" data-signal-decision="shortlist">보류</button>
+        <button data-signal-review="${escapeHtml(signal.id)}" data-signal-decision="rejected">거절</button>
+      </div>
+    </article>
+  `;
+}
+
+function renderPlanningReviewCase(item = {}) {
+  const external = item.external || item;
+  const concepts = external.concepts?.candidates || [];
+  const copyOutputs = external.copyPackage?.outputs || [];
+  const selectedId = external.selectedConceptId || item.selectedConceptId || "";
+  const issues = [
+    ...(external.scorecard?.issues || []),
+    ...(external.concepts?.criticReview?.issues || []),
+    ...(external.copyPackage?.criticReview?.issues || []),
+  ];
+  return `
+    <article class="planning-case-card">
+      <div class="planning-case-head">
+        <div>
+          <span class="eyebrow">${escapeHtml(planningCaseStageLabel(item))}</span>
+          <h3>${escapeHtml(planningCaseTitle(item))}</h3>
+        </div>
+        <span class="badge ${copyOutputs.length ? "evidence-pass" : "warning"}">${copyOutputs.length ? "카피 검수" : "콘셉트 선택"}</span>
+      </div>
+      <div class="planning-brief-grid">
+        <p><b>제품</b>${escapeHtml(item.product || "-")}</p>
+        <p><b>목적</b>${escapeHtml(eventTypeLabel(item.eventType || external.eventType))}</p>
+        <p class="wide"><b>다음 작업</b>${escapeHtml(planningNextActionLabel(item))}</p>
+      </div>
+      ${issues.length ? `<div class="planning-warning"><strong>수정 전 확인</strong>${issues.slice(0, 4).map((issue) => `<p>${escapeHtml(issueMessageKo(issue))}</p>`).join("")}</div>` : ""}
+      ${concepts.length ? `
+        <section class="planning-section">
+          <h4>콘셉트 3안</h4>
+          <div class="planning-concept-grid">
+            ${concepts.slice(0, 3).map((concept, index) => renderPlanningConceptCard(item.caseId, concept, selectedId, index)).join("")}
+          </div>
+        </section>
+      ` : ""}
+      ${copyOutputs.length ? `
+        <section class="planning-section">
+          <h4>최종 카피 패키지</h4>
+          <div class="planning-copy-grid">
+            ${copyOutputs.map(renderPlanningCopyCard).join("")}
+          </div>
+          ${renderPlanningHumanReviewForm(item)}
+        </section>
+      ` : ""}
+    </article>
+  `;
+}
+
+function renderPlanningConceptCard(caseId, concept = {}, selectedId = "", index = 0) {
+  const selected = selectedId && selectedId === concept.conceptId;
+  return `
+    <div class="planning-concept-card ${selected ? "selected" : ""}">
+      <div class="planning-concept-title">
+        <strong>${escapeHtml(concept.name || `콘셉트 ${index + 1}`)}</strong>
+        <span>${escapeHtml(conceptAxisLabel(concept.axis))}</span>
+      </div>
+      <p><b>타깃 인사이트</b>${escapeHtml(concept.targetInsight || "-")}</p>
+      <p><b>핵심 약속</b>${escapeHtml(concept.corePromise || "-")}</p>
+      <p><b>설득 구조</b>${escapeHtml((concept.persuasionSequence || []).join(" → ") || "-")}</p>
+      <p><b>CTA 방향</b>${escapeHtml(concept.cta || "-")}</p>
+      <p><b>차별 포인트</b>${escapeHtml(concept.emotionalDirection || concept.offerPresentation || "-")}</p>
+      ${selected ? `<span class="selected-pill">선택됨</span>` : `<button data-benchmark-case="${escapeHtml(caseId)}" data-benchmark-concept="${escapeHtml(concept.conceptId)}">이 콘셉트 선택</button>`}
+    </div>
+  `;
+}
+
+function renderPlanningCopyCard(output = {}) {
+  const copy = output.copy || {};
+  const evidence = output.planningEvidence || {};
+  return `
+    <div class="planning-copy-card">
+      <div class="planning-copy-head">
+        <strong>${escapeHtml(channelLabel(output.channelId))}</strong>
+        <span>${escapeHtml(output.characterCount || textLength(copy))}자</span>
+      </div>
+      ${copyField("헤드라인", copy.headline || copy.cover || copy.title)}
+      ${copyField("첫 문장", copy.firstLine)}
+      ${copyField("본문", copy.body)}
+      ${copyField("서브카피", copy.subcopy)}
+      ${Array.isArray(copy.slides) ? `<div class="copy-field"><b>슬라이드 구성</b>${copy.slides.map((slide) => `<p>${escapeHtml(slide.headline || slide.body || JSON.stringify(slide))}</p>`).join("")}</div>` : ""}
+      ${copyField("CTA", copy.cta)}
+      <div class="copy-reason">
+        <b>문구 근거</b>
+        <p>${escapeHtml(output.strategyBasis || output.purpose || "선택한 콘셉트 기반")}</p>
+        ${evidence.target ? `<p><strong>타깃:</strong> ${escapeHtml(evidence.target)}</p>` : ""}
+        ${evidence.productRole ? `<p><strong>제품 역할:</strong> ${escapeHtml(evidence.productRole)}</p>` : ""}
+        ${evidence.offerRole ? `<p><strong>혜택 역할:</strong> ${escapeHtml(evidence.offerRole)}</p>` : ""}
+        ${evidence.channelRole ? `<p><strong>채널 역할:</strong> ${escapeHtml(evidence.channelRole)}</p>` : ""}
+      </div>
+    </div>
+  `;
+}
+
+function renderPlanningHumanReviewForm(item = {}) {
+  return `
+    <div class="planning-review-form">
+      <div class="score-grid compact">${strategyRubricFields(item.caseId, "benchmark")}</div>
+      <div class="chip-row">
+        <label><input type="checkbox" data-benchmark-approved="${escapeHtml(item.caseId)}"> 최종 승인</label>
+        <label><input type="checkbox" data-benchmark-edited="${escapeHtml(item.caseId)}"> 사람이 수정함</label>
+      </div>
+      <label>수정 요청 또는 승인 메모 <input type="text" data-benchmark-note="${escapeHtml(item.caseId)}" placeholder="좋은 점, 수정할 문구, 승인 사유"></label>
+      <button data-benchmark-review="${escapeHtml(item.caseId)}">검수 저장</button>
+    </div>
+  `;
+}
+
+function renderAdvancedDataReview(strategyQuality = {}) {
+  return `
+    <div class="advanced-actions">
+      <div class="chip-row">
+        <button data-review-sheet-action="export">전략 CSV 내보내기 30건</button>
+        <button data-review-sheet-action="import_dry_run">전략 CSV 검증</button>
+        <button data-review-sheet-action="import_apply">전략 CSV 반영</button>
+      </div>
+      <p class="muted">selected 또는 shortlist 전략 ${escapeHtml(strategyQuality.decisions?.selected || 0)}건. 이 영역은 학습 데이터 관리용입니다.</p>
+    </div>
+    <div class="quality-artifact-grid">
+      ${(state.adStrategyExamples || []).filter((item) => item.review?.decision === "unreviewed").slice(0, 3).map(renderAdvancedStrategyCard).join("") || `<p class="muted">검수 대기 전략이 없습니다.</p>`}
+    </div>
+  `;
+}
+
+function renderAdvancedStrategyCard(item = {}) {
+  return `
+    <article class="quality-artifact">
+      <div class="quality-artifact-head"><strong>${escapeHtml(item.sourceBrand || "광고 전략")}</strong><span>${escapeHtml(industryLabel(item.industry))}</span></div>
+      <p><b>추상 훅</b> ${escapeHtml(strategyTokenLabel(item.hookMechanism || "-"))}</p>
+      <p><b>설득 순서</b> ${escapeHtml((item.persuasionSequence || []).map(strategyTokenLabel).join(" → ") || "-")}</p>
+      <label>타깃 인사이트 <textarea data-strategy-field="${escapeHtml(item.id)}" data-field="targetInsight">${escapeHtml(item.targetInsight || "")}</textarea></label>
+      <label>후킹 방식 <input type="text" data-strategy-field="${escapeHtml(item.id)}" data-field="hookMechanism" value="${escapeHtml(item.hookMechanism || "")}"></label>
+      <label>설득 순서 <input type="text" data-strategy-field="${escapeHtml(item.id)}" data-field="persuasionSequence" value="${escapeHtml((item.persuasionSequence || []).join(", "))}"></label>
+      <label>오퍼 방식 <input type="text" data-strategy-field="${escapeHtml(item.id)}" data-field="offerMechanism" value="${escapeHtml(item.offerMechanism || "")}"></label>
+      <label>근거 방식 <input type="text" data-strategy-field="${escapeHtml(item.id)}" data-field="proofMechanism" value="${escapeHtml(item.proofMechanism || "")}"></label>
+      <label>CTA 방식 <input type="text" data-strategy-field="${escapeHtml(item.id)}" data-field="ctaType" value="${escapeHtml(item.ctaType || "")}"></label>
+      <div class="score-grid compact">${strategyRubricFields(item.id)}</div>
+      <div class="chip-row">
+        ${["generic", "weak_insight", "good_hook", "good_structure", "strong_product_link"].map((tag) => `<label><input type="checkbox" data-strategy-reason="${escapeHtml(item.id)}" value="${tag}"> ${escapeHtml(reasonTagKo(tag))}</label>`).join("")}
+      </div>
+      <label>검수 메모 <input type="text" data-strategy-note="${escapeHtml(item.id)}" placeholder="선택·보류·거절 이유"></label>
+      <div class="chip-row">
+        <button data-strategy-review="${escapeHtml(item.id)}" data-strategy-decision="selected">선택</button>
+        <button data-strategy-review="${escapeHtml(item.id)}" data-strategy-decision="shortlist">참고</button>
+        <button data-strategy-review="${escapeHtml(item.id)}" data-strategy-decision="rejected">거절</button>
+      </div>
+      <details><summary>원문과 내부 ID 보기</summary><code>${escapeHtml(item.id)}</code><p>${escapeHtml(item.sourceCopyPreview || "")}</p></details>
+    </article>
+  `;
+}
+
+function copyField(label, value) {
+  if (!value) return "";
+  return `<p class="copy-field"><b>${escapeHtml(label)}</b>${escapeHtml(value)}</p>`;
+}
+
+function textLength(value) {
+  return typeof value === "string" ? value.length : JSON.stringify(value || "").length;
+}
+
+function eventTypeLabel(id = "") {
+  return ({ seasonal: "시즌 캠페인", promotion: "프로모션", launch: "신제품 출시", education: "제품 교육", branding: "브랜드 캠페인" })[id] || "이벤트";
+}
+
+function conceptAxisLabel(id = "") {
+  return ({ problem_reframe: "문제 재정의", proof_and_choice: "선택 근거", identity_and_moment: "감성 연결" })[id] || id || "전략";
+}
+
+function channelLabel(id = "") {
+  return ({
+    instagram_cardnews: "인스타그램 카드뉴스",
+    instagram_feed: "인스타그램 피드",
+    blog_thumbnail: "블로그 썸네일",
+    blog_inline_image: "블로그 본문 이미지",
+    banner: "배너",
+    threads: "Threads",
+    twitter: "Twitter",
+  })[id] || id || "채널";
+}
+
+function industryLabel(id = "") {
+  return ({ cosmetics_skincare: "화장품·스킨케어", jewelry_luxury: "주얼리·럭셔리" })[id] || id;
+}
+
+function strategyTokenLabel(id = "") {
+  return ({
+    hook: "후킹",
+    cta: "행동 유도",
+    reason_to_believe: "선택 근거",
+    usage_or_routine: "사용 루틴",
+    problem_recognition: "문제 인식",
+    brand_statement: "브랜드 선언",
+    problem_empathy: "문제 공감",
+    offer_first: "오퍼 선제시",
+    learn_more: "자세히 보기",
+    soft_action: "부드러운 행동 유도",
+  })[id] || id;
+}
+
+function reasonTagKo(id = "") {
+  return ({
+    generic: "평범함",
+    weak_insight: "인사이트 약함",
+    awkward_korean: "한국어 어색함",
+    brand_mismatch: "브랜드 불일치",
+    unsupported_claim: "근거 없는 주장",
+    copied_expression: "표현 유사",
+    weak_cta: "CTA 약함",
+    channel_mismatch: "채널 불일치",
+    good_hook: "훅 좋음",
+    good_structure: "구조 좋음",
+    strong_product_link: "제품 연결 좋음",
+  })[id] || id;
+}
+
+function signalSourceLabel(id = "") {
+  return ({
+    seed_random: "랜덤 가설",
+    manual_csv: "수동 CSV",
+    oliveyoung_rank: "올리브영 랭킹",
+    google_trends: "Google 트렌드",
+    naver_datalab: "네이버 데이터랩",
+    meta_ad: "Meta 광고",
+    review: "리뷰 언어",
+    weather: "날씨",
+    calendar: "시즌 캘린더",
+    internal: "내부 데이터",
+  })[id] || id || "출처";
+}
+
+function evidenceTypeLabel(id = "") {
+  return ({
+    trend: "트렌드",
+    pain: "불편",
+    desire: "욕구",
+    objection: "망설임",
+    proof: "근거",
+    offer: "혜택",
+    channel_pattern: "채널 문법",
+    timing: "시점",
+  })[id] || id || "신호";
+}
+
+function signalRiskLabel(id = "") {
+  return ({
+    needs_external_validation: "외부 근거 확인 필요",
+    random_seed: "랜덤 생성 가설",
+    unsupported_claim: "근거 없는 주장 위험",
+    duplicate: "중복 의심",
+  })[id] || id;
+}
+
+function marketingReasonTagLabel(id = "") {
+  return ({
+    useful_target: "타깃 좋음",
+    useful_trend: "트렌드 좋음",
+    useful_season: "시즌 좋음",
+    useful_channel: "채널 좋음",
+    useful_objection: "망설임 좋음",
+    too_generic: "너무 평범함",
+    needs_source: "근거 필요",
+    unsupported_claim: "주장 위험",
+    brand_mismatch: "브랜드 안 맞음",
+    duplicate: "중복",
+  })[id] || id;
+}
+
+function marketingTopicLabel(id = "") {
+  return ({
+    daily_random_seed: "오늘 랜덤 후보",
+    summer_barrier_care: "여름 장벽 케어",
+    monsoon_hydration: "장마철 수분",
+    cooling_office_dryness: "냉방 건조",
+    sensitive_skin_routine: "민감 피부 루틴",
+    brightening_serum: "미백 세럼",
+    pore_texture_care: "모공·결 케어",
+    minimal_routine: "간단 루틴",
+    gift_promotion: "증정 프로모션",
+  })[id] || id || "-";
+}
+
+function insightBriefStatusText(insight = {}, selected = 0, minimum = 3) {
+  if (insight.status === "ready") {
+    return `준비됨: 선택 신호 ${escapeHtml(insight.selectedSignalCount || selected)}개가 기획 근거로 묶였습니다.`;
+  }
+  return `선택 신호 ${selected}/${minimum}개. 최소 ${minimum}개를 선택해야 카피 근거 패킷을 만들 수 있습니다.`;
+}
+
+function issueMessageKo(issue = {}) {
+  const id = issue.id || "";
+  const message = issue.message || "";
+  const labels = {
+    channel_mismatch: "요청한 채널별 카피가 아직 모두 생성되지 않았습니다.",
+    weak_product_connection: "제품명이 카피 안에서 충분히 살아나지 않습니다.",
+    weak_offer_connection: "혜택과 CTA 연결이 약합니다.",
+    copy_waiting_for_concept: "콘셉트를 먼저 선택해야 카피 패키지를 만들 수 있습니다.",
+    rubric_below_four: "평균 품질 점수가 목표 기준보다 낮습니다.",
+    repetitive_copy: "같은 문장이 여러 번 반복됩니다.",
+    awkward_korean: "한국어 문장 자연스러움을 다시 확인해야 합니다.",
+    channel_copy_reuse: "여러 채널에서 같은 문장을 재사용했습니다.",
+    concept_critic_copy_waiting_for_concept: "콘셉트 선택 전 카피 평가가 먼저 실행되었습니다.",
+    marketing_signal_review_required: "선택된 마케팅 신호가 부족해 기획 근거 패킷이 아직 준비되지 않았습니다.",
+  };
+  if (labels[id]) return labels[id];
+  return message
+    .replaceAll("instagram_cardnews", "인스타그램 카드뉴스")
+    .replaceAll("instagram_feed", "인스타그램 피드")
+    .replaceAll("blog_thumbnail", "블로그 썸네일")
+    .replaceAll("blog_inline_image", "블로그 본문 이미지")
+    .replaceAll("concept 비평 결과가 최종 실패로 판정되었습니다.", "콘셉트 품질 평가에서 보완이 필요합니다.");
+}
+
+async function reviewAdStrategy(exampleId, decision) {
+  const rubric = ["strategyClarity", "targetEmpathy", "productConnection", "distinctiveness", "channelFit", "koreanCopyQuality", "brandFit", "actionability"];
+  const scores = Object.fromEntries(rubric.map((key) => [key, Number(qs(`[data-strategy-score="${exampleId}"][data-rubric="${key}"]`)?.value || 3)]));
+  const selectedReasons = qsa(`[data-strategy-reason="${exampleId}"]:checked`).map((node) => node.value);
+  const strategy = Object.fromEntries(qsa(`[data-strategy-field="${exampleId}"]`).map((node) => [
+    node.dataset.field,
+    node.dataset.field === "persuasionSequence" ? node.value.split(",").map((value) => value.trim()).filter(Boolean) : node.value,
+  ]));
+  const data = await api("/api/ad-strategy/review", {
+    method: "POST",
+    body: JSON.stringify({ exampleId, decision, strategy, scores, reasonTags: selectedReasons, reviewNote: qs(`[data-strategy-note="${exampleId}"]`)?.value || "" }),
+  });
+  state.adStrategyQuality = data.metrics;
+  state.planningReviewPacket = data.reviewPacket || state.planningReviewPacket;
+  state.adStrategyExamples = (state.adStrategyExamples || []).map((item) => item.id === exampleId ? data.example : item);
+  renderDashboard();
+  toast("광고 전략 검수를 저장했습니다.");
+}
+
+async function reviewMarketingSignal(signalId, decision) {
+  const reasonTags = qsa(`[data-signal-reason="${signalId}"]:checked`).map((node) => node.value);
+  const reviewNote = qs(`[data-signal-note="${signalId}"]`)?.value || "";
+  const data = await api("/api/marketing-signals/review", {
+    method: "POST",
+    body: JSON.stringify({ signalId, decision, reasonTags, reviewNote }),
+  });
+  state.marketingSignals = data.marketingSignals || state.marketingSignals;
+  renderDashboard();
+  toast("마케팅 신호 검수를 저장했습니다.");
+}
+
+function renderMarketingSignalReviewDesk() {
+  const packet = state.marketingSignals || {};
+  const metrics = packet.metrics || {};
+  const insight = packet.insightBrief || {};
+  const queue = packet.reviewQueue || packet.signals || [];
+  const decisions = metrics.decisions || {};
+  const selected = Number(decisions.selected || 0);
+  const minimum = Number(insight.minimumSelectedSignals || 3);
+  return `
+    <div class="panel marketing-signal-panel">
+      <div class="panel-head">
+        <div>
+          <h2>마케팅 신호 검수</h2>
+          <span>고객, 계절, 채널, 경쟁 관찰을 골라 실제 기획 근거로 승격합니다.</span>
+        </div>
+      </div>
+      <div class="planning-todo-grid signal-summary-grid">
+        <div>전체 신호<strong>${escapeHtml(metrics.total || 0)}</strong></div>
+        <div>검수 대기<strong>${escapeHtml(decisions.unreviewed || 0)}</strong></div>
+        <div>선택 신호<strong>${escapeHtml(decisions.selected || 0)}</strong></div>
+        <div>보류 신호<strong>${escapeHtml(decisions.shortlist || 0)}</strong></div>
+      </div>
+      <div class="chip-row signal-job-actions">
+        <button data-signal-job="random_seed">가설 신호 50개 더 모으기</button>
+        <button data-signal-job="export">검수 CSV 내보내기</button>
+        <button data-signal-job="import_dry_run">CSV 검증</button>
+        <button data-signal-job="import_apply">CSV 반영</button>
+      </div>
+      <div class="public-signal-tools">
+        <div>
+          <strong>공개 관찰 가져오기</strong>
+          <p>원문은 복사하지 않고, 추상화된 기획 신호로 저장합니다. 기본 상태는 검수 대기입니다.</p>
+        </div>
+        <label>Snapshot 파일 경로
+          <input type="text" id="publicSignalSnapshotPath" value="assets/rules/hsgn-public-marketing-snapshot.json" placeholder="assets/rules/hsgn-public-marketing-snapshot.json">
+        </label>
+        <button data-signal-job="public_snapshot">Snapshot 가져오기</button>
+        <label>공개 URL
+          <input type="url" id="publicSignalCaptureUrl" placeholder="https://example.com/product-page">
+        </label>
+        <label>출처 종류
+          <select id="publicSignalSourceKind">
+            <option value="brand_site">브랜드/상품 페이지</option>
+            <option value="public_web">공개 웹</option>
+            <option value="google_trends">Google 트렌드</option>
+            <option value="naver_datalab">Naver 데이터랩</option>
+            <option value="weather">날씨</option>
+            <option value="meta_ad">경쟁 광고 관찰</option>
+            <option value="review">리뷰 관찰</option>
+          </select>
+        </label>
+        <button data-signal-job="public_capture">URL 캡처</button>
+      </div>
+      <div class="insight-brief-status ${selected >= minimum ? "ready" : "blocked"}">
+        <div>
+          <strong>기획 근거 패킷</strong>
+          <p>${escapeHtml(insightBriefStatusText(insight, selected, minimum))}</p>
+        </div>
+        <button data-build-insight-brief ${selected < minimum ? "disabled" : ""}>InsightBrief 만들기</button>
+      </div>
+      <div class="signal-review-list">
+        ${queue.slice(0, 12).map(renderMarketingSignalCard).join("") || `<p class="muted">검수할 마케팅 신호가 없습니다. 먼저 공개 관찰이나 가설 신호를 모아주세요.</p>`}
+      </div>
+    </div>
+  `;
+}
+
+async function buildMarketingInsightBrief() {
+  const data = await api("/api/marketing-signals/insight-brief", {
+    method: "POST",
+    body: JSON.stringify({ industry: "cosmetics_skincare", minimumSelected: 3 }),
+  });
+  state.marketingSignals = data.marketingSignals || state.marketingSignals;
+  renderDashboard();
+  const status = data.insightBrief?.status === "ready" ? "기획 근거 패킷을 만들었습니다." : "선택 신호가 부족해 근거 패킷을 차단했습니다.";
+  toast(status);
+}
+
+function marketingSignalJobPayload(mode = "random_seed") {
+  const base = { mode, count: 50, industry: "cosmetics_skincare", topic: "daily_random_seed" };
+  if (mode === "public_snapshot") {
+    return {
+      ...base,
+      topic: "hsgn_summer_tone_care",
+      snapshot: qs("#publicSignalSnapshotPath")?.value || "assets/rules/hsgn-public-marketing-snapshot.json",
+    };
+  }
+  if (mode === "public_capture") {
+    return {
+      ...base,
+      topic: "hsgn_summer_tone_care",
+      url: qs("#publicSignalCaptureUrl")?.value || "",
+      sourceKind: qs("#publicSignalSourceKind")?.value || "public_web",
+    };
+  }
+  return base;
+}
+
+async function runMarketingSignalJob(mode = "random_seed", payload = null) {
+  const body = payload || marketingSignalJobPayload(mode);
+  if (mode === "public_capture" && !body.url) {
+    toast("공개 URL을 먼저 입력해주세요.");
+    return;
+  }
+  if (mode === "public_snapshot" && !body.snapshot) {
+    toast("Snapshot 파일 경로를 먼저 입력해주세요.");
+    return;
+  }
+  const job = await api("/api/marketing-signals/job", {
+    method: "POST",
+    body: JSON.stringify(body),
+  });
+  state.jobs = [job, ...(state.jobs || []).filter((item) => item.job_id !== job.job_id)];
+  renderDashboard();
+  toast(marketingSignalJobToast(mode));
+}
+
+function marketingSignalJobToast(mode = "random_seed") {
+  if (mode === "public_capture") return "공개 URL 관찰 신호 캡처를 시작했습니다.";
+  if (mode === "public_snapshot") return "공개 관찰 snapshot 가져오기를 시작했습니다.";
+  if (mode === "import_apply") return "마케팅 신호 CSV 반영 작업을 시작했습니다.";
+  if (mode === "import_dry_run") return "마케팅 신호 CSV 검증 작업을 시작했습니다.";
+  if (mode === "export") return "마케팅 신호 검수 CSV를 내보내고 있습니다.";
+  if (mode === "random_seed") return "가설 마케팅 신호 50개 수집을 시작했습니다.";
+  if (mode === "import_apply") return "마케팅 신호 CSV 반영 작업을 시작했습니다.";
+  if (mode === "import_dry_run") return "마케팅 신호 CSV 검증 작업을 시작했습니다.";
+  if (mode === "export") return "마케팅 신호 검수 CSV를 내보내고 있습니다.";
+  return "랜덤 마케팅 신호 50개 추가 수집을 시작했습니다.";
+}
+
+const STRATEGY_RUBRIC = [
+  ["strategyClarity", "전략"], ["targetEmpathy", "공감"], ["productConnection", "제품"], ["distinctiveness", "차별"],
+  ["channelFit", "채널"], ["koreanCopyQuality", "한국어"], ["brandFit", "브랜드"], ["actionability", "행동"],
+];
+
+function strategyRubricFields(id, prefix = "strategy") {
+  return STRATEGY_RUBRIC.map(([key, label]) => `<label>${label}<input type="number" min="1" max="5" value="3" data-${prefix}-score="${escapeHtml(id)}" data-rubric="${key}"></label>`).join("");
+}
+
+function renderBenchmarkConceptSelection(item) {
+  return `<article class="quality-artifact wide">
+    <div class="quality-artifact-head"><strong>${escapeHtml(item.caseId)}</strong><span>콘셉트 선택 대기</span></div>
+    <div class="quality-artifact-grid">${(item.external?.concepts?.candidates || []).map((concept) => `
+      <div class="quality-artifact">
+        <strong>${escapeHtml(concept.name || concept.axis || concept.conceptId)}</strong>
+        <p>${escapeHtml(concept.targetInsight || "")}</p>
+        <p>${escapeHtml(concept.corePromise || "")}</p>
+        <button data-benchmark-case="${escapeHtml(item.caseId)}" data-benchmark-concept="${escapeHtml(concept.conceptId)}">이 콘셉트 선택 후 카피 생성</button>
+      </div>`).join("")}</div>
+  </article>`;
+}
+
+async function selectPlanningBenchmarkConcept(caseId, conceptId) {
+  toast("선택한 콘셉트로 채널 카피를 생성하고 있습니다.");
+  const data = await api("/api/planning-benchmark/concept-selection", {
+    method: "POST",
+    body: JSON.stringify({ caseId, conceptId }),
+  });
+  state.planningBenchmark = data.report;
+  state.adStrategyQuality = data.metrics;
+  state.planningReviewPacket = data.reviewPacket || state.planningReviewPacket;
+  renderDashboard();
+  toast("카피 생성이 끝났습니다. 블라인드 비교를 진행할 수 있습니다.");
+}
+
+async function runPlanningPilot(limit = 5) {
+  const job = await api("/api/planning-pilot/run", {
+    method: "POST",
+    body: JSON.stringify({ limit: Number(limit || 5) }),
+  });
+  state.jobs = [job, ...(state.jobs || []).filter((item) => item.job_id !== job.job_id)];
+  renderDashboard();
+  toast("광고 기획 파일럿 실행 작업을 시작했습니다.");
+}
+
+async function runAdStrategyReviewSheet(mode = "export") {
+  const job = await api("/api/ad-strategy/review-sheet", {
+    method: "POST",
+    body: JSON.stringify({ mode, limit: 30 }),
+  });
+  state.jobs = [job, ...(state.jobs || []).filter((item) => item.job_id !== job.job_id)];
+  renderDashboard();
+  const label = mode === "import_apply" ? "apply" : mode === "import_dry_run" ? "validate" : "export";
+  toast(`Strategy CSV ${label} job started.`);
+}
+
+async function runAdPlanningBenchmarkReviewSheet(mode = "export") {
+  const job = await api("/api/ad-planning/benchmark-review-sheet", {
+    method: "POST",
+    body: JSON.stringify({ mode, limit: 5 }),
+  });
+  state.jobs = [job, ...(state.jobs || []).filter((item) => item.job_id !== job.job_id)];
+  renderDashboard();
+  const label = mode === "import_apply" ? "apply" : mode === "import_dry_run" ? "validate" : "export";
+  toast(`Benchmark CSV ${label} job started.`);
+}
+
+async function reviewPlanningBenchmark(caseId) {
+  const scores = Object.fromEntries(STRATEGY_RUBRIC.map(([key]) => [key, Number(qs(`[data-benchmark-score="${caseId}"][data-rubric="${key}"]`)?.value || 3)]));
+  const approved = Boolean(qs(`[data-benchmark-approved="${caseId}"]`)?.checked);
+  const edited = Boolean(qs(`[data-benchmark-edited="${caseId}"]`)?.checked);
+  const data = await api("/api/planning-benchmark/review", {
+    method: "POST",
+    body: JSON.stringify({ caseId, approved, edited, scores, reasonTags: [], reviewNote: qs(`[data-benchmark-note="${caseId}"]`)?.value || "" }),
+  });
+  state.planningBenchmark = data.report;
+  state.adStrategyQuality = data.metrics;
+  state.planningReviewPacket = data.reviewPacket || state.planningReviewPacket;
+  renderDashboard();
+  toast("기획안 검수를 저장했습니다.");
 }
 
 qs("#productSelect")?.addEventListener("change", renderProductPreview);

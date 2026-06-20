@@ -139,3 +139,14 @@ runs/[run-dir]/03_visual_candidates/
 - 이유: 최근 실패는 ComfyUI 자체보다 reference/fallback/판단 기준 오염에서 비롯되었다. 판단 기준 없이 생성만 반복하면 캐릭터, toy 3D, fake text 문제가 재발할 가능성이 높다.
 - 적용: ComfyUI는 이미지 제작 엔진으로만 취급하고, 방향 판단은 `design_brain_wiki`, `assets/rules`, `assets/reference_training` 쪽에서 먼저 수행한다.
 - 재개 조건: `03_reference_research`의 selected bad signal 0, fallback clean true, selected coverage 통과, senior designer feedback reason이 명확할 때만 04 이후 소량 테스트를 진행한다.
+
+## 2026-06-20 — 방향 전환: 제품 비주얼 중심 + product_hero 정본화
+
+- **결정**: 사람+주얼리(SDXL 인물→Qwen 삽입→USDU) 파이프라인은 튜닝 대비 품질이 안 나와 **중단**. 앞으로는 **제품 누끼 단독 Qwen Image-Edit 기반 제품 비주얼/브랜드 캠페인 이미지** 중심으로 간다.
+- **검증된 정본 그래프 = `jewelry/jewelry_product_hero_v2.json`** (구조적으로 "좋음" 폴더 키퍼 컷과 동일함을 PNG prompt 메타로 확인).
+  - 출처 키퍼: `output/Automation/jewelry/좋음/{lux_velvet, lux_waterripple_Q4, ring_FINAL_UPSCALED, ring_Q4_ctrl}`
+  - 노드: UnetLoaderGGUF(qwen-image-edit-2511 Q6_K) + CLIPLoader(qwen_2.5_vl_7b) + VAELoader + LoadImage(누끼) + ImageScaleToTotalPixels(1.6MP) + TextEncodeQwenImageEditPlus×2 + FluxKontextMultiReferenceLatentMethod×2(index_timestep_zero) + ModelSamplingAuraFlow(shift 3.1) + CFGNorm(1) + KSampler(euler/simple, denoise 1.0) + (옵션) Remacri 4x → 5MP.
+- **정본화 수정**: control-mode 기본 샘플러값을 드래프트값에서 **검증된 키퍼값으로 정렬** → CFG 3→**3.5**, Steps 20→**24** (node id13/id16/id20, MarkdownNote 동기화). Lightning 토글은 OFF 유지(CFG1에서 네거티브 죽는 함정 그대로 유효).
+- **프롬프트 구조(주입 시드)**: ①고정 제품-충실도 절(silhouette/stone count/cut/prong/metal 유지) + ②씬 절(브리프의 mood/배경/조명을 여기 주입) + ③그라운딩 절(never pasted, contact shadow, matched light). 네거티브는 person/hand/mascot/3d toy/fake text 고정.
+- **다음**: 누끼 입력(C:\Users\jinkiwon\iCloudDrive\자동화 프로젝트\0_자동화 샘플 이미지\다이아 누끼\) → 정본 템플릿 → 라이브 1~2컷으로 자동화 연결(03_visual_candidates) 재검증.
+- **연결 아키텍처 원칙(재확인)**: 스킬/자동화는 브리프를 읽되 **ComfyUI 그래프를 새로 생성하지 않는다.** 역할 = (템플릿 선택 + 누끼/프롬프트힌트/채널해상도 프리셋 주입). 그래프는 사람이 검증한 정본 라이브러리(`02_workflows`)에만 추가.

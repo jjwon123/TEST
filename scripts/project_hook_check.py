@@ -26,10 +26,28 @@ CHECKS = [
     ["python", "-m", "py_compile", "scripts/summarize_reference_training_session.py"],
     ["python", "-m", "py_compile", "scripts/project_hook_check.py"],
     ["python", "-m", "py_compile", "scripts/audit_full_pipeline_health.py"],
+    ["python", "-m", "py_compile", "scripts/audit_operational_readiness.py"],
+    ["python", "-m", "py_compile", "scripts/audit_asset_integrity.py"],
+    ["python", "-m", "py_compile", "scripts/report_meta_brand_metrics.py"],
+    ["python", "-m", "py_compile", "scripts/audit_repeated_operations.py"],
+    ["python", "-m", "py_compile", "scripts/run_recovery_rehearsal.py"],
+    ["python", "-m", "py_compile", "services/ad_reference/registry_metrics.py"],
+    ["python", "-m", "py_compile", "services/ad_reference/collection_strategy.py"],
+    ["python", "-m", "py_compile", "services/ad_reference/meta_collector.py"],
+    ["python", "-m", "py_compile", "scripts/collect_meta_brand_registry.py"],
+    ["python", "-m", "py_compile", "services/ad_reference/source_mix_metrics.py"],
+    ["python", "-m", "py_compile", "scripts/report_meta_source_mix.py"],
+    ["python", "-m", "py_compile", "scripts/audit_console_ui_playwright.py"],
+    ["python", "-m", "py_compile", "scripts/collect_meta_source_mix.py"],
     ["python", "-m", "py_compile", "scripts/run_project_tests.py"],
     ["python", "-m", "py_compile", "scripts/validate_openclip_effect.py"],
     ["node", "--check", "ui/console/app.js"],
     ["python", "scripts/run_project_tests.py"],
+    ["python", "scripts/audit_operational_readiness.py"],
+    ["python", "scripts/audit_asset_integrity.py"],
+    ["python", "scripts/report_meta_brand_metrics.py"],
+    ["python", "scripts/audit_repeated_operations.py"],
+    ["python", "scripts/report_meta_source_mix.py"],
 ]
 
 
@@ -59,12 +77,19 @@ def main() -> int:
 
 def run_check(command: list[str]) -> dict[str, Any]:
     executable_command = [sys.executable, *command[1:]] if command[0] == "python" else command
-    process = subprocess.run(executable_command, cwd=ROOT, text=True, capture_output=True)
+    process = subprocess.run(
+        executable_command,
+        cwd=ROOT,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+        capture_output=True,
+    )
     return {
         "command": command,
         "returncode": process.returncode,
-        "stdout": process.stdout[-4000:],
-        "stderr": process.stderr[-4000:],
+        "stdout": (process.stdout or "")[-4000:],
+        "stderr": (process.stderr or "")[-4000:],
     }
 
 

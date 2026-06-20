@@ -1,0 +1,299 @@
+from __future__ import annotations
+
+import json
+import os
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+from services.ad_strategy.generation import _apply_targeted_concept_repair, _apply_targeted_copy_repair, generate_concepts, generate_copy
+from services.ad_strategy.planning_engine import build_concept_candidates
+from services.ad_strategy.repository import append_correction, load_examples_for_review, retrieve_corrections, strategy_quality_metrics, update_example_review
+from services.llm.openai_provider import OpenAIPlanningProvider
+from scripts.benchmark_ad_planning import ROOT, aggregate, blind_order_for, evaluate_case, run_external_cases, save_human_review, select_external_concept
+from scripts.audit_ad_planning_goal import build_audit
+from scripts.workflow import approve_stage
+
+
+def response_with(value: dict) -> dict:
+    return {"model": "test-model", "output_text": json.dumps(value, ensure_ascii=False), "usage": {"total_tokens": 12}}
+
+
+class AdPlanningUpgradeTests(unittest.TestCase):
+    def setUp(self) -> None:
+        self.brief = {
+            "event_id": "x", "event_name": "테스트 이벤트", "target": {"summary": "민감한 피부 고객"},
+            "offer": {"summary": "샘플 증정"}, "channels": ["instagram_feed"],
+            "constraints": {"required_phrases": ["세라마이드 앰플"], "banned_words": []},
+        }
+
+    def test_openai_provider_enforces_per_run_call_budget(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OPENAI_API_KEY": "test", "OPENAI_MAX_CALLS_PER_EVENT": "2"}):
+            run = Path(tmp)
+            calls = []
+
+            def transport(payload, headers, timeout):
+                calls.append(payload)
+                return response_with({"ok": True})
+
+            provider = OpenAIPlanningProvider(run, transport=transport)
+            schema = {"type": "object", "additionalProperties": False, "required": ["ok"], "properties": {"ok": {"type": "boolean"}}}
+            self.assertEqual("ok", provider.execute(role="strategist", instructions="x", input_payload={}, output_schema=schema)["status"])
+            self.assertEqual("ok", provider.execute(role="critic", instructions="x", input_payload={}, output_schema=schema)["status"])
+            blocked = provider.execute(role="copywriter", instructions="x", input_payload={}, output_schema=schema)
+            self.assertEqual("provider_unavailable", blocked["status"])
+            self.assertEqual("call_budget_exhausted", blocked["providerExecution"]["status"])
+            self.assertEqual(2, len(calls))
+
+    def test_openai_provider_records_usage_latency_and_estimated_cost(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OPENAI_API_KEY": "test", "OPENAI_INPUT_COST_PER_MILLION": "1", "OPENAI_OUTPUT_COST_PER_MILLION": "2"}):
+            provider = OpenAIPlanningProvider(Path(tmp), transport=lambda payload, headers, timeout: {"model": "test", "output_text": '{"ok":true}', "usage": {"input_tokens": 1000, "output_tokens": 500}})
+            schema = {"type": "object", "additionalProperties": False, "required": ["ok"], "properties": {"ok": {"type": "boolean"}}}
+            result = provider.execute(role="strategist", instructions="x", input_payload={}, output_schema=schema)
+            self.assertEqual(0.002, result["providerExecution"]["estimatedCostUsd"])
+            self.assertIn("latencyMs", result["providerExecution"])
+
+    def test_openai_provider_rejects_structured_json_that_violates_schema(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OPENAI_API_KEY": "test"}):
+            provider = OpenAIPlanningProvider(Path(tmp), transport=lambda payload, headers, timeout: {"model": "test", "output_text": '{"wrong":true}'})
+            schema = {"type": "object", "additionalProperties": False, "required": ["ok"], "properties": {"ok": {"type": "boolean"}}}
+            result = provider.execute(role="strategist", instructions="x", input_payload={}, output_schema=schema)
+        self.assertEqual("provider_unavailable", result["status"])
+        self.assertEqual("provider_error", result["providerExecution"]["status"])
+
+    def test_full_generation_and_repair_flow_stops_at_eight_provider_calls(self) -> None:
+        concepts = {"candidates": build_concept_candidates(self.brief)["candidates"]}
+        copy_output = {"outputs": [{"deliverableId": "feed", "channelId": "instagram_feed", "purpose": "benchmark", "strategyBasis": "concept_01", "copyJson": '{"firstLine":"세라마이드 앰플","body":"세라마이드 앰플 루틴","cta":"보기"}', "characterCount": 20}]}
+        revise = {"status": "revise", "issues": [{"severity": "warning", "id": "weak", "message": "수정", "targetIds": ["concept_01"]}], "rubric": _rubric(3)}
+        copy_revise = {"status": "revise", "issues": [{"severity": "warning", "id": "weak", "message": "수정", "targetIds": ["instagram_feed"]}], "rubric": _rubric(3)}
+        responses = [concepts, revise, concepts, {"status": "pass", "issues": [], "rubric": _rubric(4)}, copy_output, copy_revise, copy_output, {"status": "pass", "issues": [], "rubric": _rubric(4)}]
+
+        def transport(payload, headers, timeout):
+            return response_with(responses.pop(0))
+
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OPENAI_API_KEY": "test", "OPENAI_MAX_CALLS_PER_EVENT": "8"}), patch("services.ad_strategy.generation.OpenAIPlanningProvider", side_effect=lambda run_dir: OpenAIPlanningProvider(run_dir, transport=transport)):
+            run = Path(tmp)
+            generated = generate_concepts(self.brief, run)
+            generate_copy(self.brief, generated["candidates"][0], [{"deliverable_id": "feed", "channel_id": "instagram_feed", "purpose": "benchmark"}], run)
+            budget = json.loads((run / "02_content_planning" / "provider-budget.json").read_text(encoding="utf-8"))
+            blocked = OpenAIPlanningProvider(run, transport=transport).execute(
+                role="critic", instructions="x", input_payload={},
+                output_schema={"type": "object", "additionalProperties": False, "required": ["ok"], "properties": {"ok": {"type": "boolean"}}},
+            )
+        self.assertEqual(8, budget["callsUsed"])
+        self.assertEqual("call_budget_exhausted", blocked["providerExecution"]["status"])
+
+    def test_missing_openai_key_uses_local_concept_provider(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp, patch.dict(os.environ, {"OPENAI_API_KEY": ""}):
+            result = generate_concepts(self.brief, Path(tmp))
+        self.assertEqual("review_pending", result["status"])
+        self.assertEqual("local_deterministic", result["providerExecution"][0]["provider"])
+        self.assertEqual("ok", result["providerExecution"][0]["status"])
+
+    def test_concept_generation_repairs_only_after_revise_and_stays_within_four_calls(self) -> None:
+        draft = build_concept_candidates(self.brief)
+        repaired = json.loads(json.dumps(draft))
+        repaired["candidates"][0]["name"] = "수정된 전략"
+        outputs = [
+            draft,
+            {"status": "revise", "issues": [{"severity": "warning", "id": "weak", "message": "약함", "targetIds": ["concept_01"]}], "rubric": _rubric(3)},
+            repaired,
+            {"status": "pass", "issues": [], "rubric": _rubric(4)},
+        ]
+        fake = _FakeProvider(outputs)
+        with tempfile.TemporaryDirectory() as tmp, patch("services.ad_strategy.generation.OpenAIPlanningProvider", return_value=fake):
+            result = generate_concepts(self.brief, Path(tmp))
+        self.assertEqual(4, len(fake.calls))
+        self.assertEqual(["strategist", "critic", "strategist", "critic"], fake.calls)
+        self.assertEqual("수정된 전략", result["candidates"][0]["name"])
+        self.assertEqual(1, len(result["repairHistory"]))
+
+    def test_copy_generation_repairs_after_revise_and_preserves_call_budget_shape(self) -> None:
+        concept = build_concept_candidates(self.brief)["candidates"][0]
+        output = {"outputs": [{"deliverableId": "instagram_feed", "channelId": "instagram_feed", "purpose": "benchmark", "strategyBasis": "x", "copyJson": '{"headline":"초안"}', "characterCount": 2}]}
+        repaired = {"outputs": [{**output["outputs"][0], "copyJson": '{"headline":"수정본"}', "characterCount": 3}]}
+        fake = _FakeProvider([
+            output, {"status": "revise", "issues": [{"severity": "warning", "id": "awkward", "message": "어색함", "targetIds": ["instagram_feed"]}], "rubric": _rubric(3)},
+            repaired, {"status": "pass", "issues": [], "rubric": _rubric(4)},
+        ])
+        with tempfile.TemporaryDirectory() as tmp, patch("services.ad_strategy.generation.OpenAIPlanningProvider", return_value=fake):
+            package = generate_copy(self.brief, concept, [{"deliverable_id": "instagram_feed", "channel_id": "instagram_feed", "purpose": "benchmark"}], Path(tmp))
+        self.assertEqual(["copywriter", "critic", "copywriter", "critic"], fake.calls)
+        self.assertEqual("수정본", package["outputs"][0]["copy"]["headline"])
+        self.assertEqual(1, len(package["repairHistory"]))
+
+    def test_targeted_repairs_do_not_change_unflagged_concepts_or_channels(self) -> None:
+        concepts = build_concept_candidates(self.brief)
+        original_second = json.loads(json.dumps(concepts["candidates"][1]))
+        repaired_concepts = json.loads(json.dumps(concepts))
+        repaired_concepts["candidates"][0]["name"] = "수정 대상"
+        repaired_concepts["candidates"][1]["name"] = "바뀌면 안 됨"
+        _apply_targeted_concept_repair(concepts, repaired_concepts, [{"targetIds": ["concept_01"]}])
+        self.assertEqual("수정 대상", concepts["candidates"][0]["name"])
+        self.assertEqual(original_second, concepts["candidates"][1])
+
+        copies = {"outputs": [
+            {"channelId": "instagram_feed", "copyJson": '{"body":"기존 피드"}'},
+            {"channelId": "blog_thumbnail", "copyJson": '{"headline":"기존 썸네일"}'},
+        ]}
+        repaired_copies = {"outputs": [
+            {"channelId": "instagram_feed", "copyJson": '{"body":"수정 피드"}'},
+            {"channelId": "blog_thumbnail", "copyJson": '{"headline":"바뀌면 안 됨"}'},
+        ]}
+        _apply_targeted_copy_repair(copies, repaired_copies, [{"targetIds": ["instagram_feed"]}])
+        self.assertEqual('{"body":"수정 피드"}', copies["outputs"][0]["copyJson"])
+        self.assertEqual('{"headline":"기존 썸네일"}', copies["outputs"][1]["copyJson"])
+
+    def test_strategy_review_and_metrics_are_persisted(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            examples_path = Path(tmp) / "examples.json"
+            corrections_path = Path(tmp) / "corrections.json"
+            examples_path.write_text(json.dumps({"examples": [{"id": "one", "industry": "cosmetics_skincare", "targetInsight": "고객 인사이트", "hookMechanism": "공감", "persuasionSequence": ["공감", "제안"], "ctaType": "보기", "review": {"decision": "unreviewed", "scores": {}, "reasonTags": []}}]}), encoding="utf-8")
+            with patch("services.ad_strategy.repository.EXAMPLES_PATH", examples_path), patch("services.ad_strategy.repository.CORRECTIONS_PATH", corrections_path):
+                update_example_review("one", {"decision": "selected", "scores": _rubric(5), "reasonTags": ["good_structure"]})
+                metrics = strategy_quality_metrics()
+            self.assertEqual(1, metrics["reviewed"])
+            self.assertEqual(1, metrics["decisions"]["selected"])
+            self.assertEqual(5, metrics["averageHumanScore"])
+
+    def test_selected_strategy_requires_complete_abstraction_and_average_four(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            examples_path = Path(tmp) / "examples.json"
+            examples_path.write_text(json.dumps({"examples": [{"id": "one", "industry": "cosmetics_skincare", "targetInsight": "", "hookMechanism": "공감", "persuasionSequence": ["공감"], "ctaType": "보기", "review": {"decision": "unreviewed", "scores": {}, "reasonTags": []}}]}), encoding="utf-8")
+            with patch("services.ad_strategy.repository.EXAMPLES_PATH", examples_path):
+                with self.assertRaisesRegex(ValueError, "incomplete"):
+                    update_example_review("one", {"decision": "selected", "scores": _rubric(5)})
+                with self.assertRaisesRegex(ValueError, "at least 4"):
+                    update_example_review("one", {"decision": "selected", "strategy": {"targetInsight": "고객 인사이트"}, "scores": _rubric(3)})
+                selected = update_example_review("one", {"decision": "selected", "strategy": {"targetInsight": "고객 인사이트", "persuasionSequence": ["공감", "제안"]}, "scores": _rubric(4)})
+            self.assertEqual("selected", selected["review"]["decision"])
+            self.assertEqual("고객 인사이트", selected["targetInsight"])
+
+    def test_corrections_require_learning_context_and_do_not_cross_brands(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            corrections_path = Path(tmp) / "corrections.json"
+            base = {
+                "runId": "run", "eventId": "event", "eventName": "이벤트", "industry": "cosmetics_skincare",
+                "channelId": "instagram_feed", "model": "model", "strategyExampleIds": [], "originalCopy": {},
+                "editedCopy": {}, "reasonTags": [], "qaResult": {}, "approved": True,
+            }
+            with patch("services.ad_strategy.repository.CORRECTIONS_PATH", corrections_path):
+                with self.assertRaisesRegex(ValueError, "brandName"):
+                    append_correction(base)
+                append_correction({**base, "brandName": "브랜드 A"})
+                append_correction({**base, "runId": "run-b", "brandName": "브랜드 B"})
+                records = retrieve_corrections(industry="cosmetics_skincare", brand_name="브랜드 A")
+            self.assertEqual(1, len(records))
+            self.assertEqual("브랜드 A", records[0]["brandName"])
+
+    def test_strategy_review_enriches_original_copy_without_persisting_it(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            source = root / "references" / "collected-ads.json"
+            source.parent.mkdir()
+            source.write_text(json.dumps({"items": [{"libraryId": "123", "brand": "브랜드", "copy": "원문 광고", "cta": "구매하기"}]}, ensure_ascii=False), encoding="utf-8")
+            examples_path = root / "examples.json"
+            examples_path.write_text(json.dumps({"examples": [{"id": "one", "sourceRef": {"libraryId": "123", "sourceFile": "references/collected-ads.json"}}]}), encoding="utf-8")
+            with patch("services.ad_strategy.repository.ROOT", root), patch("services.ad_strategy.repository.EXAMPLES_PATH", examples_path):
+                reviewed = load_examples_for_review()
+            self.assertEqual("원문 광고", reviewed[0]["sourceOriginal"]["copy"])
+            self.assertNotIn("sourceOriginal", json.loads(examples_path.read_text(encoding="utf-8"))["examples"][0])
+
+    def test_stage_approval_blocks_quality_warnings(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            run = Path(tmp)
+            stage = run / "02_content_planning"
+            stage.mkdir()
+            (run / "run-status.json").write_text(json.dumps({"run_id": "x", "event_id": "x", "run_state": "plan_review", "current_stage": "02_content_planning", "stage_status": {"01_event_brief": "approved", "02_content_planning": "review_pending", "03_reference_research": "locked"}}), encoding="utf-8")
+            (run / "approvals.json").write_text('{"approvals":[]}', encoding="utf-8")
+            (stage / "concept-review.json").write_text('{"status":"approved","selectedConceptId":"concept_01"}', encoding="utf-8")
+            (stage / "copy-review.json").write_text('{"status":"approved","approved":true}', encoding="utf-8")
+            (stage / "planning-scorecard.json").write_text('{"status":"warning","criticalErrorCount":0,"issues":[{"severity":"warning","id":"weak"}]}', encoding="utf-8")
+            with self.assertRaises(SystemExit):
+                approve_stage(run, "02_content_planning")
+
+    def test_benchmark_review_is_saved_and_external_preference_is_unblinded(self) -> None:
+        case = {"id": "case-1", "eventType": "launch", "eventName": "신제품", "target": "고객", "product": "앰플", "offer": ""}
+        external = {
+            "caseId": "case-1", "status": "complete", "concepts": build_concept_candidates(self.brief),
+            "copyPackage": {"outputs": []}, "scorecard": {"criticalErrorCount": 0}, "providerExecution": [{"latencyMs": 10, "estimatedCostUsd": .1}],
+        }
+        preferred = "A" if blind_order_for("case-1")[0] == "external" else "B"
+        with tempfile.TemporaryDirectory() as tmp:
+            reviews_path = Path(tmp) / "reviews.json"
+            review = save_human_review("case-1", {"scores": _rubric(5), "approved": True, "edited": False, "blindPreferred": preferred}, reviews_path)
+            evaluated = evaluate_case(case, review, external)
+            report = aggregate([evaluated], {"cases": 1, "averageHumanScore": 4, "unchangedApprovalRate": .5, "blindPreferenceRate": .7})
+        self.assertEqual("pass", report["summary"]["status"])
+        self.assertEqual(1, report["summary"]["externalGenerated"])
+        self.assertEqual(1, report["summary"]["blindPreferenceRate"])
+        self.assertEqual(.1, report["summary"]["estimatedCostUsd"])
+
+    def test_benchmark_review_rejects_partial_scores_and_invalid_blind_choice(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            reviews_path = Path(tmp) / "reviews.json"
+            with self.assertRaisesRegex(ValueError, "eight"):
+                save_human_review("case-1", {"scores": {"strategyClarity": 5}, "blindPreferred": "A"}, reviews_path)
+            save_human_review("case-1", {"scores": _rubric(5), "approved": True, "edited": False, "blindPreferred": ""}, reviews_path)
+            with self.assertRaisesRegex(ValueError, "A or B"):
+                save_human_review("case-2", {"scores": _rubric(5), "blindPreferred": "Z"}, reviews_path)
+
+    def test_benchmark_requires_human_concept_selection_before_copy_generation(self) -> None:
+        case = {"id": "case-1", "eventType": "launch", "eventName": "신제품", "target": "고객", "product": "앰플", "offer": ""}
+        concepts = {**build_concept_candidates(self.brief), "status": "review_pending", "providerExecution": []}
+        copy_package = {"status": "review_pending", "outputs": [], "providerExecution": []}
+        with tempfile.TemporaryDirectory() as tmp:
+            output = Path(tmp) / "external.json"
+            with patch("scripts.benchmark_ad_planning.generate_concepts", return_value=concepts), patch("scripts.benchmark_ad_planning.generate_copy", return_value=copy_package) as copy_mock:
+                first = run_external_cases({"cases": [case]}, output, provider="openai")
+                self.assertEqual("concept_review_pending", first["results"][0]["status"])
+                copy_mock.assert_not_called()
+                select_external_concept("case-1", concepts["candidates"][1]["conceptId"], output)
+                second = run_external_cases({"cases": [case]}, output, provider="openai")
+            self.assertEqual("complete", second["results"][0]["status"])
+            self.assertEqual(concepts["candidates"][1]["conceptId"], second["results"][0]["selectedConceptId"])
+            copy_mock.assert_called_once()
+
+    def test_fixed_cosmetics_benchmark_has_twenty_cases_and_zero_baseline_critical_errors(self) -> None:
+        dataset = json.loads((ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json").read_text(encoding="utf-8"))
+        evaluated = [evaluate_case(case, {}, {}) for case in dataset["cases"]]
+        self.assertEqual(20, len(evaluated))
+        self.assertEqual({"seasonal", "promotion", "launch", "education", "branding"}, {case["eventType"] for case in evaluated})
+        self.assertEqual(0, sum(case["baseline"]["scorecard"]["criticalErrorCount"] for case in evaluated))
+
+    def test_goal_audit_does_not_treat_zero_unrun_cases_as_zero_critical_success(self) -> None:
+        incomplete = build_audit(
+            {"summary": {"cases": 20, "externalGenerated": 0, "reviewed": 0, "criticalErrors": 0}},
+            {"decisions": {"selected": 0, "shortlist": 0}},
+        )
+        complete = build_audit(
+            {"summary": {"cases": 20, "externalGenerated": 20, "reviewed": 20, "criticalErrors": 0, "averageHumanScore": 4.2, "unchangedApprovalRate": .5, "blindPreferenceRate": .7}},
+            {"decisions": {"selected": 20, "shortlist": 10}},
+        )
+        critical_check = next(item for item in incomplete["checks"] if item["id"] == "critical_errors_zero_on_all_cases")
+        self.assertFalse(critical_check["passed"])
+        self.assertEqual("incomplete", incomplete["status"])
+        self.assertEqual("pass", complete["status"])
+
+
+def _rubric(value: int) -> dict[str, int]:
+    return {key: value for key in ["strategyClarity", "targetEmpathy", "productConnection", "distinctiveness", "channelFit", "koreanCopyQuality", "brandFit", "actionability"]}
+
+
+class _FakeProvider:
+    def __init__(self, outputs: list[dict]) -> None:
+        self.outputs = list(outputs)
+        self.calls: list[str] = []
+
+    def execute(self, *, role: str, instructions: str, input_payload: dict, output_schema: dict) -> dict:
+        self.calls.append(role)
+        output = self.outputs.pop(0)
+        return {
+            "status": "ok", "output": output,
+            "providerExecution": {"status": "ok", "provider": "fake", "model": "fake", "role": role, "callsUsed": len(self.calls), "maxCalls": 8},
+        }
+
+
+if __name__ == "__main__":
+    unittest.main()

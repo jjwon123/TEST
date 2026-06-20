@@ -42,7 +42,8 @@
           "priority": { "type": "integer" },
           "template_id": { "type": ["string", "null"] },
           "supported_templates": { "type": "array", "items": { "type": "string" } },
-          "slides": { "type": "array", "items": { "type": "object" } }
+          "slides": { "type": "array", "items": { "type": "object" } },
+          "copy_blueprint": { "type": "array", "items": { "type": "string" } }
         }
       }
     },

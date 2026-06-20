@@ -19,6 +19,7 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from services.ad_reference.brand_registry import advertiser_match_type, load_brand_registry, profile_brands
+from services.ad_reference.collection_strategy import order_brands
 from services.ad_reference.meta_creative_classifier import classify_media
 from services.ad_reference.meta_collector import MetaCollectorOptions, collect_meta_ads
 
@@ -39,9 +40,11 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--profile", choices=["cosmetics_skincare", "jewelry_luxury"], required=True)
     parser.add_argument("--brand-id", action="append", default=[], help="Collect only these brand ids.")
-    parser.add_argument("--brand-limit", type=int, default=3)
-    parser.add_argument("--ads-per-brand", type=int, default=3)
+    parser.add_argument("--brand-limit", type=int, default=5)
+    parser.add_argument("--strategy", choices=["adaptive", "registry"], default="adaptive")
+    parser.add_argument("--ads-per-brand", type=int, default=5)
     parser.add_argument("--scrolls", type=int, default=5)
+    parser.add_argument("--media-type", choices=["image", "all"], default="all")
     parser.add_argument("--country", default="")
     parser.add_argument("--headful", action="store_true")
     parser.add_argument("--delay", type=float, default=1.5)
@@ -101,11 +104,13 @@ def run_collection(
                 output_dir=brand_dir,
                 country=country,
                 category="all",
+                media_type=getattr(args, "media_type", "all"),
                 limit=max(1, args.ads_per_brand),
                 scrolls=max(0, args.scrolls),
                 headless=not args.headful,
             ))
             accepted_ads = []
+            excluded_ads = []
             advertiser_matched_ads = 0
             excluded_media_count = 0
             review_media_count = 0
@@ -146,9 +151,7 @@ def run_collection(
                         else:
                             accepted_media.append(classified)
                             review_media_count += int(classified.get("creativeGate") == "review")
-                if not accepted_media:
-                    continue
-                accepted_ads.append({
+                classified_ad = {
                     **ad,
                     "media": accepted_media,
                     "excludedMedia": excluded_media,
@@ -160,7 +163,11 @@ def run_collection(
                         "advertiserMatched": True,
                         "advertiserMatchType": match_type,
                     },
-                })
+                }
+                if accepted_media:
+                    accepted_ads.append(classified_ad)
+                elif excluded_media:
+                    excluded_ads.append(classified_ad)
             accepted_payload = {
                 **payload,
                 "registryProfile": args.profile,
@@ -173,6 +180,7 @@ def run_collection(
                 "excludedImageCount": excluded_media_count,
                 "needsCreativeReviewCount": review_media_count,
                 "items": accepted_ads,
+                "excludedItems": excluded_ads,
             }
             atomic_write_json(brand_dir / "accepted-ads.json", accepted_payload)
             results_by_id[brand["id"]] = {
@@ -219,6 +227,7 @@ def prepare_batch(args: argparse.Namespace, country: str) -> tuple[Path, dict[st
         "profile": args.profile,
         "country": country,
         "strictAdvertiserMatch": True,
+        "collectionStrategy": getattr(args, "strategy", "adaptive"),
         "brandCount": len(brands),
         "summary": {},
         "results": [brand_result(brand, "planned") for brand in brands],
@@ -232,6 +241,7 @@ def choose_new_batch_brands(args: argparse.Namespace) -> list[dict[str, Any]]:
     if args.brand_id:
         requested = set(args.brand_id)
         return [brand for brand in brands if brand["id"] in requested]
+    brands = order_brands(args.profile, brands, strategy=getattr(args, "strategy", "adaptive"))
     return brands[: max(1, args.brand_limit)]
 
 

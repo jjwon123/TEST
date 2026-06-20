@@ -1,0 +1,73 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "hsgn-summer-tone-care-2026",
+  "industry": "cosmetics_skincare",
+  "status": "ready",
+  "minimumSelectedSignals": 5,
+  "selectedSignalCount": 13,
+  "targetHypotheses": [
+    "여름 외출 후 피부 인상이 신경 쓰이는 20~40대 스킨케어 고객",
+    "복잡한 스킨케어 단계를 줄이고 싶은 고객",
+    "성분명은 알지만 구매 이유가 더 필요한 고객",
+    "과장 표현에 피로감을 느끼는 고객",
+    "가벼운 데일리 루틴을 찾는 고객",
+    "구매 전 사용 경험의 명분을 원하는 고객",
+    "계절 변화에 맞춰 루틴을 바꾸려는 고객",
+    "성분 기반 스킨케어를 비교하는 고객",
+    "브랜드 태도와 제품명을 함께 확인하는 고객",
+    "혜택 조건을 확인하고 구매하려는 고객",
+    "모바일에서 빠르게 판단하는 고객",
+    "검색 후 비교하며 읽는 고객",
+    "짧은 노출에서 빠르게 판단하는 고객"
+  ],
+  "customerPains": [
+    "여름 외출 후 피부 인상이 칙칙해 보인다고 느끼는 고객은 강한 효능 주장보다 오늘 루틴을 조정할 이유에 반응한다.",
+    "여름 고객은 무거운 루틴보다 핵심 제품 하나의 역할이 분명한 제안을 선호할 수 있다."
+  ],
+  "customerDesires": [
+    "데일리 루틴으로 부담 없이 이어갈 수 있다는 메시지는 여름 스킨케어 구매 저항을 낮춘다.",
+    "증정 오퍼는 가격 혜택보다 루틴 확장 경험으로 연결하면 제품과 더 잘 붙는다."
+  ],
+  "purchaseObjections": [
+    "성분명에 익숙한 고객일수록 농도보다 사용 맥락과 선택 기준을 함께 확인하려 한다.",
+    "HSGN 카피는 순위나 임상 주장 대신 입력된 성분명, 시즌 맥락, 오퍼만으로 설득해야 한다."
+  ],
+  "trendHooks": [
+    "성분 중심 제품도 고객 상황과 선택 기준을 같이 제시해야 광고 문구가 덜 공허해진다."
+  ],
+  "seasonalHooks": [
+    "6월 말 여름 루틴 재정비 맥락은 HSGN 톤 케어 이벤트의 시즌 명분으로 사용할 수 있다."
+  ],
+  "productProofs": [
+    "HSGN 카피의 근거는 브랜드의 과학적 태도와 제품명에 명시된 성분 농도 표기에서 출발한다."
+  ],
+  "offerAngles": [
+    "오퍼는 미니 크림 증정까지만 말하고 할인율, 한정 수량, 인기 순위는 만들지 않는다."
+  ],
+  "channelPatterns": [
+    "인스타그램 피드는 여름 피부 인상 상황을 먼저 열고 제품 역할과 증정 오퍼를 짧게 연결한다.",
+    "블로그 카피는 고객 질문에서 시작해 성분과 사용 맥락을 설명하고 마지막에 오퍼를 배치한다.",
+    "배너는 여름 톤 케어라는 선택 이유와 미니 크림 증정 확인 행동만 남긴다."
+  ],
+  "doNotClaim": [
+    "selected 신호에 없는 순위, 가격, 효능, 후기 수를 생성하지 않는다.",
+    "seed_random 신호는 selected 검수 전까지 사실 근거로 쓰지 않는다.",
+    "외부 출처가 없는 유행/날씨/랭킹 주장을 단정하지 않는다."
+  ],
+  "evidenceSignalIds": [
+    "hsgn-summer-tone-care-01",
+    "hsgn-summer-tone-care-02",
+    "hsgn-summer-tone-care-03",
+    "hsgn-summer-tone-care-04",
+    "hsgn-summer-tone-care-05",
+    "hsgn-summer-tone-care-06",
+    "hsgn-summer-tone-care-07",
+    "hsgn-summer-tone-care-08",
+    "hsgn-summer-tone-care-09",
+    "hsgn-summer-tone-care-10",
+    "hsgn-summer-tone-care-11",
+    "hsgn-summer-tone-care-12",
+    "hsgn-summer-tone-care-13"
+  ],
+  "createdAt": "2026-06-20T02:02:34.981352+00:00"
+}

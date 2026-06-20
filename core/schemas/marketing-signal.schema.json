@@ -1,0 +1,77 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "MarketingSignal",
+  "type": "object",
+  "required": [
+    "id",
+    "industry",
+    "sourceType",
+    "sourceRef",
+    "collectedAt",
+    "topic",
+    "signalText",
+    "normalizedInsight",
+    "targetSegment",
+    "funnelStage",
+    "evidenceType",
+    "strength",
+    "freshness",
+    "confidence",
+    "riskFlags",
+    "usableFor",
+    "review"
+  ],
+  "properties": {
+    "id": { "type": "string", "minLength": 1 },
+    "industry": { "type": "string", "enum": ["cosmetics_skincare", "jewelry_luxury"] },
+    "sourceType": {
+      "type": "string",
+      "enum": [
+        "seed_random",
+        "manual_csv",
+        "oliveyoung_rank",
+        "google_trends",
+        "naver_datalab",
+        "meta_ad",
+        "review",
+        "weather",
+        "calendar",
+        "internal",
+        "brand_site",
+        "public_web"
+      ]
+    },
+    "sourceRef": { "type": "object" },
+    "collectedAt": { "type": "string", "minLength": 1 },
+    "topic": { "type": "string", "minLength": 1 },
+    "signalText": { "type": "string", "minLength": 1 },
+    "normalizedInsight": { "type": "string", "minLength": 1 },
+    "targetSegment": { "type": "string" },
+    "funnelStage": {
+      "type": "string",
+      "enum": ["awareness", "consideration", "conversion", "retention"]
+    },
+    "evidenceType": {
+      "type": "string",
+      "enum": ["trend", "pain", "desire", "objection", "proof", "offer", "channel_pattern", "timing"]
+    },
+    "strength": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "freshness": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "confidence": { "type": "integer", "minimum": 1, "maximum": 5 },
+    "riskFlags": { "type": "array", "items": { "type": "string" } },
+    "usableFor": {
+      "type": "array",
+      "items": { "type": "string", "enum": ["concept", "copy", "offer", "channel", "qa"] }
+    },
+    "review": {
+      "type": "object",
+      "required": ["decision", "reasonTags", "reviewNote"],
+      "properties": {
+        "decision": { "type": "string", "enum": ["unreviewed", "selected", "shortlist", "rejected"] },
+        "reasonTags": { "type": "array", "items": { "type": "string" } },
+        "reviewNote": { "type": "string" },
+        "reviewedAt": { "type": "string" }
+      }
+    }
+  }
+}

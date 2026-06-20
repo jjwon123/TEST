@@ -7,10 +7,14 @@
 - `brief_review`: brief is waiting for approval
 - `planning`: content plan is being prepared
 - `plan_review`: content plan is waiting for approval
+- `reference_research`: references are being planned or collected
+- `reference_ready`: reference research completed
 - `candidate_generating`: visual candidates are being prepared
 - `selection_pending`: manager selection is required
 - `qa_pending`: QA needs review or approval
+- `review_pending`: QA output is waiting for final approval
 - `archived`: approved assets are archived
+- `archived_no_assets`: archive completed without approved reusable assets
 - `failed`: a blocking error stopped the run
 
 ## Stage States

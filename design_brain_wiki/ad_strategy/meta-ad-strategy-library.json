@@ -1,0 +1,3826 @@
+{
+  "schemaVersion": "0.1.0",
+  "createdAt": "2026-06-14T11:55:06.271615+00:00",
+  "source": "meta_ad_library_collected_copy",
+  "copyrightPolicy": "Store abstract strategy patterns; never reuse competitor copy verbatim in generated output.",
+  "recordCount": 46,
+  "summary": {
+    "hookTypes": {
+      "brand_statement": 22,
+      "offer_first": 7,
+      "question_or_challenge": 6,
+      "specific_value": 5,
+      "problem_empathy": 4,
+      "news_announcement": 2
+    },
+    "offerMechanics": {
+      "discount": 11,
+      "bundle_value": 8,
+      "gift_with_purchase": 6,
+      "exclusivity": 4,
+      "risk_reversal": 1
+    },
+    "topPersuasionSequences": {
+      "hook > usage_or_routine > cta": 11,
+      "hook > cta": 7,
+      "hook > offer > cta": 5,
+      "hook > reason_to_believe > usage_or_routine > offer > cta": 4,
+      "hook > usage_or_routine > offer > cta": 4,
+      "hook > problem_recognition > cta": 3,
+      "hook > problem_recognition > usage_or_routine > cta": 3,
+      "hook > reason_to_believe > offer > cta": 3,
+      "hook > reason_to_believe > cta": 1,
+      "hook > problem_recognition > reason_to_believe > cta": 1
+    }
+  },
+  "records": [
+    {
+      "patternId": "meta_strategy_72bd847c74de",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 7
+      },
+      "retrieval": {
+        "query": "anua skincare",
+        "tokens": [
+          "000",
+          "100",
+          "anua",
+          "beauty",
+          "cosmetics",
+          "health",
+          "skincare",
+          "메시지",
+          "보내기"
+        ]
+      },
+      "source": {
+        "brand": "ร้านไทยในเกาหลี ขายทุกอย่าง",
+        "libraryId": "1012126761259843",
+        "copyHash": "72bd847c74deb6729f6a2f0cfb774f181b6311388420b494ea4c32b14f0e7cde",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_16-51-59_anua-skincare\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_5f5b96ed9faa",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "anua skincare",
+        "tokens": [
+          "000",
+          "100",
+          "anua",
+          "beauty",
+          "cosmetics",
+          "health",
+          "skincare",
+          "메시지",
+          "보내기"
+        ]
+      },
+      "source": {
+        "brand": "เครื่องสำอางค์ไทย ในเกาหลี",
+        "libraryId": "831797226280593",
+        "copyHash": "5f5b96ed9faaec187ff5fd37023a7b47b84d6d6456f6675e2d5fb6c117cfc4da",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_16-51-59_anua-skincare\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_bfb657459374",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "credible"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "general",
+          "new",
+          "new뷰티기기",
+          "결합해",
+          "기술력",
+          "독보적인",
+          "디바이스",
+          "메디큐브",
+          "미니",
+          "부스터진동클렌저와",
+          "부스터프로",
+          "이중",
+          "퍼포먼스",
+          "플러스"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 에이지알",
+        "libraryId": "1033710632284309",
+        "copyHash": "bfb65745937493d4ba2c1077dd1600c7950dedd50455a6c0d3e403cc55cbdd6f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-36_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_175e53db284d",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "30",
+          "ai",
+          "general",
+          "ger",
+          "jangwonyoung",
+          "medicube",
+          "x2",
+          "강력",
+          "강력해진",
+          "경험해",
+          "광채",
+          "광채를",
+          "대로",
+          "더욱",
+          "더해",
+          "듀얼",
+          "디바이스",
+          "마스크팩",
+          "메디큐브",
+          "모공",
+          "모드",
+          "모드까지",
+          "보세요",
+          "볼륨",
+          "부스터",
+          "부스터프로",
+          "압도적",
+          "완성하는",
+          "장원영처럼",
+          "차오르는",
+          "케어",
+          "케어부터",
+          "탄력",
+          "테크로",
+          "토탈",
+          "투명하게",
+          "프로",
+          "프로를",
+          "프로에",
+          "프리미엄",
+          "확실한",
+          "흡수와"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 에이지알",
+        "libraryId": "1213016573997607",
+        "copyHash": "175e53db284d0541890cca214cc58f05ce223f7d2d516773b08558bf452ccd30",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-36_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_e4cc7f845ed4",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "problem_empathy",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "reason_to_believe",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "credible"
+        ],
+        "copyBlueprint": [
+          "problem_empathy 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 85,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "나이아신아마이드 세럼",
+        "tokens": [
+          "cosmetics",
+          "skincare",
+          "가지입니다",
+          "같이",
+          "경우가",
+          "고를",
+          "고민",
+          "나이아신아마이드",
+          "단순히",
+          "따로",
+          "때문입니다",
+          "많기",
+          "많은지",
+          "먼저",
+          "문제가",
+          "미백",
+          "미세",
+          "반복되면서",
+          "병풀추출물",
+          "보는",
+          "보지",
+          "봅니다",
+          "비타민c",
+          "사실",
+          "설계돼",
+          "성분만",
+          "성분은",
+          "세럼",
+          "아니라",
+          "않아요",
+          "알부틴",
+          "약사가",
+          "염증과",
+          "올리브영에서",
+          "왜냐하면",
+          "유도체",
+          "이유는",
+          "있는",
+          "있는지를",
+          "있습니다",
+          "자극이",
+          "잡티",
+          "잡티는",
+          "제가",
+          "제일",
+          "조합이",
+          "좋은",
+          "진정이",
+          "진해지는",
+          "피부",
+          "핵심"
+        ]
+      },
+      "source": {
+        "brand": "하우파머시 페이지는 슬기로운피부생활과(와) 함께합니다",
+        "libraryId": "1009044331553410",
+        "copyHash": "e4cc7f845ed49d8a193892d3e7acff17409765f0a661a993b0db85d5a0e43cae",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-03-58_나이아신아마이드-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_efb685eab9c4",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase",
+          "discount"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase, discount",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 91,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 세일",
+        "tokens": [
+          "00",
+          "10",
+          "10만원",
+          "131앰플",
+          "15만원",
+          "28",
+          "59",
+          "69",
+          "cosmetics",
+          "showma5",
+          "skincare",
+          "가능한",
+          "가능합니다",
+          "결제",
+          "공식홈에서",
+          "광고주님",
+          "구매",
+          "그치만",
+          "기껏",
+          "까지",
+          "내돈내산해서",
+          "노동부들을",
+          "단계",
+          "덕분에",
+          "똑땅해",
+          "뜨거운",
+          "반응",
+          "받은",
+          "본품",
+          "설날맞이",
+          "성덕",
+          "세일",
+          "셀라딕스",
+          "셀라딕스x쇼마",
+          "스킨케어",
+          "스페",
+          "아래",
+          "악플",
+          "여러분의",
+          "연락",
+          "와서",
+          "위한",
+          "의심받아서",
+          "이상",
+          "입력해서",
+          "저렴하게",
+          "적용",
+          "주문서",
+          "증정",
+          "최대",
+          "최애템",
+          "추가",
+          "추천해줬더니",
+          "쿠폰팩까지",
+          "페이지에서",
+          "포함",
+          "할인",
+          "할인까지",
+          "할인코드",
+          "할인코드까지",
+          "해준다니까"
+        ]
+      },
+      "source": {
+        "brand": "Showma in Korea 페이지는 Celladix 셀라딕스과(와) 함께합니다",
+        "libraryId": "885616857552270",
+        "copyHash": "efb685eab9c4815b24023883126aa788ac767013ca456775fb72159e1fa9c54f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-04-21_스킨케어-세일\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_a525e68b18bc",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "specific_value",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase",
+          "discount",
+          "bundle_value"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "specific_value 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase, discount, bundle_value",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 세일",
+        "tokens": [
+          "000",
+          "000원",
+          "10",
+          "1등",
+          "1등pdrn",
+          "1위",
+          "200원이라네여",
+          "2025년",
+          "23",
+          "24",
+          "29일",
+          "2만원대로",
+          "2일",
+          "2주정도",
+          "30ml",
+          "3월",
+          "46",
+          "500원",
+          "50ml",
+          "8월",
+          "cosmetics",
+          "dna",
+          "oliveyoung",
+          "pdrn",
+          "ppm으로",
+          "skincare",
+          "가장",
+          "거울",
+          "건조한",
+          "겔패드",
+          "고함량",
+          "기획세트",
+          "꾸준히",
+          "달려갈",
+          "당장",
+          "랭킹",
+          "리필",
+          "리필기획",
+          "리필기획세트가",
+          "리필팩",
+          "만나보실",
+          "만들어줘서",
+          "맑고",
+          "메디큐브",
+          "무려",
+          "미백",
+          "본품",
+          "뽀용",
+          "사용해보려구여",
+          "성분인",
+          "세일",
+          "수분미백",
+          "스킨케어",
+          "써봤는데",
+          "앰플",
+          "앰플은",
+          "없따",
+          "연어",
+          "오특가로",
+          "올리브영",
+          "올영",
+          "올영세일",
+          "올영세일에서",
+          "유사한",
+          "이유가",
+          "있는데요",
+          "잡티흔적",
+          "잡티흔적을",
+          "장벽을",
+          "정상가",
+          "증정",
+          "쫀쫀해졌어요",
+          "추가",
+          "추가로",
+          "키링",
+          "탄탄하게",
+          "토닝시켜준다길래",
+          "판매가",
+          "펩타이드",
+          "프로모션",
+          "피부",
+          "피부가",
+          "피부에는",
+          "피부와",
+          "핑크",
+          "핑크앰플을",
+          "하루동안",
+          "할인",
+          "할인가",
+          "함유된",
+          "해도",
+          "화잘먹",
+          "환하게"
+        ]
+      },
+      "source": {
+        "brand": "조희진 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "864356912940543",
+        "copyHash": "a525e68b18bc4d6a5eb360253d56d63dc0ffa083223956fd99e6ac7fe1e71637",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-04-21_스킨케어-세일\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_c740273d4bf3",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "exclusivity"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "exclusive"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "혜택을 전환 이유로 제시한다: exclusivity",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 83,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "아누아",
+        "tokens": [
+          "2주",
+          "anua",
+          "cosmetics",
+          "kr",
+          "pdrn세럼",
+          "set",
+          "skincare",
+          "결제",
+          "결제완료",
+          "관리",
+          "구매하기",
+          "까지",
+          "닫으시면",
+          "닫지",
+          "닫히며",
+          "더블",
+          "되지",
+          "링크",
+          "마시기",
+          "몰래",
+          "바랍니다",
+          "시크릿",
+          "아누아",
+          "않으니",
+          "여기서만",
+          "오직",
+          "완료",
+          "자동으로",
+          "주름",
+          "주문이",
+          "중에",
+          "지금",
+          "진행",
+          "창은",
+          "창을",
+          "크림",
+          "풉니다"
+        ]
+      },
+      "source": {
+        "brand": "일단 사봐.",
+        "libraryId": "1667767777914313",
+        "copyHash": "c740273d4bf3a94482bcc72b26a3bf4a23790e53da8aa3f157dcf4d6ae885420",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_92eb8ed12195",
+      "profile": "general",
+      "strategy": {
+        "hookType": "specific_value",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "specific_value 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 9
+      },
+      "retrieval": {
+        "query": "아누아",
+        "tokens": [
+          "00",
+          "15",
+          "15초",
+          "15초를",
+          "2개에서",
+          "anua",
+          "general",
+          "낋여왔어요",
+          "너무",
+          "당신의",
+          "댓글",
+          "떠거워서",
+          "문구를",
+          "미니",
+          "미치실게",
+          "반응",
+          "번쩍",
+          "보기",
+          "사용합니다",
+          "사항",
+          "세부",
+          "숮누아",
+          "아누아",
+          "요약",
+          "크리에이티브",
+          "털어올게",
+          "필름",
+          "하드",
+          "화이트수지",
+          "훔치겠습니다"
+        ]
+      },
+      "source": {
+        "brand": "",
+        "libraryId": "1013326501219960",
+        "copyHash": "92eb8ed121958739974325b27e73e710366c3f829a07e152b94b9027d7010b97",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_32b0be94d6bf",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "direct"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "아누아",
+        "tokens": [
+          "general",
+          "instagram",
+          "profile",
+          "visit",
+          "아누아"
+        ]
+      },
+      "source": {
+        "brand": "Dailybeautydrop 데일리뷰티드롭",
+        "libraryId": "1014797641054230",
+        "copyHash": "32b0be94d6bf4532545052388d2a3f27660a2eff1a56f54bafc239427c354c54",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_3cccbdf1fab2",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "아누아",
+        "tokens": [
+          "100명",
+          "1도",
+          "anua",
+          "cosmetics",
+          "event",
+          "kr",
+          "skincare",
+          "결제",
+          "결제완료",
+          "구매하기",
+          "까지",
+          "닫으시면",
+          "닫지",
+          "닫히며",
+          "되지",
+          "듬뿍",
+          "마시기",
+          "바랍니다",
+          "발라도",
+          "백탁",
+          "선착순",
+          "선크림",
+          "수분",
+          "아누아",
+          "않으니",
+          "없는",
+          "완료",
+          "자동으로",
+          "제로썬",
+          "주문이",
+          "중에",
+          "지금",
+          "진행",
+          "창은",
+          "창을"
+        ]
+      },
+      "source": {
+        "brand": "아직도 안샀음?",
+        "libraryId": "1429628225634114",
+        "copyHash": "3cccbdf1fab29050b76927e3dffa3ff1865d5d7a90053fc6b13e9afda56a2276",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_e403ef765a50",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "direct"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "아누아",
+        "tokens": [
+          "general",
+          "가능하지",
+          "경우도",
+          "고민하는",
+          "그리고",
+          "그만큼",
+          "글로벌",
+          "늘고",
+          "다만",
+          "듣는",
+          "마케팅",
+          "많습니다",
+          "많아졌습니다",
+          "많이",
+          "맞는",
+          "미국",
+          "방법만으로는",
+          "분들도",
+          "뷰티",
+          "브랜드들",
+          "빠르게",
+          "생각보다",
+          "쉽지",
+          "시딩만",
+          "시작해야",
+          "실제로",
+          "아누아",
+          "않은",
+          "않을까요",
+          "어떻게",
+          "요즘",
+          "우리도",
+          "이야기입니다",
+          "인플루언서",
+          "있습니다",
+          "정말",
+          "지금은",
+          "하면",
+          "할지"
+        ]
+      },
+      "source": {
+        "brand": "마케터 조쉬 페이지는 스프레이과(와) 함께합니다",
+        "libraryId": "26566328279724796",
+        "copyHash": "e403ef765a50bb39fb03952abb998a8bdbc86ced531848363f164df583023795",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-24-53_아누아\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_49f59c26c17c",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "specific_value",
+        "persuasionSequence": [
+          "hook",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount",
+          "bundle_value"
+        ],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "specific_value 방식으로 첫 문장을 연다",
+          "혜택을 전환 이유로 제시한다: discount, bundle_value",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 91,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "라운드랩",
+        "tokens": [
+          "4대장",
+          "cosmetics",
+          "skincare",
+          "갔다가",
+          "거친결",
+          "고민",
+          "그리고",
+          "기획세트",
+          "나기",
+          "당장",
+          "대박",
+          "되세요",
+          "라운드랩",
+          "맨날",
+          "방치해두면",
+          "번에",
+          "보는",
+          "붉은기",
+          "사람들",
+          "상황들",
+          "소나무",
+          "쉬운",
+          "스트레스",
+          "실제로도",
+          "쓰고",
+          "아시죠",
+          "앰플",
+          "야구",
+          "야구관람",
+          "열감",
+          "열받는",
+          "올리브영",
+          "올영에서",
+          "이번에",
+          "있는데",
+          "잡아주는",
+          "장벽",
+          "쟁이고",
+          "지금",
+          "직관",
+          "진짜",
+          "출시됐대요",
+          "캄다운한",
+          "트러블",
+          "피부",
+          "할인할"
+        ]
+      },
+      "source": {
+        "brand": "0umzlm 페이지는 에이지이엔티과(와) 함께합니다",
+        "libraryId": "1286333186948243",
+        "copyHash": "49f59c26c17ce9a62b9b07688eb9e15fcda224434ef90ea486405dc13297380f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_1f8a94752e43",
+      "profile": "general",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "exclusivity",
+          "bundle_value"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "exclusive"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "혜택을 전환 이유로 제시한다: exclusivity, bundle_value",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 91,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "라운드랩",
+        "tokens": [
+          "100매",
+          "general",
+          "oliveyoung",
+          "oy",
+          "run",
+          "가격으로",
+          "가져왔으니",
+          "가치있게",
+          "같은",
+          "같이",
+          "골라",
+          "구성된",
+          "기획밖에",
+          "라운드랩",
+          "바디",
+          "비인",
+          "사고",
+          "사러갈",
+          "소비해보쟈",
+          "싶다면",
+          "없는",
+          "역대급",
+          "올영단독100매",
+          "올영세일",
+          "올영세일도",
+          "올킬",
+          "용량",
+          "이거",
+          "이번",
+          "제품까지",
+          "제품만",
+          "중에서도",
+          "진짜",
+          "짐승",
+          "참고해서",
+          "친구",
+          "클렌징부터",
+          "클렌징티슈",
+          "클린",
+          "태그",
+          "포인트앤",
+          "합리적인"
+        ]
+      },
+      "source": {
+        "brand": "알콩달콤",
+        "libraryId": "2026966014874094",
+        "copyHash": "1f8a94752e432937d8ce7b5ef51ee743dbf16bc2bdb37928452057d53ab0d14b",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_5d552b737763",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "라운드랩",
+        "tokens": [
+          "1위",
+          "70만",
+          "details",
+          "general",
+          "see",
+          "더부룩할",
+          "돼요",
+          "라운드랩",
+          "맛있어서",
+          "빌드",
+          "역가수치",
+          "올영",
+          "챙겨먹게",
+          "테프",
+          "효소"
+        ]
+      },
+      "source": {
+        "brand": "오늘의 팁",
+        "libraryId": "1999922714743634",
+        "copyHash": "5d552b737763a9b211870ee73632f76df013f84386526ec6cfad2760780a0d03",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_d424bedee751",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "direct"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 3
+      },
+      "retrieval": {
+        "query": "라운드랩",
+        "tokens": [
+          "general",
+          "네플스에서",
+          "라운드랩",
+          "받기",
+          "뷰티템",
+          "빛나는",
+          "실속",
+          "위한",
+          "인기",
+          "있는",
+          "첫구매",
+          "필수템",
+          "하루를",
+          "혜택",
+          "혜택으로",
+          "화장품"
+        ]
+      },
+      "source": {
+        "brand": "네이버플러스 스토어",
+        "libraryId": "977694535041968",
+        "copyHash": "d424bedee751a7ea255ac08d3febd1e6a4c2ece859747cf17001e5d3b286cece",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-25-20_라운드랩\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_9a3420348458",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "55",
+          "general",
+          "new",
+          "pick",
+          "관리를",
+          "광채케어",
+          "딥클렌징",
+          "딥클렌징이랑",
+          "메디큐브",
+          "부스터",
+          "부스터진동클렌저",
+          "브이라인",
+          "윤곽",
+          "장원영",
+          "진동",
+          "클렌저",
+          "한번에"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1435225310840809",
+        "copyHash": "9a3420348458ec95263b6f941a927932f844f1fc2e2bcecad205d5346c3934dd",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_a2871ffcf118",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "8중",
+          "cosmetics",
+          "korea",
+          "medicube",
+          "skincare",
+          "관리해줄",
+          "깨끗",
+          "꼼꼼하게",
+          "날씨",
+          "남친한테",
+          "더워져서",
+          "되는",
+          "들뜨자나여",
+          "디바이스",
+          "디바이스로",
+          "때보다",
+          "롤링만해도",
+          "만짐",
+          "메디큐브",
+          "모공속까지",
+          "미세모에",
+          "보여주면",
+          "부스터",
+          "브러쉬",
+          "비결",
+          "살살",
+          "삼각",
+          "세안할",
+          "손으로",
+          "쌩얼",
+          "써봤슴다",
+          "쓴다는",
+          "애기",
+          "엄청",
+          "에이지알",
+          "완전",
+          "요새",
+          "이유",
+          "있다고",
+          "자극없이",
+          "자꾸",
+          "장원영님도",
+          "좋은",
+          "지워져요",
+          "진동",
+          "진짜",
+          "짱좋음",
+          "클렌저",
+          "클렌징",
+          "피부의",
+          "해서",
+          "헤드로",
+          "화장이",
+          "확실히",
+          "힘안주고"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "681125901716085",
+        "copyHash": "a2871ffcf11898e846ecc1c44161444b01802b708df0b3a477fb11ed62ae1712",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_2ac8b5557526",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "news_announcement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "news_announcement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "02",
+          "5가지",
+          "cosmetics",
+          "ems",
+          "skincare",
+          "경락",
+          "경락기기",
+          "괴물스펙",
+          "메디큐브",
+          "부스터",
+          "부터",
+          "브이롤러",
+          "비대칭",
+          "스킨케어까지",
+          "신제품",
+          "중안부",
+          "차세대",
+          "총정리",
+          "출시",
+          "한번의",
+          "혁신"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1341848630597222",
+        "copyHash": "2ac8b5557526f97e5c496176ae11677419334f9a7f10ecfc739549cf30b8467d",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_85ff40c85196",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 7
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "36",
+          "general",
+          "in",
+          "겉탄력은",
+          "고민하다가",
+          "관리",
+          "관리와",
+          "굳이",
+          "근막과",
+          "기존",
+          "끌어올려주고",
+          "대박적",
+          "동시에",
+          "되는",
+          "되니까",
+          "두배로",
+          "들이시길",
+          "디자인도",
+          "리뉴얼을하나",
+          "많지만",
+          "메디큐브",
+          "메디큐브는",
+          "모두",
+          "못사신분들은",
+          "무려",
+          "생각이",
+          "생각해서",
+          "속탄력은",
+          "솔직히",
+          "스킨부스팅이",
+          "스펙",
+          "스펙도",
+          "스펙은",
+          "시간을",
+          "아껴줄뿐만",
+          "아니라",
+          "업그레이드",
+          "윤곽",
+          "이런",
+          "이전에",
+          "있었습니다",
+          "잘쓰고",
+          "좋다고",
+          "좋은느낌",
+          "진짜",
+          "진피를",
+          "쫀쫀하게",
+          "채워주니까",
+          "처음일걸",
+          "초음파",
+          "타겟해서",
+          "핑크",
+          "하이포커스샷",
+          "하포플",
+          "한번에",
+          "했는데",
+          "홈케어기기는",
+          "효과가"
+        ]
+      },
+      "source": {
+        "brand": "e_s.e.in_ 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "3143280422520763",
+        "copyHash": "85ff40c85196f9d690fdbafaab2d0e243602419f25e1f48c175355b56e8b5de3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_586629efedbd",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 4
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "2in1",
+          "5분",
+          "ems",
+          "general",
+          "경락",
+          "돌아온",
+          "메디큐브",
+          "부스팅까지",
+          "브이롤러",
+          "스킨",
+          "신상",
+          "진화해서",
+          "차세대",
+          "케어부터",
+          "하루",
+          "효과"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "849907564535504",
+        "copyHash": "586629efedbdf2120be6cb44e3c48baaaf5b6fc1d8a3550d7f667edb7f987b7e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_0a7f970910b5",
+      "profile": "general",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 65,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "08",
+          "15",
+          "general",
+          "new",
+          "디바이스",
+          "메디큐브",
+          "메디큐브에이지알x장원영",
+          "부스터진동클렌저",
+          "뷰티",
+          "선택한",
+          "장원영이"
+        ]
+      },
+      "source": {
+        "brand": "메디큐브 - Medicube",
+        "libraryId": "1279134973559065",
+        "copyHash": "0a7f970910b557fa24ca86e7c7cbe6d8d698d9164b14e1e2ec34f64b7abc8e70",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_52b813e7594f",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "news_announcement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "bundle_value"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "news_announcement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: bundle_value",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 93,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "00",
+          "20ea를",
+          "46",
+          "cosmetics",
+          "heanut",
+          "pdrn",
+          "skincare",
+          "공식몰에서",
+          "광이",
+          "구매",
+          "그런지",
+          "기능까지",
+          "기능이",
+          "꾸준히",
+          "느낌",
+          "대용량",
+          "도는",
+          "메디큐브",
+          "바로",
+          "받을",
+          "본식",
+          "봤던",
+          "부스팅",
+          "뿐만",
+          "스킨",
+          "써봤어요",
+          "써야겠어요",
+          "아니라",
+          "얼굴",
+          "엄청",
+          "여름",
+          "원데이세럼",
+          "웨딩촬영",
+          "이번에",
+          "있다고",
+          "전까지",
+          "전에도",
+          "젤과",
+          "지금",
+          "추가",
+          "추가돼서",
+          "출시되어서",
+          "탄력",
+          "플러스가",
+          "피부결에",
+          "하이포커스샷",
+          "하이포커스샷인데",
+          "합니다",
+          "확실히",
+          "효과"
+        ]
+      },
+      "source": {
+        "brand": "_heanut_ 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "25505400005754637",
+        "copyHash": "52b813e7594f0762fe064fa09ad24e7ef80412eddaa4f0e60c391ce6190a4040",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_86b9b2601c7b",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 85,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "메디큐브",
+        "tokens": [
+          "1개",
+          "2개가",
+          "5단계까지",
+          "8중",
+          "cosmetics",
+          "ems로",
+          "skincare",
+          "가능하니까",
+          "가능한데",
+          "가능해요",
+          "강도는",
+          "결합해서",
+          "경락까지",
+          "구석구석",
+          "근데",
+          "너무",
+          "높여주니까",
+          "다르게",
+          "닦이고",
+          "당연히",
+          "데일리",
+          "동시에",
+          "되는데",
+          "등등",
+          "디바이스",
+          "디바이스로",
+          "맞게",
+          "맞더라고요",
+          "메디큐브",
+          "미간",
+          "미니",
+          "미세모라",
+          "민감성",
+          "바로",
+          "밖에",
+          "부스터",
+          "부스터프로",
+          "뷰티",
+          "사용하면",
+          "삼각형이라",
+          "샀는데",
+          "설정",
+          "설정이",
+          "스킨케어",
+          "쓸수",
+          "알겠더라고요",
+          "알고보니까",
+          "어떡하죠",
+          "얼굴",
+          "없다는",
+          "에이지알",
+          "왔어요",
+          "유명한데",
+          "유명한지",
+          "이건",
+          "이미",
+          "인데요",
+          "있었어요",
+          "자기",
+          "장원영",
+          "저도",
+          "저자극",
+          "좋아질수",
+          "좋았어요",
+          "중주파",
+          "진동",
+          "진동모드도",
+          "콧볼이랑",
+          "클렌저",
+          "클렌저에요",
+          "클렌징",
+          "클렌징이랑",
+          "클렌징해주기",
+          "탄력",
+          "편하게",
+          "플러스랑",
+          "플러스로",
+          "피부가",
+          "피부에",
+          "피부인",
+          "해주는",
+          "헤드가",
+          "후에는",
+          "흡수율"
+        ]
+      },
+      "source": {
+        "brand": "소연ソヨン 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1384725559734495",
+        "copyHash": "86b9b2601c7b15298ec6e866bab5e0d258b074304e6b45855f1936cb75674ed3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-29-29_메디큐브\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_d13b45c79c86",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "specific_value",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "specific_value 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "2개에서",
+          "chanel",
+          "cosmetics",
+          "skincare",
+          "가볍고",
+          "가지",
+          "감각적인",
+          "감촉을",
+          "고민에",
+          "광채로",
+          "남기는",
+          "놀라운",
+          "다양한",
+          "만나볼",
+          "맞는",
+          "문구를",
+          "벨벳",
+          "변화를",
+          "보기",
+          "빛납니다",
+          "사용합니다",
+          "사항",
+          "산뜻한",
+          "샤넬",
+          "선택",
+          "세부",
+          "수블리마지",
+          "수프림과",
+          "숭고한",
+          "스킨케어",
+          "아름답게",
+          "요약",
+          "이끌어",
+          "일깨우는",
+          "있습니다",
+          "작용하는",
+          "집중",
+          "크렘",
+          "크렘은",
+          "크리에이티브",
+          "타입에",
+          "텍스처",
+          "텍스처로",
+          "텍스처의",
+          "파인",
+          "풍성한",
+          "프리미엄",
+          "피부",
+          "피부는",
+          "활력을"
+        ]
+      },
+      "source": {
+        "brand": "",
+        "libraryId": "2208294993249718",
+        "copyHash": "d13b45c79c8679cf2e1a6565fe36ad0c0c6ab27f78d057902199bf40f27d57e2",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_00908833a7d1",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "exclusivity",
+          "bundle_value"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "conversational",
+          "credible",
+          "exclusive"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "혜택을 전환 이유로 제시한다: exclusivity, bundle_value",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "02",
+          "2026",
+          "23",
+          "beauty",
+          "clean",
+          "cosmetics",
+          "is",
+          "joining",
+          "musinsa",
+          "perfected",
+          "pixelpure",
+          "skincare",
+          "technology",
+          "through",
+          "transparent",
+          "vegan",
+          "공개됩니다",
+          "기술로",
+          "기획과",
+          "단독",
+          "무신사",
+          "무신사에서",
+          "뷰티에",
+          "뷰티에서",
+          "스킨케어",
+          "시작을",
+          "아름다움",
+          "오직",
+          "완성한",
+          "입점합니다",
+          "준비했습니다",
+          "지금",
+          "투명한",
+          "특별한",
+          "픽셀퓨어가",
+          "함께"
+        ]
+      },
+      "source": {
+        "brand": "Pixelpure",
+        "libraryId": "1668753967704182",
+        "copyHash": "00908833a7d123d554d401f96fdb9f40f555dd0d9f5339e7d84499e887fca9e9",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_48ce1cd52094",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "00",
+          "42",
+          "cosmetics",
+          "pdrn핑크",
+          "skincare",
+          "yuuhyemin",
+          "게다가",
+          "겔링",
+          "느껴지더라구요",
+          "들뜸없이",
+          "떨어지지",
+          "마르지",
+          "머리말릴때",
+          "먹으니까",
+          "메디큐브의",
+          "미백효과가",
+          "밀착되어",
+          "분들께",
+          "붙여놓으면",
+          "소개합니다",
+          "속광은",
+          "쉽게",
+          "스킨케어",
+          "스팟",
+          "싶은",
+          "아주",
+          "않고",
+          "않는데다",
+          "없다구요",
+          "원단으로",
+          "은은한",
+          "이유",
+          "잡티",
+          "제형이라",
+          "즉시",
+          "집중케어가",
+          "쫀쫀하고",
+          "쫀쫀한",
+          "촉촉하고",
+          "추천드리고",
+          "콜라겐",
+          "토너패드를",
+          "토닝겔",
+          "피부에",
+          "필요하신",
+          "화사하게",
+          "화장까지",
+          "흔적등",
+          "흡수돼서"
+        ]
+      },
+      "source": {
+        "brand": "yuuhyemin 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1618021042639404",
+        "copyHash": "48ce1cd52094fc195160ab746434b96669baa61697483995b8d1040bcdfca834",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_5fcebd59146a",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "1박스",
+          "5분께",
+          "cosmetics",
+          "formulain",
+          "official",
+          "skincare",
+          "간단하게",
+          "같이",
+          "거라",
+          "거뭇거뭇해져",
+          "게시물",
+          "계신가요",
+          "고민에",
+          "고민이신",
+          "관리",
+          "그런",
+          "기대평까지",
+          "김크닉",
+          "남겨주신",
+          "눌러주시고",
+          "느낌",
+          "대해",
+          "댓글로",
+          "독소까지",
+          "드림요",
+          "드시면서",
+          "레몬맛이라",
+          "맑아지는",
+          "미백",
+          "미백캔디",
+          "밝아지는",
+          "방법",
+          "본품",
+          "분들",
+          "분들께",
+          "빼주는",
+          "솔직하게",
+          "스킨케어",
+          "아니라",
+          "요즘",
+          "전체적으로",
+          "좋아요",
+          "참여",
+          "추천드림요",
+          "추첨",
+          "코인",
+          "털어주거나",
+          "토닝톡스",
+          "통해",
+          "팔로워",
+          "포뮬라인",
+          "피부",
+          "피부가",
+          "피부색만",
+          "하루",
+          "해보셔요"
+        ]
+      },
+      "source": {
+        "brand": "kim_knick 페이지는 Formulain과(와) 함께합니다",
+        "libraryId": "1866935524014805",
+        "copyHash": "5fcebd59146a18a2577457ce45aeaecd1818005baccbbe52acf3eead6210dab0",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_528588cff265",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: discount",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 93,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "100",
+          "2개에서",
+          "cosmetics",
+          "skincare",
+          "가장",
+          "것처럼",
+          "광고입니다",
+          "급습한건",
+          "꾸준히",
+          "느껴질",
+          "늘려가며",
+          "대신",
+          "더디게",
+          "디마프",
+          "리얼",
+          "마른",
+          "만능기초",
+          "많이",
+          "말랑말랑한",
+          "모았어요",
+          "문구를",
+          "물어보셨던",
+          "물이",
+          "바짝",
+          "발라주세요",
+          "버전이",
+          "보기",
+          "사용합니다",
+          "사항",
+          "세부",
+          "소량씩",
+          "속건조가",
+          "스며들지",
+          "스킨케어",
+          "스폰지에",
+          "스폰지처럼",
+          "안돼요",
+          "안비밀",
+          "않는",
+          "알려드리기",
+          "여러",
+          "요약",
+          "위해",
+          "있는",
+          "있어요",
+          "있으면",
+          "자기님들께",
+          "자기님들이",
+          "장벽루틴",
+          "점점",
+          "점차",
+          "좋아진답니다",
+          "질문들만",
+          "질문해드립니다",
+          "크리에이티브",
+          "팁을",
+          "피부",
+          "횟수를",
+          "흡수가",
+          "흡수력이"
+        ]
+      },
+      "source": {
+        "brand": "",
+        "libraryId": "938833025785106",
+        "copyHash": "528588cff265b24792049af6fb66b33d2e5d681af16f5d8873a91be201afcb32",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_e65e893d02f8",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "reason_to_believe",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase",
+          "discount"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase, discount",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 제품",
+        "tokens": [
+          "1도",
+          "40",
+          "66",
+          "cosmetics",
+          "skincare",
+          "ssap가능이요",
+          "가기",
+          "가능",
+          "경품",
+          "그른가",
+          "기념",
+          "기대평",
+          "꾸더기덜을",
+          "난리도",
+          "너로",
+          "다음",
+          "달라구",
+          "대라",
+          "댓글에",
+          "댓글이벤트",
+          "도랐음",
+          "두달전부터",
+          "들어간",
+          "들어서",
+          "땀흘려도",
+          "많이",
+          "맘에",
+          "모든",
+          "무너지고",
+          "블러",
+          "사실",
+          "사우나",
+          "성분이",
+          "솔직히",
+          "스킨케어",
+          "스킨케어링",
+          "썸남이랑",
+          "아닐",
+          "안비밀",
+          "알았는데",
+          "애용하던",
+          "없었슨",
+          "여름",
+          "요청한건",
+          "위한",
+          "이번",
+          "있다면",
+          "있워",
+          "있음",
+          "자신",
+          "작성해줘",
+          "저는",
+          "정했다",
+          "제가",
+          "주문건",
+          "증정",
+          "진짜",
+          "찐으로",
+          "찐쿠션이구요",
+          "찰떡팡팡퍼프",
+          "참여방법",
+          "최대",
+          "쿠션",
+          "쿠션만",
+          "쿠션은",
+          "쿠션이라",
+          "쿠션하구",
+          "테스트제품",
+          "트러블",
+          "포어",
+          "프리오더",
+          "피부",
+          "할인"
+        ]
+      },
+      "source": {
+        "brand": "kylie17.0 페이지는 대라과(와) 함께합니다",
+        "libraryId": "1707560930425714",
+        "copyHash": "e65e893d02f88690a889d703c8612bc3ac213f9d3e0cf69d1dcea893c2586b66",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-32-23_스킨케어-제품\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_62b3899186ef",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "exclusivity"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "exclusive"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: exclusivity",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "5월을",
+          "cosmetics",
+          "skincare",
+          "가장",
+          "강화해보세요",
+          "건조하지",
+          "건조한",
+          "계절",
+          "그리",
+          "기본적인",
+          "느껴지신다면",
+          "단독",
+          "덧발라",
+          "덧발라보세요",
+          "로션",
+          "로션보다",
+          "로션을",
+          "루틴",
+          "루틴에도",
+          "무겁게",
+          "바스",
+          "방법들을",
+          "변화가",
+          "볕과",
+          "보습감을",
+          "보습력을",
+          "보습이",
+          "부위에만",
+          "비추는",
+          "사용",
+          "사용하셨는데",
+          "수시로",
+          "스킨케어",
+          "싶다면",
+          "않은",
+          "전신에",
+          "조금",
+          "조합을",
+          "주고",
+          "주면서",
+          "집중",
+          "추천드려요",
+          "크림",
+          "크림을",
+          "크림이",
+          "타입이라면",
+          "펴바른",
+          "펴발라",
+          "피부가",
+          "필요하다면",
+          "필요한",
+          "함께"
+        ]
+      },
+      "source": {
+        "brand": "Funandsweet_day",
+        "libraryId": "1146830890911175",
+        "copyHash": "62b3899186ef69fdcec2d06d692fce54573ff318935600c3a6440710eacaa723",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_92c496927f30",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 10
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "000명",
+          "100명",
+          "10매",
+          "200명",
+          "20매",
+          "30매",
+          "cosmetics",
+          "gatulline",
+          "skincare",
+          "개선",
+          "구매시",
+          "느껴보세요",
+          "닥터",
+          "리프팅",
+          "마스크팩",
+          "모세",
+          "바르는",
+          "병풀잎수로",
+          "보습을",
+          "보톡스",
+          "부위",
+          "사용시",
+          "선물이",
+          "선착순",
+          "성분으로",
+          "수딩",
+          "순환",
+          "스킨케어",
+          "열감으로",
+          "왔나봄",
+          "있습니다",
+          "조우",
+          "주름",
+          "주름과",
+          "즉각적인",
+          "증정",
+          "진정",
+          "천연",
+          "촉진",
+          "크림",
+          "턱관절에",
+          "한번에",
+          "혈관",
+          "효과가",
+          "효과를"
+        ]
+      },
+      "source": {
+        "brand": "dental_ok_",
+        "libraryId": "450962503964181",
+        "copyHash": "92c496927f308e65111beb42ebc5d141a648d5097cde46dbbbe650e947571dbb",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_6597b0a61351",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "혜택을 전환 이유로 제시한다: discount",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 93,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "04",
+          "05",
+          "08",
+          "2025",
+          "22명",
+          "23",
+          "cosmetics",
+          "skincare",
+          "가물가물한",
+          "가져왔습니다",
+          "가족",
+          "개인차",
+          "계셔서",
+          "고료를",
+          "구매",
+          "구매링크는",
+          "그걸로",
+          "그대로",
+          "그렇게",
+          "기능성",
+          "기능성에",
+          "내부의",
+          "다른",
+          "댓글",
+          "독자님이",
+          "되고",
+          "링크까지",
+          "물어보시는",
+          "바르다",
+          "반납하게",
+          "받아가시길",
+          "발라지는데요",
+          "번째인지",
+          "보냈어요",
+          "보면",
+          "보시면",
+          "분들께",
+          "빵빵하니",
+          "사서",
+          "살살",
+          "새삼",
+          "샥샥",
+          "서비스",
+          "성분이",
+          "성인",
+          "셀인샷",
+          "셀인샷에",
+          "셀인샷입니다",
+          "스킨케어",
+          "쓰고",
+          "아시겠지만",
+          "않습니다",
+          "앰플",
+          "앰플로",
+          "얹어지는데",
+          "얼굴에",
+          "없냐고",
+          "여름철",
+          "여성",
+          "연결이",
+          "예민해진",
+          "원활하지",
+          "이걸",
+          "이번엔",
+          "이번이",
+          "이벤트도",
+          "이제는",
+          "인증에서",
+          "있는",
+          "있음",
+          "작가님",
+          "저도",
+          "저번에는",
+          "전달드리기도",
+          "정말",
+          "조그만",
+          "조심스럽게",
+          "중이구",
+          "진심인",
+          "진정시킬",
+          "찐으로",
+          "참여하시고",
+          "찾아서",
+          "친지",
+          "캡슐이",
+          "크림",
+          "터지고",
+          "톡톡",
+          "톡하면서",
+          "펴바르면",
+          "피부를",
+          "피부에",
+          "하이라이트에",
+          "한국피부과학연구원",
+          "할인",
+          "했습니다",
+          "협업"
+        ]
+      },
+      "source": {
+        "brand": "bbang._.zzin 페이지는 셀인샷과(와) 함께합니다",
+        "libraryId": "1210480314566140",
+        "copyHash": "6597b0a61351d605bc3ac1597c145388274cb69b107e8cb38461f6af4bbbd315",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_3f42a9ae1d5d",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "problem_empathy",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "reason_to_believe",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "problem_empathy 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 95,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "cosmetics",
+          "skincare",
+          "top5",
+          "강인한",
+          "고밀도",
+          "꽉찬",
+          "네플스",
+          "누씨오",
+          "닥터지",
+          "단지형",
+          "달바",
+          "더블",
+          "랭킹",
+          "레드",
+          "맞춤",
+          "모이스처",
+          "물광",
+          "민감해진",
+          "방법",
+          "변덕스러운",
+          "부활초",
+          "부활초의",
+          "뷰티",
+          "블레미쉬",
+          "비건",
+          "빈틈없이",
+          "생명력으로",
+          "섞어",
+          "속건조",
+          "속건조까지",
+          "수딩",
+          "수분",
+          "수분감으로",
+          "순하게",
+          "스킨케어",
+          "쓰는",
+          "아토베리어365",
+          "에스트라",
+          "영양",
+          "워터붐",
+          "잠재우는",
+          "잡는",
+          "주목해야",
+          "즉각",
+          "지금",
+          "직접",
+          "진정효과",
+          "채우는",
+          "충전",
+          "캡슐로",
+          "케어",
+          "크림",
+          "프리스카",
+          "피부를",
+          "피부장벽",
+          "해결",
+          "확실하게",
+          "환절기"
+        ]
+      },
+      "source": {
+        "brand": "네이버플러스 스토어",
+        "libraryId": "1873336346656075",
+        "copyHash": "3f42a9ae1d5d29224c49bffb5276afaf3240a216b4e6412fa99b4aeb27479f5f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_b4235f7fd4c4",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 85,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "000ppm이나",
+          "0o0",
+          "700",
+          "cosmetics",
+          "skincare",
+          "yc칼슘크림",
+          "거래요",
+          "그래서",
+          "근데",
+          "기대했는데",
+          "꺼져서",
+          "나이먹고",
+          "난리라는",
+          "납품용",
+          "내내",
+          "눈밑이",
+          "눈밑타투",
+          "느낌이",
+          "다크서클",
+          "다크서클은",
+          "드디어",
+          "듣고",
+          "들더라구요",
+          "때문만이",
+          "떴다고",
+          "많은",
+          "매일",
+          "무섭고",
+          "밑이",
+          "발라주다",
+          "보니",
+          "보이는",
+          "사람",
+          "사용해보니",
+          "살았던",
+          "서서히",
+          "스킨케어",
+          "시술",
+          "시술은",
+          "심각했던",
+          "아니라",
+          "아이크림",
+          "알고",
+          "알아본",
+          "없을",
+          "오늘따라",
+          "요즘",
+          "이렇게",
+          "이유가",
+          "인기",
+          "있는사람",
+          "있었어요",
+          "재입고",
+          "저예요",
+          "정도로",
+          "제품이라",
+          "차오르는",
+          "초고농도",
+          "칼슘이",
+          "컨실러",
+          "퀭해",
+          "크림",
+          "품절이다가",
+          "피곤해도",
+          "피곤해보이냐는",
+          "피부과",
+          "한달정도",
+          "함유되어있다고해서",
+          "해요",
+          "협찬으로"
+        ]
+      },
+      "source": {
+        "brand": "harii_bok 페이지는 plalink과(와) 함께합니다",
+        "libraryId": "857846534027060",
+        "copyHash": "b4235f7fd4c456358dc810a319002b8aee9d20f0826c3b248c70e3c90cf97d0d",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-42-36_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_0a356c0f04bd",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase",
+          "discount",
+          "risk_reversal",
+          "bundle_value"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific",
+          "conversational"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase, discount, risk_reversal, bundle_value",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "000ppm",
+          "100",
+          "25피씨에이아",
+          "3개월치",
+          "5만원대면",
+          "cosmetics",
+          "ok",
+          "skincare",
+          "글리세레스",
+          "글리세린",
+          "넉넉하게",
+          "다이에톡시에틸석시네이트",
+          "대용량이라",
+          "들면",
+          "마음에",
+          "매일",
+          "무료",
+          "미스트",
+          "부틸렌글라이콜",
+          "세럼",
+          "스킨부스터",
+          "스킨케어",
+          "써도",
+          "써볼",
+          "없잖아요",
+          "엑토인",
+          "용기도",
+          "이유가",
+          "정도면",
+          "정제수",
+          "증정",
+          "충분해요",
+          "트라이프로필렌글라이콜",
+          "파워분사",
+          "퍼스트",
+          "프로판다이올",
+          "하이드록시아세토페논",
+          "헥산다이올",
+          "환불",
+          "히알루론산"
+        ]
+      },
+      "source": {
+        "brand": "Meditherapy_official",
+        "libraryId": "2007706630140925",
+        "copyHash": "0a356c0f04bd0b4bce1ceea7c6a4960097e5c3a1b387326c9286f664c0289cfa",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_2299219c1a47",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "problem_empathy",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "conversational"
+        ],
+        "copyBlueprint": [
+          "problem_empathy 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 2
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "cosmetics",
+          "skincare",
+          "광까지",
+          "꿀조합",
+          "리뷰",
+          "물광",
+          "미쳤다",
+          "세럼",
+          "스킨케어",
+          "없던",
+          "찾아주는",
+          "피부"
+        ]
+      },
+      "source": {
+        "brand": "뷰티트렌드",
+        "libraryId": "1454588552091375",
+        "copyHash": "2299219c1a470ef0f4789336a8853621fd77eab76d9b76886516826d28746b9e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_e27023a08e37",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "offer_first",
+        "persuasionSequence": [
+          "hook",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "gift_with_purchase"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "offer_first 방식으로 첫 문장을 연다",
+          "혜택을 전환 이유로 제시한다: gift_with_purchase",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 83,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "2ea",
+          "4매입",
+          "5ml",
+          "banobagi",
+          "cosmetics",
+          "skincare",
+          "겔마스크",
+          "광고입니다",
+          "노하우를",
+          "다양한",
+          "담은",
+          "룩북",
+          "리스트와",
+          "만나보세요",
+          "매거진",
+          "무신사뷰티에서",
+          "무신사에서",
+          "미니어처",
+          "바노바기",
+          "바노바기banobagi",
+          "바른더마",
+          "버전이",
+          "상품",
+          "세럼",
+          "스킨케어",
+          "스타일",
+          "여러",
+          "임상",
+          "있는",
+          "정보를",
+          "증정",
+          "지금",
+          "콜라겐",
+          "크림",
+          "피디알엔",
+          "피부과",
+          "확인하세요"
+        ]
+      },
+      "source": {
+        "brand": "바노바기코스메틱/banobagicosmetic",
+        "libraryId": "960195010120459",
+        "copyHash": "e27023a08e37e911a2f40e6b0aa135ac4a8233190077b6faa238820ea8c87a5a",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_b80af33ded13",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "problem_empathy",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "problem_empathy 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 85,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "00",
+          "2종",
+          "33",
+          "cosmetics",
+          "skincare",
+          "다독이는",
+          "메디힐",
+          "민감피부",
+          "세럼",
+          "스킨케어",
+          "크림",
+          "티트리"
+        ]
+      },
+      "source": {
+        "brand": "쿠팡 Coupang",
+        "libraryId": "1582202579995627",
+        "copyHash": "b80af33ded1385b6349a1955c80c37bdd3d7176e6e5ef88a70860f950d9ba1f3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_2a76c3d30758",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "147ml",
+          "cosmetics",
+          "hl",
+          "skin",
+          "skincare",
+          "top3",
+          "가능한",
+          "가볍게",
+          "같은",
+          "과학",
+          "기능성",
+          "기반의",
+          "깊은",
+          "끈적임",
+          "나이아신아마이드",
+          "너리싱",
+          "라인",
+          "라인을",
+          "로션",
+          "만나보세요",
+          "매일",
+          "모이스처",
+          "미백",
+          "바디",
+          "바디뿐만",
+          "바로",
+          "벨벳",
+          "보습감으로",
+          "보습을",
+          "뷰티",
+          "사용",
+          "사용법",
+          "산뜻한",
+          "새로운",
+          "세럼",
+          "스킨케어",
+          "아니라",
+          "아데노신",
+          "얼굴에도",
+          "없이",
+          "오래",
+          "옷을",
+          "입어도",
+          "전신",
+          "주름개선",
+          "지속되는",
+          "채워주는",
+          "촉감으로",
+          "촉촉함",
+          "케어",
+          "포뮬라",
+          "피부",
+          "하나이자",
+          "하이드레이션",
+          "함유",
+          "핵심",
+          "핸드",
+          "화장품",
+          "흡수되는"
+        ]
+      },
+      "source": {
+        "brand": "Herbalife",
+        "libraryId": "952018277730145",
+        "copyHash": "2a76c3d30758e4e8a1abc3e3b4db8443736efa79836c7557667785e9c63df351",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-46-59_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_9812b4533d3d",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "question_or_challenge",
+        "persuasionSequence": [
+          "hook",
+          "problem_recognition",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "question_or_challenge 방식으로 첫 문장을 연다",
+          "고객이 겪는 구체적인 상황을 짚는다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 85,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "스킨케어 세럼",
+        "tokens": [
+          "3종",
+          "ai로",
+          "cosmetics",
+          "instagram",
+          "pc",
+          "profile",
+          "skincare",
+          "visit",
+          "관리를",
+          "관리법",
+          "나갈",
+          "나온다고",
+          "남겨주세요",
+          "댓글로",
+          "돕기",
+          "된다",
+          "드릴게요",
+          "때만",
+          "루틴을",
+          "매일",
+          "모니터",
+          "모니터에서도",
+          "못했던",
+          "미백",
+          "빛에",
+          "빛으로도",
+          "사실",
+          "상한다",
+          "생각하지도",
+          "생성된",
+          "세럼",
+          "스킨케어",
+          "실외",
+          "앉아있는",
+          "알려",
+          "앞에",
+          "여름철",
+          "위해",
+          "이해를",
+          "자외선만",
+          "자외선이",
+          "정답을",
+          "조심하면",
+          "지친",
+          "직장인들을",
+          "콘텐츠입니다",
+          "퇴근",
+          "피부",
+          "피부가",
+          "하면",
+          "해요"
+        ]
+      },
+      "source": {
+        "brand": "whiteORA",
+        "libraryId": "842872155183254",
+        "copyHash": "9812b4533d3d7b308bf797833d488dbcc0ec7dc0d04d750d0b08c347c4a5dce4",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-07_17-51-48_스킨케어-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_b2760da71c95",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "cta"
+        ],
+        "offerMechanics": [],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 75,
+        "lineCount": 5
+      },
+      "retrieval": {
+        "query": "스킨케어 크림",
+        "tokens": [
+          "00",
+          "49",
+          "cosmetics",
+          "korea",
+          "medicube",
+          "pdrn",
+          "skincare",
+          "xlluvia",
+          "건조해도",
+          "덕분이야",
+          "되는",
+          "메디큐브",
+          "메디큐브pdrn캡슐크림",
+          "미백추천템",
+          "미백크림",
+          "베이스",
+          "보여줄게",
+          "생긴",
+          "수분크림",
+          "수분크림추천",
+          "스킨케어",
+          "신기하게",
+          "애착템이라",
+          "오자마자",
+          "완전",
+          "요즘",
+          "촉촉",
+          "추천",
+          "캡슐크림",
+          "크림",
+          "크림추천",
+          "피부관리",
+          "피부하얘지는법",
+          "하는",
+          "흔적크림"
+        ]
+      },
+      "source": {
+        "brand": "_xlluvia 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "1968273104049501",
+        "copyHash": "b2760da71c956ec82cecb24dd174b3f88681a622572964aa0f4519edaa519d7e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-22-51_스킨케어-크림\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_d8f6734b6980",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: discount",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 93,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "나이아신아마이드 세럼",
+        "tokens": [
+          "10종",
+          "aha",
+          "cosmetics",
+          "lha까지",
+          "pha에",
+          "skincare",
+          "가능해서",
+          "각질",
+          "강력하게",
+          "같이",
+          "거기다",
+          "고민인데",
+          "나면",
+          "나비존이",
+          "나이아신아마이드",
+          "놀랐어요",
+          "느낌이라",
+          "돌아온",
+          "들어가서",
+          "때문에",
+          "리뉴얼된",
+          "만족중",
+          "매끈해보이고",
+          "매일",
+          "메디큐브",
+          "모공",
+          "모공이",
+          "묵은",
+          "미백",
+          "바르고",
+          "바르는",
+          "번에",
+          "세럼",
+          "스트레스였는데",
+          "써보고",
+          "예전보다",
+          "요새",
+          "요즘",
+          "원데이",
+          "잡히는",
+          "저는",
+          "정리해주고",
+          "제로모공",
+          "좋았어요",
+          "진짜",
+          "쫀쫀하게",
+          "챙겨",
+          "케어까지",
+          "케어해주는",
+          "케어해준다고",
+          "탄력까지",
+          "특히",
+          "펩타이드가",
+          "풀코스",
+          "피부결이",
+          "피지랑",
+          "피지부터",
+          "함유로",
+          "해요",
+          "훨씬"
+        ]
+      },
+      "source": {
+        "brand": "315.8 페이지는 메디큐브 - Medicube과(와) 함께합니다",
+        "libraryId": "2149881822461830",
+        "copyHash": "d8f6734b698069fcae1aa9c043d49cbc23ba9a7d00c3bc8796c24427f9d7349f",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_ff7bf32e149b",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount",
+          "bundle_value"
+        ],
+        "ctaType": "soft_action",
+        "toneTraits": [
+          "specific",
+          "credible"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "혜택을 전환 이유로 제시한다: discount, bundle_value",
+          "soft_action 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 12
+      },
+      "retrieval": {
+        "query": "나이아신아마이드 세럼",
+        "tokens": [
+          "10",
+          "10일",
+          "2장을",
+          "3종",
+          "3천원대",
+          "4일",
+          "6월",
+          "7장",
+          "cosmetics",
+          "pdrn",
+          "skincare",
+          "가격에",
+          "가져왔지롱",
+          "겔마스크",
+          "겔마스크팩",
+          "광채가",
+          "기간",
+          "기대평",
+          "기획세트",
+          "나만",
+          "나부터",
+          "나이아신아마이드",
+          "내리고",
+          "다들",
+          "달걀",
+          "달려가세요",
+          "당장",
+          "대용량",
+          "댓글이벤트",
+          "떼어낼",
+          "레티놀",
+          "릴스",
+          "마스크",
+          "매끈",
+          "무려",
+          "방법",
+          "붓기",
+          "비타민",
+          "비타티놀",
+          "빡세진",
+          "빼고",
+          "세럼",
+          "심상치",
+          "싶을",
+          "아침에",
+          "않다아",
+          "없어서",
+          "역대급",
+          "열감",
+          "올리브영에서",
+          "올영으로",
+          "워터리",
+          "원할",
+          "유일하게",
+          "일단",
+          "자기",
+          "자기관리비용",
+          "작년보다",
+          "작성",
+          "장당",
+          "전에",
+          "조금",
+          "조합의",
+          "좋아요",
+          "주는",
+          "중에서",
+          "중이쟈냐",
+          "지갑",
+          "지금",
+          "지켜주는",
+          "참여",
+          "채우고",
+          "천사",
+          "카페인",
+          "탄력",
+          "투명해지면서",
+          "판매",
+          "팩이",
+          "품절",
+          "프리메라",
+          "피부",
+          "피부탄력이랑",
+          "화잘먹",
+          "히알루론산과"
+        ]
+      },
+      "source": {
+        "brand": "kylie17.0 페이지는 프리메라과(와) 함께합니다",
+        "libraryId": "2066838650936734",
+        "copyHash": "ff7bf32e149b1550a69938bd023f21af55740474b9f2220082f27ef6103af42e",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_fc7e0425c8d4",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "specific_value",
+        "persuasionSequence": [
+          "hook",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount"
+        ],
+        "ctaType": "learn_more",
+        "toneTraits": [
+          "specific"
+        ],
+        "copyBlueprint": [
+          "specific_value 방식으로 첫 문장을 연다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: discount",
+          "learn_more 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 93,
+        "lineCount": 10
+      },
+      "retrieval": {
+        "query": "나이아신아마이드 세럼",
+        "tokens": [
+          "15",
+          "cosmetics",
+          "skincare",
+          "고농도",
+          "관리와",
+          "나이아신아마이드",
+          "느껴보세요",
+          "동시에",
+          "모공",
+          "부스팅",
+          "빠른",
+          "사용감",
+          "산뜻한",
+          "세럼",
+          "완료",
+          "워터리한",
+          "유분",
+          "저자극",
+          "차이",
+          "차이를",
+          "컨트롤",
+          "케어",
+          "케어를",
+          "타입으로",
+          "테스트",
+          "피부",
+          "피지",
+          "하세요",
+          "함량의",
+          "함유",
+          "흡수"
+        ]
+      },
+      "source": {
+        "brand": "JM솔루션",
+        "libraryId": "3532710123572488",
+        "copyHash": "fc7e0425c8d487f93909f69c67a29af070642af47d21b110c6c230f9b45465c3",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      }
+    },
+    {
+      "patternId": "meta_strategy_9a92c79ad041",
+      "profile": "cosmetics_skincare",
+      "strategy": {
+        "hookType": "brand_statement",
+        "persuasionSequence": [
+          "hook",
+          "reason_to_believe",
+          "usage_or_routine",
+          "offer",
+          "cta"
+        ],
+        "offerMechanics": [
+          "discount",
+          "bundle_value"
+        ],
+        "ctaType": "purchase",
+        "toneTraits": [
+          "specific",
+          "credible",
+          "exclusive"
+        ],
+        "copyBlueprint": [
+          "brand_statement 방식으로 첫 문장을 연다",
+          "제품을 믿을 이유를 한 가지 근거로 설명한다",
+          "일상에서 사용할 장면이나 루틴을 제안한다",
+          "혜택을 전환 이유로 제시한다: discount, bundle_value",
+          "purchase 행동으로 마무리한다"
+        ]
+      },
+      "quality": {
+        "strategyUsefulness": 100,
+        "lineCount": 6
+      },
+      "retrieval": {
+        "query": "나이아신아마이드 세럼",
+        "tokens": [
+          "1위가",
+          "1위를",
+          "cosmetics",
+          "healgrids",
+          "pha",
+          "skincare",
+          "가정의학과",
+          "고기능성",
+          "광고입니다",
+          "기술력으로",
+          "나이아신아마이드",
+          "넘어",
+          "달성했습니다",
+          "라인업을",
+          "만나보세요",
+          "만드는",
+          "믿을",
+          "바디",
+          "바디괄사",
+          "바디케어",
+          "버전이",
+          "베스트셀러",
+          "변화",
+          "부문",
+          "삶의",
+          "샤워세트",
+          "샤워오일",
+          "설계한",
+          "세럼",
+          "솔루션",
+          "수많은",
+          "시너지",
+          "압도적인",
+          "여러",
+          "올리브영",
+          "유행을",
+          "인샤워",
+          "일상으로",
+          "있는",
+          "전문의가",
+          "전문의의",
+          "제안하는",
+          "증명하는",
+          "지금",
+          "직접",
+          "처방",
+          "체감되는",
+          "케어를",
+          "특별한",
+          "피부과전문의가",
+          "혜택으로",
+          "후기가",
+          "힐그리즈",
+          "힐그리즈만의"
+        ]
+      },
+      "source": {
+        "brand": "헤일로 뷰티",
+        "libraryId": "2471178293318551",
+        "copyHash": "9a92c79ad0417fe05238e6cd7ff0fbbec97764a5271c09f3c123c3fda5120998",
+        "sourceFile": "references\\meta_ads\\searches\\2026-06-14_15-25-49_나이아신아마이드-세럼\\collected-ads.json"
+      }
+    }
+  ]
+}

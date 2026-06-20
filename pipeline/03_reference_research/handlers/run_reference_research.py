@@ -27,7 +27,8 @@ from core.utils.rulebook import (
 )
 from core.utils.reference_training import score_record_against_training, training_summary
 from scripts.reference_pipeline import auto_collect_from_search, create_plan
-from services.ad_reference.meta_brand_provider import add_meta_brand_references
+from services.ad_reference.meta_brand_provider import add_meta_brand_references, build_brief_context
+from services.ad_reference.meta_source_mix_provider import add_meta_source_mix_references
 
 
 STAGE_ID = "03_reference_research"
@@ -69,24 +70,36 @@ def run(
     brand_guide = read_json(run_dir / "brand-guide.json", default={})
     brief = read_json(run_dir / "01_event_brief" / "brief.json", default={})
     content_plan = read_json(run_dir / "02_content_planning" / "content-plan.json", default={})
+    reference_context = build_brief_context(brief or event_input, content_plan)
     meta_limit = _int_env("META_BRAND_REFERENCE_LIMIT", 8)
+    reference_evidence = {
+        "stage": STAGE_ID,
+        "providers": {
+            "pinterest": {"status": "preserved_in_reference_manifest"},
+        },
+    }
     if os.getenv("META_BRAND_REFERENCE_MODE", "auto").strip().lower() not in {"off", "disabled", "none"}:
-        manifest, reference_evidence = add_meta_brand_references(
+        manifest, brand_evidence = add_meta_brand_references(
             run_dir,
             manifest,
             brief or event_input,
             content_plan,
             limit=meta_limit,
         )
-        write_json(reference_dir / "reference-manifest.json", manifest)
+        reference_evidence["providers"]["meta_brand_review"] = brand_evidence["providers"]["meta_brand_review"]
     else:
-        reference_evidence = {
-            "stage": STAGE_ID,
-            "providers": {
-                "pinterest": {"status": "preserved_in_reference_manifest"},
-                "meta_brand_review": {"status": "disabled"},
-            },
-        }
+        reference_evidence["providers"]["meta_brand_review"] = {"status": "disabled"}
+    if os.getenv("META_SOURCE_MIX_REFERENCE_MODE", "auto").strip().lower() not in {"off", "disabled", "none"}:
+        manifest, source_mix_evidence = add_meta_source_mix_references(
+            run_dir,
+            manifest,
+            reference_context,
+            limit=_int_env("META_SOURCE_MIX_REFERENCE_LIMIT", 6),
+        )
+        reference_evidence["providers"]["meta_source_mix"] = source_mix_evidence
+    else:
+        reference_evidence["providers"]["meta_source_mix"] = {"status": "disabled"}
+    write_json(reference_dir / "reference-manifest.json", manifest)
     evidence_path = stage_dir / "reference-evidence.json"
     write_json(evidence_path, reference_evidence)
     summary = _build_summary(
@@ -136,7 +149,12 @@ def _build_summary(
 ) -> dict[str, Any]:
     assets = manifest.get("assets", []) if isinstance(manifest, dict) else []
     selected = [asset for asset in assets if asset.get("status") == "selected"]
-    reference_direction = _build_reference_direction(plan, selected)
+    reference_direction = _build_reference_direction(
+        plan,
+        selected,
+        event_input=event_input or {},
+        brand_guide=brand_guide or {},
+    )
     event_profile = _event_profile(plan, event_input or {}, brand_guide or {})
     return {
         "stage": STAGE_ID,
@@ -196,8 +214,20 @@ def _build_notes(summary: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _build_reference_direction(plan: dict[str, Any], selected: list[dict[str, Any]]) -> dict[str, Any]:
+def _build_reference_direction(
+    plan: dict[str, Any],
+    selected: list[dict[str, Any]],
+    event_input: dict[str, Any] | None = None,
+    brand_guide: dict[str, Any] | None = None,
+) -> dict[str, Any]:
     intent = plan.get("intent", {})
+    event_input = event_input or {}
+    brand_guide = brand_guide or {}
+    brand_visual = brand_guide.get("visual", {}) if isinstance(brand_guide.get("visual"), dict) else {}
+    brand_mood = _string_list(brand_visual.get("mood"))
+    brand_colors = _string_list(brand_visual.get("brandColors"))
+    event_references = _string_list(event_input.get("references"))
+    has_specific_visual_direction = bool(brand_mood or brand_colors or event_references)
     text = _flatten_text({
         "intent": intent,
         "queries": [item.get("query", "") for item in plan.get("search_queries", [])],
@@ -220,6 +250,8 @@ def _build_reference_direction(plan: dict[str, Any], selected: list[dict[str, An
     })
     if event_profile_name != "general":
         mood = _dedupe([*rule_direction.get("moodKeywords", []), *[item for item in mood if item not in {"fresh", "festive"}]])
+    if brand_mood:
+        mood = _dedupe([*brand_mood, *mood])
     composition = _keyword_hits(text, {
         "clear-focal-product": ("product", "제품", "focal", "good-product-focus"),
         "copy-safe-negative-space": ("copy_space", "copy space", "good-copy-space", "여백", "배너"),
@@ -248,6 +280,8 @@ def _build_reference_direction(plan: dict[str, Any], selected: list[dict[str, An
     })
     if event_profile_name != "general":
         colors = _dedupe([*rule_direction.get("colorPalette", []), *[item for item in colors if item != "pastel"]])
+    if brand_colors:
+        colors = _dedupe(brand_colors)
     textures = _keyword_hits(text, {
         "metallic": ("금", "gold", "metal", "골드바", "은", "silver"),
         "glass": ("유리", "glass", "transparent", "투명"),
@@ -266,7 +300,14 @@ def _build_reference_direction(plan: dict[str, Any], selected: list[dict[str, An
         *[tag for asset in selected_refs for tag in asset.get("negativeTags", [])],
     ])
     prompt_hints = _dedupe([
-        *(profile_prompt_hints(event_profile_name) if event_profile_name != "general" else []),
+        *(
+            []
+            if has_specific_visual_direction
+            else (profile_prompt_hints(event_profile_name) if event_profile_name != "general" else [])
+        ),
+        *[f"event visual direction: {item}" for item in event_references],
+        *[f"brand visual mood: {item}" for item in brand_mood],
+        *[f"brand color: {item}" for item in brand_colors],
         *_format_hints("mood", mood),
         *_format_hints("composition", composition),
         *_format_hints("lighting", lighting),

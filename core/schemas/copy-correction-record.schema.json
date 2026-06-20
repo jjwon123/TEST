@@ -1,0 +1,25 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "CopyCorrectionRecord",
+  "type": "object",
+  "required": ["id", "runId", "eventId", "eventName", "brandName", "industry", "channelId", "model", "strategyExampleIds", "originalCopy", "editedCopy", "reasonTags", "qaResult", "approved", "createdAt"],
+  "properties": {
+    "id": { "type": "string" },
+    "runId": { "type": "string" },
+    "eventId": { "type": "string" },
+    "eventName": { "type": "string" },
+    "brandName": { "type": "string" },
+    "industry": { "type": "string" },
+    "channelId": { "type": "string" },
+    "model": { "type": "string" },
+    "strategyExampleIds": { "type": "array", "items": { "type": "string" } },
+    "originalCopy": {},
+    "editedCopy": {},
+    "reasonTags": { "type": "array", "items": { "type": "string" } },
+    "qaResult": { "type": "object" },
+    "humanScores": { "type": "object" },
+    "blindPreferred": { "type": "string" },
+    "approved": { "type": "boolean" },
+    "createdAt": { "type": "string" }
+  }
+}

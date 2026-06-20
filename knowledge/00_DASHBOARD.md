@@ -1,5 +1,162 @@
 # 프로젝트 대시보드
 
+## 현재 상태 업데이트 (2026-06-18, 마케팅 인텔리전스 데이터 플로우 목표 설정)
+
+- 광고 기획 품질 병목을 단순 문장 생성 문제가 아니라 시장·고객·트렌드 근거 부족으로 재정의했다.
+- 실제 마케터 수준의 기획에는 타깃 반응, 제품 랭킹, 계절/날씨, Meta/Instagram 흐름, Google/Naver 트렌드, 리뷰 언어, 경쟁 오퍼가 필요하다고 판단했다.
+- 새 기준 문서 `knowledge/MARKETING_INTELLIGENCE_DATA_FLOW.md`를 추가했다.
+- 장기 목표는 화장품 광고 기획용 `MarketingSignal` 1,000개 이상 누적이다.
+- 1차 목표는 화장품 파일럿 5건에서 이벤트당 근거 신호 50개 이상, 콘셉트별 근거 신호 3개 이상, 훅/타깃/제품 연결 평균 4.0/5 이상이다.
+- 이 과제는 하루에 한 번씩 시장/고객/트렌드 신호를 추가하는 장기 데이터 플로우로 운영한다.
+- 1차 자동화로 `seed_random` 화장품 마케팅 신호 50개를 생성해 검수 대기열에 저장했다.
+- 검수 CSV: `.tmp/marketing-signals/marketing-signal-review-sheet.csv`.
+- 콘솔 대시보드에 `마케팅 신호 검수` 섹션을 추가했다.
+- 화면에서 50개 신호 중 검수 대기 12개를 카드로 보고 `선택 / 보류 / 거절`을 저장할 수 있다.
+- 브라우저 검증: 내부 코드 노출 0건, 텍스트 넘침 0건.
+- selected 신호만 묶는 `InsightBrief` 게이트를 추가했다.
+- 현재 selected 신호 0개라 `InsightBrief`는 `needs_signal_review`이며 `InsightBrief 만들기` 버튼은 비활성화된다.
+- ready `InsightBrief`가 생기면 콘셉트 후보와 채널별 카피 근거에 `marketingSignalIds`와 마케팅 신호 문장이 기록되도록 연결했다.
+- selected 신호가 부족하면 기획 점수표에 `marketing_signal_review_required` 경고가 남는다.
+
+### 다음 큰 작업
+
+1. 마케팅 신호 50개를 `선택 / 보류 / 거절`로 실제 검수한다.
+2. selected 신호 3개 이상을 만든 뒤 `InsightBrief 만들기`를 실행한다.
+3. ready `InsightBrief`로 파일럿 5건을 다시 실행해 훅/타깃/제품 연결 점수를 비교한다.
+4. 올리브영 랭킹·리뷰 키워드 CSV 업로드 포맷을 만든다.
+5. 날씨·계절 캘린더 신호를 자동 생성한다.
+
+## 현재 상태 업데이트 (2026-06-17, 광고 카피 근거층 보강)
+
+- 광고 기획 검수 데스크의 `문구 근거`가 `concept_01`, `benchmark` 같은 내부 값으로 보이던 문제를 수정했다.
+- 채널별 카피 패키지에 타깃 설정 이유, 제품 역할, 혜택 역할, 채널 역할, 검증 사실을 함께 기록한다.
+- 콘솔에서는 각 카피 카드에 `문구 근거`, `타깃`, `제품 역할`, `혜택 역할`, `채널 역할`을 분리해 보여준다.
+- 기존 화장품 파일럿/벤치마크 캐시를 최신 근거 로직으로 재생성했다.
+- 5177 콘솔 서버가 중복 실행되어 낡은 API 응답을 주던 상태를 정리하고 서버를 재시작했다.
+- 검증: 브라우저에서 조사 오류 `직장인로`, `증정는` 0건, 근거 필드 노출 확인. 광고 기획 관련 unittest 31개 통과.
+
+### 남은 품질 목표
+
+1. 실제 설득력 향상은 `selected` 전략 사례 30건 이상 검수 후 다시 평가한다.
+2. 현재 근거는 입력 브리프와 콘셉트 구조 기반이므로, 좋은/나쁜 광고 사례의 사람 평가 데이터를 더 채워야 한다.
+
+## 현재 상태 업데이트 (2026-06-14, 검증된 Meta 제품 비주얼 03단계 자동 공급)
+
+- ComfyUI 워크플로와 사람 검토·선택 작업은 이번 자동화 목표에서 제외한다.
+- `services/ad_reference/meta_source_mix_provider.py`를 추가해 Qwen 검증이 끝난 일반 Meta 제품·성분 검색 결과를 화장품 이벤트의 `03_reference_research`에 자동 공급한다.
+- 공급 조건은 검토 5건 이상, clean product rate 20% 이상인 제품·성분 검색어와 `clean_product_visual` 판정이다.
+- SHA 중복을 제거하고 검색어당 최대 2개, 광고당 최대 1개, 기본 총 6개로 제한한다.
+- 브랜드 Meta 참조와 source-mix 참조는 각각 `META_BRAND_REFERENCE_MODE`, `META_SOURCE_MIX_REFERENCE_MODE`로 독립 제어한다.
+- 실제 보유 데이터 검증에서 추천 검색어 4종으로부터 clean product visual 6개를 임시 run에 정상 공급했다.
+- 프로젝트 테스트 58개 통과.
+
+### 남은 자동화 목표
+
+1. 신규 화장품 이벤트 3건에서 source-mix 공급 수, 중복률, QA 경고율을 반복 측정한다.
+2. 공급 품질이 낮아질 때 자동 경고하거나 provider를 자동 비활성화하는 회귀 gate를 추가한다.
+3. 세 번째 최종 archive는 사람 선택·승인 뒤에만 가능하므로 자동 완료하지 않는다.
+
+## 현재 상태 업데이트 (2026-06-14, 화장품 Meta 적응형 수집 전략)
+
+- `services/ad_reference/collection_strategy.py`로 검수 완료 배치의 누적 증거를 사용해 다음 브랜드를 자동 추천한다.
+- 적응형 전략은 검증된 통과 브랜드 1개를 앵커로 두고, 미통과 탐색 브랜드를 우선해 커버리지를 늘린다.
+- 직전 배치 브랜드는 뒤로 보내며, 낮은 누적 광고주 일치율·프로모션 문구형 편중 브랜드는 자동 감점한다.
+- 과거 Qwen 성격 검수 전 통과 기록, dry-run, 광고 0건 배치는 추천·최신 운영 지표를 오염시키지 않는다.
+- 기본 검증 배치를 3×3에서 5개 브랜드 × 5개 광고로 변경했다.
+- 정지 이미지만 수집하는 옵션은 실제 `SKIN1004` 테스트에서 광고 0건이라 기본값으로 사용하지 않는다.
+- 실제 적응형 검증 배치 `2026-06-14_adaptive_cosmetics_validation`:
+  - raw 25 / advertiser matched 14 / accepted 2 / excluded 6.
+  - 광고주 일치율 56%, creative acceptance 25%, 브랜드 커버리지 40%.
+- 적응형 누적 5배치·원본 광고 77개:
+  - creative acceptance 23.5%, 브랜드 커버리지 16.7%.
+  - 기존 20개 브랜드 기준 배치 대비 각각 +17.6%p, +6.7%p.
+- 77개 누적 후에도 브랜드 커버리지 30% 미만이라 검증 브랜드 수집은 `secondary_campaign_reference`로 판정했다.
+- `scripts/collect_meta_source_mix.py`가 표본이 부족한 상품·성분 쿼리를 자동 수집하고 Qwen 검수한다.
+- 자동 보완 수집 계획을 모두 실행한 결과 Qwen 검수 48장 중 클린 제품 비주얼 24장, 전체 회수율 50%다.
+- 검증 쿼리: `나이아신아마이드 세럼` 77.8%, `스킨케어 제품` 66.7%, `스킨케어 세럼` 40%, `스킨케어 크림` 38.9%.
+- 콘솔에서 공급원 판정과 검증된 보완 쿼리를 확인하고, 쿼리 버튼으로 일반 Meta 수집 입력을 준비할 수 있다.
+- 콘솔에서 적응형/레지스트리 순서, 전체/정지 이미지 소재 선택, 다음 추천, 기준 배치 비교를 확인한다.
+- 프로젝트 테스트 54개, project hook, 실제 콘솔 렌더링 통과.
+
+### 다음 작업
+
+1. 검증된 상품·성분 쿼리를 신규 이벤트 레퍼런스 수집에 병행한다.
+2. 세 번째 실제 이벤트를 최종 archive 상태까지 완료한다.
+
+## 현재 상태 업데이트 (2026-06-14, 반복 실운영 증거 감사)
+
+- `scripts/audit_repeated_operations.py`로 실제 run 이력의 반복 운영 증거를 자동 판정한다.
+- 현재 자동화 구간 완료는 서로 다른 이벤트 5종으로 목표 3종을 충족했다.
+- `scripts/run_recovery_rehearsal.py`로 테스트 이벤트 03 단계의 실제 실패 기록 후 동일 run 재실행 복구를 증명했다.
+- 동일 run 실패 후 복구는 1/1건으로 충족했다.
+- 최종 종료 성공은 서로 다른 이벤트 2/3종이라 실제 운영 완료 판정은 아직 `incomplete`다.
+- Workboard에 `자동화 구간 반복 이벤트 5/3`, `최종 종료 이벤트 2/3`, `실패 후 복구 run 1/1`을 표시한다.
+- Workboard가 세 번째 종료에 가장 가까운 실제 run을 자동 표시한다.
+- 현재 최우선 종료 후보: `2026-06-13_05-01-36_여름-h-b-뷰티-세일-나이아신아마이드-집중-케어`, 다음 단계 `05_admin_selection`.
+- 리포트: `.tmp/repeated-operations/latest-repeated-operations.{json,md}`.
+- 프로젝트 테스트 48개와 project hook 통과, 브라우저 JS 오류 0.
+
+### 남은 완료 조건
+
+1. 세 번째 서로 다른 실제 이벤트를 최종 archive 상태까지 완료한다.
+2. 완료 후 반복 운영 감사가 `pass`인지 확인한다.
+
+## 현재 상태 업데이트 (2026-06-14, Meta 운영 지표 + Workboard 노출)
+
+- 기존 Meta 검증 브랜드 배치 17개를 읽어 회수율·브랜드 커버리지·편중·creative type을 자동 계산한다.
+- 리포트: `scripts/report_meta_brand_metrics.py`, `.tmp/meta-brand-metrics/latest-meta-brand-metrics.json`.
+- 최신 화장품 배치: 광고주 일치율 60.0%, 성격 검수 통과율 6.0%, 브랜드 커버리지 10.0%, 통과 이미지 4장.
+- 최신 주얼리 배치: 광고주 일치율 43.1%, 성격 검수 통과율 95.2%, 브랜드 커버리지 50.0%, 통과 이미지 60장.
+- 화장품 병목은 광고주 검색 실패보다 `promotion_text_heavy` 62장 편중과 낮은 통과 브랜드 수다.
+- 콘솔 Workboard에 운영 준비도와 Meta 경고를, Meta 광고 수집 화면에 업종별 지표 카드를 표시한다.
+- 공통 project hook이 Meta 지표 리포트도 매번 갱신한다.
+- 검증: 프로젝트 테스트 46개, 운영 준비도 감사, 자산 무결성 감사, project hook 모두 통과. 브라우저 JS 오류 0.
+
+### 다음 작업
+
+1. 세 번째 실제 이벤트를 최종 archive 상태까지 완료한다.
+2. 반복 운영 감사 최종 `pass`를 확인한다.
+3. 화장품 Meta 수집 쿼리/브랜드 전략을 바꾸고 통과율·커버리지 개선 여부를 새 배치로 비교한다.
+
+## 현재 상태 업데이트 (2026-06-14, 자동화 운영 준비도 전체 검토)
+
+- 사람 직접 검수와 별도 제작 중인 ComfyUI 워크플로를 제외하고 운영 준비도를 감사했다.
+- 신규 단계 일반 예외가 `in_progress`에 고착되지 않고 `blocked/failed`와 오류 원인을 남기도록 수정했다.
+- run 생성 전 event/brand 입력 스키마 검증을 추가하고 `objective|purpose` 계약 불일치를 정리했다.
+- 콘솔 job 이력을 `.tmp/console-jobs/jobs.json`에 영속화하고 재시작 중단 작업을 `interrupted`로 표시한다.
+- Meta provider가 사람 최종 판단을 사용하도록 연결해 final rejected 제외, final selected 우선순위를 적용했다.
+- 실제 run state인 `reference_research`, `reference_ready`, `review_pending`을 공식 상태 계약에 추가했다.
+- 자동 감사: `scripts/audit_operational_readiness.py`.
+- `scripts/reconcile_run_states.py --all --apply`로 과거 stale run 2개와 legacy archive run 2개를 이력 보존 방식으로 정리했다.
+- learned rules 안전 승격 경로를 연결했다. 현재 `cosmetics_skincare/soften_rejected_to_shortlist` 1개만 5개 세션·244건 검수 근거로 승격됐다.
+- 기존 QA 전 package 1개를 `production-package-legacy-draft`로 migration했다.
+- `scripts/audit_asset_integrity.py`를 추가했으며 실제 자산 감사 `pass`.
+- 현재 운영 준비도 감사 `pass`: terminal run 4개, invalid event 0개, learned rule consumer 1개.
+- 공통 project hook에 운영 준비도 감사와 자산 무결성 감사를 연결했다.
+- 상세: [[OPERATIONS_READINESS_REVIEW_2026-06-14]]
+
+### 다음 작업
+
+1. 반복 실제 이벤트 3건으로 운영 완성도를 검증한다.
+2. 화장품 Meta 지표 개선 배치를 만든다.
+
+## 현재 상태 업데이트 (2026-06-13, Qwen 경쟁사 Meta 130장 분류 완료)
+
+- Ollama `qwen2.5vl:7b`로 경쟁사 Meta 이미지 130장을 실제 분류했다.
+- 확장 배치: `2026-06-13_qwen_competitor_cosmetics_expanded`, `2026-06-13_qwen_competitor_jewelry_expanded`.
+- 결과: accepted 64장, excluded 66장, 미분류·검수 보류 0장.
+- 고유 SHA 기준: 전체 121장, accepted 61장, excluded 60장.
+- 성격 분포: 프로모션 문구형 62, 주얼리 제품 34, 모델·라이프스타일 17, 브랜드 캠페인 11, 클린 제품 5, 주얼리 제작 1장.
+- 모든 이미지가 제외된 광고도 개별 Qwen 판정과 제외 사유를 `accepted-ads.json.excludedItems`에 보존하도록 수정했다.
+- 기존 배치를 네트워크 재수집 없이 다시 분류하는 `scripts/reclassify_meta_brand_batch.py`를 추가했다.
+- 검증: 프로젝트 테스트 27개 통과, pipeline health audit `pass`, project hook `pass`.
+
+### 다음 작업
+
+1. accepted 고유 이미지 61장으로 신규 검수 세션을 만들고 사람 판단과 Qwen 판정을 비교한다.
+2. 화장품 Meta 수집의 프로모션 문구형 편중을 낮출 브랜드·쿼리 전략을 보강한다.
+3. accepted 이미지의 브랜드별 편중을 제한한다.
+
 ## 현재 상태 업데이트 (2026-06-13, 전체 남은 작업 분석)
 
 - 결론: 운영 콘솔·레퍼런스 판단·placeholder 제어 흐름은 정상이고, 실제 제작 자산 완료 경로는 아직 부분 준비다.
@@ -964,3 +1121,403 @@ ComfyUI 노드/워크플로    -> 08_COMFYUI_NOTES.md
 - 한글 오버레이는 Unicode 렌더링 통과, 대비/줄바꿈/비율 배지 문제로 납품 품질 실패.
 - OpenCLIP holdout: ROC AUC 0.9328, top-10 selected precision 0.80, baseline 대비 2.02x.
 - 상세: `knowledge/QUALITY_VALIDATION_2026-06-13.md`
+# 2026-06-14 제품 합성/한글 오버레이 후속 개선
+
+- 제품 고정 합성은 alpha 실제 경계 기준으로 투명 여백을 제거해 제품 존재감을 개선했다.
+- 한글 오버레이는 비율 배지 기본 제거, 밝은 배경용 진한 텍스트, 굵은 제목, 넓은 제목 영역을 적용했다.
+- 실제 개선 출력 검수 통과. 프로젝트 테스트 30개 및 project hook 통과.
+- 상세: `knowledge/QUALITY_VALIDATION_2026-06-13.md`
+# 현재 상태 업데이트 (2026-06-14, 6월 이벤트 이미지 외 E2E 품질 테스트)
+
+- 신규 테스트 이벤트 `june-monsoon-barrier-care`를 생성하고 01~04를 실행했다.
+- 최초 규칙 기반 01/02 결과는 입력 문장 반복과 범용 채널 역할에 치우쳐 C급에 가까웠으며, 기존 planning audit가 이를 잘못 `pass` 처리하는 문제를 확인했다.
+- 브리프 메시지를 `공감 진입 / 핵심 제안 방향 / 제품 역할 정의 / 전환 이유 / 기획 원칙`으로 구조화했다.
+- 콘텐츠 플랜에 채널별 목적과 카드뉴스 장별 `message_intent`를 추가하고, 낮은 전략 가공 수준을 planning audit가 경고하도록 개선했다.
+- 브랜드 비주얼 가이드가 일반 카테고리 프로필보다 우선하도록 레퍼런스 방향을 수정했다. 테스트 이벤트 프롬프트에서 기존 오렌지 H&B 세일 방향이 제거되고 브랜드 팔레트 `#E8F0ED / #F7F4EF / #334640`가 반영됐다.
+- 현재 테스트 결과: planning audit `pass`, reference quality `warning`, prompt audit 12개 모두 `warning`, 이미지 생성은 placeholder.
+
+### 다음 작업
+
+1. reference quality warning을 해소하도록 이벤트별 레퍼런스 유사도와 카테고리 커버리지를 개선한다.
+2. prompt audit의 고정 `korean h&b sale` 요구와 `broken korean text` 누락 경고를 이벤트 유형에 맞게 조정한다.
+3. 실제 등록 제품이 없는 이벤트에서 product source가 비어 있는 상태를 명확한 입력 경고로 표시한다.
+# 현재 상태 업데이트 (2026-06-14, Meta 광고 기획 학습 MVP)
+
+- 기존 Meta `collected-ads.json`의 광고 원문에서 카피 설득 구조를 추상화하는 `services/ad_strategy/library.py`를 추가했다.
+- `scripts/build_meta_ad_strategy_library.py`로 46개 광고 전략 패턴을 `design_brain_wiki/ad_strategy/meta-ad-strategy-library.json`에 저장했다.
+- 경쟁사 원문은 저장·재사용하지 않고 hook type, persuasion sequence, offer mechanics, CTA, tone, copy blueprint와 출처 해시만 보존한다.
+- 01 브리프가 유사 광고 전략 패턴을 검색하고 현재 이벤트용 훅/캠페인 구조로 재작성한다.
+- 02 콘텐츠 기획이 채널별 `copy_intent`와 `copy_blueprint`에 해당 결과를 사용한다.
+- 6월 장마철 이벤트 재검증에서 기존 내부 지시문형 문구가 고객 질문형 훅과 설득 구조로 개선됐다.
+- 광고 기획 학습 관련 회귀 테스트 6개 포함, 관련 테스트 총 16개 통과.
+
+### 다음 작업
+
+1. Meta 신규 수집 완료 후 광고 전략 라이브러리를 자동 갱신하도록 수집 job과 연결한다.
+2. 사람이 좋은/나쁜 기획 패턴을 검수하는 콘솔 화면과 선택 기록을 추가한다.
+3. 검수 결과를 기반으로 검색 점수와 패턴 우선순위를 학습한다.
+# 현재 상태 업데이트 (2026-06-14, 실사용급 광고 기획·카피 엔진 1차 구현)
+
+- 01단계에 `strategic-brief.json`을 추가했다.
+- 02단계가 서로 다른 전략 축의 콘셉트 3안을 생성하고, 콘셉트 선택 후 요청 채널별 완성 카피 패키지를 생성한다.
+- 콘셉트 승인과 최종 카피 승인 두 내부 게이트를 모두 통과해야 02단계를 승인할 수 있다.
+- 검수된 전략 사례와 카피 교정 기록 스키마·저장소를 추가했다.
+- 기존 Meta 전략 패턴은 `unreviewed`로 격리되며 자동 생성 검색에서 제외된다.
+- 콘솔 진행 상세 화면에서 콘셉트 선택, 카피 확인, 최종 승인, 02단계 승인이 가능하다.
+- 실제 검증 run `2026-06-14_12-39-06_6월-장마철-수분-장벽-리셋-위크`에서 조기 승인 차단과 전체 승인 흐름을 확인했고 planning audit는 `pass`다.
+- 전체 프로젝트 테스트 69개와 project hook이 통과했다.
+- 로컬 모델은 블라인드 비교 품질비 80% 이상, 치명 오류 0일 때만 `eligible`이 되는 승격 평가기를 추가했다.
+
+### 다음 작업
+
+1. 콘솔에서 화장품·주얼리 전략 사례를 업종별 100~150개 직접 검수한다.
+2. 외부 텍스트 모델과 로컬 instruct 모델을 동일 벤치마크 입력으로 비교한다.
+3. 직접 수정 카피 50쌍 이상 축적 후 QLoRA 실험 여부를 결정한다.
+# 현재 상태 업데이트 (2026-06-14, 광고 기획 실전 QA 테스트)
+
+- `june-monsoon-barrier-care`를 새 런 `2026-06-14_12-46-22_6월-장마철-수분-장벽-리셋-위크`로 01~02 재실행했다.
+- 최초 실전 결과에서 조사 오류 `은(는)`, 내부 작성용 문구, 동일 문장 반복을 발견했지만 기존 점수표가 `pass`로 처리하는 문제를 확인했다.
+- 생성기에서 조사 오류와 내부 작성용 문구를 제거하고, 제품명 선택과 카드뉴스 전환 문장·블로그 섹션 문장을 개선했다.
+- planning QA가 어색한 한국어와 동일 문장 3회 이상 반복을 `warning`으로 감지하도록 보강했다.
+- 재테스트 결과 남은 반복 카피를 `repetitive_copy`로 감지하며 planning audit도 `planning_quality_warning`을 표시한다.
+- 전체 프로젝트 테스트 71개와 project hook 통과.
+
+### 다음 작업
+
+1. 결정론적 baseline 카피는 아직 실사용 승인 수준이 아니므로 승인하지 않고 수정 데이터로 축적한다.
+2. 검수 완료 전략 사례를 업종별로 채운 뒤 외부 텍스트 모델과 동일 입력 블라인드 비교를 시작한다.
+3. 주얼리 실제 이벤트 입력을 추가해 동일한 실전 QA 테스트를 진행한다.
+# 현재 상태 업데이트 (2026-06-14, 화장품 광고 기획 품질 업그레이드)
+
+- OpenAI Responses API + Structured Outputs 기반 역할 분리 생성 계층을 추가했다.
+- 역할은 `strategist`, `critic`, `copywriter`이며 run별 호출 상한은 기본 8회다.
+- 기본 모델은 `gpt-5.5`, 환경변수는 `OPENAI_API_KEY`, `OPENAI_PLANNING_MODEL`, `OPENAI_MAX_CALLS_PER_EVENT`, `OPENAI_REQUEST_TIMEOUT_SECONDS`다.
+- 외부 모델 미연결·오류·호출 예산 초과는 `provider_unavailable` 치명 오류로 처리하며 결정론적 baseline은 승인할 수 없다.
+- 기획 평균 점수 4점 미만 또는 일반 품질 경고가 남으면 02단계를 승인할 수 없다.
+- 전략 검수 API/UI, 8항목 사람 채점, 직접 수정 카피 저장, 품질 대시보드 지표를 추가했다.
+- 화장품 고정 평가셋 20건과 벤치마크 실행기를 추가했다.
+- 현재 벤치마크: 20건 준비, 사람 검수 0건, 치명 오류 0건, 상태 `incomplete`.
+- 실제 파일럿 run `2026-06-14_12-58-52_6월-장마철-수분-장벽-리셋-위크`에서 API 키 미설정 시 승인 차단을 확인했다.
+- 전체 테스트 75개, project hook, 콘솔 브라우저 검증 통과.
+
+### 다음 작업
+
+1. `OPENAI_API_KEY`를 실행 환경에 설정하고 화장품 5건 외부 모델 파일럿을 실행한다.
+2. 콘솔에서 기존 Meta 전략 46건을 검수해 최소 30건을 selected/shortlist로 분류한다.
+3. 파일럿 카피를 직접 채점·수정한 뒤 20건 고정 평가셋을 완료한다.
+# 현재 상태 업데이트 (2026-06-15, 광고 기획 블라인드 벤치마크 콘솔 보강)
+
+- 화장품 고정 평가셋 20건이 결정론적 기준선과 외부 모델 결과를 분리 저장하고, 출처를 숨긴 A/B 비교를 제공하도록 확장했다.
+- `scripts/benchmark_ad_planning.py --run-external --limit <N>`으로 누락된 외부 결과만 점진 생성하며, 케이스별 결과를 즉시 저장한다.
+- 사람 평가에는 8개 루브릭, 승인 여부, 수정 여부, A/B 선호, 사유 태그를 저장한다.
+- 외부 벤치마크도 3안 생성 후 콘솔에서 사람이 콘셉트를 선택해야 채널 카피를 생성한다.
+- 종합 리포트는 외부 생성 완료 수, 치명 오류, 평균 사람 점수, 무수정 승인율, 외부 선호도, 호출 수, 평균 지연, 예상 비용을 집계한다.
+- 전략 검수 콘솔은 원문 출처와 추상 전략을 나란히 확인하고 8개 루브릭을 개별 입력하도록 보강했다.
+- 모의 외부 모델 기반 생성→비평→부분 재작성→재비평 회귀 테스트를 추가했다.
+- 전략 원문 46건을 원본 수집 파일에서 읽어 검수 화면에 제공하되 생성 저장소에는 복사하지 않는다.
+- 블라인드 선호, 최종 승인, 사람 수정 여부를 분리 입력하며 8개 루브릭이 모두 없으면 평가 저장을 거부한다.
+- 전체 프로젝트 테스트 82개와 project hook이 통과했다.
+- 실제 외부 파일럿 시도 결과: `OPENAI_API_KEY` 미설정으로 `provider_unavailable / missing_api_key / callsUsed 0`, 외부 생성 완료 0/20, 사람 평가 0/20.
+- 현재 목표는 미달성 상태이며 외부 모델 실결과와 사람 검수가 필요하다.
+
+### 다음 우선순위
+
+1. OpenAI API 키가 제공된 환경에서 외부 모델 파일럿 5건을 생성한다.
+2. 콘솔에서 5건 블라인드 검수 후 치명 오류와 평균 점수를 확인한다.
+3. 파일럿 기준 미달 항목을 프롬프트·QA에 반영한 뒤 20건으로 확장한다.
+4. Meta 전략 46건 중 최소 30건을 `selected` 또는 `shortlist`로 검수한다.
+# 현재 상태 업데이트 (2026-06-15, 광고 기획 치명 오류 QA 및 목표 감사 강화)
+
+- `services/ad_strategy/quality_gate.py`를 추가해 실제 카피 본문만 대상으로 결정론적 품질 검사를 수행한다.
+- 자동 차단:
+  - 입력에 없는 가격·할인·기간·효능·혜택 주장
+  - 경쟁사 원문과 문장 유사도 90% 이상 표현
+  - 화장품·주얼리 업종 표현 혼용
+  - 요청 채널과 생성 채널 불일치
+  - 콘셉트 또는 카피 비평 모델의 최종 `fail`
+- 수정 전 경고:
+  - 채널별 필수 필드 및 글자 수 초과
+  - 결과 메타데이터 누락·잘못된 `characterCount`
+  - 내부 작성용 문구
+  - 약한 제품·오퍼·CTA 연결
+  - 채널 간 동일 긴 문장 재사용
+  - 해결되지 않은 비평 모델 `revise`
+- 구조화 모델 응답은 Responses API 결과를 받은 뒤 로컬 JSON Schema 검증을 다시 통과해야 한다.
+- 비평 후 재작성은 `targetIds`로 지정된 콘셉트·채널만 교체하며 나머지는 코드에서 보존한다.
+- 콘셉트 비평과 카피 비평을 모두 최종 QA에 반영한다.
+- 교정 기록은 이벤트·브랜드·업종·채널·모델·전략 ID·전후 카피·QA·승인 여부가 모두 있어야 저장된다.
+- 승인된 교정 예시는 동일 브랜드를 우선하고 다른 브랜드 교정은 검색에서 제외한다.
+- 전략 `selected` 승격은 핵심 추상 전략 완성 + 8개 루브릭 평균 4점 이상일 때만 허용한다.
+- `scripts/audit_ad_planning_goal.py` 결과: 목표 핵심 조건 1/7, 준비 조건 포함 1/8, 상태 `incomplete`.
+- 전체 프로젝트 테스트 97개와 project hook 통과.
+
+### 현재 목표 증거
+
+- 고정 평가셋: 20/20
+- 외부 결과: 0/20
+- 사람 평가: 0/20
+- 치명 오류 평가 완료: 0/20
+- selected + shortlist 전략: 0/30
+- OpenAI API 키: 미설정
+
+### 다음 우선순위
+
+1. OpenAI API 키가 설정된 환경에서 외부 콘셉트 파일럿 5건을 생성한다.
+2. 콘솔에서 전략 46건 중 우선 30건을 보정·채점해 `selected` 또는 `shortlist`로 분류한다.
+3. 파일럿 콘셉트 선택 후 카피 생성·블라인드 검수·직접 수정을 진행한다.
+4. 파일럿 치명 오류 0건 확인 후 평가셋 20건으로 확장한다.
+## 현재 상태 업데이트 (2026-06-16, 광고 기획 리뷰 패킷 추가)
+
+- ComfyUI/이미지 제작은 이번 진행 범위에서 제외하고, 화장품 광고 기획·카피 품질 목표의 검수 준비를 보강했다.
+- `scripts/export_ad_planning_review_packet.py`를 추가해 고정 평가셋 20건, 파일럿 5건, 전략 검수 30건 목표를 한 번에 볼 수 있는 리뷰 패킷을 생성한다.
+- 생성 산출물:
+  - `.tmp/model-benchmarks/ad-planning-review-packet.json`
+  - `.tmp/model-benchmarks/ad-planning-review-packet.md`
+- 현재 패킷 상태:
+  - API 키: 미설정
+  - 고정 평가셋: 20/20
+  - 파일럿 외부 결과: 0/5
+  - 파일럿 사람 평가: 0/5
+  - selected + shortlist 전략: 0/30
+  - 차단 사유: `OPENAI_API_KEY_MISSING`, `STRATEGY_REVIEW_BELOW_30`, `PILOT_EXTERNAL_RESULTS_INCOMPLETE`, `PILOT_HUMAN_REVIEWS_INCOMPLETE`
+- 목표 감사는 여전히 `incomplete`이며 핵심 조건 1/7만 통과한다.
+- 검증: 프로젝트 테스트 100개 통과, project hook 통과, `git diff --check` 통과.
+
+### 다음 우선순위
+
+1. `OPENAI_API_KEY`를 설정한 환경에서 화장품 파일럿 5건 외부 모델 생성을 실행한다.
+2. 콘솔 또는 리뷰 패킷을 기준으로 Meta 전략 46건 중 최소 30건을 `selected` 또는 `shortlist`로 검수한다.
+3. 파일럿 5건의 콘셉트 선택, 카피 생성, 블라인드 평가, 수정 여부 기록을 완료한다.
+4. 파일럿에서 치명 오류 0건과 평균 사람 평가 4.0 이상을 확인한 뒤 20건 전체로 확장한다.
+## 현재 상태 업데이트 (2026-06-16, 광고 기획 리뷰 패킷 콘솔 연동)
+
+- ComfyUI/이미지 제작 제외 범위에서 광고 기획 파일럿 리뷰 패킷을 콘솔 bootstrap/API/UI에 연결했다.
+- 콘솔 bootstrap에 `planningReviewPacket`을 추가했고, 별도 조회 API `/api/planning-review-packet`을 추가했다.
+- 대시보드에서 파일럿 외부 결과, 사람 평가, selected/shortlist 전략 수, blocker를 바로 확인할 수 있다.
+- 전략 검수, 벤치마크 콘셉트 선택, 벤치마크 평가 저장 후에도 최신 리뷰 패킷이 UI 상태에 반영된다.
+- 현재 상태는 여전히 `blocked_waiting_for_api_key`:
+  - API 키 없음
+  - 파일럿 외부 결과 0/5
+  - 파일럿 사람 평가 0/5
+  - selected + shortlist 전략 0/30
+- 검증: 프로젝트 테스트 101개 통과, project hook 통과, `node --check ui\console\app.js` 통과, `git diff --check` 통과.
+## 현재 상태 업데이트 (2026-06-16, 전략 검수 CSV 시트 추가)
+
+- 광고 전략 30건 검수 병목을 줄이기 위해 `scripts/manage_ad_strategy_review_sheet.py`를 추가했다.
+- 기본 export 산출물은 `.tmp/model-benchmarks/ad-strategy-review-sheet.csv`이며, 현재 30행이 생성되어 있다.
+- CSV는 광고 원문 프리뷰, 추상 전략 필드, `score_` 접두사 루브릭 8개, 사유 태그, 검수 메모를 포함한다.
+- Import는 기본적으로 검증만 수행하고 저장하지 않는다. 실제 반영은 `--import-sheet --apply`를 명시해야 한다.
+- 빈 시트 dry-run 결과: 30행 모두 skipped, errors 0.
+- 리뷰 패킷 JSON에 `reviewArtifacts.strategyReviewSheet` 경로를 추가했고, 콘솔 패널에도 전략 검수 시트 경로를 표시한다.
+- 검증: 프로젝트 테스트 105개 통과, project hook 통과, `git diff --check` 통과.
+## 현재 상태 업데이트 (2026-06-16, 광고 기획 파일럿 실행 오케스트레이터)
+
+- ComfyUI/이미지 제작 제외 범위에서 광고 기획 파일럿 실행을 하나의 명령으로 묶었다.
+- `scripts/run_ad_planning_pilot.py`를 추가했다.
+  - API 키가 있으면 `benchmark_ad_planning.py --run-external --limit 5`에 해당하는 외부 생성 흐름을 실행한다.
+  - API 키가 없으면 외부 생성은 건너뛰고 리뷰 패킷, 전략 검수 시트, 벤치마크 리포트, 목표 감사를 갱신한다.
+  - 실행 요약은 `.tmp/model-benchmarks/ad-planning-pilot-run.json`에 저장한다.
+- 콘솔에 `POST /api/planning-pilot/run`을 추가했고, 대시보드 리뷰 패킷 패널에 `파일럿 5건 실행/갱신` 버튼을 추가했다.
+- 현재 실행 결과:
+  - status: `blocked_waiting_for_api_key`
+  - externalGenerationAttempted: false
+  - 파일럿 외부 결과 0/5
+  - 파일럿 사람 평가 0/5
+  - 전략 시트 30행, dry-run errors 0
+  - 목표 감사 1/7
+- 검증: 프로젝트 테스트 108개 통과, project hook 통과, `git diff --check` 통과.
+## 현재 상태 업데이트 (2026-06-16, 광고 전략 CSV 검수 콘솔 반영)
+
+- ComfyUI/이미지 제작 제외 범위에서 광고 기획 품질 목표의 사람 검수 병목을 줄이기 위해 전략 검수 CSV 작업을 콘솔 job으로 연결했다.
+- 콘솔 리뷰 패킷 패널에 다음 버튼을 추가했다.
+  - `Strategy CSV export 30`: 검수 대상 전략 30건을 `.tmp/model-benchmarks/ad-strategy-review-sheet.csv`로 내보낸다.
+  - `Strategy CSV validate`: CSV를 dry-run으로 검증하고 저장하지 않는다.
+  - `Strategy CSV apply`: 검증된 CSV 내용을 실제 전략 저장소에 반영한다.
+- 서버 API `POST /api/ad-strategy/review-sheet`가 `export`, `import_dry_run`, `import_apply` 모드를 처리한다.
+- CSV export 결과: 30 rows, errors 0.
+- CSV dry-run import 결과: 30 rows skipped, errors 0.
+- 현재 목표 감사는 여전히 `incomplete`이며, API 키·사람 평가·전략 selected/shortlist 검수가 필요하다.
+- 검증: 프로젝트 테스트 111개 통과, 콘솔 JS 문법 검사 통과, `git diff --check` 통과.
+
+### 다음 우선순위
+
+1. CSV에서 30건 전략을 실제로 채점하고 `selected` 또는 `shortlist` 비율을 채운다.
+2. `Strategy CSV validate`로 errors 0을 확인한 뒤 `Strategy CSV apply`를 실행한다.
+3. `OPENAI_API_KEY` 설정 후 파일럿 5건 외부 모델 생성을 실행한다.
+4. 파일럿 5건 사람 평가와 수정문 저장을 완료한다.
+
+## 현재 상태 업데이트 (2026-06-16, 벤치마크 사람 평가 CSV 추가)
+
+- 화장품 고정 평가셋의 사람 평가를 CSV로 내보내고 검증/반영할 수 있게 했다.
+- 새 도구: `scripts/manage_ad_planning_benchmark_review_sheet.py`
+  - 기본 export: `.tmp/model-benchmarks/ad-planning-benchmark-review-sheet.csv`
+  - 기본 import dry-run: 저장 없이 8개 루브릭, A/B 선택, 승인/수정 여부 검증
+  - `--apply`: `cosmetics-human-reviews.json`에 실제 사람 평가 저장
+- 파일럿 실행기 `scripts/run_ad_planning_pilot.py --limit 5`가 이제 전략 검수 CSV와 벤치마크 리뷰 CSV를 모두 생성하고 dry-run 상태를 요약한다.
+- 리뷰 패킷 `reviewArtifacts`에 `benchmarkReviewSheet` 경로를 추가했다.
+- 콘솔 리뷰 패킷 패널에 다음 버튼을 추가했다.
+  - `Benchmark CSV export 5`
+  - `Benchmark CSV validate`
+  - `Benchmark CSV apply`
+- 현재 실제 상태:
+  - 벤치마크 리뷰 CSV 5 rows 생성
+  - dry-run import: skipped 5, errors 0
+  - 사람 평가 저장 0/5
+  - 목표 감사는 여전히 `incomplete`
+- 검증: 관련 테스트 포함 프로젝트 테스트 117개 통과.
+
+### 다음 우선순위
+
+1. API 키 설정 후 외부 모델 파일럿 5건을 생성한다.
+2. 생성 결과가 생기면 벤치마크 CSV를 다시 export한다.
+3. 사람이 A/B 선호, 8개 루브릭, 승인/수정 여부를 채운다.
+4. `Benchmark CSV validate`로 errors 0 확인 후 `Benchmark CSV apply`를 실행한다.
+## 현재 상태 업데이트 (2026-06-17, OpenAI API 비사용 전환 및 Codex/Claude 스킬화)
+
+- 광고 기획 품질 업그레이드의 기본 전제를 `OpenAI API 필수`에서 `local provider + Codex/Claude 스킬 + 사람 검수`로 전환했다.
+- Codex 자동 발견 스킬 `C:\Users\jinkiwon\.codex\skills\ad-planning-copy-engine`를 추가했다.
+  - 3개 콘셉트 분리 규칙, 화장품 광고 QA 루브릭, JSON 출력 스키마, Claude Skill 호환 지침, 구조 검증 스크립트를 포함한다.
+- `scripts/run_ad_planning_pilot.py --limit 5`는 이제 기본적으로 API 키 없이 local provider 후보 생성을 실행한다.
+- 최신 파일럿 결과:
+  - provider: `local`
+  - candidateGenerated: 5/20
+  - pilotCandidateReady: 5/5
+  - human reviews: 0/5
+  - selected + shortlist strategies: 0/30
+  - blockers: `STRATEGY_REVIEW_BELOW_30`, `PILOT_HUMAN_REVIEWS_INCOMPLETE`
+- OpenAI 관련 코드는 호환/선택 모드로 남기되 기본 실행 조건이나 목표 달성 조건으로 사용하지 않는다.
+
+### 다음 우선순위
+
+1. 콘솔에서 local 후보 5건의 콘셉트 3안을 보고 선택한다.
+2. 선택 후 local copy package를 생성하고, 깨진 한국어/약한 연결성을 스킬 출력과 비교해 수정한다.
+3. 전략 CSV 30건을 검수해 selected/shortlist 목표를 채운다.
+4. Codex/Claude 스킬로 만든 고품질 JSON을 benchmark review sheet에 반영해 사람 평가 루프를 돌린다.
+## 현재 상태 업데이트 (2026-06-17, local 광고 기획 한국어 템플릿 정상화)
+
+- `services/ad_strategy/planning_engine.py`의 깨진 한국어 템플릿을 실사용 가능한 한국어 콘셉트/카피 문장으로 교체했다.
+- local provider 파일럿 후보 5건을 재생성했고, 콘셉트명·타깃 인사이트·핵심 약속이 정상 한국어로 출력된다.
+- QA는 깨진 문자열, 과도한 질문형, 반복 카피를 `awkward_korean`/`repetitive_copy`로 계속 잡는다.
+- 최신 파일럿 상태:
+  - provider: `local`
+  - candidateGenerated: 5/20
+  - pilotCandidateReady: 5/5
+  - blockers: `STRATEGY_REVIEW_BELOW_30`, `PILOT_HUMAN_REVIEWS_INCOMPLETE`
+- 검증:
+  - `scripts/run_project_tests.py`: 117 passed
+  - `scripts/project_hook_check.py`: pass
+  - `scripts/audit_ad_planning_goal.py`: expected `incomplete`
+
+### 다음 우선순위
+
+1. 파일럿 5건에서 사람이 콘셉트 1안을 선택한다.
+2. 선택된 콘셉트로 local copy package를 생성하고 사람 평가/수정문을 저장한다.
+3. 전략 CSV 30건 selected/shortlist 검수를 완료한다.
+4. Codex/Claude 스킬 산출 JSON과 local deterministic 결과를 비교해 낮은 점수 패턴을 교정 데이터로 축적한다.
+
+## 현재 상태 업데이트 (2026-06-17, 광고 기획 콘솔 검수 데스크 전면 개편)
+
+- 메인 대시보드를 `광고 기획 검수 데스크` 중심으로 재구성했다.
+- 사용자 화면에서 A/B 블라인드 비교, raw JSON 카피 출력, `Provider/Blockers/meta_strategy_*` 같은 개발자용 상태값을 제거했다.
+- 파일럿 5건은 이벤트별 카드로 표시하며, 콘셉트 3안과 채널별 카피 패키지를 사람이 읽는 기획안 형태로 보여준다.
+- 전략 검수와 CSV 작업은 `고급 정보 / 데이터 검수` 접힘 영역으로 이동했다.
+- 단일 검수 저장을 위해 `blindPreferred`는 선택 입력으로 완화했다.
+- 브라우저 검증 결과:
+  - planning case card 5개
+  - concept card 15개
+  - copy card 12개
+  - 금지 문구 0개
+  - A/B 노출 0개
+  - JSON 노출 0개
+  - dashboard overflow 0개
+
+### 다음 우선순위
+
+1. 파일럿 5건에서 콘셉트 선택과 카피 검수 저장을 실제로 진행한다.
+2. 낮은 점수/수정 요청 메모를 correction record로 축적한다.
+3. 전략 CSV 30건 selected/shortlist 검수를 완료한다.
+# 현재 상태 업데이트 (2026-06-18, 마케팅 신호 추천 검수 큐 추가)
+
+- 마케팅 신호 검수 큐에 `reviewRecommendation`을 추가했다.
+- 추천 점수는 강도, 최신성, 신뢰도, 근거 유형, 콘셉트/카피 연결 가능성을 합산한다.
+- 콘솔 카드에는 `우선 검토 / 검토 후보 / 보조 후보` 라벨과 10점 만점 점수, 추천 이유를 표시한다.
+- 미검수 큐는 추천 점수가 높은 신호부터 정렬된다.
+- 현재 첫 추천 후보는 `우선 검토 10/10`이며 추천 이유는 `타깃 감정/저항을 바로 설명할 수 있음`이다.
+- Playwright 콘솔 감사에 추천 이유 박스 노출 검사를 추가했고 현재 `pass`.
+
+### 다음 우선순위
+
+1. 마케팅 신호 검수 화면에서 `우선 검토` 카드부터 최소 3개를 `선택`한다.
+2. 선택 후 `InsightBrief 만들기`를 실행한다.
+3. ready InsightBrief로 파일럿 5건을 다시 생성한다.
+
+# 현재 상태 업데이트 (2026-06-18, 마케팅 신호 수집 job 콘솔 연결)
+
+- 마케팅 신호 검수 화면에 수집/CSV 작업 버튼을 추가했다.
+  - `랜덤 신호 50개 더 모으기`
+  - `검수 CSV 내보내기`
+  - `CSV 검증`
+  - `CSV 반영`
+- 서버 API `POST /api/marketing-signals/job`을 추가했다.
+  - `random_seed`: 랜덤 가설 신호 50개 추가 수집 후 CSV export
+  - `export`: 검수 CSV export
+  - `import_dry_run`: CSV 검증
+  - `import_apply`: CSV 검증 후 저장소 반영
+- 실제 랜덤 신호를 50개 추가 수집해 현재 `MarketingSignal`은 100개가 되었다.
+- 최신 검수 CSV는 `.tmp/marketing-signals/marketing-signal-review-sheet.csv`이며 100행이다.
+- 현재 selected 신호는 아직 0개이므로 `InsightBrief`는 계속 `needs_signal_review` 상태다.
+- Playwright 콘솔 감사에 `[data-signal-job]` 버튼 4개 이상 노출 검사를 추가했고 현재 `pass`.
+
+### 다음 우선순위
+
+1. 100개 신호 중 최소 3개 이상을 `선택`으로 검수한다.
+2. 선택 신호 3개 이상이 되면 `InsightBrief 만들기`를 실행한다.
+3. ready InsightBrief로 파일럿 5건의 콘셉트/카피를 다시 생성해 근거 품질 변화를 본다.
+
+# 현재 상태 업데이트 (2026-06-18, Playwright 콘솔 UI 감사 추가)
+
+- 콘솔 UI가 다시 개발자 상태판처럼 깨지는 문제를 막기 위해 Playwright 기반 화면 감사를 추가했다.
+- 신규 감사 스크립트: `scripts/audit_console_ui_playwright.py`.
+- 검사 기준은 1280px 화면에서 개발자 용어 노출, raw JSON 노출, A/B 비교 잔존, 깨진 한글, 가로 넘침을 자동 확인하는 것이다.
+- 현재 실행 결과: `CONSOLE_UI_AUDIT pass`.
+- 최신 리포트: `.tmp/console-ui-audit/latest-console-ui-playwright.json`, `.tmp/console-ui-audit/latest-console-ui-playwright.md`.
+- 일반 unittest에는 판정 로직만 포함하고, 실제 브라우저 감사는 콘솔 서버가 켜진 상태에서 필요할 때 실행한다.
+
+### 다음 우선순위
+
+1. 마케팅 신호 50개를 실제로 `선택 / 보류 / 거절` 검수한다.
+2. selected 신호 3개 이상을 만든 뒤 `InsightBrief 만들기`를 실행한다.
+3. ready `InsightBrief`로 파일럿 5건을 재생성해 문구 근거가 설득력 있게 붙는지 본다.
+4. UI 수정 후에는 `python scripts/audit_console_ui_playwright.py --url http://127.0.0.1:5177/`를 돌려 회귀를 막는다.
+## 2026-06-20 — HSGN 근거 기반 기획 품질 1차 업그레이드
+
+- HSGN 여름 톤 케어 이벤트용 `MarketingSignal` 13개를 `selected` 상태로 추가했다.
+- `design_brain_wiki/marketing_signals/insight-brief.json`은 `eventId=hsgn-summer-tone-care-2026`, `status=ready`, `selectedSignalCount=13` 상태다.
+- `services/ad_strategy/planning_engine.py`를 깨진 한국어 템플릿 없는 근거 기반 콘셉트/카피 엔진으로 교체했다.
+- `services/ad_strategy/quality_gate.py`를 정상 한국어 QA 게이트로 교체해 허위 혜택, 업종 혼용, 채널 필드, 반복 카피, 글자 수를 안정적으로 검사한다.
+- HSGN run `runs/2026-06-20_01-26-50_hsgn-여름-톤-케어-집중-이벤트`의 02단계를 재생성하고 `concept_02`를 선택했다.
+- 현재 HSGN 02 scorecard: `pass`, critical error 0, averageScore 4.0, issues 0.
+- 최종 카피 본문에서 `카피는`, `입력된 성분명`, `만들지 않는다`, `근거 신호`, `인스타그램 피드는` 같은 내부 작성용 문구 노출 0건을 확인했다.
+- 검증: `.venv\Scripts\python.exe -m unittest tests.test_ad_planning_engine tests.test_ad_planning_upgrade tests.test_ad_planning_quality_gate tests.test_marketing_insight_brief` 37개 통과.
+
+### 다음 작업
+
+1. HSGN 02 카피를 사람이 최종 검수하고 `copy-review.json` 승인 또는 수정 기록을 저장한다.
+2. Playwright는 현재 콘솔 UI 감사에는 통과했지만, 외부 트렌드/브랜드/상품 신호 수집 파이프라인은 별도 구현이 필요하다.
+3. HSGN 외 화장품 파일럿 5건에도 이벤트별 `InsightBrief`를 분리 적용해 평균 4.0/5, 치명 오류 0건을 유지하는지 확인한다.
+## 2026-06-20 — 공개 웹 관찰 기반 MarketingSignal 수집기 1차 구현
+
+- `services/marketing_intelligence/public_signal_collector.py`를 추가했다.
+- 공개 페이지/트렌드/날씨/경쟁 광고 관찰을 원문 복사용 데이터가 아니라 `normalizedInsight` 중심의 `MarketingSignal`로 변환한다.
+- `scripts/collect_marketing_signals.py`에 `--public-snapshot`, `--capture-url`, `--source-kind`, `--auto-select-public` 옵션을 추가했다.
+- `scripts/console_server.py`의 마케팅 신호 job에 `public_snapshot` 모드를 추가했다.
+- HSGN 공개 관찰 샘플 `assets/rules/hsgn-public-marketing-snapshot.json`을 추가하고 실제 저장소에 5개 신호를 수집했다.
+- 현재 공개 관찰 신호 5개는 모두 `unreviewed`이며, 사람이 selected로 승격하기 전까지 생성 근거로 사용되지 않는다.
+- HSGN 현재 02 scorecard는 계속 `pass`, criticalErrorCount 0, issues 0 상태다.
+- 검증: `.venv\Scripts\python.exe -m unittest tests.test_ad_planning_engine tests.test_ad_planning_upgrade tests.test_ad_planning_quality_gate tests.test_public_marketing_signal_collector tests.test_marketing_intelligence_console tests.test_marketing_intelligence_signals tests.test_marketing_insight_brief` 52개 통과.
+
+### 다음 작업
+
+1. 콘솔에서 공개 관찰 신호 5개를 selected/shortlist/rejected로 검수한다.
+2. selected 공개 신호를 포함해 HSGN InsightBrief를 재생성하고 카피 품질 변화를 비교한다.
+3. Playwright `--capture-url`을 실제 공개 브랜드/상품/트렌드 페이지에 적용해 snapshot을 자동 생성하는 job UI를 붙인다.

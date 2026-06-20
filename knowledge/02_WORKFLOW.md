@@ -42,6 +42,12 @@
 - 브랜드와 이벤트 정보가 충돌하는 부분을 발견한다.
 - 카테고리별 리스크를 초기에 표시한다.
 
+마케팅 인텔리전스 확장 예정:
+
+- 카피 생성 전 `marketing-signals.json`과 `insight-brief.json`을 만든다.
+- 초기에는 01/02 내부 산출물로 붙이고, 안정화되면 별도 `00_marketing_intelligence` 단계로 분리한다.
+- 시장/고객/트렌드/계절/날씨/채널 신호가 부족하면 강한 훅을 임의 생성하지 않고 근거 부족으로 표시한다.
+
 ## 02_content_planning: 콘텐츠 기획
 
 입력:
@@ -59,6 +65,13 @@
 - 채널별 산출물 종류를 정한다.
 - 각 산출물의 메시지, CTA, 비주얼 방향, 카피 구조를 잡는다.
 - 이미지 후보 생성에 필요한 `image_needs`를 만든다.
+
+광고 기획 검수 데스크 확장 기준:
+
+- 이벤트 확인 후 콘셉트 3안을 비교하고, 사람이 콘셉트 1개를 선택한다.
+- 선택된 콘셉트로 채널별 카피 패키지를 만든다.
+- 각 카피에는 문장 자체만 두지 않고 `문구 근거`, `타깃`, `제품 역할`, `혜택 역할`, `채널 역할`을 함께 기록한다.
+- 내부 ID나 JSON 구조가 사용자 화면에 보이면 실패로 보고, 사람 검수자는 `선택 / 수정 요청 / 최종 승인`만 판단한다.
 
 ## 03_reference_research: 레퍼런스 리서치
 
@@ -465,3 +478,225 @@ assets/rules/meta-brand-registry.json
 ```powershell
 .venv\Scripts\python.exe scripts\audit_full_pipeline_health.py
 ```
+# 2026-06-14 01·02 기획 승인 흐름 확장
+
+```text
+01_event_brief
+  -> brief.json + strategic-brief.json
+  -> 사람 승인
+02_content_planning
+  -> concept-candidates.json (서로 다른 3안)
+  -> concept-review.json (사람 선택)
+  -> selected-concept.json
+  -> copy-package.json (요청 채널별 완성 카피)
+  -> copy-review.json (수정·최종 승인)
+  -> planning-scorecard.json
+  -> 02 단계 승인
+03_reference_research
+```
+
+- 콘셉트 선택 전에는 카피 패키지가 `blocked_pending_concept_selection` 상태다.
+- 콘셉트와 최종 카피 승인 전에는 03단계를 열 수 없다.
+- 치명 QA 오류가 남아 있으면 02단계 승인이 차단된다.
+# 02 콘텐츠 기획 외부 품질 생성 흐름 (2026-06-14)
+
+```text
+승인된 brief
+  -> selected 전략 검색 + shortlist 참고
+  -> OpenAI strategist 콘셉트 3안
+  -> critic 평가
+  -> 실패 항목만 strategist 재작성
+  -> 사람 콘셉트 선택
+  -> OpenAI copywriter 채널별 카피
+  -> critic 평가
+  -> 실패 항목만 copywriter 재작성
+  -> 사람 직접 수정 + 8항목 채점 + 최종 승인
+  -> 경고 0건일 때만 03_reference_research 잠금 해제
+```
+
+- 외부 역할 호출은 이벤트당 최대 8회다.
+- `provider_unavailable`, 치명 오류, 일반 품질 경고, 평균 4점 미만은 02 승인을 차단한다.
+- 결정론적 baseline은 비교 자료이며 승인 가능한 fallback이 아니다.
+# 광고 기획 고정 평가 워크플로 보강 (2026-06-15)
+
+1. `scripts/benchmark_ad_planning.py --run-external --limit 5`로 누락된 외부 콘셉트 3안 파일럿을 생성한다.
+2. 콘솔에서 사람이 콘셉트 하나를 선택한 뒤에만 채널 카피를 생성한다.
+3. 케이스마다 결정론적 기준선과 외부 결과를 고정 해시 기반 A/B 순서로 섞는다.
+4. 콘솔에서 출처를 보지 않고 A/B 선호와 8개 루브릭을 저장한다.
+5. 평가 저장 직후 종합 리포트를 다시 계산한다.
+6. 5건 파일럿의 치명 오류가 0일 때만 20건으로 확장한다.
+7. 20건 외부 생성과 사람 검수가 모두 끝나야 품질 목표를 `pass` 처리한다.
+# 광고 기획 QA 및 학습 승격 규칙 (2026-06-15)
+
+1. 외부 모델 응답은 API Structured Output과 로컬 JSON Schema 검증을 모두 통과해야 한다.
+2. 콘셉트 비평과 카피 비평 결과는 각각 최종 QA에 남긴다.
+3. 비평 수정은 실패 대상으로 지정된 `targetIds`만 교체한다.
+4. 확인되지 않은 가격·혜택·기간·효능, 경쟁사 원문 복제, 업종 혼용, 요청 채널 불일치는 자동 차단한다.
+5. 채널 계약, 글자 수, 내부 문구, 제품·오퍼·CTA 연결 경고가 남으면 승인할 수 없다.
+6. 사람 수정·승인 시 교정 레코드에 이벤트·브랜드·업종·채널·모델·전후 카피·QA를 저장한다.
+7. 이후 생성에는 동일 브랜드 승인 교정을 우선하고 다른 브랜드 교정은 사용하지 않는다.
+8. 전략 `selected`는 추상 전략 완성과 8개 루브릭 평균 4점 이상을 요구한다.
+9. `scripts/audit_ad_planning_goal.py`가 핵심 조건 7개를 모두 통과해야 목표 달성으로 판정한다.
+# 광고 기획 파일럿 리뷰 패킷 (2026-06-16)
+
+ComfyUI/이미지 제작을 제외하고 광고 기획 품질 목표를 진행할 때는 다음 리뷰 패킷을 먼저 생성한다.
+
+```powershell
+.venv\Scripts\python.exe scripts\export_ad_planning_review_packet.py
+```
+
+- JSON: `.tmp/model-benchmarks/ad-planning-review-packet.json`
+- Markdown: `.tmp/model-benchmarks/ad-planning-review-packet.md`
+- 패킷은 파일럿 5건의 외부 결과, 콘셉트 선택, 사람 평가 상태를 표시한다.
+- 패킷은 Meta 전략 46건 중 우선 검수할 30건 큐와 selected 승격에 필요한 누락 필드를 표시한다.
+- `OPENAI_API_KEY`가 없으면 외부 생성은 실행하지 않고 `blocked_waiting_for_api_key` 상태로 남긴다.
+- 결정론적 baseline은 비교 기준일 뿐 승인 가능한 fallback으로 쓰지 않는다.
+# 광고 기획 리뷰 패킷 콘솔 노출 (2026-06-16)
+
+- 콘솔 bootstrap은 `planningReviewPacket`을 포함한다.
+- 별도 API는 `GET /api/planning-review-packet`이다.
+- 대시보드 상단의 `광고 기획 파일럿 리뷰 패킷` 패널에서 다음을 확인한다.
+  - API 키 설정 여부
+  - 파일럿 5건 외부 생성 완료 수
+  - 파일럿 5건 사람 평가 완료 수
+  - selected/shortlist 전략 수
+  - 현재 blocker 목록
+- 전략 검수 또는 벤치마크 평가를 저장하면 응답에 최신 `reviewPacket`이 포함되고 UI 상태가 갱신된다.
+# 전략 검수 CSV 워크플로 (2026-06-16)
+
+콘솔에서 한 건씩 검수하기 어렵다면 CSV 시트를 사용한다.
+
+```powershell
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --limit 30
+```
+
+- 생성 위치: `.tmp/model-benchmarks/ad-strategy-review-sheet.csv`
+- 사람이 채울 필드:
+  - `decision`: `selected`, `shortlist`, `rejected`, `unreviewed`
+  - 추상 전략 필드: `targetInsight`, `hookMechanism`, `persuasionSequence`, `offerMechanism`, `proofMechanism`, `ctaType`, `toneTraits`, `channelFit`
+  - 8개 점수: `score_strategyClarity`, `score_targetEmpathy`, `score_productConnection`, `score_distinctiveness`, `score_channelFit`, `score_koreanCopyQuality`, `score_brandFit`, `score_actionability`
+  - `reasonTags`, `reviewNote`
+- 저장 전 검증:
+
+```powershell
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --import-sheet
+```
+
+- 실제 반영:
+
+```powershell
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --import-sheet --apply
+```
+
+- `selected`는 target insight, hook, persuasion sequence, CTA가 비어 있으면 실패한다.
+- `selected`는 8개 점수 평균 4.0 이상이어야 한다.
+- `shortlist`와 `rejected`도 8개 점수가 모두 필요하다.
+# 광고 기획 파일럿 실행 오케스트레이터 (2026-06-16)
+
+ComfyUI/이미지 제작을 제외하고 광고 기획 품질 목표를 점검할 때는 파일럿 실행기를 먼저 돌린다.
+
+```powershell
+.venv\Scripts\python.exe scripts\run_ad_planning_pilot.py --limit 5
+```
+
+- `OPENAI_API_KEY`가 있으면 화장품 고정 평가셋 파일럿 5건의 외부 모델 생성 흐름을 실행한다.
+- `OPENAI_API_KEY`가 없으면 외부 모델 생성은 건너뛰고 다음 운영 산출물을 갱신한다.
+  - `.tmp/model-benchmarks/ad-planning-pilot-run.json`
+  - `.tmp/model-benchmarks/ad-planning-review-packet.json`
+  - `.tmp/model-benchmarks/ad-planning-review-packet.md`
+  - `.tmp/model-benchmarks/ad-strategy-review-sheet.csv`
+  - `.tmp/model-benchmarks/ad-planning-goal-audit.json`
+- 콘솔에서는 광고 기획 리뷰 패킷 패널의 `파일럿 5건 실행/갱신` 버튼이 같은 흐름을 background job으로 실행한다.
+- API 장애나 API 키 미설정 상태에서는 결정론적 baseline을 승인 가능한 결과로 승격하지 않고 `blocked_waiting_for_api_key` 또는 `provider_unavailable` 상태로 남긴다.
+
+## 광고 전략 CSV 콘솔 검수 반영 (2026-06-16)
+
+전략 30건 검수는 CLI와 콘솔 양쪽에서 같은 job을 사용한다.
+
+```powershell
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --limit 30
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --import-sheet
+.venv\Scripts\python.exe scripts\manage_ad_strategy_review_sheet.py --import-sheet --apply
+```
+
+콘솔에서는 광고 기획 리뷰 패킷 패널에서 다음 버튼을 사용한다.
+
+- `Strategy CSV export 30`: 검수 대상 30건을 CSV로 내보낸다.
+- `Strategy CSV validate`: 반영 없이 CSV 오류만 검사한다.
+- `Strategy CSV apply`: CSV 내용을 전략 저장소에 반영한다.
+
+운영 규칙:
+
+- `apply` 전에는 반드시 dry-run 검증 결과 `errors: []`를 확인한다.
+- `selected`는 target insight, hook, persuasion sequence, CTA와 8개 루브릭 평균 4.0 이상이 필요하다.
+- `shortlist`와 `rejected`도 8개 루브릭 점수가 모두 필요하다.
+- `selected`/`shortlist` 합계가 30건 이상이 되기 전까지 외부 모델 생성 예시 풀은 목표 기준을 만족하지 못한다.
+
+## 벤치마크 사람 평가 CSV 워크플로 (2026-06-16)
+
+외부 모델 결과가 생성된 뒤 사람 평가는 CSV로도 처리할 수 있다.
+
+```powershell
+.venv\Scripts\python.exe scripts\manage_ad_planning_benchmark_review_sheet.py --limit 5
+.venv\Scripts\python.exe scripts\manage_ad_planning_benchmark_review_sheet.py --import-sheet
+.venv\Scripts\python.exe scripts\manage_ad_planning_benchmark_review_sheet.py --import-sheet --apply
+```
+
+콘솔에서는 광고 기획 리뷰 패킷 패널에서 다음 버튼을 사용한다.
+
+- `Benchmark CSV export 5`: 파일럿 5건의 블라인드 A/B 평가 시트를 생성한다.
+- `Benchmark CSV validate`: 반영 없이 평가 입력 오류만 검사한다.
+- `Benchmark CSV apply`: 평가를 `cosmetics-human-reviews.json`에 저장한다.
+
+필수 입력:
+
+- `blindPreferred`: `A` 또는 `B`
+- `approved`: 무수정 승인 여부
+- `edited`: 사람이 카피를 수정했는지 여부
+- 8개 루브릭 점수: `score_strategyClarity`, `score_targetEmpathy`, `score_productConnection`, `score_distinctiveness`, `score_channelFit`, `score_koreanCopyQuality`, `score_brandFit`, `score_actionability`
+- `reviewNote`: 선호 이유나 수정 필요 사항
+
+주의:
+
+- CSV의 `variantA`, `variantB`는 블라인드 비교용이며 source label을 노출하지 않는다.
+- `apply` 전에는 반드시 dry-run의 `errors: []`를 확인한다.
+- 사람 평가 20건이 모두 저장되기 전까지 목표 감사는 `human_reviews_complete`를 통과할 수 없다.
+## 2026-06-17 변경 - OpenAI API 없는 광고 기획 파일럿
+
+- 광고 기획 파일럿의 기본 provider는 `local`이다.
+- 기본 실행:
+
+```powershell
+.venv\Scripts\python.exe scripts\run_ad_planning_pilot.py --limit 5
+```
+
+- 이 명령은 API 키 없이 다음을 갱신한다.
+  - local 후보 콘셉트 3안
+  - benchmark report
+  - review packet
+  - strategy review CSV
+  - benchmark review CSV
+  - goal audit
+- OpenAI는 명시적으로 필요할 때만 선택한다.
+
+```powershell
+.venv\Scripts\python.exe scripts\run_ad_planning_pilot.py --limit 5 --provider openai
+```
+
+- Codex/Claude 스킬 기반 작성은 `ad-planning-copy-engine` 스킬의 JSON schema를 따른다.
+- 콘셉트 선택 전에는 최종 카피를 승인하지 않는다.
+## 2026-06-17 보강 - local 후보 품질 기준
+
+- local provider는 API 없이 콘셉트 3안을 만든다.
+- local 후보는 승인본이 아니라 사람 선택/수정/학습 루프의 초안이다.
+- 콘셉트 선택 전에는 copy package를 생성하지 않는다.
+- 깨진 문자열, 반복 문장, 과도한 질문형은 `awkward_korean` 또는 `repetitive_copy` 경고로 남긴다.
+- 경고가 남은 copy package는 02단계 승인 대상으로 보지 않는다.
+
+## 2026-06-17 변경 - 콘솔 광고 기획 검수 흐름
+
+- 메인 콘솔의 광고 기획 영역은 `광고 기획 검수 데스크`로 운영한다.
+- 사용자는 이벤트별로 제품, 목적, 다음 작업을 확인한 뒤 콘셉트 3안 중 하나를 선택한다.
+- 콘셉트 선택 후 채널별 카피 패키지를 검수하고 8개 루브릭, 승인 여부, 수정 여부, 메모를 저장한다.
+- A/B 블라인드 비교는 사용자 화면에서 제거한다.
+- 전략 CSV와 내부 벤치마크 CSV는 고급 데이터 검수용으로만 유지한다.

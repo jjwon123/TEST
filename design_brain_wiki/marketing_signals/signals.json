@@ -1,0 +1,4021 @@
+{
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-06-20T02:17:19.707220+00:00",
+  "signals": [
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 45
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:32:30.419140+00:00"
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_0805f64f160d99af"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 19
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객은 '성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_0b2bfc88ffbefacf"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 39
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_0da3b95ac3094102"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 28
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:32:31.675709+00:00"
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_1072f910480db333"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 29
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_2c5945b570c00afa"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 47
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 새 제품을 쓰고 싶지만 민감 반응이 걱정된다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '새 제품을 쓰고 싶지만 민감 반응이 걱정된다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "shortlist",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:30:41.870143+00:00"
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_2ce6624cf9c1788e"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 40
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_36310d4d2424ee92"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 46
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 인스타그램 피드는 첫 문장에서 내 상황을 바로 말할 때 멈춤 가능성이 높다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객에게 '인스타그램 피드는 첫 문장에서 내 상황을 바로 말할 때 멈춤 가능성이 높다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_3aabb82c23d31bba"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 32
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_4a7133fa65514abf"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 8
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 장마철 습도와 실내 냉방의 간극",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객에게 '장마철 습도와 실내 냉방의 간극'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_51f1d7394d249654"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 12
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_57c9bb2c958df06a"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 15
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_5ae0b0342eacf237"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 44
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 인스타그램 피드는 첫 문장에서 내 상황을 바로 말할 때 멈춤 가능성이 높다",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객에게 '인스타그램 피드는 첫 문장에서 내 상황을 바로 말할 때 멈춤 가능성이 높다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_6040ad3667a85d5f"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 38
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 또 비슷한 앰플인지 모르겠다는 의심",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '또 비슷한 앰플인지 모르겠다는 의심' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_64b61ce185e5cee3"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 27
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_675c0bb1268db35f"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 37
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 할인보다 제품 선택 근거가 부족하다는 불안",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '할인보다 제품 선택 근거가 부족하다는 불안' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_6bc04ad25a5caea8"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 5
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_6c155ec18bda9959"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 43
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_6f5a5c0a8717c245"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 2
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_84cf48016fc8d3bd"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 30
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_883ead42d20da43f"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 6
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_90527275d13f04f9"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 20
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 구매 전에 내 상황과 맞는 이유를 확인하고 싶다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '구매 전에 내 상황과 맞는 이유를 확인하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_94adb7e184db3f44"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 25
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 냉방 환경에서 오후가 되면 화장이 뜬다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '냉방 환경에서 오후가 되면 화장이 뜬다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "rejected",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:32:03.156182+00:00"
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_9776aa1b7e5a75c1"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 1
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 장마철 습도와 실내 냉방의 간극",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '장마철 습도와 실내 냉방의 간극'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_98a89a95b019445a"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 14
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객에게 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_9f6332b70d85cb75"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 26
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_a4297e74c76b1bc9"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 17
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_aba0ab937d55b16b"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 34
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여러 단계를 바르는 루틴을 오래 유지하기 어렵다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '여러 단계를 바르는 루틴을 오래 유지하기 어렵다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_aeb2c6e933e90710"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 10
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_af2113d1a5d23e14"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 41
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_b8886677a670bce1"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 0
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_b9c8dac02ff19827"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 3
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '휴가 전후 피부 컨디션 관리 수요'를 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_bf707ca1c9a6023f"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 31
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_c658edbf7e2e0384"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 21
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_c8c1dd1f51f7207e"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 16
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 새 제품을 쓰고 싶지만 민감 반응이 걱정된다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '새 제품을 쓰고 싶지만 민감 반응이 걱정된다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:32:29.203792+00:00"
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_d68a44cb84ce1dcc"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 23
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_da1aea56879328ac"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 18
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 카드뉴스는 문제 공감 후 선택 기준을 한 장씩 쪼개야 읽힌다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객에게 '카드뉴스는 문제 공감 후 선택 기준을 한 장씩 쪼개야 읽힌다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_da4f1636fea19222"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 4
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_e38b2b5afb891f81"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 13
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 할인보다 제품 선택 근거가 부족하다는 불안",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '할인보다 제품 선택 근거가 부족하다는 불안' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_e42a227038f47698"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 49
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 피부 타입과 맞지 않을까 봐 미루는 마음",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '피부 타입과 맞지 않을까 봐 미루는 마음' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_ecdd6f27048fde52"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 22
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 피부 타입과 맞지 않을까 봐 미루는 마음",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '피부 타입과 맞지 않을까 봐 미루는 마음' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_f22d9d47940aaff9"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 35
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_f3b7d75baebb560d"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 24
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 냉방 환경에서 오후가 되면 화장이 뜬다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '냉방 환경에서 오후가 되면 화장이 뜬다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_fa685f6fb9276e83"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "index": 33
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객에게 '휴가 전후 피부 컨디션 관리 수요'를 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:02.096245+00:00",
+      "id": "signal_fea4e7c6416e7b90"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 56
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객에게 '휴가 전후 피부 컨디션 관리 수요'를 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_0c525ed0721d6679"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 53
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_54b7ee979e251224"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 52
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 냉방 환경에서 오후가 되면 화장이 뜬다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '냉방 환경에서 오후가 되면 화장이 뜬다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_8e596f4cae44681b"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 55
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_9956c7c1e7eec128"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 57
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_9c3ce43737c5e102"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": 20260618,
+        "attempt": 58
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 냉방 환경에서 오후가 되면 화장이 뜬다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '냉방 환경에서 오후가 되면 화장이 뜬다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T12:50:22.862319+00:00",
+      "id": "signal_fe179ae533bec35c"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 55
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객에게 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_006d7b7116ed5de2"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 11
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_010af69fc76ebfc4"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 10
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_0d14bf251d3399fb"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 39
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_11e164a6febd608c"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 15
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_14da409eb82578e8"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 17
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_14f818ce8d592e76"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 57
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '여름 자외선 이후 칙칙해 보이는 피부 인상'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_1e7a1258488bbbc4"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 5
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 습도는 높은데 피부 속은 당긴다고 느낀다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '습도는 높은데 피부 속은 당긴다고 느낀다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_201199b8399210c5"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 23
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객에게 '배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_253c51ff5efcb2c6"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 56
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '휴가 전후 피부 컨디션 관리 수요'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_27add30300d2e1f8"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 2
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_284e4d845c489135"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 18
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 장마철 습도와 실내 냉방의 간극",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '장마철 습도와 실내 냉방의 간극'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_2fd7f52ec8e2c895"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 33
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '여름 자외선 이후 칙칙해 보이는 피부 인상'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_33edcce901fd919c"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 6
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_3821661ea359ac15"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 26
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_3d69afdf896d58eb"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 12
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 구매 전에 내 상황과 맞는 이유를 확인하고 싶다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '구매 전에 내 상황과 맞는 이유를 확인하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_42808ed5f1f108c3"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 30
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 장마철 습도와 실내 냉방의 간극",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '장마철 습도와 실내 냉방의 간극'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_4fccb823a2928e6d"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 48
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객에게 '휴가 전후 피부 컨디션 관리 수요'를 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_578baf9d9fa25508"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 37
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_584e46fb5a534c1d"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 3
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '배너는 혜택보다 사용 상황이 먼저 잡히면 클릭 이유가 선명해진다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_5ba8cce6ebce542a"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 60
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여러 단계를 바르는 루틴을 오래 유지하기 어렵다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '여러 단계를 바르는 루틴을 오래 유지하기 어렵다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "rejected",
+        "reasonTags": [],
+        "reviewNote": "",
+        "reviewedAt": "2026-06-19T16:32:00.733411+00:00"
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_5ed794dab056d106"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 58
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '성분과 후기가 많아도 무엇을 골라야 할지 헷갈린다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_65b181532bd1c0c1"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 52
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 새 제품을 쓰고 싶지만 민감 반응이 걱정된다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '새 제품을 쓰고 싶지만 민감 반응이 걱정된다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_675caa23c920e5a4"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 4
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_691d96ca89a917c6"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 49
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 휴가 전후 피부 컨디션 관리 수요",
+      "normalizedInsight": "여름 휴가 전 피부 컨디션을 정리하려는 고객은 '휴가 전후 피부 컨디션 관리 수요'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "여름 휴가 전 피부 컨디션을 정리하려는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_6abedf408139d8fc"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 41
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 장마철 습도와 실내 냉방의 간극",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '장마철 습도와 실내 냉방의 간극'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_6ba43f83ca33ef78"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 14
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_6c4de05564c29e6a"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 47
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 계절에 맞는 선택 기준을 빠르게 알고 싶다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '지금 계절에 맞는 선택 기준을 빠르게 알고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_6eca24bc8c7f1b56"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 24
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_757c26e056bd525e"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 46
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_82da9a47a88b7113"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 9
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 강한 효능 주장보다 부담 없는 사용 맥락을 원한다",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '강한 효능 주장보다 부담 없는 사용 맥락을 원한다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_84feab031d1017a7"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 29
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여러 단계를 바르는 루틴을 오래 유지하기 어렵다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '여러 단계를 바르는 루틴을 오래 유지하기 어렵다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_898cdf76ccbad2b1"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 28
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_8e5d3c566286cd6f"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 21
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객에게 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_96884193eb12e0bf"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 53
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 구매 전에 내 상황과 맞는 이유를 확인하고 싶다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객은 '구매 전에 내 상황과 맞는 이유를 확인하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_a0054c9423c41941"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 7
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 작은 혜택이라도 지금 시작할 명분이 있으면 움직인다",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '작은 혜택이라도 지금 시작할 명분이 있으면 움직인다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_a044135fc08b6f80"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 27
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객에게 '블로그는 제품명보다 고민 키워드로 들어와 근거를 확인한다' 패턴이 첫 접점 문장으로 작동하는지 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_a0d64157276adede"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 54
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인에게 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_b0a2a9dda60018e7"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 51
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_b76969e9525b66bc"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 8
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 환절기 전 미리 장벽 루틴을 정리하려는 움직임",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '환절기 전 미리 장벽 루틴을 정리하려는 움직임'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_b7f5c4c3ac464804"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 44
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 프로모션은 많지만 진짜 필요한 혜택인지 판단하기 어렵다",
+      "normalizedInsight": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객은 '프로모션은 많지만 진짜 필요한 혜택인지 판단하기 어렵다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "간단한 루틴으로 효과를 느끼고 싶은 바쁜 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "pain",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_c2cd0d5d22ef6cc3"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 1
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '루틴을 복잡하게 늘리지 않고 피부 컨디션을 정리하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_c7e353cb62e3895d"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 42
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '여름 자외선 이후 칙칙해 보이는 피부 인상'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_d1778076af2ce803"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 22
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "냉방으로 피부가 건조해지는 사무직 고객에게 '여름 자외선 이후 칙칙해 보이는 피부 인상'을 지금 행동할 이유로 쓸 수 있는지 검증한다.",
+      "targetSegment": "냉방으로 피부가 건조해지는 사무직 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_d64f96ffcb1b5c9d"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 25
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 할인보다 제품 선택 근거가 부족하다는 불안",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '할인보다 제품 선택 근거가 부족하다는 불안' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_db230d6be8c66cbb"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 16
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 여름 자외선 이후 칙칙해 보이는 피부 인상",
+      "normalizedInsight": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객은 '여름 자외선 이후 칙칙해 보이는 피부 인상'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "화장 전 들뜸을 줄이고 싶은 20대 후반 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 3,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_dc154ab31939e32a"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 36
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 지금 사야 할 이유가 약하다는 망설임",
+      "normalizedInsight": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객은 '지금 사야 할 이유가 약하다는 망설임' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "선물보다 내 피부 관리에 작은 보상을 쓰는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_dc88aa1cfa931334"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 34
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 구매 전에 내 상황과 맞는 이유를 확인하고 싶다",
+      "normalizedInsight": "장마철 속당김을 느끼는 직장인은 '구매 전에 내 상황과 맞는 이유를 확인하고 싶다'라는 맥락에 반응할 수 있으므로 제품 역할과 연결 가능성을 검증한다.",
+      "targetSegment": "장마철 속당김을 느끼는 직장인",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_e2ad2e586d2d3d00"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 40
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 할인보다 제품 선택 근거가 부족하다는 불안",
+      "normalizedInsight": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객은 '할인보다 제품 선택 근거가 부족하다는 불안' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "리뷰를 보고 실패 가능성을 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_eee869c44989f4fb"
+    },
+    {
+      "industry": "cosmetics_skincare",
+      "sourceType": "seed_random",
+      "sourceRef": {
+        "generator": "collect_marketing_signals.py",
+        "seed": null,
+        "attempt": 20
+      },
+      "topic": "daily_random_seed",
+      "signalText": "가설 후보: 피부 타입과 맞지 않을까 봐 미루는 마음",
+      "normalizedInsight": "민감해진 피부 때문에 성분을 먼저 확인하는 고객은 '피부 타입과 맞지 않을까 봐 미루는 마음' 때문에 구매를 미룰 수 있으므로 선택 기준을 먼저 제시해야 한다.",
+      "targetSegment": "민감해진 피부 때문에 성분을 먼저 확인하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 2,
+      "freshness": 2,
+      "confidence": 1,
+      "riskFlags": [
+        "needs_external_validation",
+        "random_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "랜덤 후보 신호. 외부 근거 확인 전 생성 근거로 직접 사용 금지."
+      },
+      "collectedAt": "2026-06-18T13:18:45.397491+00:00",
+      "id": "signal_f8439b2e6a72a8fd"
+    },
+    {
+      "id": "hsgn-summer-tone-care-01",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "여름에는 강한 자외선과 실내외 온도 차 이후 피부가 칙칙해 보인다는 인상을 빠르게 자각한다.",
+      "normalizedInsight": "여름 외출 후 피부 인상이 칙칙해 보인다고 느끼는 고객은 강한 효능 주장보다 오늘 루틴을 조정할 이유에 반응한다.",
+      "targetSegment": "여름 외출 후 피부 인상이 신경 쓰이는 20~40대 스킨케어 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-02",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "덥고 습한 계절에는 여러 단계를 바르는 루틴보다 가볍게 이해되는 핵심 제품 제안이 더 설득력 있다.",
+      "normalizedInsight": "여름 고객은 무거운 루틴보다 핵심 제품 하나의 역할이 분명한 제안을 선호할 수 있다.",
+      "targetSegment": "복잡한 스킨케어 단계를 줄이고 싶은 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "pain",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-03",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "나이아신아마이드는 익숙한 성분이지만 농도 표기만으로는 왜 지금 사야 하는지 부족하게 느껴질 수 있다.",
+      "normalizedInsight": "성분명에 익숙한 고객일수록 농도보다 사용 맥락과 선택 기준을 함께 확인하려 한다.",
+      "targetSegment": "성분명은 알지만 구매 이유가 더 필요한 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "qa"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-04",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "화장품 광고에서 순위, 리뷰, 임상 표현이 많을수록 확인되지 않은 과장으로 받아들여질 위험이 있다.",
+      "normalizedInsight": "HSGN 카피는 순위나 임상 주장 대신 입력된 성분명, 시즌 맥락, 오퍼만으로 설득해야 한다.",
+      "targetSegment": "과장 표현에 피로감을 느끼는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "qa",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-05",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "고객은 즉각적인 변화 약속보다 매일 반복 가능한 여름 톤 케어 루틴의 명분을 원한다.",
+      "normalizedInsight": "데일리 루틴으로 부담 없이 이어갈 수 있다는 메시지는 여름 스킨케어 구매 저항을 낮춘다.",
+      "targetSegment": "가벼운 데일리 루틴을 찾는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-06",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "미니 크림 증정은 큰 할인보다 루틴을 함께 시작해볼 수 있다는 보조 제품 경험으로 설명할 때 자연스럽다.",
+      "normalizedInsight": "증정 오퍼는 가격 혜택보다 루틴 확장 경험으로 연결하면 제품과 더 잘 붙는다.",
+      "targetSegment": "구매 전 사용 경험의 명분을 원하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "desire",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-07",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "6월 말은 장마, 습도, 자외선, 냉방 환경이 겹쳐 여름 스킨케어 루틴을 다시 정리하기 좋은 시점이다.",
+      "normalizedInsight": "6월 말 여름 루틴 재정비 맥락은 HSGN 톤 케어 이벤트의 시즌 명분으로 사용할 수 있다.",
+      "targetSegment": "계절 변화에 맞춰 루틴을 바꾸려는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-08",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "최근 스킨케어 카피는 성분을 크게 외치기보다 고객 상황, 선택 기준, 루틴 이유를 함께 보여줄 때 신뢰감을 얻는다.",
+      "normalizedInsight": "성분 중심 제품도 고객 상황과 선택 기준을 같이 제시해야 광고 문구가 덜 공허해진다.",
+      "targetSegment": "성분 기반 스킨케어를 비교하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-09",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "HSGN은 'skincare about science, skincare about life'라는 브랜드 문장과 나이아신아마이드 100,000ppm 제품명을 확인된 사실로 사용할 수 있다.",
+      "normalizedInsight": "HSGN 카피의 근거는 브랜드의 과학적 태도와 제품명에 명시된 성분 농도 표기에서 출발한다.",
+      "targetSegment": "브랜드 태도와 제품명을 함께 확인하는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "proof",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-10",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "입력된 혜택은 HSGN 나이아신아마이드 100,000ppm 구매 시 미니 크림 증정이며, 할인율이나 재고 수량은 확인되지 않았다.",
+      "normalizedInsight": "오퍼는 미니 크림 증정까지만 말하고 할인율, 한정 수량, 인기 순위는 만들지 않는다.",
+      "targetSegment": "혜택 조건을 확인하고 구매하려는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "offer",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "offer",
+        "qa",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-11",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "인스타그램 피드는 첫 문장에서 계절 상황을 바로 말하고, 본문에서 제품 역할과 오퍼를 짧게 연결해야 저장과 클릭이 쉽다.",
+      "normalizedInsight": "인스타그램 피드는 여름 피부 인상 상황을 먼저 열고 제품 역할과 증정 오퍼를 짧게 연결한다.",
+      "targetSegment": "모바일에서 빠르게 판단하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "channel_pattern",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-12",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "블로그형 콘텐츠는 제품명보다 고객 질문으로 시작한 뒤 성분, 사용 맥락, 오퍼를 순서대로 설명할 때 이탈이 줄어든다.",
+      "normalizedInsight": "블로그 카피는 고객 질문에서 시작해 성분과 사용 맥락을 설명하고 마지막에 오퍼를 배치한다.",
+      "targetSegment": "검색 후 비교하며 읽는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "channel_pattern",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "hsgn-summer-tone-care-13",
+      "industry": "cosmetics_skincare",
+      "sourceType": "internal",
+      "sourceRef": {
+        "eventId": "hsgn-summer-tone-care-2026",
+        "source": "manual_marketing_intelligence_seed",
+        "note": "HSGN 연결 검증용 1차 근거 신호. 외부 순위, 리뷰, 임상 주장은 포함하지 않음."
+      },
+      "collectedAt": "2026-06-20T02:02:34.882451+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "배너와 썸네일은 성분 농도와 혜택을 모두 넣으려 하기보다 하나의 선택 이유와 하나의 행동만 남겨야 읽힌다.",
+      "normalizedInsight": "배너는 여름 톤 케어라는 선택 이유와 미니 크림 증정 확인 행동만 남긴다.",
+      "targetSegment": "짧은 노출에서 빠르게 판단하는 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "channel_pattern",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 4,
+      "riskFlags": [
+        "no_external_rank_claim",
+        "manual_reviewed_seed"
+      ],
+      "usableFor": [
+        "channel",
+        "copy"
+      ],
+      "review": {
+        "decision": "selected",
+        "reasonTags": [
+          "useful_target",
+          "useful_season",
+          "strong_product_link"
+        ],
+        "reviewNote": "HSGN 여름 톤 케어 이벤트 1차 품질 업그레이드용으로 선별한 근거."
+      }
+    },
+    {
+      "id": "public_signal_023e663f2155a1fe",
+      "industry": "cosmetics_skincare",
+      "sourceType": "brand_site",
+      "sourceRef": {
+        "collector": "public_signal_collector",
+        "sourceKind": "brand_site",
+        "url": "https://example.com/hsgn-niacinamide",
+        "title": "HSGN Niacinamide 100,000ppm",
+        "host": "example.com"
+      },
+      "collectedAt": "2026-06-20T02:17:19.650727+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "HSGN 브랜드 문장 skincare about science, skincare about life와 나이아신아마이드 100,000ppm 제품명이 확인된 제품 근거로 사용된다.",
+      "normalizedInsight": "브랜드/제품 페이지에서 확인된 'HSGN' 정보는 과장 주장 없이 제품 역할을 설명하는 근거로 사용할 수 있다.",
+      "targetSegment": "성분명은 알지만 구매 이유를 더 확인하려는 스킨케어 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "proof",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 3,
+      "riskFlags": [
+        "needs_human_review",
+        "public_observation_not_copy_source"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
+      }
+    },
+    {
+      "id": "public_signal_47ef69015710b03a",
+      "industry": "cosmetics_skincare",
+      "sourceType": "review",
+      "sourceRef": {
+        "collector": "public_signal_collector",
+        "sourceKind": "review",
+        "url": "",
+        "title": "",
+        "host": ""
+      },
+      "collectedAt": "2026-06-20T02:17:19.650727+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "고객은 성분 농도 표기를 보더라도 피부에 맞을지, 어떤 루틴에 넣을지, 증정품이 실제 사용에 도움이 되는지를 함께 확인하려 한다.",
+      "normalizedInsight": "공개 관찰에서 '고객은' 맥락이 확인되면 고객 상황과 제품 선택 이유를 함께 연결한다.",
+      "targetSegment": "성분명은 알지만 구매 이유를 더 확인하려는 스킨케어 고객",
+      "funnelStage": "consideration",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 3,
+      "riskFlags": [
+        "needs_human_review",
+        "public_observation_not_copy_source"
+      ],
+      "usableFor": [
+        "concept",
+        "copy",
+        "qa"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
+      }
+    },
+    {
+      "id": "public_signal_6fb8e270ff2477ad",
+      "industry": "cosmetics_skincare",
+      "sourceType": "meta_ad",
+      "sourceRef": {
+        "collector": "public_signal_collector",
+        "sourceKind": "meta_ad",
+        "url": "",
+        "title": "",
+        "host": ""
+      },
+      "collectedAt": "2026-06-20T02:17:19.650727+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "경쟁 스킨케어 광고는 첫 문장에서 고객 상황을 제시하고, 중간 문장에서 제품 선택 기준을 설명한 뒤, 마지막에 짧은 CTA를 배치하는 구조가 많다.",
+      "normalizedInsight": "경쟁 광고 관찰은 원문을 복사하지 않고 훅 방식, 설득 순서, CTA 구조만 추상화해 참고한다.",
+      "targetSegment": "구매 전 제품 역할과 선택 이유를 확인하려는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 3,
+      "confidence": 2,
+      "riskFlags": [
+        "needs_human_review",
+        "public_observation_not_copy_source",
+        "do_not_copy_original_expression"
+      ],
+      "usableFor": [
+        "channel",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
+      }
+    },
+    {
+      "id": "public_signal_d47dadb3e857baaa",
+      "industry": "cosmetics_skincare",
+      "sourceType": "weather",
+      "sourceRef": {
+        "collector": "public_signal_collector",
+        "sourceKind": "weather",
+        "url": "",
+        "title": "",
+        "host": ""
+      },
+      "collectedAt": "2026-06-20T02:17:19.650727+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "6월 말 장마, 습도, 냉방 환경이 겹치면 여름 스킨케어 루틴을 다시 정리할 이유가 생긴다.",
+      "normalizedInsight": "날씨와 계절 변화가 hsgn_summer_tone_care 이벤트의 지금 행동 명분을 만들 수 있다.",
+      "targetSegment": "계절 변화 이후 피부 인상과 루틴을 다시 점검하려는 고객",
+      "funnelStage": "conversion",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 3,
+      "riskFlags": [
+        "needs_human_review",
+        "public_observation_not_copy_source"
+      ],
+      "usableFor": [
+        "concept",
+        "offer",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
+      }
+    },
+    {
+      "id": "public_signal_faab495856e8c83c",
+      "industry": "cosmetics_skincare",
+      "sourceType": "google_trends",
+      "sourceRef": {
+        "collector": "public_signal_collector",
+        "sourceKind": "google_trends",
+        "url": "",
+        "title": "",
+        "host": ""
+      },
+      "collectedAt": "2026-06-20T02:17:19.650727+00:00",
+      "topic": "hsgn_summer_tone_care",
+      "signalText": "나이아신아마이드, 톤 케어, 여름 세럼 같은 검색 관심은 성분명과 계절 고민을 함께 설명하는 카피 방향을 요구한다.",
+      "normalizedInsight": "검색 흐름에서 '나이아신아마이드' 관심 신호가 보이면 카피는 성분명보다 고객 상황과 선택 이유를 함께 설명해야 한다.",
+      "targetSegment": "계절 변화 이후 피부 인상과 루틴을 다시 점검하려는 고객",
+      "funnelStage": "awareness",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 2,
+      "riskFlags": [
+        "needs_human_review",
+        "public_observation_not_copy_source",
+        "ranking_or_trend_requires_source_date"
+      ],
+      "usableFor": [
+        "concept",
+        "copy"
+      ],
+      "review": {
+        "decision": "unreviewed",
+        "reasonTags": [],
+        "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
+      }
+    }
+  ]
+}

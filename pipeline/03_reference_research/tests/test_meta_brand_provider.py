@@ -6,6 +6,7 @@ import unittest
 from pathlib import Path
 
 from services.ad_reference.meta_brand_provider import add_meta_brand_references, build_brief_context, rank_candidates
+from services.ad_reference.meta_source_mix_provider import add_meta_source_mix_references
 
 
 class MetaBrandProviderTest(unittest.TestCase):
@@ -67,6 +68,32 @@ class MetaBrandProviderTest(unittest.TestCase):
 
         self.assertEqual(["clean"], [candidate["item"]["id"] for candidate in ranked])
 
+    def test_human_rejected_candidate_is_excluded(self) -> None:
+        ranked = rank_candidates(
+            [self._item("keep"), self._item("reject")],
+            {"brand": "", "categories": ["cosmetics_skincare"], "roles": ["product"]},
+            human_reviews={
+                "reject": {"status": "disagree", "correctDecision": "rejected"},
+            },
+        )
+
+        self.assertEqual(["keep"], [candidate["item"]["id"] for candidate in ranked])
+
+    def test_human_selected_candidate_is_prioritized(self) -> None:
+        ranked = rank_candidates(
+            [
+                self._item("strong-shortlist", roles=["promotion", "product"]),
+                self._item("human-selected", roles=["product"]),
+            ],
+            {"brand": "", "categories": ["cosmetics_skincare"], "roles": ["promotion", "product"]},
+            human_reviews={
+                "human-selected": {"status": "disagree", "correctDecision": "selected"},
+            },
+        )
+
+        self.assertEqual("human-selected", ranked[0]["item"]["id"])
+        self.assertTrue(ranked[0]["humanReviewApplied"])
+
     def test_merges_with_existing_pinterest_and_records_evidence(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             temp_path = Path(temp)
@@ -119,6 +146,72 @@ class MetaBrandProviderTest(unittest.TestCase):
             self.assertEqual(1, len(merged["assets"]))
             self.assertEqual(0, evidence["providers"]["meta_brand_review"]["importedCount"])
             self.assertEqual("already_present", evidence["providers"]["meta_brand_review"]["selected"][0]["importStatus"])
+
+    def test_imports_qwen_validated_source_mix_only_for_cosmetics(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            search_root = root / "searches"
+            source = self._source_mix_search(search_root, "skincare serum", clean_count=5)
+
+            merged, evidence = add_meta_source_mix_references(
+                root / "run",
+                {"assets": []},
+                {"categories": ["cosmetics_skincare"], "roles": ["product"]},
+                limit=2,
+                search_root=search_root,
+            )
+
+            self.assertEqual(1, len(merged["assets"]))
+            self.assertTrue(all(asset["source"] == "meta_source_mix" for asset in merged["assets"]))
+            self.assertEqual("used", evidence["status"])
+            self.assertEqual(1, evidence["importedCount"])
+            self.assertTrue(source.is_file())
+
+    def test_source_mix_is_not_applied_to_non_cosmetics_context(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            self._source_mix_search(root / "searches", "skincare serum", clean_count=5)
+
+            merged, evidence = add_meta_source_mix_references(
+                root / "run",
+                {"assets": []},
+                {"categories": ["jewelry_luxury"]},
+                search_root=root / "searches",
+            )
+
+            self.assertEqual([], merged["assets"])
+            self.assertEqual("not_applicable", evidence["status"])
+
+    @staticmethod
+    def _source_mix_search(root: Path, query: str, *, clean_count: int) -> Path:
+        search = root / "batch"
+        images = search / "images"
+        images.mkdir(parents=True)
+        media = []
+        first_source = images / "clean-0.jpg"
+        for index in range(clean_count):
+            source = images / f"clean-{index}.jpg"
+            source.write_bytes(f"image-{index}".encode())
+            media.append({
+                "savedPath": str(source),
+                "sha256": f"sha-{index}",
+                "qwenReview": {
+                    "candidate_id": f"clean-{index}",
+                    "creative_type": "clean_product_visual",
+                    "decision": "selected",
+                    "score": 90 - index,
+                    "product_focus": 90,
+                    "layout_usability": 80,
+                    "visible_cosmetic_container": True,
+                    "text_density": 10,
+                },
+            })
+        (search / "collected-ads.json").write_text(json.dumps({
+            "query": query,
+            "count": 1,
+            "items": [{"libraryId": "ad-1", "brand": "brand", "media": media}],
+        }), encoding="utf-8")
+        return first_source
 
     @staticmethod
     def _item(

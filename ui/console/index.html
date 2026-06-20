@@ -142,11 +142,14 @@
               <div class="panel-head meta-brand-head"><div><h2>검증 브랜드 묶음 수집</h2><span>브랜드 광고주명이 일치하는 결과만 별도 저장합니다</span></div></div>
               <div class="control-grid">
                 <label>업종<select id="metaBrandProfile"><option value="cosmetics_skincare">화장품·스킨케어 20개</option><option value="jewelry_luxury">주얼리·럭셔리 20개</option></select></label>
-                <label>이번 수집 브랜드 수<input id="metaBrandLimit" type="number" min="1" max="30" value="3" /></label>
-                <label>브랜드별 광고 수<input id="metaBrandAdsPerBrand" type="number" min="1" max="20" value="3" /></label>
+                <label>브랜드 선택 전략<select id="metaBrandStrategy"><option value="adaptive">운영 지표 기반 추천</option><option value="registry">레지스트리 순서</option></select></label>
+                <label>수집 소재<select id="metaBrandMediaType"><option value="all">전체 소재</option><option value="image">정지 이미지만 · 회수율 낮을 수 있음</option></select></label>
+                <label>이번 수집 브랜드 수<input id="metaBrandLimit" type="number" min="1" max="30" value="5" /></label>
+                <label>브랜드별 광고 수<input id="metaBrandAdsPerBrand" type="number" min="1" max="20" value="5" /></label>
                 <button id="collectMetaBrandRegistry" class="primary">브랜드 묶음 소량 수집</button>
               </div>
             </div>
+            <div class="panel"><div class="panel-head"><div><h2>브랜드 수집 운영 지표</h2><span>최신 업종별 회수율·편중·성격 분포</span></div></div><div id="metaBrandMetrics"></div></div>
             <div class="panel"><div id="metaAdGrid" class="reference-grid"></div></div>
           </section>
 

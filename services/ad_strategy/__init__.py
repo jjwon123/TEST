@@ -1,0 +1,1 @@
+"""Advertising strategy pattern library."""

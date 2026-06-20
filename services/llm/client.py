@@ -10,6 +10,7 @@ from __future__ import annotations
 
 import json
 import os
+import time
 from dataclasses import dataclass
 from typing import Any
 from urllib import request as urllib_request
@@ -87,6 +88,7 @@ class LLMClient:
         request_envelope: dict[str, Any],
         draft: dict[str, Any],
     ) -> dict[str, Any]:
+        started = time.perf_counter()
         provider_url = os.getenv("LLM_PROVIDER_URL", "").strip()
         if not provider_url:
             return {
@@ -94,6 +96,8 @@ class LLMClient:
                 "provider_execution": {
                     "mode": "local_draft",
                     "status": "provider_disabled",
+                    "latency_ms": round((time.perf_counter() - started) * 1000, 2),
+                    "estimated_cost_usd": 0.0,
                 },
                 "result": draft,
             }
@@ -120,6 +124,7 @@ class LLMClient:
                     "mode": "http_json_provider",
                     "status": "provider_error",
                     "error": str(exc),
+                    "latency_ms": round((time.perf_counter() - started) * 1000, 2),
                 },
                 "result": draft,
             }
@@ -131,6 +136,7 @@ class LLMClient:
                 "provider_execution": {
                     "mode": "http_json_provider",
                     "status": "invalid_payload",
+                    "latency_ms": round((time.perf_counter() - started) * 1000, 2),
                 },
                 "result": draft,
             }
@@ -139,6 +145,10 @@ class LLMClient:
             "provider_execution": {
                 "mode": "http_json_provider",
                 "status": "ok",
+                "latency_ms": round((time.perf_counter() - started) * 1000, 2),
+                "model": body.get("model", ""),
+                "usage": body.get("usage", {}),
+                "estimated_cost_usd": body.get("estimated_cost_usd"),
             },
             "result": output,
         }

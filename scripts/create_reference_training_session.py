@@ -17,6 +17,7 @@ if str(ROOT) not in __import__("sys").path:
     __import__("sys").path.insert(0, str(ROOT))
 
 from services.visual_reference.qwen_reviewer import build_profile_reference_prompt, review_image
+from core.utils.learned_reference_rules import apply_promoted_rules
 
 COMMON_WIKI_SOURCES = [
     "design_brain_wiki/00_JUDGE_SCHEMA.md",
@@ -104,6 +105,7 @@ def main() -> None:
     args = parse_args()
     profile = args.profile
     config = PROFILE_CONFIG.get(profile, default_config(profile))
+    config["profile"] = profile
     run_dir = args.run.resolve()
     session_dir = TRAINING_ROOT / profile / args.session_id
     references_dir = session_dir / "references"
@@ -345,6 +347,16 @@ def score_record(record: dict[str, Any], config: dict[str, Any]) -> float:
 
 
 def auto_decision(record: dict[str, Any], config: dict[str, Any]) -> str:
+    base_decision = _base_auto_decision(record, config)
+    promoted_decision, _ = apply_promoted_rules(
+        str(config.get("profile") or ""),
+        base_decision,
+        risk_signals(record, config),
+    )
+    return promoted_decision
+
+
+def _base_auto_decision(record: dict[str, Any], config: dict[str, Any]) -> str:
     text = record_text(record)
     evaluation = record.get("evaluation") or {}
     light_space = float(record.get("light_space", 0.5) or 0.5)

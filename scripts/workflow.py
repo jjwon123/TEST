@@ -26,7 +26,7 @@ if str(ROOT) not in sys.path:
 
 from core.utils.json_io import read_json, write_json
 from core.utils.module_loader import load_callable_from_path
-from core.utils.schema_validation import SchemaValidationError
+from core.utils.schema_validation import SchemaValidationError, validate_json
 from scripts.reference_pipeline import add_source as add_reference_source
 from scripts.reference_pipeline import auto_collect_from_search as auto_collect_reference_search
 from scripts.reference_pipeline import collect_sources as collect_reference_sources
@@ -83,8 +83,12 @@ STAGES: list[Stage] = [
 
 
 RUN_STAGE_DIRS = {
-    "01_event_brief": ["brief.json", "notes.md"],
-    "02_content_planning": ["content-plan.json", "notes.md"],
+    "01_event_brief": ["brief.json", "strategic-brief.json", "notes.md"],
+    "02_content_planning": [
+        "content-plan.json", "concept-candidates.json", "concept-review.json",
+        "selected-concept.json", "copy-package.json", "copy-review.json",
+        "planning-scorecard.json", "notes.md",
+    ],
     "03_reference_research": ["reference-research.json", "notes.md"],
     "04_visual_candidates": ["visual-plan.json", "image-prompts.json", "candidate-manifest.json", "raw-generations", "previews"],
     "05_admin_selection": ["selected-assets.json", "selection-notes.md"],
@@ -195,6 +199,7 @@ def setup_run(event_dir: Path) -> Path:
     missing = [name for name in required if not (event_dir / name).exists()]
     if missing:
         raise SystemExit(f"Missing event source files: {', '.join(missing)}")
+    validate_event_sources(event_dir)
 
     run_id = new_run_id(event_dir)
     run_dir = RUNS_DIR / run_id
@@ -224,6 +229,20 @@ def setup_run(event_dir: Path) -> Path:
     (run_dir / "logs" / "workflow.log").write_text(f"{now()} run_created {run_id}\n", encoding="utf-8")
     (run_dir / "logs" / "stage-errors.log").write_text("", encoding="utf-8")
     return run_dir
+
+
+def validate_event_sources(event_dir: Path) -> None:
+    sources = [
+        ("event-input.json", ROOT / "core" / "schemas" / "event-input.schema.json"),
+        ("brand-guide.json", ROOT / "core" / "schemas" / "brand-guide.schema.json"),
+    ]
+    for filename, schema_path in sources:
+        validate_json(
+            read_json(event_dir / filename),
+            read_json(schema_path),
+            data_label=str(event_dir / filename),
+            schema_label=str(schema_path.relative_to(ROOT)),
+        )
 
 
 def load_status(run_dir: Path) -> dict[str, Any]:
@@ -376,13 +395,11 @@ def mark_stage(
     try:
         result = run_stage_handler(run_dir, stage, mode, outputs, group=group)
     except SchemaValidationError as exc:
-        status = load_status(run_dir)
-        status["stage_status"][stage.id] = "blocked"
-        status["run_state"] = "failed"
-        append_history(status, "stage_failed", stage.id, str(exc))
-        save_status(run_dir, status)
-        write_stage_error(run_dir, stage.id, str(exc))
+        record_stage_failure(run_dir, stage.id, exc)
         raise SystemExit(f"FAIL {stage.id}: {exc}") from exc
+    except Exception as exc:
+        record_stage_failure(run_dir, stage.id, exc)
+        raise SystemExit(f"FAIL {stage.id}: {type(exc).__name__}: {exc}") from exc
 
     status = load_status(run_dir)
     if result:
@@ -411,6 +428,21 @@ def mark_stage(
         append_history(status, "stage_unlocked", stage.unlocks, f"Unlocked after {stage.id}.")
 
     save_status(run_dir, status)
+
+
+def record_stage_failure(run_dir: Path, stage_id: str, exc: Exception) -> None:
+    status = load_status(run_dir)
+    message = f"{type(exc).__name__}: {exc}"
+    status["stage_status"][stage_id] = "blocked"
+    status["run_state"] = "failed"
+    status.setdefault("stage_failures", {})[stage_id] = {
+        "failed_at": now(),
+        "error_type": type(exc).__name__,
+        "message": str(exc),
+    }
+    append_history(status, "stage_failed", stage_id, message)
+    save_status(run_dir, status)
+    write_stage_error(run_dir, stage_id, message)
 
 
 def load_regeneration_requests(run_dir: Path) -> list[dict[str, Any]]:
@@ -810,6 +842,18 @@ def approve_stage(run_dir: Path, stage_id: str, approver: str = "operator", note
     stage = stage_by_id(stage_id)
     status = load_status(run_dir)
     approvals = read_json(run_dir / "approvals.json", default={"approvals": []})
+    if stage.id == "02_content_planning":
+        concept_review = read_json(run_dir / stage.id / "concept-review.json", default={})
+        copy_review = read_json(run_dir / stage.id / "copy-review.json", default={})
+        scorecard = read_json(run_dir / stage.id / "planning-scorecard.json", default={})
+        if concept_review.get("status") != "approved" or not concept_review.get("selectedConceptId"):
+            raise SystemExit("Cannot approve 02_content_planning before a campaign concept is selected and approved.")
+        if copy_review.get("status") != "approved" or copy_review.get("approved") is not True:
+            raise SystemExit("Cannot approve 02_content_planning before the final copy package is approved.")
+        if int(scorecard.get("criticalErrorCount") or 0) > 0:
+            raise SystemExit("Cannot approve 02_content_planning while critical planning QA errors remain.")
+        if scorecard.get("status") != "pass" or scorecard.get("issues"):
+            raise SystemExit("Cannot approve 02_content_planning while planning quality warnings remain.")
     if stage.id == "06_qa_packaging":
         qa_report = load_qa_report(run_dir)
         qa_status = str(qa_report.get("summary", {}).get("status") or "").lower()

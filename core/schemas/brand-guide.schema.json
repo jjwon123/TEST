@@ -4,7 +4,7 @@
   "type": "object",
   "required": ["brandName"],
   "properties": {
-    "brandName": { "type": "string" },
+    "brandName": { "type": "string", "minLength": 1 },
     "voice": { "type": "object" },
     "visual": { "type": "object" },
     "requiredPhrases": { "type": "array", "items": { "type": "string" } },

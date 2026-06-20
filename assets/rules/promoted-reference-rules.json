@@ -1,0 +1,41 @@
+{
+  "schemaVersion": "1.0",
+  "createdAt": "2026-06-14T05:42:53.820938+00:00",
+  "policy": {
+    "excludedProfiles": [
+      "meta_brand_review",
+      "reference_learning"
+    ],
+    "minSessionOccurrences": 2,
+    "minReviewed": 20,
+    "minCompletionRatio": 0.8
+  },
+  "summary": {
+    "consideredSessions": 5,
+    "promotedRules": 1
+  },
+  "rules": [
+    {
+      "id": "soften_rejected_to_shortlist",
+      "decision": "shortlist",
+      "unlessAnyReasonTag": [
+        "fake_text_risk",
+        "low_resolution",
+        "website_capture",
+        "wrong_category"
+      ],
+      "guidance": "명확한 hard reject 신호가 없고 부분 참고 가치가 있으면 rejected보다 shortlist를 우선한다.",
+      "profile": "cosmetics_skincare",
+      "status": "promoted",
+      "sessionOccurrences": 5,
+      "evidenceSessions": [
+        "design_brain_wiki/training_sessions/cosmetics_skincare/mixed_reference_001",
+        "design_brain_wiki/training_sessions/cosmetics_skincare/pinterest_holdout_001",
+        "design_brain_wiki/training_sessions/cosmetics_skincare/pinterest_holdout_002",
+        "design_brain_wiki/training_sessions/cosmetics_skincare/pinterest_holdout_003",
+        "design_brain_wiki/training_sessions/cosmetics_skincare/pinterest_session_001"
+      ],
+      "totalReviewed": 244
+    }
+  ]
+}

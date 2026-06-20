@@ -19,6 +19,11 @@ The first implementation should support dry-run payload generation. The next ste
 
 `korean_poster_overlay_1024` is wired as the default `03_visual_candidates` preset.
 
+The default light-background typography treatment uses a bold dark headline,
+dark secondary copy, no automatic aspect-ratio badge, and a wider headline box.
+Pass `badge`, `text_color`, `secondary_text_color`, or `footer_text_color` to
+override those defaults for another background.
+
 It builds this ComfyUI API graph:
 
 ```text
@@ -66,6 +71,10 @@ LoadImage(product image)
 ```
 
 The product RGB is only resized and composited. V1 does not repaint labels, logos, or product texture. It creates a studio-style background and contact shadow around the product layer.
+
+Transparent padding is cropped from the product mask before `product_scale` is
+applied, so the scale represents the visible product rather than the source
+canvas size.
 
 Required ComfyUI-side custom node:
 

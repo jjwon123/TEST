@@ -41,3 +41,15 @@
 ```
 
 상세 보고서는 `.tmp/openclip-effect/openclip-effect-report.md`에 생성된다.
+
+## 2026-06-14 후속 개선 검수
+
+- 제품 고정 합성: alpha 실제 경계를 기준으로 투명 여백을 잘라낸 뒤 확대하도록 수정했다.
+- 결과: 기존 작은 제품 문제를 해결했고, 제품 라벨과 형태 보존을 유지했다.
+- 한글 오버레이: 자동 `4:5` 배지를 제거하고, 밝은 배경용 진한 색상과 굵은 제목 폰트, 넓은 제목 영역을 적용했다.
+- 결과: 제목 한 줄 유지, 본문/푸터 대비, 제품과 카피 위계가 개선됐다.
+- 회귀 테스트: ComfyUI preset 테스트 3개를 추가했으며 전체 프로젝트 테스트 30개와 project hook이 통과했다.
+- 검수 산출물:
+  - `.tmp/comfy-quality-validation/product_locked_improved_20260614.png`
+  - `.tmp/comfy-quality-validation/korean_overlay_improved_v2_20260614.png`
+- 실제 ComfyUI 커스텀 노드 파일에도 alpha crop 수정이 반영됐다. 현재 실행 중인 ComfyUI 프로세스에는 다음 재시작부터 적용된다.

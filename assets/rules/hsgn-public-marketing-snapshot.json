@@ -1,0 +1,54 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "hsgn-summer-tone-care-2026",
+  "description": "HSGN 여름 톤 케어 이벤트용 공개 관찰 신호 샘플. 원문 복사 금지, selected 전 생성 근거 사용 금지.",
+  "observations": [
+    {
+      "sourceKind": "brand_site",
+      "url": "https://example.com/hsgn-niacinamide",
+      "title": "HSGN Niacinamide 100,000ppm",
+      "topic": "hsgn_summer_tone_care",
+      "observedText": "HSGN 브랜드 문장 skincare about science, skincare about life와 나이아신아마이드 100,000ppm 제품명이 확인된 제품 근거로 사용된다.",
+      "evidenceType": "proof",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 3
+    },
+    {
+      "sourceKind": "weather",
+      "topic": "hsgn_summer_tone_care",
+      "observedText": "6월 말 장마, 습도, 냉방 환경이 겹치면 여름 스킨케어 루틴을 다시 정리할 이유가 생긴다.",
+      "evidenceType": "timing",
+      "strength": 4,
+      "freshness": 4,
+      "confidence": 3
+    },
+    {
+      "sourceKind": "google_trends",
+      "topic": "hsgn_summer_tone_care",
+      "observedText": "나이아신아마이드, 톤 케어, 여름 세럼 같은 검색 관심은 성분명과 계절 고민을 함께 설명하는 카피 방향을 요구한다.",
+      "evidenceType": "trend",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 2
+    },
+    {
+      "sourceKind": "meta_ad",
+      "topic": "hsgn_summer_tone_care",
+      "observedText": "경쟁 스킨케어 광고는 첫 문장에서 고객 상황을 제시하고, 중간 문장에서 제품 선택 기준을 설명한 뒤, 마지막에 짧은 CTA를 배치하는 구조가 많다.",
+      "evidenceType": "channel_pattern",
+      "strength": 3,
+      "freshness": 3,
+      "confidence": 2
+    },
+    {
+      "sourceKind": "review",
+      "topic": "hsgn_summer_tone_care",
+      "observedText": "고객은 성분 농도 표기를 보더라도 피부에 맞을지, 어떤 루틴에 넣을지, 증정품이 실제 사용에 도움이 되는지를 함께 확인하려 한다.",
+      "evidenceType": "objection",
+      "strength": 4,
+      "freshness": 3,
+      "confidence": 3
+    }
+  ]
+}

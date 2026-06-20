@@ -12,6 +12,9 @@ from core.utils.json_io import read_json, write_json, write_text
 from core.utils.schema_validation import validate_json
 from services.llm.client import LLMClient, LLMRequest
 from services.research.client import ResearchClient, ResearchQuery
+from services.ad_strategy.planning_engine import score_planning
+from services.ad_strategy.generation import generate_concepts
+from services.ad_strategy.repository import import_legacy_as_unreviewed
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -45,14 +48,61 @@ def run(
 
     stage_dir = run_dir / STAGE_ID
     plan_path = stage_dir / "content-plan.json"
+    concept_candidates_path = stage_dir / "concept-candidates.json"
+    concept_review_path = stage_dir / "concept-review.json"
+    selected_concept_path = stage_dir / "selected-concept.json"
+    copy_package_path = stage_dir / "copy-package.json"
+    copy_review_path = stage_dir / "copy-review.json"
+    scorecard_path = stage_dir / "planning-scorecard.json"
     notes_path = stage_dir / "notes.md"
+    import_legacy_as_unreviewed()
+    concept_candidates = generate_concepts(brief, run_dir)
+    concept_review = {
+        "schemaVersion": "1.0.0",
+        "status": "review_pending",
+        "selectedConceptId": "",
+        "rejectedConceptIds": [],
+        "reasonTags": [],
+        "reviewNote": "",
+    }
+    selected_concept = {"schemaVersion": "1.0.0", "status": "pending_selection", "concept": None}
+    copy_package = {
+        "schemaVersion": "1.0.0",
+        "status": "blocked_pending_concept_selection",
+        "conceptId": "",
+        "outputs": [],
+    }
+    copy_review = {
+        "schemaVersion": "1.0.0",
+        "status": "blocked_pending_copy",
+        "approved": False,
+        "edits": [],
+        "reasonTags": [],
+        "reviewNote": "",
+    }
+    scorecard = score_planning(brief, concept_candidates, copy_package)
     write_json(plan_path, content_plan)
+    write_json(concept_candidates_path, concept_candidates)
+    write_json(concept_review_path, concept_review)
+    write_json(selected_concept_path, selected_concept)
+    write_json(copy_package_path, copy_package)
+    write_json(copy_review_path, copy_review)
+    write_json(scorecard_path, scorecard)
     write_text(notes_path, build_notes(content_plan))
 
     return {
         "stage_id": STAGE_ID,
         "status": "review_pending",
-        "outputs": [str(plan_path.relative_to(run_dir)), str(notes_path.relative_to(run_dir))],
+        "outputs": [
+            str(plan_path.relative_to(run_dir)),
+            str(concept_candidates_path.relative_to(run_dir)),
+            str(concept_review_path.relative_to(run_dir)),
+            str(selected_concept_path.relative_to(run_dir)),
+            str(copy_package_path.relative_to(run_dir)),
+            str(copy_review_path.relative_to(run_dir)),
+            str(scorecard_path.relative_to(run_dir)),
+            str(notes_path.relative_to(run_dir)),
+        ],
         "notes": content_plan.get("open_questions", []),
         "next_state": "plan_review",
     }
@@ -96,13 +146,14 @@ def build_content_plan(
                 "channel_id": policy["channel_id"],
                 "format": policy.get("name", policy["channel_id"]),
                 "ratio": (template or {}).get("ratio") or policy.get("default_ratio", ""),
-                "purpose": _purpose_from_roles(policy.get("content_roles", []), brief),
-                "copy_intent": _copy_intent(brief, policy.get("content_roles", []), priority),
+                "purpose": _purpose_from_roles(policy["channel_id"], policy.get("content_roles", []), brief),
+                "copy_intent": _copy_intent(brief, policy["channel_id"], policy.get("content_roles", []), priority),
                 "visual_need": visual_need,
                 "priority": priority,
                 "template_id": default_template_id,
                 "supported_templates": template_ids,
-                "slides": _slides(policy),
+                "slides": _slides(policy, brief),
+                "copy_blueprint": _copy_blueprint(brief, policy["channel_id"]),
             }
             deliverables.append(deliverable)
             image_needs.append({
@@ -129,6 +180,7 @@ def build_content_plan(
             "objective": brief.get("objective", {}),
             "core_messages": brief.get("core_messages", []),
             "constraints": brief.get("constraints", {}),
+            "strategy_inspiration": brief.get("strategy_inspiration", {}),
         },
         "channel_plans": channel_plans,
         "deliverables": deliverables,
@@ -237,18 +289,42 @@ def build_notes(content_plan: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _purpose_from_roles(roles: list[str], brief: dict[str, Any]) -> str:
+def _purpose_from_roles(channel_id: str, roles: list[str], brief: dict[str, Any]) -> str:
+    if channel_id == "instagram_cardnews":
+        return "타깃의 문제 상황을 자기 이야기로 인식시키고, 루틴 해결책과 이벤트 혜택까지 순차적으로 설득한다."
+    if channel_id == "instagram_feed":
+        return "한 장에서 계절성 문제와 핵심 루틴 제안을 연결해 저장과 이벤트 확인 행동을 유도한다."
+    if channel_id == "blog_thumbnail":
+        return "검색·유입 단계에서 문제 상황과 해결 주제를 명확히 약속해 본문 진입을 유도한다."
+    if channel_id == "blog_inline_image":
+        return "본문에서 제품 역할과 루틴 순서를 시각적으로 정리해 이해와 신뢰를 높인다."
     if "entry_point" in roles or "single_announcement" in roles or "notice" in roles:
         return "이벤트 핵심 내용을 빠르게 이해시키고 참여 행동으로 연결한다."
     if "editorial_cover" in roles:
-        return "이벤트를 설명형/에디토리얼 콘텐츠로 진입시키는 표지 역할을 한다."
+        return "이벤트를 설명형 콘텐츠로 진입시키는 표지 역할을 한다."
     return brief.get("objective", {}).get("primary", "이벤트 메시지를 채널 특성에 맞게 전달한다.")
 
 
-def _copy_intent(brief: dict[str, Any], roles: list[str], priority: int) -> str:
+def _copy_intent(brief: dict[str, Any], channel_id: str, roles: list[str], priority: int) -> str:
+    learned_directions = (
+        brief.get("strategy_inspiration", {})
+        .get("adaptedConcepts", {})
+        .get("channelCopyDirections", {})
+        .get(channel_id, [])
+    )
+    if learned_directions:
+        return learned_directions[0]
     messages = brief.get("core_messages", [])
     if not messages:
         return brief.get("objective", {}).get("primary", "")
+    channel_message_index = {
+        "instagram_cardnews": 0,
+        "instagram_feed": 1,
+        "blog_thumbnail": 0,
+        "blog_inline_image": 2,
+    }
+    if channel_id in channel_message_index:
+        return messages[min(channel_message_index[channel_id], len(messages) - 1)]
     if "cta" in roles or "how_to_join" in roles:
         return messages[min(1, len(messages) - 1)]
     if "entry_point" in roles or "single_announcement" in roles:
@@ -274,19 +350,47 @@ def _visual_role(policy: dict[str, Any]) -> str:
     return "key_visual"
 
 
-def _slides(policy: dict[str, Any]) -> list[dict[str, Any]]:
+def _slides(policy: dict[str, Any], brief: dict[str, Any]) -> list[dict[str, Any]]:
     typical = policy.get("typical_slides", [])
     if not typical:
         return []
     count = typical[0]
     roles = policy.get("content_roles", [])
+    messages = brief.get("core_messages", [])
+    role_message_index = {
+        "hook": 0,
+        "problem": 0,
+        "benefit": 1,
+        "how_to_join": 3,
+        "cta": 3,
+    }
     return [
         {
             "slide": index + 1,
             "role": roles[index] if index < len(roles) else "support",
+            "message_intent": (
+                messages[min(role_message_index.get(roles[index], index), len(messages) - 1)]
+                if messages and index < len(roles)
+                else ""
+            ),
         }
         for index in range(count)
     ]
+
+
+def _copy_blueprint(brief: dict[str, Any], channel_id: str) -> list[str]:
+    patterns = brief.get("strategy_inspiration", {}).get("patterns", [])
+    if not patterns:
+        return []
+    preferred_pattern = max(patterns, key=lambda item: len(item.get("persuasionSequence", [])))
+    preferred = preferred_pattern.get("copyBlueprint", [])
+    if channel_id == "instagram_feed":
+        return preferred[:2] + preferred[-1:]
+    if channel_id == "blog_thumbnail":
+        return preferred[:1]
+    if channel_id == "blog_inline_image":
+        return [item for item in preferred if "근거" in item or "루틴" in item][:2]
+    return preferred
 
 
 def _brief_is_approved(approvals: dict[str, Any]) -> bool:
@@ -347,15 +451,27 @@ def _build_strategy_summary(
     deliverables: list[dict[str, Any]],
     channel_plans: list[dict[str, Any]],
 ) -> dict[str, Any]:
-    objective = brief.get("objective", {}).get("primary", "")
-    primary_message = (brief.get("core_messages") or [""])[0]
+    target = brief.get("target", {}).get("summary", "")
+    messages = brief.get("core_messages") or []
+    central_message = messages[1] if len(messages) > 1 else (messages[0] if messages else "")
+    offer = brief.get("offer", {}).get("summary", "")
     planning_thesis = (
-        f"{objective} 목표를 기준으로, '{primary_message}' 메시지를 채널별 역할에 맞게 분산한다."
-        if objective and primary_message
-        else "브리프의 핵심 목적과 메시지를 채널별 산출물에 일관되게 배치한다."
+        f"{target}의 계절성 불편을 공감 진입점으로 삼고, {central_message} "
+        f"혜택은 설득 이후의 전환 이유로 배치한다: {offer}"
+        if target and central_message and offer
+        else "문제 공감, 해결 루틴, 제품 역할, 혜택 순서로 채널별 설득 역할을 분리한다."
     )
     return {
         "planning_thesis": planning_thesis,
+        "ad_pattern_basis": [
+            {
+                "pattern_id": item.get("patternId"),
+                "hook_type": item.get("hookType"),
+                "persuasion_sequence": item.get("persuasionSequence", []),
+                "offer_mechanics": item.get("offerMechanics", []),
+            }
+            for item in brief.get("strategy_inspiration", {}).get("patterns", [])[:3]
+        ],
         "channel_roles": [
             {
                 "channel_id": plan.get("channel_id"),
@@ -471,6 +587,20 @@ def _build_quality_assessment(
     copy_intents = {item.get("copy_intent", "") for item in deliverables if item.get("copy_intent", "")}
     if len(deliverables) >= 3 and len(copy_intents) == 1:
         flags.append("복수 채널 산출물이 같은 copy intent에만 의존하고 있습니다.")
+    generic_purposes = sum(
+        1
+        for item in deliverables
+        if item.get("purpose") == brief.get("objective", {}).get("primary")
+        or item.get("purpose") == "이벤트 핵심 내용을 빠르게 이해시키고 참여 행동으로 연결한다."
+    )
+    if len(deliverables) >= 3 and generic_purposes >= len(deliverables) // 2:
+        flags.append("채널별 목적이 전략적으로 분리되지 않고 범용 문장에 의존하고 있습니다.")
+    slide_plans = [item for item in deliverables if item.get("slides")]
+    if slide_plans and any(
+        any(not slide.get("message_intent") for slide in item.get("slides", []))
+        for item in slide_plans
+    ):
+        flags.append("다중 슬라이드 산출물에 장별 메시지 의도가 비어 있습니다.")
 
     status = "approval_ready" if not flags else "needs_review"
     return {

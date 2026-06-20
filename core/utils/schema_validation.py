@@ -70,10 +70,18 @@ def validate_json(
 
 def _fallback_validate(data: Any, schema: dict[str, Any], path: str = "$") -> list[ValidationIssue]:
     issues: list[ValidationIssue] = []
+    any_of = schema.get("anyOf")
+    if isinstance(any_of, list) and any_of:
+        if not any(not _fallback_validate(data, branch, path) for branch in any_of if isinstance(branch, dict)):
+            issues.append(ValidationIssue(path, "did not match any allowed schema"))
+
     expected_type = schema.get("type")
     if expected_type and not _matches_type(data, expected_type):
         issues.append(ValidationIssue(path, f"expected {expected_type}"))
         return issues
+
+    if isinstance(data, str) and "minLength" in schema and len(data) < int(schema["minLength"]):
+        issues.append(ValidationIssue(path, f"must contain at least {schema['minLength']} characters"))
 
     if isinstance(data, dict):
         for field in schema.get("required", []):

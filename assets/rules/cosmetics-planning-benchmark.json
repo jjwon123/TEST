@@ -1,0 +1,32 @@
+{
+  "schemaVersion": "1.0.0",
+  "target": {
+    "cases": 20,
+    "criticalErrors": 0,
+    "averageHumanScore": 4.0,
+    "unchangedApprovalRate": 0.5,
+    "blindPreferenceRate": 0.7
+  },
+  "cases": [
+    {"id":"season-monsoon-barrier","eventType":"seasonal","eventName":"장마철 수분 장벽 리셋","target":"습도와 냉방 사이에서 속당김을 느끼는 직장인","product":"세라마이드 앰플","offer":"앰플 구매 시 장벽 크림 증정"},
+    {"id":"season-summer-brightening","eventType":"seasonal","eventName":"여름 칙칙함 케어 위크","target":"여름철 칙칙한 피부 인상이 고민인 고객","product":"나이아신아마이드 세럼","offer":""},
+    {"id":"season-winter-dryness","eventType":"seasonal","eventName":"겨울 보습 루틴 캠페인","target":"겨울철 건조함이 반복되는 고객","product":"보습 크림","offer":""},
+    {"id":"season-spring-sensitive","eventType":"seasonal","eventName":"봄철 민감 피부 진정 루틴","target":"환절기 자극에 예민해진 고객","product":"진정 앰플","offer":"체험 키트 증정"},
+    {"id":"promotion-gift","eventType":"promotion","eventName":"앰플 구매 사은 행사","target":"새 루틴을 부담 없이 시작하려는 고객","product":"수분 앰플","offer":"구매 시 미니 크림 증정"},
+    {"id":"promotion-discount","eventType":"promotion","eventName":"스킨케어 집중 할인","target":"필수 루틴을 합리적으로 구매하려는 고객","product":"기초 케어 세트","offer":"20% 할인"},
+    {"id":"promotion-bundle","eventType":"promotion","eventName":"클렌징 듀오 기획전","target":"세안 후 당김을 줄이는 루틴을 찾는 고객","product":"클렌징 듀오","offer":"세트 구매 혜택"},
+    {"id":"promotion-membership","eventType":"promotion","eventName":"멤버십 전용 스킨케어 데이","target":"브랜드 재구매 고객","product":"베스트 스킨케어","offer":"멤버십 전용 혜택"},
+    {"id":"launch-serum","eventType":"launch","eventName":"신제품 탄력 세럼 출시","target":"부담 없는 탄력 루틴을 찾는 고객","product":"탄력 세럼","offer":"출시 기념 샘플 증정"},
+    {"id":"launch-sunscreen","eventType":"launch","eventName":"데일리 선크림 출시","target":"매일 편하게 사용할 자외선 케어를 찾는 고객","product":"데일리 선크림","offer":""},
+    {"id":"launch-cleanser","eventType":"launch","eventName":"저자극 클렌저 출시","target":"세안 후 불편함을 느끼는 고객","product":"저자극 클렌저","offer":""},
+    {"id":"launch-mask","eventType":"launch","eventName":"수분 마스크 출시","target":"짧은 시간에 보습 루틴을 보완하려는 고객","product":"수분 마스크","offer":""},
+    {"id":"education-barrier","eventType":"education","eventName":"피부 장벽 루틴 가이드","target":"피부 장벽 관리 기준이 궁금한 고객","product":"장벽 케어 라인","offer":""},
+    {"id":"education-layering","eventType":"education","eventName":"스킨케어 레이어링 가이드","target":"제품 사용 순서가 어려운 고객","product":"토너와 앰플","offer":""},
+    {"id":"education-sunscreen","eventType":"education","eventName":"선케어 사용 가이드","target":"선크림 선택과 사용법이 궁금한 고객","product":"선크림","offer":""},
+    {"id":"education-cleansing","eventType":"education","eventName":"저녁 클렌징 루틴 가이드","target":"과한 세정 없이 깔끔한 루틴을 원하는 고객","product":"클렌징 오일과 폼","offer":""},
+    {"id":"branding-calm","eventType":"branding","eventName":"매일 편안한 피부 캠페인","target":"과장 없는 스킨케어를 선호하는 고객","product":"데일리 스킨케어","offer":""},
+    {"id":"branding-minimal","eventType":"branding","eventName":"필요한 것만 남긴 루틴","target":"복잡한 루틴에 피로를 느끼는 고객","product":"미니멀 스킨케어","offer":""},
+    {"id":"branding-ingredient","eventType":"branding","eventName":"성분을 이해하는 스킨케어","target":"제품 선택 근거를 중요하게 보는 고객","product":"성분 중심 스킨케어","offer":""},
+    {"id":"retention-repurchase","eventType":"promotion","eventName":"루틴 이어가기 리워드","target":"제품을 꾸준히 사용 중인 재구매 고객","product":"정기 루틴 제품","offer":"재구매 혜택"}
+  ]
+}

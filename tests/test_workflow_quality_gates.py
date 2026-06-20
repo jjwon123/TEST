@@ -4,11 +4,20 @@ import json
 import importlib
 import tempfile
 import unittest
+from datetime import datetime, timezone
 from pathlib import Path
 from unittest.mock import patch
 
 from scripts.audit_full_pipeline_health import find_downstream_state_inconsistencies
-from scripts.workflow import approve_stage, invalidate_downstream_stages, process_qa_failures
+from scripts.console_server import create_package, recover_persisted_jobs
+from scripts.reconcile_run_states import reconcile_status
+from scripts.workflow import (
+    approve_stage,
+    invalidate_downstream_stages,
+    mark_stage,
+    process_qa_failures,
+    setup_run,
+)
 from services.comfyui.brand_workflows import choose_brand_workflow
 from services.comfyui.workflow_registry import list_presets
 
@@ -70,6 +79,20 @@ class WorkflowQualityGateTests(unittest.TestCase):
             self.assertEqual("archived_no_assets", result["next_state"])
             self.assertEqual("done_no_assets", archive["summary"]["completion_status"])
 
+    def test_archive_copy_is_idempotent_and_returns_actual_versioned_path(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            src = root / "source.png"
+            dest = root / "approved" / "asset.png"
+            src.write_bytes(b"one")
+            first = archive_module._safe_copy(src, dest)
+            second = archive_module._safe_copy(src, dest)
+            src.write_bytes(b"two")
+            third = archive_module._safe_copy(src, dest)
+            self.assertEqual(dest, first)
+            self.assertEqual(dest, second)
+            self.assertEqual(dest.with_name("asset_v2.png"), third)
+
     def test_selected_brand_workflows_exist(self) -> None:
         presets = set(list_presets())
         expected = [
@@ -113,6 +136,84 @@ class WorkflowQualityGateTests(unittest.TestCase):
         )
         self.assertEqual("locked", status["stage_status"]["06_qa_packaging"])
         self.assertEqual("04_visual_candidates", status["stale_stages"]["07_asset_archive"]["invalidated_by"])
+
+    def test_unexpected_stage_error_is_recorded_and_does_not_leave_in_progress(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            run = self._run(Path(temp))
+            with patch("scripts.workflow.run_stage_handler", side_effect=RuntimeError("provider unavailable")):
+                with self.assertRaises(SystemExit):
+                    mark_stage(run, "06_qa_packaging")
+            status = self._read(run / "run-status.json")
+            self.assertEqual("blocked", status["stage_status"]["06_qa_packaging"])
+            self.assertEqual("failed", status["run_state"])
+            self.assertEqual("RuntimeError", status["stage_failures"]["06_qa_packaging"]["error_type"])
+            self.assertIn("provider unavailable", (run / "logs" / "stage-errors.log").read_text(encoding="utf-8"))
+
+    def test_setup_accepts_legacy_purpose_as_objective(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            event = root / "events" / "legacy"
+            event.mkdir(parents=True)
+            self._write(event / "event-input.json", {"eventName": "Legacy Event", "purpose": "Drive signups"})
+            self._write(event / "brand-guide.json", {"brandName": "Legacy Brand"})
+            with patch("scripts.workflow.RUNS_DIR", root / "runs"):
+                run = setup_run(event)
+            self.assertTrue((run / "run-status.json").exists())
+
+    def test_setup_rejects_event_without_objective_or_purpose(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            event = root / "events" / "invalid"
+            event.mkdir(parents=True)
+            self._write(event / "event-input.json", {"eventName": "Invalid Event"})
+            self._write(event / "brand-guide.json", {"brandName": "Brand"})
+            with patch("scripts.workflow.RUNS_DIR", root / "runs"):
+                with self.assertRaises(ValueError):
+                    setup_run(event)
+
+    def test_console_restart_marks_running_jobs_interrupted(self) -> None:
+        recovered = recover_persisted_jobs([
+            {"job_id": "running-job", "status": "running", "started_at": "2026-06-14T00:00:00Z"},
+            {"job_id": "done-job", "status": "done", "started_at": "2026-06-14T00:00:01Z"},
+        ])
+        self.assertEqual("interrupted", recovered["running-job"]["status"])
+        self.assertIn("recovery_note", recovered["running-job"])
+        self.assertEqual("done", recovered["done-job"]["status"])
+
+    def test_reconcile_stale_and_legacy_run_states(self) -> None:
+        stale = {
+            "run_state": "briefing",
+            "current_stage": "01_event_brief",
+            "updated_at": "2026-01-01T00:00:00+00:00",
+            "stage_status": {"01_event_brief": "in_progress"},
+            "history": [],
+        }
+        changes = reconcile_status(stale, cutoff=datetime.now(timezone.utc))
+        self.assertEqual("failed", stale["run_state"])
+        self.assertEqual("blocked", stale["stage_status"]["01_event_brief"])
+        self.assertEqual("StaleInProgress", stale["stage_failures"]["01_event_brief"]["error_type"])
+        self.assertEqual("stale_in_progress_to_blocked", changes[0]["type"])
+
+        legacy = {
+            "run_state": "done",
+            "current_stage": "07_asset_archive",
+            "stage_status": {"07_asset_archive": "done_no_assets"},
+            "history": [],
+        }
+        reconcile_status(legacy, cutoff=datetime.now(timezone.utc))
+        self.assertEqual("archived_no_assets", legacy["run_state"])
+
+    def test_final_package_requires_qa_approval(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            run = Path(temp) / "run"
+            run.mkdir()
+            self._write(run / "run-status.json", {
+                "stage_status": {"06_qa_packaging": "review_pending"},
+            })
+            with patch("scripts.console_server.run_dir_from_id", return_value=run):
+                with self.assertRaises(ValueError):
+                    create_package("run")
+            self.assertFalse((run / "production-package").exists())
 
     def _run(self, root: Path, qa_status: str = "fail", issues: list[dict] | None = None) -> Path:
         run = root / "run"

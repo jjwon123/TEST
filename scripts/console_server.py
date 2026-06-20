@@ -31,13 +31,27 @@ META_BRAND_RUNS_DIR = ROOT / "references" / "meta_ads" / "brand_registry_runs"
 REFERENCE_LEARNING_DIR = ROOT / "design_brain_wiki" / "reference_learning_1000"
 PYTHON = ROOT / ".venv" / "Scripts" / "python.exe"
 COMFY_URL = os.environ.get("COMFYUI_URL", "http://127.0.0.1:8188").rstrip("/")
+JOBS_PATH = ROOT / ".tmp" / "console-jobs" / "jobs.json"
+JOBS_LOCK = threading.Lock()
 
 if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from scripts.run_manifest import build_manifest, load_candidates, load_prompts, load_references, write_manifest
+from core.utils.schema_validation import validate_json
 from services.products.library import list_products, load_product, load_product_from_event, split_product_key
 from services.ad_reference.brand_registry import registry_summary
+from services.ad_reference.registry_metrics import collection_metrics_summary
+from services.ad_reference.collection_strategy import strategy_summary
+from services.ad_reference.source_mix_metrics import source_mix_summary
+from services.ad_strategy.planning_engine import score_planning
+from services.ad_strategy.generation import generate_copy
+from services.ad_strategy.repository import append_correction, load_examples_for_review, strategy_quality_metrics, update_example_review
+from services.marketing_intelligence.insight_brief import INSIGHT_BRIEF_PATH, build_and_save_insight_brief
+from services.marketing_intelligence.repository import load_signals, signal_metrics, update_signal_review
+from scripts.benchmark_ad_planning import DEFAULT_REPORT, DEFAULT_RESULTS, DEFAULT_REVIEWS, aggregate, evaluate_case, run_external_cases, save_human_review, select_external_concept
+from scripts.export_ad_planning_review_packet import build_packet as build_ad_planning_review_packet
+from scripts.workflow import approve_stage
 
 
 JOBS: dict[str, dict[str, Any]] = {}
@@ -56,6 +70,43 @@ def read_json(path: Path, default: Any = None) -> Any:
 def write_json(path: Path, data: Any) -> None:
     path.parent.mkdir(parents=True, exist_ok=True)
     path.write_text(json.dumps(data, ensure_ascii=False, indent=2), encoding="utf-8")
+
+
+def recover_persisted_jobs(records: list[dict[str, Any]]) -> dict[str, dict[str, Any]]:
+    recovered: dict[str, dict[str, Any]] = {}
+    recovered_at = datetime.now(timezone.utc).isoformat()
+    for record in records:
+        job_id = str(record.get("job_id") or "").strip()
+        if not job_id:
+            continue
+        item = dict(record)
+        if item.get("status") == "running":
+            item["status"] = "interrupted"
+            item["finished_at"] = recovered_at
+            item["recovery_note"] = "Console restarted before this job reported a final status."
+        recovered[job_id] = item
+    return recovered
+
+
+def load_persisted_jobs() -> dict[str, dict[str, Any]]:
+    payload = read_json(JOBS_PATH, {"jobs": []})
+    records = payload.get("jobs", []) if isinstance(payload, dict) else []
+    return recover_persisted_jobs(records if isinstance(records, list) else [])
+
+
+def persist_jobs() -> None:
+    with JOBS_LOCK:
+        records = sorted(
+            JOBS.values(),
+            key=lambda item: str(item.get("started_at") or ""),
+            reverse=True,
+        )[:200]
+        write_json(JOBS_PATH, {"jobs": records})
+
+
+JOBS.update(load_persisted_jobs())
+if JOBS:
+    persist_jobs()
 
 
 def slugify(value: str) -> str:
@@ -173,9 +224,11 @@ def collect_meta_brand_registry_job(payload: dict[str, Any]) -> dict[str, Any]:
     command = [
         python_exe(), "scripts/collect_meta_brand_registry.py",
         "--profile", profile,
-        "--brand-limit", str(max(1, min(30, int(payload.get("brandLimit") or 3)))),
-        "--ads-per-brand", str(max(1, min(20, int(payload.get("adsPerBrand") or 3)))),
+        "--brand-limit", str(max(1, min(30, int(payload.get("brandLimit") or 5)))),
+        "--ads-per-brand", str(max(1, min(20, int(payload.get("adsPerBrand") or 5)))),
         "--scrolls", str(max(0, min(30, int(payload.get("scrolls") or 5)))),
+        "--strategy", "registry" if payload.get("strategy") == "registry" else "adaptive",
+        "--media-type", "image" if payload.get("mediaType") == "image" else "all",
     ]
     country = str(payload.get("country") or "").strip()
     if country:
@@ -183,6 +236,15 @@ def collect_meta_brand_registry_job(payload: dict[str, Any]) -> dict[str, Any]:
     if payload.get("headful"):
         command.append("--headful")
     return start_process(command, ROOT, f"Meta brand registry: {profile}")
+
+
+def collect_meta_source_mix_job(payload: dict[str, Any]) -> dict[str, Any]:
+    command = [
+        python_exe(), "scripts/collect_meta_source_mix.py",
+        "--query-limit", str(max(1, min(5, int(payload.get("queryLimit") or 2)))),
+        "--ads-per-query", str(max(1, min(20, int(payload.get("adsPerQuery") or 5)))),
+    ]
+    return start_process(command, ROOT, "Meta source mix fallback")
 
 
 def list_training_sessions() -> list[dict[str, Any]]:
@@ -724,7 +786,411 @@ def run_detail(run_id: str) -> dict[str, Any]:
         "qa_report": read_json(run_dir / "06_qa_packaging" / "qa-report.json", {}),
         "final_package_manifest": read_json(run_dir / "06_qa_packaging" / "final-package-manifest.json", []),
         "qa_packaging": read_json(run_dir / "06_qa_packaging" / "qa-packaging.json", {}),
+        "strategic_brief": read_json(run_dir / "01_event_brief" / "strategic-brief.json", {}),
+        "planning": {
+            "contentPlan": read_json(run_dir / "02_content_planning" / "content-plan.json", {}),
+            "conceptCandidates": read_json(run_dir / "02_content_planning" / "concept-candidates.json", {}),
+            "conceptReview": read_json(run_dir / "02_content_planning" / "concept-review.json", {}),
+            "selectedConcept": read_json(run_dir / "02_content_planning" / "selected-concept.json", {}),
+            "copyPackage": read_json(run_dir / "02_content_planning" / "copy-package.json", {}),
+            "copyReview": read_json(run_dir / "02_content_planning" / "copy-review.json", {}),
+            "scorecard": read_json(run_dir / "02_content_planning" / "planning-scorecard.json", {}),
+        },
     }
+
+
+def select_planning_concept(run_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    run_dir = run_dir_from_id(run_id)
+    stage_dir = run_dir / "02_content_planning"
+    candidates_doc = read_json(stage_dir / "concept-candidates.json", {})
+    concept_id = str(payload.get("conceptId") or "").strip()
+    candidates = candidates_doc.get("candidates", [])
+    selected = next((item for item in candidates if item.get("conceptId") == concept_id), None)
+    if not selected:
+        raise ValueError("A valid conceptId is required.")
+    reason_tags = normalize_planning_reason_tags(payload.get("reasonTags"))
+    rejected = [item.get("conceptId") for item in candidates if item.get("conceptId") != concept_id]
+    review = {
+        "schemaVersion": "1.0.0",
+        "status": "approved",
+        "selectedConceptId": concept_id,
+        "rejectedConceptIds": rejected,
+        "reasonTags": reason_tags,
+        "reviewNote": str(payload.get("reviewNote") or ""),
+        "approvedAt": datetime.now(timezone.utc).isoformat(),
+    }
+    brief = read_json(run_dir / "01_event_brief" / "brief.json", {})
+    plan = read_json(stage_dir / "content-plan.json", {})
+    package = generate_copy(brief, selected, plan.get("deliverables", []), run_dir)
+    copy_review = {
+        "schemaVersion": "1.0.0",
+        "status": "review_pending",
+        "approved": False,
+        "edits": [],
+        "reasonTags": [],
+        "reviewNote": "",
+    }
+    scorecard = score_planning(brief, candidates_doc, package)
+    write_json(stage_dir / "concept-review.json", review)
+    write_json(stage_dir / "selected-concept.json", {"schemaVersion": "1.0.0", "status": "approved", "concept": selected})
+    write_json(stage_dir / "copy-package.json", package)
+    write_json(stage_dir / "copy-review.json", copy_review)
+    write_json(stage_dir / "planning-scorecard.json", scorecard)
+    return {"ok": True, "detail": run_detail(run_id)}
+
+
+def review_planning_copy(run_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    run_dir = run_dir_from_id(run_id)
+    stage_dir = run_dir / "02_content_planning"
+    package = read_json(stage_dir / "copy-package.json", {})
+    if package.get("status") != "review_pending":
+        raise ValueError("Select a concept and generate a copy package first.")
+    approved = bool(payload.get("approved"))
+    edits = payload.get("edits", [])
+    if not isinstance(edits, list):
+        raise ValueError("edits must be a list")
+    reason_tags = normalize_planning_reason_tags(payload.get("reasonTags"))
+    outputs_by_channel = {item.get("channelId"): item for item in package.get("outputs", [])}
+    for edit in edits:
+        channel_id = edit.get("channelId")
+        if channel_id in outputs_by_channel and isinstance(edit.get("editedCopy"), dict):
+            outputs_by_channel[channel_id]["copy"] = edit["editedCopy"]
+            outputs_by_channel[channel_id]["characterCount"] = len(str(edit["editedCopy"]))
+    if edits:
+        package["criticReview"] = {**package.get("criticReview", {}), "status": "human_revised", "issues": []}
+    scorecard = score_planning(
+        read_json(run_dir / "01_event_brief" / "brief.json", {}),
+        read_json(stage_dir / "concept-candidates.json", {}),
+        package,
+    )
+    human_scores = {
+        key: max(1, min(5, int(value)))
+        for key, value in (payload.get("scores") or {}).items()
+        if key in scorecard.get("rubric", {}) and isinstance(value, (int, float))
+    }
+    if human_scores:
+        scorecard["humanRubric"] = human_scores
+        scorecard["rubric"].update(human_scores)
+        scorecard["averageScore"] = round(sum(scorecard["rubric"].values()) / len(scorecard["rubric"]), 2)
+        scorecard["issues"] = [item for item in scorecard["issues"] if item.get("id") != "rubric_below_four"]
+        if scorecard["averageScore"] < 4:
+            scorecard["issues"].append({"severity": "warning", "id": "rubric_below_four", "message": f"평균 품질 점수가 4점 미만입니다: {scorecard['averageScore']:.2f}"})
+        scorecard["status"] = "fail" if scorecard.get("criticalErrorCount") else "warning" if scorecard["issues"] else "pass"
+    review = {
+        "schemaVersion": "1.0.0",
+        "status": "approved" if approved else "changes_requested",
+        "approved": approved,
+        "edits": edits,
+        "reasonTags": reason_tags,
+        "reviewNote": str(payload.get("reviewNote") or ""),
+        "scores": human_scores,
+        "blindPreferred": str(payload.get("blindPreferred") or ""),
+        "reviewedAt": datetime.now(timezone.utc).isoformat(),
+    }
+    if approved and scorecard.get("issues"):
+        raise ValueError("Resolve all planning quality warnings before approving final copy.")
+    write_json(stage_dir / "copy-package.json", package)
+    write_json(stage_dir / "copy-review.json", review)
+    selected = read_json(stage_dir / "selected-concept.json", {}).get("concept", {})
+    brief = read_json(run_dir / "01_event_brief" / "brief.json", {})
+    records = edits or [
+        {
+            "channelId": output.get("channelId", ""),
+            "originalCopy": output.get("copy", {}),
+            "editedCopy": output.get("copy", {}),
+        }
+        for output in package.get("outputs", [])
+    ]
+    for edit in records:
+        append_correction({
+            "runId": run_id,
+            "eventId": str(brief.get("event_id") or ""),
+            "eventName": str(brief.get("event_name") or ""),
+            "brandName": str(brief.get("brand", {}).get("name") or brief.get("brand_name") or ""),
+            "industry": read_json(run_dir / "01_event_brief" / "strategic-brief.json", {}).get("industry", ""),
+            "channelId": edit.get("channelId", ""),
+            "model": package.get("model", ""),
+            "strategyExampleIds": selected.get("strategyExampleIds", []),
+            "originalCopy": edit.get("originalCopy", {}),
+            "editedCopy": edit.get("editedCopy", {}),
+            "reasonTags": reason_tags,
+            "qaResult": read_json(stage_dir / "planning-scorecard.json", {}),
+            "approved": approved,
+            "humanScores": human_scores,
+            "blindPreferred": str(payload.get("blindPreferred") or ""),
+        })
+    write_json(stage_dir / "planning-scorecard.json", scorecard)
+    return {"ok": True, "detail": run_detail(run_id)}
+
+
+def review_strategy_example(payload: dict[str, Any]) -> dict[str, Any]:
+    example_id = str(payload.get("exampleId") or "").strip()
+    if not example_id:
+        raise ValueError("exampleId is required")
+    updated = update_example_review(example_id, payload)
+    return {"ok": True, "example": updated, "metrics": strategy_quality_metrics(), "reviewPacket": ad_planning_review_packet()}
+
+
+def marketing_signal_packet(limit: int = 24) -> dict[str, Any]:
+    signals = load_signals()
+    metrics = signal_metrics(signals)
+    enriched = [with_signal_recommendation(item) for item in signals]
+    ordered = sorted(enriched, key=lambda item: (
+        item.get("review", {}).get("decision") != "unreviewed",
+        -int(item.get("reviewRecommendation", {}).get("score") or 0),
+        evidence_priority(item),
+        item.get("topic", ""),
+        item.get("id", ""),
+    ))
+    return {
+        "signals": ordered[:limit],
+        "metrics": metrics,
+        "reviewQueue": [item for item in ordered if item.get("review", {}).get("decision") == "unreviewed"][:limit],
+        "insightBrief": read_json(INSIGHT_BRIEF_PATH, {}),
+    }
+
+
+def with_signal_recommendation(signal: dict[str, Any]) -> dict[str, Any]:
+    score, reasons = signal_recommendation_score(signal)
+    if score >= 8:
+        label = "우선 검토"
+    elif score >= 6:
+        label = "검토 후보"
+    else:
+        label = "보조 후보"
+    return {
+        **signal,
+        "reviewRecommendation": {
+            "score": score,
+            "label": label,
+            "reasons": reasons,
+        },
+    }
+
+
+def signal_recommendation_score(signal: dict[str, Any]) -> tuple[int, list[str]]:
+    score = int(signal.get("strength") or 0) + int(signal.get("freshness") or 0) + int(signal.get("confidence") or 0)
+    reasons: list[str] = []
+    evidence_type = str(signal.get("evidenceType") or "")
+    usable_for = set(signal.get("usableFor") or [])
+    if evidence_type in {"pain", "desire", "objection"}:
+        score += 2
+        reasons.append("타깃 감정/저항을 바로 설명할 수 있음")
+    elif evidence_type in {"timing", "trend"}:
+        score += 1
+        reasons.append("시즌·트렌드 훅으로 확장 가능")
+    elif evidence_type == "channel_pattern":
+        score += 1
+        reasons.append("채널 문구 구조 검토에 유용")
+    if {"concept", "copy"}.issubset(usable_for):
+        score += 1
+        reasons.append("콘셉트와 카피에 모두 연결 가능")
+    if "random_seed" in set(signal.get("riskFlags") or []):
+        reasons.append("랜덤 가설이라 선택 전 사실 근거로는 사용 금지")
+    if not reasons:
+        reasons.append("검토 가능한 후보")
+    return max(1, min(10, score)), reasons[:3]
+
+
+def evidence_priority(signal: dict[str, Any]) -> int:
+    return {
+        "pain": 0,
+        "desire": 1,
+        "objection": 2,
+        "timing": 3,
+        "trend": 4,
+        "channel_pattern": 5,
+    }.get(str(signal.get("evidenceType") or ""), 9)
+
+
+def review_marketing_signal(payload: dict[str, Any]) -> dict[str, Any]:
+    signal_id = str(payload.get("signalId") or "").strip()
+    if not signal_id:
+        raise ValueError("signalId is required")
+    updated = update_signal_review(signal_id, {
+        "decision": payload.get("decision"),
+        "reasonTags": payload.get("reasonTags") or [],
+        "reviewNote": payload.get("reviewNote") or "",
+    })
+    return {"ok": True, "signal": updated, "marketingSignals": marketing_signal_packet()}
+
+
+def build_marketing_insight_brief(payload: dict[str, Any]) -> dict[str, Any]:
+    brief = build_and_save_insight_brief(
+        event_id=str(payload.get("eventId") or "general"),
+        industry=str(payload.get("industry") or "cosmetics_skincare"),
+        topic=str(payload.get("topic") or ""),
+        minimum_selected=max(1, int(payload.get("minimumSelected") or 3)),
+    )
+    return {"ok": True, "insightBrief": brief, "marketingSignals": marketing_signal_packet()}
+
+
+def run_marketing_signal_job(payload: dict[str, Any]) -> dict[str, Any]:
+    mode = str(payload.get("mode") or "random_seed").strip().lower()
+    command = [python_exe(), "scripts/collect_marketing_signals.py"]
+    label = "marketing signal review sheet export"
+    if mode == "random_seed":
+        count = max(1, int(payload.get("count") or 50))
+        industry = str(payload.get("industry") or "cosmetics_skincare")
+        topic = str(payload.get("topic") or "daily_random_seed")
+        command.extend(["--industry", industry, "--topic", topic, "--random-seed", "--count", str(count), "--export-review"])
+        if payload.get("seed") not in (None, ""):
+            command.extend(["--seed", str(payload["seed"])])
+        label = f"marketing signal random seed {count}"
+    elif mode == "export":
+        command.append("--export-review")
+        label = "marketing signal review sheet export"
+    elif mode == "import_dry_run":
+        command.append("--import-review")
+        label = "marketing signal review sheet import dry-run"
+    elif mode == "import_apply":
+        command.extend(["--import-review", "--apply"])
+        label = "marketing signal review sheet import apply"
+    elif mode == "public_snapshot":
+        snapshot = str(payload.get("snapshot") or payload.get("publicSnapshot") or "").strip()
+        if not snapshot:
+            raise ValueError("snapshot is required for public_snapshot mode")
+        industry = str(payload.get("industry") or "cosmetics_skincare")
+        topic = str(payload.get("topic") or "public_marketing_signals")
+        command.extend(["--industry", industry, "--topic", topic, "--public-snapshot", snapshot, "--export-review"])
+        if payload.get("autoSelect"):
+            command.append("--auto-select-public")
+        label = "marketing signal public snapshot import"
+    elif mode == "public_capture":
+        url = str(payload.get("url") or payload.get("captureUrl") or "").strip()
+        if not url:
+            raise ValueError("url is required for public_capture mode")
+        industry = str(payload.get("industry") or "cosmetics_skincare")
+        topic = str(payload.get("topic") or "public_web_capture")
+        source_kind = str(payload.get("sourceKind") or "public_web")
+        snapshot_output = str(payload.get("snapshotOutput") or ".tmp/marketing-signals/public-capture-latest.json")
+        command.extend([
+            "--industry", industry,
+            "--topic", topic,
+            "--capture-url", url,
+            "--source-kind", source_kind,
+            "--snapshot-output", snapshot_output,
+            "--export-review",
+        ])
+        label = "marketing signal public URL capture"
+    else:
+        raise ValueError("mode must be random_seed, export, import_dry_run, import_apply, public_snapshot, or public_capture")
+    return start_process(command, ROOT, label)
+
+
+def review_planning_benchmark(payload: dict[str, Any]) -> dict[str, Any]:
+    case_id = str(payload.get("caseId") or "").strip()
+    if not case_id:
+        raise ValueError("caseId is required")
+    save_human_review(case_id, payload)
+    report = refresh_planning_benchmark()
+    reviewed_case = next(item for item in report.get("cases", []) if item.get("caseId") == case_id)
+    return {"ok": True, "case": reviewed_case, "report": report, "metrics": strategy_quality_metrics(), "reviewPacket": ad_planning_review_packet()}
+
+
+def select_planning_benchmark_concept(payload: dict[str, Any]) -> dict[str, Any]:
+    case_id = str(payload.get("caseId") or "").strip()
+    concept_id = str(payload.get("conceptId") or "").strip()
+    if not case_id or not concept_id:
+        raise ValueError("caseId and conceptId are required")
+    select_external_concept(case_id, concept_id)
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {})
+    case = next((item for item in dataset.get("cases", []) if item.get("id") == case_id), None)
+    if not case:
+        raise ValueError("Unknown benchmark case.")
+    run_external_cases({"cases": [case]}, DEFAULT_RESULTS)
+    report = refresh_planning_benchmark()
+    selected_case = next(item for item in report.get("cases", []) if item.get("caseId") == case_id)
+    return {"ok": True, "case": selected_case, "report": report, "metrics": strategy_quality_metrics(), "reviewPacket": ad_planning_review_packet()}
+
+
+def run_planning_pilot_job(payload: dict[str, Any]) -> dict[str, Any]:
+    limit = max(1, int(payload.get("limit") or 5))
+    return start_process([python_exe(), "scripts/run_ad_planning_pilot.py", "--limit", str(limit)], ROOT, f"ad planning pilot {limit}")
+
+
+def run_ad_strategy_review_sheet_job(payload: dict[str, Any]) -> dict[str, Any]:
+    mode = str(payload.get("mode") or "export").strip().lower()
+    command = [python_exe(), "scripts/manage_ad_strategy_review_sheet.py"]
+    label = "ad strategy review sheet export"
+    if mode == "export":
+        limit = max(1, int(payload.get("limit") or 30))
+        command.extend(["--limit", str(limit)])
+        label = f"ad strategy review sheet export {limit}"
+    elif mode == "import_dry_run":
+        command.append("--import-sheet")
+        label = "ad strategy review sheet import dry-run"
+    elif mode == "import_apply":
+        command.extend(["--import-sheet", "--apply"])
+        label = "ad strategy review sheet import apply"
+    else:
+        raise ValueError("mode must be export, import_dry_run, or import_apply")
+    return start_process(command, ROOT, label)
+
+
+def run_ad_planning_benchmark_review_sheet_job(payload: dict[str, Any]) -> dict[str, Any]:
+    mode = str(payload.get("mode") or "export").strip().lower()
+    command = [python_exe(), "scripts/manage_ad_planning_benchmark_review_sheet.py"]
+    label = "ad planning benchmark review sheet export"
+    if mode == "export":
+        limit = max(1, int(payload.get("limit") or 5))
+        command.extend(["--limit", str(limit)])
+        label = f"ad planning benchmark review sheet export {limit}"
+    elif mode == "import_dry_run":
+        command.append("--import-sheet")
+        label = "ad planning benchmark review sheet import dry-run"
+    elif mode == "import_apply":
+        command.extend(["--import-sheet", "--apply"])
+        label = "ad planning benchmark review sheet import apply"
+    else:
+        raise ValueError("mode must be export, import_dry_run, or import_apply")
+    return start_process(command, ROOT, label)
+
+
+def refresh_planning_benchmark() -> dict[str, Any]:
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {})
+    reviews = {item["caseId"]: item for item in read_json(DEFAULT_REVIEWS, {"reviews": []}).get("reviews", [])}
+    external = {item["caseId"]: item for item in read_json(DEFAULT_RESULTS, {"results": []}).get("results", [])}
+    cases = [evaluate_case(item, reviews.get(item["id"], {}), external.get(item["id"], {})) for item in dataset.get("cases", [])]
+    report = aggregate(cases, dataset.get("target", {}))
+    write_json(DEFAULT_REPORT, report)
+    return report
+
+
+def ad_planning_review_packet() -> dict[str, Any]:
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {"cases": []})
+    benchmark = read_json(DEFAULT_REPORT, {})
+    external = read_json(DEFAULT_RESULTS, {"results": []})
+    reviews = read_json(DEFAULT_REVIEWS, {"reviews": []})
+    return build_ad_planning_review_packet(
+        dataset=dataset,
+        benchmark=benchmark,
+        external_results=external,
+        human_reviews=reviews,
+        strategy_examples=load_examples_for_review(),
+        strategy_metrics=strategy_quality_metrics(),
+        provider="local",
+        pilot_limit=5,
+    )
+
+
+def normalize_planning_reason_tags(value: Any) -> list[str]:
+    allowed = {
+        "generic", "weak_insight", "awkward_korean", "brand_mismatch",
+        "unsupported_claim", "copied_expression", "weak_cta", "channel_mismatch",
+        "good_hook", "good_structure", "strong_product_link",
+    }
+    values = value if isinstance(value, list) else split_lines(value)
+    return [item for item in dict.fromkeys(str(item).strip() for item in values) if item in allowed]
+
+
+def approve_run_stage(run_id: str, payload: dict[str, Any]) -> dict[str, Any]:
+    run_dir = run_dir_from_id(run_id)
+    stage = str(payload.get("stage") or "").strip()
+    if not stage:
+        raise ValueError("stage is required")
+    approve_stage(run_dir, stage, approver=str(payload.get("approver") or "console"), note=str(payload.get("note") or ""))
+    return {"ok": True, "detail": run_detail(run_id)}
 
 
 def split_lines(value: str) -> list[str]:
@@ -736,17 +1202,18 @@ def split_lines(value: str) -> list[str]:
 def create_event(payload: dict[str, Any]) -> dict[str, Any]:
     event_name = payload.get("eventName") or payload.get("event_name") or "New Event"
     brand_name = payload.get("brandName") or payload.get("brand_name") or ""
+    objective = payload.get("objective") or payload.get("purpose") or ""
     event_dir = safe_child(EVENTS_DIR, slugify(event_name))
     suffix = 2
     while event_dir.exists():
         event_dir = safe_child(EVENTS_DIR, f"{slugify(event_name)}-{suffix}")
         suffix += 1
-    event_dir.mkdir(parents=True)
 
     event_input = {
         "brandName": brand_name,
         "eventName": event_name,
-        "purpose": payload.get("purpose", ""),
+        "objective": objective,
+        "purpose": objective,
         "target": payload.get("target", ""),
         "productOrService": payload.get("productOrService", ""),
         "channels": payload.get("channels") or ["instagram", "naver_blog", "community"],
@@ -792,6 +1259,19 @@ def create_event(payload: dict[str, Any]) -> dict[str, Any]:
         product = load_product_from_event({"productLibraryId": product_library_id})
         brand_guide["productTone"] = product.get("tone", [])
         brand_guide["productForbidden"] = product.get("forbidden", [])
+    validate_json(
+        event_input,
+        read_json(ROOT / "core" / "schemas" / "event-input.schema.json"),
+        data_label="new event input",
+        schema_label="core/schemas/event-input.schema.json",
+    )
+    validate_json(
+        brand_guide,
+        read_json(ROOT / "core" / "schemas" / "brand-guide.schema.json"),
+        data_label="new brand guide",
+        schema_label="core/schemas/brand-guide.schema.json",
+    )
+    event_dir.mkdir(parents=True)
     write_json(event_dir / "event-input.json", event_input)
     write_json(event_dir / "brand-guide.json", brand_guide)
     write_json(event_dir / "selection.json", {"selected": []})
@@ -816,6 +1296,10 @@ def product_asset(category: str, product_id: str, asset_kind: str, ref_name: str
 
 def create_package(run_id: str) -> dict[str, Any]:
     run_dir = run_dir_from_id(run_id)
+    run_status = read_json(run_dir / "run-status.json", {})
+    qa_stage_status = run_status.get("stage_status", {}).get("06_qa_packaging")
+    if qa_stage_status != "approved":
+        raise ValueError("Final production package requires approved 06_qa_packaging.")
     package_dir = run_dir / "production-package"
     package_dir.mkdir(exist_ok=True)
     detail = run_detail(run_id)
@@ -1063,11 +1547,19 @@ def build_selection_notes(selected_assets: dict[str, Any]) -> str:
 
 
 def start_process(command: list[str], cwd: Path, label: str, env: dict[str, str] | None = None) -> dict[str, Any]:
-    job_id = f"{int(time.time())}-{slugify(label)}"
+    job_id = f"{time.time_ns()}-{slugify(label)}"
     log_dir = ROOT / ".tmp" / "console-jobs"
     log_dir.mkdir(parents=True, exist_ok=True)
     log_path = log_dir / f"{job_id}.log"
-    JOBS[job_id] = {"job_id": job_id, "label": label, "status": "running", "log_path": str(log_path), "started_at": datetime.now(timezone.utc).isoformat()}
+    JOBS[job_id] = {
+        "job_id": job_id,
+        "label": label,
+        "status": "running",
+        "command": command,
+        "log_path": str(log_path),
+        "started_at": datetime.now(timezone.utc).isoformat(),
+    }
+    persist_jobs()
 
     def worker() -> None:
         with log_path.open("w", encoding="utf-8", errors="ignore") as log:
@@ -1075,10 +1567,13 @@ def start_process(command: list[str], cwd: Path, label: str, env: dict[str, str]
             if env:
                 process_env.update(env)
             process = subprocess.Popen(command, cwd=cwd, stdout=log, stderr=subprocess.STDOUT, text=True, env=process_env)
+            JOBS[job_id]["pid"] = process.pid
+            persist_jobs()
             code = process.wait()
         JOBS[job_id]["status"] = "done" if code == 0 else "failed"
         JOBS[job_id]["returncode"] = code
         JOBS[job_id]["finished_at"] = datetime.now(timezone.utc).isoformat()
+        persist_jobs()
 
     threading.Thread(target=worker, daemon=True).start()
     return JOBS[job_id]
@@ -1203,6 +1698,16 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                     "referenceLearning": reference_learning_status(),
                     "metaAdCollections": list_meta_ad_collections(),
                     "metaBrandRegistry": registry_summary(),
+                    "metaBrandMetrics": collection_metrics_summary(),
+                    "metaBrandStrategy": strategy_summary(),
+                    "metaSourceMixMetrics": source_mix_summary(),
+                    "operationsReadiness": read_json(ROOT / ".tmp" / "operations-readiness" / "latest-operations-readiness.json", {}),
+                    "repeatedOperations": read_json(ROOT / ".tmp" / "repeated-operations" / "latest-repeated-operations.json", {}),
+                    "adStrategyQuality": strategy_quality_metrics(),
+                    "adStrategyExamples": load_examples_for_review(),
+                    "marketingSignals": marketing_signal_packet(),
+                    "planningBenchmark": read_json(DEFAULT_REPORT, {}),
+                    "planningReviewPacket": ad_planning_review_packet(),
                     "jobs": list(JOBS.values()),
                     "comfy": comfy_status(),
                 })
@@ -1231,6 +1736,22 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 self.send_json({"collections": list_meta_ad_collections()})
             elif path == "/api/meta-brand-registry":
                 self.send_json(registry_summary())
+            elif path == "/api/meta-brand-metrics":
+                self.send_json(collection_metrics_summary())
+            elif path == "/api/meta-brand-strategy":
+                self.send_json(strategy_summary())
+            elif path == "/api/meta-source-mix":
+                self.send_json(source_mix_summary())
+            elif path == "/api/ad-strategy-quality":
+                self.send_json(strategy_quality_metrics())
+            elif path == "/api/ad-strategy-examples":
+                self.send_json({"examples": load_examples_for_review(), "metrics": strategy_quality_metrics()})
+            elif path == "/api/marketing-signals":
+                self.send_json(marketing_signal_packet())
+            elif path == "/api/planning-benchmark":
+                self.send_json(refresh_planning_benchmark())
+            elif path == "/api/planning-review-packet":
+                self.send_json(ad_planning_review_packet())
             elif path.startswith("/api/training-sessions/"):
                 parts = [unquote(part) for part in path.removeprefix("/api/training-sessions/").strip("/").split("/")]
                 if len(parts) != 2:
@@ -1269,6 +1790,26 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 self.send_json(collect_meta_ads_job(payload))
             elif path == "/api/meta-brand-registry/collect":
                 self.send_json(collect_meta_brand_registry_job(payload))
+            elif path == "/api/meta-source-mix/collect":
+                self.send_json(collect_meta_source_mix_job(payload))
+            elif path == "/api/ad-strategy/review":
+                self.send_json(review_strategy_example(payload))
+            elif path == "/api/marketing-signals/review":
+                self.send_json(review_marketing_signal(payload))
+            elif path == "/api/marketing-signals/insight-brief":
+                self.send_json(build_marketing_insight_brief(payload))
+            elif path == "/api/marketing-signals/job":
+                self.send_json(run_marketing_signal_job(payload))
+            elif path == "/api/planning-benchmark/review":
+                self.send_json(review_planning_benchmark(payload))
+            elif path == "/api/planning-benchmark/concept-selection":
+                self.send_json(select_planning_benchmark_concept(payload))
+            elif path == "/api/planning-pilot/run":
+                self.send_json(run_planning_pilot_job(payload))
+            elif path == "/api/ad-strategy/review-sheet":
+                self.send_json(run_ad_strategy_review_sheet_job(payload))
+            elif path == "/api/ad-planning/benchmark-review-sheet":
+                self.send_json(run_ad_planning_benchmark_review_sheet_job(payload))
             elif path.startswith("/api/runs/") and path.endswith("/training-sessions/mixed"):
                 run_id = unquote(path[len("/api/runs/"):-len("/training-sessions/mixed")].strip("/"))
                 self.send_json(create_mixed_training_session(run_id, payload))
@@ -1287,6 +1828,15 @@ class ConsoleHandler(BaseHTTPRequestHandler):
             elif path.startswith("/api/runs/") and path.endswith("/stage"):
                 run_id = unquote(path[len("/api/runs/"):-len("/stage")].strip("/"))
                 self.send_json(run_stage(run_id, payload))
+            elif path.startswith("/api/runs/") and path.endswith("/planning/concept"):
+                run_id = unquote(path[len("/api/runs/"):-len("/planning/concept")].strip("/"))
+                self.send_json(select_planning_concept(run_id, payload))
+            elif path.startswith("/api/runs/") and path.endswith("/planning/copy-review"):
+                run_id = unquote(path[len("/api/runs/"):-len("/planning/copy-review")].strip("/"))
+                self.send_json(review_planning_copy(run_id, payload))
+            elif path.startswith("/api/runs/") and path.endswith("/approve"):
+                run_id = unquote(path[len("/api/runs/"):-len("/approve")].strip("/"))
+                self.send_json(approve_run_stage(run_id, payload))
             elif path.startswith("/api/training-sessions/") and path.endswith("/review"):
                 parts = [unquote(part) for part in path[len("/api/training-sessions/"):-len("/review")].strip("/").split("/")]
                 if len(parts) != 2:

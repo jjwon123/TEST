@@ -62,6 +62,10 @@ def _korean_poster_overlay_1024(payload: dict[str, Any]) -> dict[str, Any]:
     footer_left = _channel_label(payload.get("footer_left") or metadata.get("channel_id") or "campaign")
     footer_right = payload.get("footer_right") or metadata.get("deliverable_id") or "v01"
     layout = _layout(width, height)
+    text_color = payload.get("text_color") or "#17324D"
+    secondary_text_color = payload.get("secondary_text_color") or "#31546F"
+    footer_text_color = payload.get("footer_text_color") or "#31546F"
+    badge = str(payload.get("badge") or "")
 
     return {
         "1": {
@@ -81,11 +85,38 @@ def _korean_poster_overlay_1024(payload: dict[str, Any]) -> dict[str, Any]:
                 "crop": "center",
             },
         },
-        "3": _overlay_node(["2", 0], layout["badge"], *layout["badge_box"]),
-        "4": _overlay_node(["3", 0], title, *layout["title_box"], line_spacing=0),
-        "5": _overlay_node(["4", 0], subtitle, *layout["subtitle_box"], line_spacing=0),
-        "6": _overlay_node(["5", 0], footer_left, *layout["footer_left_box"], align="left", line_spacing=2),
-        "7": _overlay_node(["6", 0], footer_right, *layout["footer_right_box"], align="right", line_spacing=2),
+        "3": _overlay_node(["2", 0], badge, *layout["badge_box"], text_color=secondary_text_color),
+        "4": _overlay_node(
+            ["3", 0],
+            title,
+            *layout["title_box"],
+            line_spacing=2,
+            text_color=text_color,
+            font_path="C:/Windows/Fonts/malgunbd.ttf",
+        ),
+        "5": _overlay_node(
+            ["4", 0],
+            subtitle,
+            *layout["subtitle_box"],
+            line_spacing=0,
+            text_color=secondary_text_color,
+        ),
+        "6": _overlay_node(
+            ["5", 0],
+            footer_left,
+            *layout["footer_left_box"],
+            align="left",
+            line_spacing=2,
+            text_color=footer_text_color,
+        ),
+        "7": _overlay_node(
+            ["6", 0],
+            footer_right,
+            *layout["footer_right_box"],
+            align="right",
+            line_spacing=2,
+            text_color=footer_text_color,
+        ),
         "8": {
             "class_type": "SaveImage",
             "inputs": {
@@ -274,30 +305,37 @@ def _overlay_node(
     min_font_size: int,
     align: str = "center",
     line_spacing: int = 6,
+    text_color: str = "#17324D",
+    stroke_width: int = 0,
+    stroke_color: str = "#FFFFFF",
+    shadow_y: int = 0,
+    shadow_blur: int = 0,
+    shadow_color: str = "#FFFFFF",
+    font_path: str = "C:/Windows/Fonts/NotoSansKR-VF.ttf",
 ) -> dict[str, Any]:
     return {
         "class_type": "KoreanTextOverlay",
         "inputs": {
             "image": image,
             "text": text,
-            "font_path": "C:/Windows/Fonts/NotoSansKR-VF.ttf",
+            "font_path": font_path,
             "box_x": box_x,
             "box_y": box_y,
             "box_width": box_width,
             "box_height": box_height,
             "font_size": font_size,
             "min_font_size": min_font_size,
-            "text_color": "#FFFFFF",
+            "text_color": text_color,
             "opacity": 1.0,
             "align": align,
             "vertical_align": "middle",
             "line_spacing": line_spacing,
-            "stroke_width": 0,
-            "stroke_color": "#FFFFFF",
+            "stroke_width": stroke_width,
+            "stroke_color": stroke_color,
             "shadow_x": 0,
-            "shadow_y": 0,
-            "shadow_blur": 0,
-            "shadow_color": "#4B8F66",
+            "shadow_y": shadow_y,
+            "shadow_blur": shadow_blur,
+            "shadow_color": shadow_color,
             "draw_box": False,
         },
     }
@@ -327,8 +365,8 @@ def _output_size(ratio: str) -> tuple[int, int]:
 
 def _layout(width: int, height: int) -> dict[str, Any]:
     scale = min(width, height) / 1024
-    title_h = int(height * 0.23)
-    title_y = int(height * 0.08)
+    title_h = int(height * 0.17)
+    title_y = int(height * 0.07)
     subtitle_y = title_y + title_h
     footer_y = int(height * 0.86)
     return {
@@ -342,17 +380,17 @@ def _layout(width: int, height: int) -> dict[str, Any]:
             max(10, int(16 * scale)),
         ],
         "title_box": [
-            int(width * 0.22),
+            int(width * 0.11),
             title_y,
-            int(width * 0.56),
+            int(width * 0.78),
             title_h,
-            max(34, int(72 * scale)),
-            max(18, int(28 * scale)),
+            max(32, int(64 * scale)),
+            max(22, int(36 * scale)),
         ],
         "subtitle_box": [
-            int(width * 0.24),
+            int(width * 0.16),
             subtitle_y,
-            int(width * 0.52),
+            int(width * 0.68),
             int(height * 0.075),
             max(16, int(28 * scale)),
             max(10, int(14 * scale)),

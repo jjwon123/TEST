@@ -17,6 +17,8 @@ from core.utils.category_campaign_review import detect_category, evaluate_catego
 from core.utils.schema_validation import validate_json
 from services.llm.client import LLMClient, LLMRequest
 from services.research.client import ResearchClient, ResearchQuery
+from services.ad_strategy.library import retrieve_patterns
+from services.ad_strategy.planning_engine import build_strategic_brief
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -69,14 +71,20 @@ def run(
 
     stage_dir = run_dir / STAGE_ID
     brief_path = stage_dir / "brief.json"
+    strategic_brief_path = stage_dir / "strategic-brief.json"
     notes_path = stage_dir / "notes.md"
     write_json(brief_path, brief)
+    write_json(strategic_brief_path, build_strategic_brief(brief))
     write_text(notes_path, build_notes(brief))
 
     return {
         "stage_id": STAGE_ID,
         "status": "review_pending",
-        "outputs": [str(brief_path.relative_to(run_dir)), str(notes_path.relative_to(run_dir))],
+        "outputs": [
+            str(brief_path.relative_to(run_dir)),
+            str(strategic_brief_path.relative_to(run_dir)),
+            str(notes_path.relative_to(run_dir)),
+        ],
         "notes": brief["open_questions"],
         "next_state": "brief_review",
     }
@@ -106,9 +114,19 @@ def build_brief(
     target = event_input.get("target") or ""
     notes = event_input.get("notes") or ""
 
-    core_messages = _core_messages(objective, offer, required_phrases)
+    core_messages = _core_messages(
+        objective,
+        offer,
+        required_phrases,
+        target=target,
+        notes=notes,
+    )
     open_questions = _open_questions(event_input, brand_guide)
     research_context = _build_research_context(event_input, brand_guide, open_questions, research_evidence)
+    strategy_inspiration = retrieve_patterns({
+        "event_input": event_input,
+        "brand_guide": brand_guide,
+    })
     draft = {
         "stage": STAGE_ID,
         "schema_version": "0.1.0",
@@ -149,6 +167,7 @@ def build_brief(
             "visual_direction": _as_list(brand_guide.get("visual", {}).get("mood")),
         },
         "research_context": research_context,
+        "strategy_inspiration": strategy_inspiration,
         "reasoning_trace": {},
         "quality_assessment": {},
         "open_questions": open_questions,
@@ -268,14 +287,27 @@ def build_notes(brief: dict[str, Any]) -> str:
     return "\n".join(lines)
 
 
-def _core_messages(objective: str, offer: str, required_phrases: list[str]) -> list[str]:
+def _core_messages(
+    objective: str,
+    offer: str,
+    required_phrases: list[str],
+    *,
+    target: str = "",
+    notes: str = "",
+) -> list[str]:
     messages = []
-    if objective:
-        messages.append(objective)
+    if target:
+        messages.append(f"공감 진입: {target}. 타깃이 자신의 일상 문제를 알아보도록 구체적인 상황에서 시작한다.")
+    if required_phrases:
+        messages.append(f"핵심 제안 방향: {required_phrases[0]}. 실행 가능한 데일리 루틴으로 설명한다.")
+    if len(required_phrases) > 1:
+        messages.append(f"제품 역할 정의: {required_phrases[1]}. 루틴 안에서 맡는 역할과 사용 이유를 명확히 한다.")
     if offer:
-        messages.append(offer)
-    for phrase in required_phrases[:3]:
-        messages.append(f"{phrase} 중심으로 안내한다.")
+        messages.append(f"전환 이유: {offer}")
+    if notes:
+        messages.append(f"기획 원칙: {notes}")
+    if not messages and objective:
+        messages.append(f"사업 목표: {objective}")
     return _unique_list(messages)[:5]
 
 

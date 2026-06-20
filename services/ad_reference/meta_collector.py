@@ -10,11 +10,16 @@ import time
 from dataclasses import dataclass
 from datetime import datetime, timezone
 from pathlib import Path
-from typing import Any
+from typing import TYPE_CHECKING, Any
 from urllib.parse import urlencode, urlparse
 
 import requests
-from playwright.sync_api import Locator, Page, sync_playwright
+
+if TYPE_CHECKING:
+    from playwright.sync_api import Locator, Page
+else:
+    Locator = Any
+    Page = Any
 
 
 META_AD_LIBRARY_URL = "https://www.facebook.com/ads/library/"
@@ -26,31 +31,36 @@ class MetaCollectorOptions:
     output_dir: Path
     country: str = "KR"
     category: str = "all"
+    media_type: str = "all"
     limit: int = 20
     scrolls: int = 12
     headless: bool = False
     browser_channel: str = "msedge"
 
 
-def build_meta_ad_library_url(query: str, country: str = "KR", category: str = "all") -> str:
+def build_meta_ad_library_url(query: str, country: str = "KR", category: str = "all", media_type: str = "all") -> str:
     params = {
         "active_status": "active",
         "ad_type": category or "all",
         "country": country or "KR",
         "q": query,
         "search_type": "keyword_unordered",
-        "media_type": "all",
+        "media_type": media_type or "all",
     }
     return f"{META_AD_LIBRARY_URL}?{urlencode(params)}"
 
 
 def collect_meta_ads(options: MetaCollectorOptions) -> dict[str, Any]:
+    try:
+        from playwright.sync_api import sync_playwright
+    except ImportError as exc:
+        raise RuntimeError("Meta Ad Library collection requires Playwright. Install it before running collection jobs.") from exc
     options.output_dir.mkdir(parents=True, exist_ok=True)
     captures_dir = options.output_dir / "captures"
     captures_dir.mkdir(parents=True, exist_ok=True)
     images_dir = options.output_dir / "images"
     images_dir.mkdir(parents=True, exist_ok=True)
-    source_url = build_meta_ad_library_url(options.query, options.country, options.category)
+    source_url = build_meta_ad_library_url(options.query, options.country, options.category, options.media_type)
 
     with sync_playwright() as playwright:
         browser = _launch_browser(playwright, options)
@@ -74,6 +84,7 @@ def collect_meta_ads(options: MetaCollectorOptions) -> dict[str, Any]:
         "query": options.query,
         "country": options.country,
         "category": options.category,
+        "mediaType": options.media_type,
         "sourceUrl": source_url,
         "collectedAt": datetime.now(timezone.utc).isoformat(),
         "count": len(items),

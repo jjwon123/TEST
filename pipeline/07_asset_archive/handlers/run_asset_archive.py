@@ -135,6 +135,8 @@ def run(
     write_text(notes_path, _build_reuse_notes(assets, event_id, archived_at))
 
     _copy_to_assets(assets, run_dir, policy)
+    # Copy may version a destination on collision; persist the actual paths.
+    write_json(archive_path, archive_doc)
     _upsert_global_index(assets, archived_at)
     _write_event_index(assets, event_id, archived_at)
 
@@ -369,11 +371,13 @@ def _copy_to_assets(assets: list[dict[str, Any]], run_dir: Path, policy: dict[st
             continue
 
         approved_dest = assets_root / asset["archive_path_approved"]
-        _safe_copy(src, approved_dest)
+        actual_approved = _safe_copy(src, approved_dest)
+        asset["archive_path_approved"] = str(actual_approved.relative_to(assets_root)).replace("\\", "/")
 
         if asset["reuse_status"] == "reusable" and asset["archive_path_reusable"]:
             reusable_dest = assets_root / asset["archive_path_reusable"]
-            _safe_copy(src, reusable_dest)
+            actual_reusable = _safe_copy(src, reusable_dest)
+            asset["archive_path_reusable"] = str(actual_reusable.relative_to(assets_root)).replace("\\", "/")
 
 
 def _resolve_source_file(asset: dict[str, Any], run_dir: Path) -> Path | None:
@@ -396,9 +400,11 @@ def _resolve_source_file(asset: dict[str, Any], run_dir: Path) -> Path | None:
     return None
 
 
-def _safe_copy(src: Path, dest: Path) -> None:
+def _safe_copy(src: Path, dest: Path) -> Path:
     dest.parent.mkdir(parents=True, exist_ok=True)
     if dest.exists():
+        if src.read_bytes() == dest.read_bytes():
+            return dest
         stem, suffix = dest.stem, dest.suffix
         version = 2
         while True:
@@ -408,6 +414,7 @@ def _safe_copy(src: Path, dest: Path) -> None:
                 break
             version += 1
     shutil.copy2(src, dest)
+    return dest
 
 
 # ---------------------------------------------------------------------------
