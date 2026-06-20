@@ -48,12 +48,28 @@ mixed_reference_001 + holdout_001 총 77건을 Qwen 비전으로 재판단:
 거절로 떨굼). 따라서 **`--qwen-vision`을 신규 세션에 무조건 켜면 안 된다.** `review_image` 출력 스키마는
 auto_decision 기대 필드와 정확히 정렬돼 있음(local_hb_sale_fit/benefit_hierarchy/product_trust/decision 등).
 
+## 하이브리드 실험 결과 (반증 2)
+
+캘리브레이션 하이브리드(메타 keep 기본 + 비전 hard-risk >= 임계값일 때만 거절 downgrade)를
+같은 77건에 대해 임계값 75~101로 스윕:
+
+| threshold | 메타 2-class | 비전 2-class | 하이브리드 2-class |
+|---|---|---|---|
+| 75~90 | 71.4% | 63.6% | 66.2% |
+| 95~101 | 71.4% | 63.6% | 71.4% (downgrade 거의 안 함) |
+
+**어떤 임계값에서도 하이브리드가 메타데이터를 못 넘는다.** 비전의 hard-risk 점수가 기원님 거절 기준과
+정렬이 안 돼서, downgrade가 net으로 틀린다(임계값을 올리면 메타와 같아질 뿐). 결론: **현재 Qwen
+프롬프트/모델로는 비전이 어떤 통합 방식(pure/hybrid)으로도 메타데이터+learned rules를 못 이긴다.**
+
 ## 검증된 결정
 
-1. learned rules는 정확도를 올리므로 유지한다.
-2. 블랭킷 비전 적용은 회귀이므로 보류. 다음 실험은 **캘리브레이션된 하이브리드**:
-   메타데이터 keep 결정을 기본으로 두고, 비전이 강한 hard-risk(website_capture_risk/text_artifact_risk/
-   risk_level 높음)를 줄 때만 거절로 downgrade. 비전의 강점(진짜 결함 탐지)만 쓰고 과제외는 피함.
-3. 하이브리드 검증을 위해 하니스에 비전 결과 캐시를 추가하면 룰 변형을 비전 재호출 없이 A/B할 수 있다.
+1. learned rules는 정확도를 올리므로 유지한다. (현재 최선: 244건 3-class 43.4% / 2-class 62.7%)
+2. **비전 통합은 지금 쫓을 레버가 아니다.** pure도 hybrid도 메타데이터보다 나쁘다. 비전을 살리려면
+   먼저 Qwen 프롬프트/모델을 기원님 거절 기준에 맞게 캘리브레이션해야 한다(별도 R&D).
+3. 정확도를 더 올리는 현실적 경로는 **learned rules 성장**(사람 검수 reason-tag 데이터 축적)이며,
+   이는 사람 검수가 필요하다(🙋).
+4. 측정 인프라(`replay_reference_accuracy.py`)는 비전 결과를 세션별 `.vision_cache.json`에 캐시하므로,
+   향후 프롬프트/룰 변형은 비전 재호출 없이 A/B할 수 있다.
 
 관련: [[BACKLOG]], [[09_HANDOFF]]

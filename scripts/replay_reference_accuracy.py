@@ -93,8 +93,16 @@ def evaluate_session_vision(
     limit: int,
     model: str,
     host: str,
+    hybrid_threshold: float = 70.0,
 ) -> list[dict[str, Any]]:
-    """같은 항목에 대해 메타데이터 판단(learned)과 Qwen 비전 판단(vision)을 함께 산출."""
+    """같은 항목에 대해 메타데이터(learned), 비전(vision), 하이브리드(hybrid) 판단을 함께 산출.
+
+    hybrid = 메타데이터 learned 결정을 기본으로 두되, 비전이 강한 hard-risk
+    (website_capture_risk / text_artifact_risk / risk_level >= hybrid_threshold)를
+    줄 때만 rejected로 downgrade. 비전의 결함 탐지 강점만 쓰고 과제외는 피한다.
+
+    qwen 결과는 세션 폴더의 .vision_cache.json에 캐시해, 임계값 튜닝 시 비전 재호출을 피한다.
+    """
     import importlib
     from services.visual_reference.qwen_reviewer import build_profile_reference_prompt, review_image
 
@@ -102,11 +110,22 @@ def evaluate_session_vision(
     config = crts.PROFILE_CONFIG.get(profile) or crts.default_config(profile)
     prompt = build_profile_reference_prompt(profile)
     reviews = json.loads((session_dir / "kiwon_review_state.json").read_text(encoding="utf-8")).get("reviews", {})
+
+    cache_path = session_dir / ".vision_cache.json"
+    cache: dict[str, Any] = {}
+    if cache_path.exists():
+        try:
+            cache = json.loads(cache_path.read_text(encoding="utf-8"))
+        except Exception:
+            cache = {}
+
     rows = []
     count = 0
+    dirty = False
     for item in load_items(session_dir):
+        item_id = str(item.get("id"))
         ai = normalize(item.get("decision"))
-        truth = truth_for(reviews.get(item.get("id")) or {}, ai)
+        truth = truth_for(reviews.get(item_id) or {}, ai)
         if not truth or not ai:
             continue
         img = ROOT / str(item.get("file", ""))
@@ -115,20 +134,41 @@ def evaluate_session_vision(
         if limit and count >= limit:
             break
         count += 1
-        try:
-            qwen = review_image(img, model=model, host=host, prompt=prompt)
-        except Exception:
-            qwen = {}
-        try:
-            from PIL import Image
-            with Image.open(img) as im:
-                w, h = im.size
-        except Exception:
-            w = h = 1024
+        cached = cache.get(item_id)
+        if cached and cached.get("qwen_review") is not None:
+            qwen = cached["qwen_review"]
+            w, h = cached.get("w", 1024), cached.get("h", 1024)
+        else:
+            try:
+                qwen = review_image(img, model=model, host=host, prompt=prompt)
+            except Exception:
+                qwen = {}
+            try:
+                from PIL import Image
+                with Image.open(img) as im:
+                    w, h = im.size
+            except Exception:
+                w = h = 1024
+            cache[item_id] = {"qwen_review": qwen, "w": w, "h": h}
+            dirty = True
         record = {"width": w, "height": h, "qwen_review": qwen}
         vision = normalize(crts.auto_decision(record, config))
         learned, _ = apply_promoted_rules(profile, ai, list(item.get("riskSignals") or []))
-        rows.append({"truth": truth, "baseline": ai, "learned": normalize(learned), "vision": vision})
+        learned = normalize(learned)
+        qwen = qwen or {}
+        hard_risk = max(
+            float(qwen.get("website_capture_risk", 0) or 0),
+            float(qwen.get("text_artifact_risk", 0) or 0),
+            float(qwen.get("risk_level", 0) or 0),
+        )
+        hybrid = "rejected" if hard_risk >= hybrid_threshold else learned
+        rows.append({
+            "truth": truth, "baseline": ai, "learned": learned,
+            "vision": vision, "hybrid": hybrid,
+        })
+
+    if dirty:
+        cache_path.write_text(json.dumps(cache, ensure_ascii=False, indent=1), encoding="utf-8")
     return rows
 
 
@@ -154,25 +194,25 @@ def run_vision_ab(args, profile_root: Path) -> int:
     else:
         session_dirs = sorted(p.parent for p in profile_root.glob("*/kiwon_review_state.json"))
     all_rows: list[dict] = []
-    print(f"=== Vision A/B: {args.profile} (메타데이터 learned vs Qwen 비전) ===\n")
-    print(f"{'session':<28}{'n':>4}{'meta3':>8}{'vis3':>8}{'meta2':>8}{'vis2':>8}")
+    print(f"=== Vision A/B: {args.profile} (meta/vision/hybrid, hard-risk>={args.hybrid_threshold:.0f}) ===\n")
+    print(f"{'session':<26}{'n':>4}{'meta2':>8}{'vis2':>8}{'hyb2':>8}{'meta3':>8}{'hyb3':>8}")
     for sd in session_dirs:
-        rows = evaluate_session_vision(sd, args.profile, args.limit, args.qwen_model, args.qwen_host)
+        rows = evaluate_session_vision(sd, args.profile, args.limit, args.qwen_model, args.qwen_host, args.hybrid_threshold)
         if not rows:
             continue
         all_rows.extend(rows)
-        print(f"{sd.name:<28}{len(rows):>4}"
-              f"{accuracy(rows,'learned'):>8.1%}{accuracy(rows,'vision'):>8.1%}"
-              f"{binary_accuracy(rows,'learned'):>8.1%}{binary_accuracy(rows,'vision'):>8.1%}")
+        print(f"{sd.name:<26}{len(rows):>4}"
+              f"{binary_accuracy(rows,'learned'):>8.1%}{binary_accuracy(rows,'vision'):>8.1%}{binary_accuracy(rows,'hybrid'):>8.1%}"
+              f"{accuracy(rows,'learned'):>8.1%}{accuracy(rows,'hybrid'):>8.1%}")
     if not all_rows:
         print("평가 가능한 row 없음.")
         return 1
     print("\n=== 전체 집계 ===")
     print(f"평가 row 수: {len(all_rows)}")
-    print(f"3-class: 메타데이터 {accuracy(all_rows,'learned'):.1%} -> 비전 {accuracy(all_rows,'vision'):.1%}")
-    print(f"2-class(keep/drop): 메타데이터 {binary_accuracy(all_rows,'learned'):.1%} -> 비전 {binary_accuracy(all_rows,'vision'):.1%}")
-    print("\n=== 혼동행렬 (vision): truth -> ai ===")
-    conf = confusion(all_rows, "vision")
+    print(f"2-class(keep/drop): 메타 {binary_accuracy(all_rows,'learned'):.1%} | 비전 {binary_accuracy(all_rows,'vision'):.1%} | 하이브리드 {binary_accuracy(all_rows,'hybrid'):.1%}")
+    print(f"3-class           : 메타 {accuracy(all_rows,'learned'):.1%} | 비전 {accuracy(all_rows,'vision'):.1%} | 하이브리드 {accuracy(all_rows,'hybrid'):.1%}")
+    print("\n=== 혼동행렬 (hybrid): truth -> ai ===")
+    conf = confusion(all_rows, "hybrid")
     header = "truth\\ai"
     print(f"{header:<12}" + "".join(f"{d:>10}" for d in ORDER))
     for t in ORDER:
@@ -186,6 +226,7 @@ def main() -> int:
     parser.add_argument("--sessions", nargs="*", help="세션 id. 기본은 프로필의 모든 검수 세션.")
     parser.add_argument("--qwen-vision", action="store_true", help="세션 이미지를 Qwen 비전으로 재판단해 메타데이터 vs 비전 정확도를 A/B 비교.")
     parser.add_argument("--limit", type=int, default=0, help="비전 모드에서 세션당 최대 항목 수. 0은 전체.")
+    parser.add_argument("--hybrid-threshold", type=float, default=70.0, help="하이브리드: 비전 hard-risk가 이 값 이상이면 메타 결정을 rejected로 downgrade.")
     parser.add_argument("--qwen-model", default="qwen2.5vl:7b")
     parser.add_argument("--qwen-host", default="http://127.0.0.1:11434")
     args = parser.parse_args()

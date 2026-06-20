@@ -36,3 +36,6 @@ node_modules/
 *.psd
 *.pdf
 *.zip
+
+# Reference accuracy vision cache (regenerable)
+design_brain_wiki/training_sessions/**/.vision_cache.json
