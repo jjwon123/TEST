@@ -54,7 +54,8 @@
 - [x] 🤖 학습 모델로 신규 이미지 자동 순위 — `scripts/rank_images_by_taste.py`
 - [x] 🤖 (가) Meta 소량 수집 검증 — `collect_meta_ads.py` "스킨케어 세럼" 23장 수집→취향 점수 확인 (2026-06-20)
 - [x] 🤖 임의 폴더→콘솔 라벨 세션 인제스터 — `scripts/ingest_image_folder_session.py` (Meta·확장 공통). 루프 닫힘
-- [ ] 🙋 [마지막] `meta_serum_test_001` 등 인제스트 세션을 콘솔에서 라벨 → 재학습
+- [x] 🤖 데이터 전략 실행 — 노이즈 키워드 수집 대신 브랜드 advertiser-match. 깨끗한 세션 `meta_brand_clean_001`(27장, AI추천 selected 21/shortlist 2). 노이즈 세션 excludeFromTraining (2026-06-20)
+- [ ] 🙋 [마지막] `meta_brand_clean_001`(깨끗, 27장) 콘솔에서 라벨 → 재학습 (추천 23장 우선)
 - [x] 🤖 번들 chromium 설치(`playwright install`) — chromium-1217 설치·실행 확인 (2026-06-20)
 - [x] 🙋 Pinterest 로그인 세션 생성 — `pinterest_login.py`로 생성 완료, 쿠키 11개 usable (2026-06-20)
 - [ ] 🙋 [마지막] 콘솔에서 경쟁사 이미지 추가 라벨링 → 재학습으로 AUC 향상 (사람 검수)

@@ -32,6 +32,17 @@
 4. `train_taste_model.py` 재학습, AUC 재측정
 5. `rank_images_by_taste.py`로 신규 수집을 자동 순위·필터 → 좋은 것만 남김
 
+## 데이터 전략 (2026-06-20 확정)
+
+문제: 일반 키워드 수집(`collect_meta_ads --query`)은 `country=KR`이 "한국 노출 광고"라
+외국어(인도어 등) 광고가 대량 유입됨. meta_competitor_001 336장 중 80%가 pretag 거절.
+뻔한 외국 쓰레기를 bad로 학습하면 "한국어=좋음" 편향 위험.
+
+확정된 결정:
+1. **수집**: 일반 키워드 → **브랜드 기반 advertiser-match**(`collect_meta_brand_registry --strategy registry`). 등록 20개 경쟁사 전부. 광고주명 일치만 남겨 노이즈 제거.
+2. **사전 정제(가볍게)**: 취향모델 pretag + SHA 중복 제거 + 저해상도 게이트. (Qwen 카드뉴스/언어 필터는 당분간 미구축 — advertiser-match로 충분.)
+3. **학습 구성(편향 방지)**: 노이즈 세션은 학습 제외. `ai_judgement.json`의 `excludeFromTraining:true`(taste_labels가 스킵). meta_competitor_001은 제외 표시함. 깨끗한 브랜드 데이터로 재구성.
+
 ## 소스별 수집 (어느 게 나은가)
 
 기원님 목적엔 **품질·타깃·안정성** 기준으로 우선순위가 있다:
