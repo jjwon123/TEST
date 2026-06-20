@@ -48,6 +48,14 @@
 
 - [ ] 🤖 (필요시) 새로고침 후 마지막 선택 검수 세션 복원 UX
 
+## G. 취향 모델 — 경쟁 마케팅 이미지 학습 (기원님 핵심 목적)
+
+- [x] 🤖 CLIP 취향 학습 파이프라인 — `taste_labels.py` + `scripts/train_taste_model.py`. 7세션 240장 통합, ROC AUC 0.82, top-10 lift 2.18x (2026-06-20). 상세: [[TASTE_MODEL_2026-06-20]]
+- [x] 🤖 학습 모델로 신규 이미지 자동 순위 — `scripts/rank_images_by_taste.py`
+- [ ] 🤖 번들 chromium 설치(`playwright install`) — 폴백 없는 경로 정상화(수집은 시스템 Edge로 이미 동작)
+- [ ] 🙋 [마지막] 콘솔에서 경쟁사 이미지 추가 라벨링 → 재학습으로 AUC 향상 (사람 검수)
+- [ ] 🙋 Pinterest 로그인 세션 생성(`chrome_pinterest_login.bat`)으로 Pinterest 수집 재가동
+
 ## F. 코드/감사 정합성 (이번 세션 발견)
 
 - [x] 🤖 pipeline-health `looks_mojibake()` 오탐 수정 — 정상 한글 물음표를 mojibake로 판정하던 버그. U+FFFD 카운트로 교체 (2026-06-20, 커밋 bc79d86)
