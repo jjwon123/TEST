@@ -190,7 +190,9 @@ def audit_services(findings: list[dict[str, Any]]) -> dict[str, Any]:
 def looks_mojibake(text: str) -> bool:
     compatibility_count = sum(0xF900 <= ord(char) <= 0xFAFF for char in text)
     suspicious = sum(text.count(token) for token in ("?붿", "?대", "?쒗", "?몄", "硫", "寃", "湲"))
-    return compatibility_count >= 3 or suspicious >= 5 or text.count("?") >= 10
+    # U+FFFD 치환문자는 디코딩 실패의 진짜 신호. 과거의 ASCII "?" 카운트는
+    # 정상 한글 카피의 "~하시겠어요?" 물음표를 mojibake로 오탐했다.
+    return compatibility_count >= 3 or suspicious >= 5 or text.count("�") >= 3
 
 
 def find_downstream_state_inconsistencies(stage_status: dict[str, Any]) -> list[dict[str, str]]:
