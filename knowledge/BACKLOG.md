@@ -16,7 +16,7 @@
 - [x] 🤖 진짜 베이스라인 확정 — 244건 기준 3-class 43.4% / 2-class 62.7%(learned rules). learned rules가 정확도 올림을 데이터로 확인 (상세: [[REFERENCE_ACCURACY_2026-06-20]])
 - [x] 🤖 병목 특정 — 거절 탐지 실패(과선택 2배 편향). 메타데이터만으론 거절 못 가림(qwen_review 0건)
 - [x] 🤖 비전 가설 검증 — Qwen 비전 블랭킷 적용은 오히려 정확도 하락(과제외로 역전). 가정 반증
-- [ ] 🤖 **다음:** 캘리브레이션된 하이브리드 — 메타데이터 keep 기본 + 비전 hard-risk 시에만 거절 downgrade. 하니스에 비전 캐시 추가 후 A/B
+- [x] 🤖 캘리브레이션 하이브리드 + 비전 캐시 A/B — 실험 완료. 어떤 임계값에서도 메타데이터를 못 넘음(반증). 비전 통합 보류 결론 (2026-06-20)
 - [ ] 🙋 화장품 신규 holdout 30~50장 수집 후 갱신된 기준으로 재판정, 정확도 비교
 - [ ] 🤖 새 holdout 생성 시 `--exclude-profile-history`로 이전 세션 중복 제외 (session_001/holdout_001/002)
 
@@ -55,12 +55,12 @@
 - [x] 🤖 (가) Meta 소량 수집 검증 — `collect_meta_ads.py` "스킨케어 세럼" 23장 수집→취향 점수 확인 (2026-06-20)
 - [x] 🤖 임의 폴더→콘솔 라벨 세션 인제스터 — `scripts/ingest_image_folder_session.py` (Meta·확장 공통). 루프 닫힘
 - [ ] 🙋 [마지막] `meta_serum_test_001` 등 인제스트 세션을 콘솔에서 라벨 → 재학습
-- [ ] 🤖 번들 chromium 설치(`playwright install`) — 폴백 없는 경로 정상화(수집은 시스템 Edge로 이미 동작)
+- [x] 🤖 번들 chromium 설치(`playwright install`) — chromium-1217 설치·실행 확인 (2026-06-20)
+- [x] 🙋 Pinterest 로그인 세션 생성 — `pinterest_login.py`로 생성 완료, 쿠키 11개 usable (2026-06-20)
 - [ ] 🙋 [마지막] 콘솔에서 경쟁사 이미지 추가 라벨링 → 재학습으로 AUC 향상 (사람 검수)
-- [ ] 🙋 Pinterest 로그인 세션 생성(`chrome_pinterest_login.bat`)으로 Pinterest 수집 재가동
 
 ## F. 코드/감사 정합성 (이번 세션 발견)
 
 - [x] 🤖 pipeline-health `looks_mojibake()` 오탐 수정 — 정상 한글 물음표를 mojibake로 판정하던 버그. U+FFFD 카운트로 교체 (2026-06-20, 커밋 bc79d86)
-- [ ] 🤖 6/13 이후 신기능(`ad_planning`, `marketing_intelligence`)이 실제 워크플로에 연결됐는지 점검 (독립 스크립트 여부 확인)
-- [ ] 🤖 `scripts/run_project_tests.py`가 참조하는 테스트 모듈 목록과 실제 파일 정합성 재확인 (worktree에서 _FailedTest 발생 이력)
+- [x] 🤖 6/13 이후 신기능 연결 점검 — 콘솔 API 9개+로 연결 확인(파이프라인 단계 아닌 검수 데스크, 의도된 설계) (2026-06-20)
+- [x] 🤖 테스트 러너 정합성 — 메인 기준 25개 모듈 전부 존재, _FailedTest는 worktree 미동기화 탓 (2026-06-20)
