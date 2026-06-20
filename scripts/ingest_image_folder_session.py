@@ -40,6 +40,7 @@ def build_folder_session(
     profile: str,
     session_id: str,
     source_type: str = "folder_import",
+    exclude_from_training: bool = False,
     training_root: Path = TRAINING_ROOT,
     root: Path = ROOT,
 ) -> dict:
@@ -81,6 +82,7 @@ def build_folder_session(
         "profile": profile,
         "purpose": "임의 이미지 폴더 라벨링 → 취향 모델 학습 연료",
         "sourceFolder": str(image_dir),
+        "excludeFromTraining": bool(exclude_from_training),
         "items": items,
     }
     (session_dir / "ai_judgement.json").write_text(
@@ -97,10 +99,12 @@ def main() -> int:
     parser.add_argument("--profile", default="cosmetics_skincare")
     parser.add_argument("--session-id", required=True)
     parser.add_argument("--source-type", default="folder_import")
+    parser.add_argument("--exclude-from-training", action="store_true", help="노이즈성 임포트: 라벨링은 하되 취향 모델 학습에서는 제외.")
     args = parser.parse_args()
 
     result = build_folder_session(
-        args.image_dir, profile=args.profile, session_id=args.session_id, source_type=args.source_type)
+        args.image_dir, profile=args.profile, session_id=args.session_id,
+        source_type=args.source_type, exclude_from_training=args.exclude_from_training)
     print(result)
     print(f"콘솔 판단 훈련에서 '{args.profile}/{args.session_id}' 라벨 후 train_taste_model.py 재실행")
     return 0

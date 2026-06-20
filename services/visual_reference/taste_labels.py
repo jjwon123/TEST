@@ -72,9 +72,13 @@ def session_examples(
     state_path = session_dir / "kiwon_review_state.json"
     if not judgement_path.exists() or not state_path.exists():
         return []
+    judgement = _read_json(judgement_path)
+    # ai_judgement.json에 excludeFromTraining: true 가 있으면 학습에서 제외(노이즈 세션 등).
+    if isinstance(judgement, dict) and judgement.get("excludeFromTraining"):
+        return []
     reviews = _read_json(state_path).get("reviews", {})
     examples: list[LabeledExample] = []
-    for item in _items(_read_json(judgement_path)):
+    for item in _items(judgement):
         item_id = str(item.get("id") or "")
         ai = _normalize(item.get("decision"))
         truth = _truth(reviews.get(item_id) or {}, ai)

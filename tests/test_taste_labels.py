@@ -68,6 +68,20 @@ class TasteLabelsTests(unittest.TestCase):
             examples = session_examples(session, root=root)
         self.assertEqual([], examples)
 
+    def test_excludes_session_flagged_exclude_from_training(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            items = [{"id": "a", "file": "img/a.jpg", "decision": "selected"}]
+            reviews = {"a": {"status": "agree"}}
+            session = self._make_session(root, items, reviews)
+            # 정상일 땐 라벨이 잡힌다
+            self.assertEqual(1, len(session_examples(session, root=root)))
+            # excludeFromTraining 플래그를 켜면 제외된다
+            judgement = json.loads((session / "ai_judgement.json").read_text(encoding="utf-8"))
+            judgement["excludeFromTraining"] = True
+            (session / "ai_judgement.json").write_text(json.dumps(judgement), encoding="utf-8")
+            self.assertEqual([], session_examples(session, root=root))
+
     def test_gather_dedupes_repeated_images_across_sessions(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
