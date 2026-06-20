@@ -34,6 +34,7 @@ TEST_MODULES = [
     "tests.test_marketing_signal_generators",
     "tests.test_taste_labels",
     "tests.test_ingest_image_folder_session",
+    "tests.test_pretag_session",
     "tests.test_marketing_intelligence_console",
     "tests.test_marketing_insight_brief",
     "tests.test_console_ui_playwright_audit",

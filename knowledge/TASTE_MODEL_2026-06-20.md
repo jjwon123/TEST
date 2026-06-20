@@ -51,7 +51,9 @@
 .venv\Scripts\python.exe scripts\collect_meta_ads.py --query "스킨케어 세럼" --country KR --limit 8 --scrolls 3 --headless
 # 2) 폴더 -> 콘솔 라벨 가능 세션
 .venv\Scripts\python.exe scripts\ingest_image_folder_session.py <수집폴더> --session-id meta_serum_001
-# 3) 콘솔(http://127.0.0.1:5177) 판단 훈련에서 good/bad 라벨  [사람]
+# 2-1) (선택) 학습된 모델로 AI 1차 추천 미리 붙이기 -> 사람은 맞다/틀리다만
+.venv\Scripts\python.exe scripts\pretag_session_with_taste.py --session-id meta_serum_001
+# 3) 콘솔(http://127.0.0.1:5177) 판단 훈련에서 good/bad 교정  [사람]
 # 4) 재학습
 .venv\Scripts\python.exe scripts\train_taste_model.py
 ```
