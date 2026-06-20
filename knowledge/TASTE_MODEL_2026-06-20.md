@@ -26,10 +26,37 @@
 
 ## 선순환 (데이터 늘릴수록 강해짐)
 
-1. Meta 경쟁사 광고 대량 수집
-2. 콘솔 판단 훈련에서 사람 라벨링(🙋) — 학습 연료
-3. `train_taste_model.py` 재학습, AUC 재측정
-4. `rank_images_by_taste.py`로 신규 수집을 자동 순위·필터 → 좋은 것만 남김
+1. 경쟁 이미지 수집 (소스별 아래 참고)
+2. `scripts/ingest_image_folder_session.py`로 **임의 폴더 → 콘솔 라벨 가능 세션** 변환
+3. 콘솔 판단 훈련에서 사람 라벨링(🙋) — 학습 연료
+4. `train_taste_model.py` 재학습, AUC 재측정
+5. `rank_images_by_taste.py`로 신규 수집을 자동 순위·필터 → 좋은 것만 남김
+
+## 소스별 수집 (어느 게 나은가)
+
+기원님 목적엔 **품질·타깃·안정성** 기준으로 우선순위가 있다:
+
+1. **Meta Ad Library (1순위)** — 실제 집행 경쟁 광고. 검증된 최고 성적(AUC 0.93)이 Meta에서 나옴.
+   시스템 Edge로 로그인 없이 동작. `python scripts/collect_meta_ads.py --query "..." --country KR --limit 8 --scrolls 3 --headless`
+   → 출력 `references/meta_ads/searches/<stamp>_<query>/`. 검증: 2026-06-20 "스킨케어 세럼" 23장 수집 성공.
+2. **Chrome 확장 (`pinterest-board-collector`, 2순위)** — gallery-dl 원본 해상도가 최고 품질.
+   특정 좋은 보드를 수동으로 긁을 때. 다운로드 폴더를 ingest로 연결.
+3. **Playwright Pinterest 검색 (취향학습엔 비추천)** — 썸네일 저화질(low_resolution 게이트 존재) + DOM 취약.
+   런 파이프라인 경량 레퍼런스 용도로만.
+
+## (가)/(나) 공통 연결 흐름
+
+```powershell
+# 1) 수집 (Meta 예시)
+.venv\Scripts\python.exe scripts\collect_meta_ads.py --query "스킨케어 세럼" --country KR --limit 8 --scrolls 3 --headless
+# 2) 폴더 -> 콘솔 라벨 가능 세션
+.venv\Scripts\python.exe scripts\ingest_image_folder_session.py <수집폴더> --session-id meta_serum_001
+# 3) 콘솔(http://127.0.0.1:5177) 판단 훈련에서 good/bad 라벨  [사람]
+# 4) 재학습
+.venv\Scripts\python.exe scripts\train_taste_model.py
+```
+
+확장(나)도 동일: 확장 다운로드 폴더를 2)의 <수집폴더>로 주면 끝.
 
 ## 명령
 

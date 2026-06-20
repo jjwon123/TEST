@@ -52,6 +52,9 @@
 
 - [x] 🤖 CLIP 취향 학습 파이프라인 — `taste_labels.py` + `scripts/train_taste_model.py`. 7세션 240장 통합, ROC AUC 0.82, top-10 lift 2.18x (2026-06-20). 상세: [[TASTE_MODEL_2026-06-20]]
 - [x] 🤖 학습 모델로 신규 이미지 자동 순위 — `scripts/rank_images_by_taste.py`
+- [x] 🤖 (가) Meta 소량 수집 검증 — `collect_meta_ads.py` "스킨케어 세럼" 23장 수집→취향 점수 확인 (2026-06-20)
+- [x] 🤖 임의 폴더→콘솔 라벨 세션 인제스터 — `scripts/ingest_image_folder_session.py` (Meta·확장 공통). 루프 닫힘
+- [ ] 🙋 [마지막] `meta_serum_test_001` 등 인제스트 세션을 콘솔에서 라벨 → 재학습
 - [ ] 🤖 번들 chromium 설치(`playwright install`) — 폴백 없는 경로 정상화(수집은 시스템 Edge로 이미 동작)
 - [ ] 🙋 [마지막] 콘솔에서 경쟁사 이미지 추가 라벨링 → 재학습으로 AUC 향상 (사람 검수)
 - [ ] 🙋 Pinterest 로그인 세션 생성(`chrome_pinterest_login.bat`)으로 Pinterest 수집 재가동
