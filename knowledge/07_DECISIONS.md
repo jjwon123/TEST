@@ -2,6 +2,25 @@
 
 이 문서는 프로젝트의 중요한 결정을 날짜와 이유와 함께 남기는 곳이다. 나중에 AI가 작업할 때 가장 많이 참고해야 하는 문서 중 하나다.
 
+## 2026-06-20 - 취향(좋은 마케팅) 학습은 OpenCLIP 임베딩+분류기로 한다
+
+- 결정: 경쟁 마케팅 이미지에서 "좋은 마케팅/브랜딩"을 체화하는 엔진은 OpenCLIP 임베딩 + 분류기(linear probe)로 한다. 사람 라벨로 학습→신규 이미지 순위/필터.
+- 이유: 데이터로 검증됨. 이미지 임베딩 학습은 단일 Meta 세션 ROC AUC 0.93, 통합 240장 0.82. 반면 텍스트 메타데이터/Qwen 프롬프트 판단은 50%대로 약했다.
+- 도구: `taste_labels.py`, `train_taste_model.py`, `rank_images_by_taste.py`, `ingest_image_folder_session.py`, `pretag_session_with_taste.py`. 상세 `knowledge/TASTE_MODEL_2026-06-20.md`.
+- 범위: "취향 모델"은 좋은 이미지 인식/순위/필터까지. 그 스타일로 생성하는 건 ComfyUI(별개).
+
+## 2026-06-20 - Qwen 비전은 레퍼런스 취향 판단 레버로 쓰지 않는다(보류)
+
+- 결정: 레퍼런스 selected/rejected 판단에 Qwen 비전을 (pure/hybrid 모두) 통합하지 않는다.
+- 이유: `replay_reference_accuracy.py` A/B에서 어떤 임계값에서도 메타데이터+learned rules(2-class 62.7%)를 못 넘었다. 비전 hard-risk가 사람 거절 기준과 정렬되지 않아 과제외로 역전.
+- 대안: learned rules 성장(사람 검수) 또는 Qwen 프롬프트 캘리브레이션(별도 R&D). 상세 `knowledge/REFERENCE_ACCURACY_2026-06-20.md`.
+
+## 2026-06-20 - 경쟁 이미지 수집 우선순위: Meta > Chrome 확장 > Playwright 검색
+
+- 결정: 취향 모델 학습 데이터는 Meta Ad Library(1순위), Chrome 확장 gallery-dl 원본(2순위) 순으로 모은다. Playwright Pinterest 검색은 취향학습용으론 쓰지 않는다.
+- 이유: 검증 최고 성적이 Meta였고(로그인 불필요, 시스템 Edge), 확장은 원본 해상도가 최고 품질. Playwright 검색은 썸네일 저화질(low_resolution 게이트 존재) + DOM 취약.
+- 연결: 어떤 소스든 `ingest_image_folder_session.py`로 콘솔 라벨 세션화 → 학습.
+
 ## 2026-06-14 - 검증된 Meta source mix는 화장품 03단계의 제품 비주얼 보완 공급원으로 사용
 
 - 결정: 검증된 제품·성분 검색어에서 Qwen이 `clean_product_visual`로 판정한 결과를 화장품 `03_reference_research`에 자동 공급한다.

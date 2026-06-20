@@ -1,5 +1,23 @@
 # 프로젝트 대시보드
 
+## 현재 상태 업데이트 (2026-06-20, Claude Code 전환 + 취향 모델 이미지 학습 루프)
+
+- Codex→Claude Code 전환. 점검·실행은 메인 폴더+메인 venv에서만(worktree는 코드만).
+- 미커밋 176개를 `checkpoint/wip-2026-06-20`로 보관. pipeline-health mojibake 오탐 버그 수정(fail→warning). 테스트 24→**153개** 통과.
+- 레퍼런스 정확도 측정 하니스(`replay_reference_accuracy.py`) 신설. 베이스라인 2-class 62.7%(learned rules 효과 확인). Qwen 비전은 정확도 못 올림→보류.
+- **취향 모델(이미지 학습) 루프 완성** = 기원님 핵심 목적: 경쟁 마케팅 이미지를 CLIP 임베딩+분류기로 학습. 단일 Meta 0.93 / 통합 240장 0.82. 신규 스크립트 5종(`train_taste_model`/`rank_images_by_taste`/`ingest_image_folder_session`/`pretag_session_with_taste`/`taste_labels`).
+- source-mix 회귀 gate, 마케팅 신호 자동화(캘린더+올영CSV) 추가. 번들 chromium 설치, Pinterest 로그인 완료.
+- 수집 우선순위: Meta(1) > Chrome 확장 gallery-dl 원본(2) > Playwright 검색(비추천).
+
+### 다음 할 일 (병목 = 사람 라벨링)
+
+1. 🙋 콘솔 판단 훈련에서 `cosmetics_skincare/meta_competitor_001`(Meta 광고 336장 + AI 추천 selected 45/shortlist 21) 라벨링. 추천 66장 우선.
+2. `python scripts/train_taste_model.py` 재학습 → AUC 0.82 대비 향상 확인.
+3. 결과로 수집 쿼리/임계값 조정, 선순환 반복.
+4. 검수 외 코드 작업은 사실상 완료(상세 [[BACKLOG]]).
+
+→ 상세: [[09_HANDOFF]], [[TASTE_MODEL_2026-06-20]], [[REFERENCE_ACCURACY_2026-06-20]]
+
 ## 현재 상태 업데이트 (2026-06-18, 마케팅 인텔리전스 데이터 플로우 목표 설정)
 
 - 광고 기획 품질 병목을 단순 문장 생성 문제가 아니라 시장·고객·트렌드 근거 부족으로 재정의했다.

@@ -1,5 +1,56 @@
 # 현재 구현 상태 & 인수인계
 
+## 2026-06-20 Handoff - Claude Code 전환 + 취향 모델(이미지 학습) 루프 구축
+
+### 환경/전환
+
+- 작업 도구를 Codex → Claude Code로 전환. AGENTS.md와 CLAUDE.md는 내용 동일(수동 동기화).
+- 점검·실행은 반드시 메인 폴더(`자동화 프로젝트`) + 메인 venv(`.venv\Scripts\python.exe`)에서. worktree는 코드만 있고 runs/venv/이미지가 없어 깨진 것처럼 보인다.
+- 6/13 이후 미커밋이던 작업 176개(수정 108 + 신규 68)를 `checkpoint/wip-2026-06-20` 브랜치로 체크포인트 커밋(유실 위험 제거).
+
+### 코드 점검/수정
+
+- pipeline-health `looks_mojibake()` 오탐 수정: 정상 한글 물음표(≥10개)를 mojibake로 판정하던 버그 → U+FFFD 치환문자 카운트로 교체. health fail→warning.
+- 전체 테스트 24개 → **153개**로 정비(메인 기준). 러너 모듈 정합성 확인. 신기능(ad_planning/marketing_intelligence)은 콘솔 API로 연결됨(파이프라인 단계 아닌 검수 데스크, 설계 의도).
+
+### 레퍼런스 판단 정확도 (측정·진단)
+
+- 신규 `scripts/replay_reference_accuracy.py`로 재현 가능 측정. 베이스라인 244건: 3-class 43.4% / 2-class 62.7%(learned rules). learned rules가 정확도 올림(+13%p) 확인.
+- **Qwen 비전은 반증**: pure도 하이브리드도 메타데이터를 못 넘음(과제외로 역전). 비전 통합 보류. 상세 [[REFERENCE_ACCURACY_2026-06-20]].
+
+### 취향 모델 = 이미지 학습 (기원님 핵심 목적, 본 세션의 메인)
+
+- 목적: 경쟁 마케팅 이미지를 학습해 좋은 마케팅/브랜딩을 체화. 방식 = OpenCLIP 임베딩 + 분류기(linear probe).
+- 파이프라인 신규:
+  - `services/visual_reference/taste_labels.py` — 검수 세션 selected/rejected → good/bad 라벨 수집.
+  - `scripts/train_taste_model.py` — 여러 세션 통합 학습 + 교차검증 AUC + 모델 저장.
+  - `scripts/rank_images_by_taste.py` — 저장 모델로 신규 이미지 취향 점수 순위.
+  - `scripts/ingest_image_folder_session.py` — 임의 폴더(Meta/확장)를 콘솔 라벨 세션으로 변환.
+  - `scripts/pretag_session_with_taste.py` — 세션에 AI 1차 추천(점수→decision) 부여.
+- 검증: 단일 Meta 세션 ROC AUC **0.93**, 통합 7세션 240장 **0.82**(top-10 lift 2.18x). 텍스트/Qwen 판단(50%대)보다 월등. 상세 [[TASTE_MODEL_2026-06-20]].
+
+### 수집 경로 정리
+
+- **Meta Ad Library(1순위)**: `collect_meta_ads.py`, 시스템 Edge로 동작(로그인 불필요). 검증 성공.
+- **Chrome 확장(`pinterest-board-collector`, 2순위)**: gallery-dl 원본 = 최고 품질, 수동.
+- **Playwright Pinterest 검색**: 썸네일 저화질 + 취약 → 취향학습엔 비추천. (Pinterest 로그인 세션은 `pinterest_login.py`로 생성 완료, usable)
+- 번들 chromium은 `playwright install`로 1217 설치 완료(폴백 외 경로 정상화).
+
+### source-mix / 마케팅 신호
+
+- `source_mix_regression_gate()` 추가: 표본 충분한데 추천 쿼리 0개면 공급 자동 비활성화, 저품질 시 경고.
+- 마케팅 신호 자동화: `generate_calendar_signals.py`(계절/날씨 결정적 생성), `import_oliveyoung_ranking.py`(랭킹/리뷰 CSV import).
+
+### 현재 상태 / 다음 우선순위
+
+- 라벨 대기 세션 생성됨: `cosmetics_skincare/meta_competitor_001` = 그동안 쌓인 Meta 경쟁사 광고 **336장** 통합 + AI 1차 추천(selected 45 / shortlist 21 / rejected 270).
+- 검수 외 코드 작업은 사실상 완료. 진행 병목은 **사람 라벨링**.
+- 다음 순서:
+  1. 🙋 콘솔 판단 훈련에서 `meta_competitor_001` 라벨링(AI 추천 66장 우선).
+  2. `python scripts/train_taste_model.py` 재학습 → AUC 0.82 대비 향상 확인.
+  3. 그 결과로 수집 쿼리/임계값 조정, 선순환 반복.
+- 전체 보류 항목은 [[BACKLOG]] 참고(🤖 코드 vs 🙋 사람 검수 구분).
+
 ## 2026-06-18 Handoff - 마케팅 인텔리전스 데이터 플로우 계획
 
 ### 결정
