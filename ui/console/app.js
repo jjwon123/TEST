@@ -21,6 +21,7 @@ const state = {
   selectedTrainingItemId: null,
   trainingPairIndex: 0,
   trainingStatusFilter: "pending",
+  trainingAiDecisionFilter: "all",
   trainingMetaFilters: {
     brand: "all",
     category: "all",
@@ -200,6 +201,7 @@ async function loadTrainingSession(key, switchView = true) {
   state.trainingDetail = await api(`/api/training-sessions/${encodeURIComponent(profile)}/${encodeURIComponent(sessionId)}`);
   if (changedSession) {
     state.trainingStatusFilter = "pending";
+    state.trainingAiDecisionFilter = "all";
     state.trainingMetaFilters = {
       brand: "all",
       category: "all",
@@ -1009,9 +1011,12 @@ function renderTraining() {
     renderTraining();
   }));
   renderTrainingMetaFilters(allItems, isMetaBrandReview);
+  renderTrainingAiFilters(allItems);
   const items = allItems.filter((item) => {
     const bucket = item.reviewBucket || (item.kiwonReview?.status ? "completed" : "pending");
-    return (state.trainingStatusFilter === "all" || bucket === state.trainingStatusFilter) && matchesTrainingMetaFilters(item, isMetaBrandReview);
+    return (state.trainingStatusFilter === "all" || bucket === state.trainingStatusFilter)
+      && matchesTrainingAiDecisionFilter(item)
+      && matchesTrainingMetaFilters(item, isMetaBrandReview);
   });
   if (!items.length) {
     qs("#trainingQuickReview").innerHTML = "";
@@ -1050,6 +1055,45 @@ function renderTraining() {
       renderTraining();
     });
   });
+}
+
+function matchesTrainingAiDecisionFilter(item) {
+  const decision = item.decision || "";
+  switch (state.trainingAiDecisionFilter) {
+    case "recommend": return decision === "selected" || decision === "shortlist";
+    case "selected": return decision === "selected";
+    case "shortlist": return decision === "shortlist";
+    case "rejected": return decision === "rejected";
+    default: return true;
+  }
+}
+
+function renderTrainingAiFilters(items) {
+  const node = qs("#trainingAiFilters");
+  if (!node) return;
+  const counts = {
+    all: items.length,
+    recommend: items.filter((item) => item.decision === "selected" || item.decision === "shortlist").length,
+    selected: items.filter((item) => item.decision === "selected").length,
+    shortlist: items.filter((item) => item.decision === "shortlist").length,
+    rejected: items.filter((item) => item.decision === "rejected").length,
+  };
+  const button = (key, label) =>
+    `<button data-training-ai-filter="${key}" class="${state.trainingAiDecisionFilter === key ? "active" : ""}">${escapeHtml(label)} <b>${escapeHtml(counts[key])}</b></button>`;
+  node.innerHTML = `
+    <span class="muted" style="align-self:center;margin-right:4px;">AI 추천</span>
+    ${button("all", "전체")}
+    ${button("recommend", "추천(S+S)")}
+    ${button("selected", "selected")}
+    ${button("shortlist", "shortlist")}
+    ${button("rejected", "rejected")}
+  `;
+  qsa("[data-training-ai-filter]").forEach((btn) => btn.addEventListener("click", () => {
+    state.trainingAiDecisionFilter = btn.dataset.trainingAiFilter;
+    state.selectedTrainingItemId = null;
+    state.trainingPairIndex = 0;
+    renderTraining();
+  }));
 }
 
 function renderTrainingMetaFilters(items, isMetaBrandReview) {
@@ -2726,6 +2770,9 @@ function renderMarketingSignalReviewDesk() {
         <label>공개 URL
           <input type="url" id="publicSignalCaptureUrl" placeholder="https://example.com/product-page">
         </label>
+        <label>여러 URL
+          <textarea id="publicSignalCaptureUrls" placeholder="https://example.com/product-page&#10;https://example.com/review-page"></textarea>
+        </label>
         <label>출처 종류
           <select id="publicSignalSourceKind">
             <option value="brand_site">브랜드/상품 페이지</option>
@@ -2774,10 +2821,15 @@ function marketingSignalJobPayload(mode = "random_seed") {
     };
   }
   if (mode === "public_capture") {
+    const urls = (qs("#publicSignalCaptureUrls")?.value || "")
+      .split(/\r?\n/)
+      .map((item) => item.trim())
+      .filter(Boolean);
     return {
       ...base,
       topic: "hsgn_summer_tone_care",
       url: qs("#publicSignalCaptureUrl")?.value || "",
+      urls,
       sourceKind: qs("#publicSignalSourceKind")?.value || "public_web",
     };
   }
@@ -2786,7 +2838,7 @@ function marketingSignalJobPayload(mode = "random_seed") {
 
 async function runMarketingSignalJob(mode = "random_seed", payload = null) {
   const body = payload || marketingSignalJobPayload(mode);
-  if (mode === "public_capture" && !body.url) {
+  if (mode === "public_capture" && !body.url && !(body.urls || []).length) {
     toast("공개 URL을 먼저 입력해주세요.");
     return;
   }
