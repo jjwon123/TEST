@@ -25,6 +25,11 @@ def add_meta_source_mix_references(
         return manifest, _evidence("not_applicable", [], [], context)
 
     metrics = source_mix_summary(search_root)
+    gate = metrics.get("regressionGate", {})
+    if not gate.get("supplyAllowed", True):
+        evidence = _evidence("regression_disabled", [], [], context)
+        evidence["regressionGate"] = gate
+        return manifest, evidence
     allowed_queries = {
         item["query"]: item
         for item in metrics.get("recommendedQueries", [])

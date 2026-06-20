@@ -33,11 +33,11 @@
 ## C. Meta 수집 품질 (6/13~6/14)
 
 - [ ] 🙋 accepted 고유 이미지 61장으로 신규 검수 세션 생성, 사람 vs Qwen 판정 비교
-- [ ] 🤖 화장품 Meta `promotion_text_heavy` 편중 낮출 브랜드·쿼리 전략 보강
-- [ ] 🤖 accepted 이미지 브랜드별 편중 제한
-- [ ] 🤖 검증된 상품·성분 쿼리를 신규 이벤트 레퍼런스 수집에 병행
-- [ ] 🤖 source-mix 공급 품질 저하 시 자동 경고/비활성화 회귀 gate 추가
-- [ ] 🤖🙋 신규 화장품 이벤트 3건에서 source-mix 공급 수/중복률/QA 경고율 반복 측정
+- [x] 🤖 화장품 Meta `promotion_text_heavy` 편중 낮출 브랜드·쿼리 전략 — 기존 구현 확인: collection_strategy `deprioritize_promotion_heavy` 후순위 + source_mix `query_type` 우선
+- [x] 🤖 accepted 이미지 브랜드별 편중 제한 — 기존 구현 확인: meta_brand_provider `max_per_brand=2`, registry_metrics `high_brand_concentration`(>40%) 경고
+- [ ] 🤖 검증된 상품·성분 쿼리를 신규 이벤트 레퍼런스 수집에 병행 (meta_source_mix_provider가 이미 검증 쿼리만 공급 — 운영 반복 측정만 남음)
+- [x] 🤖 source-mix 공급 품질 저하 시 자동 경고/비활성화 회귀 gate — `source_mix_regression_gate()` 추가, provider가 disable 시 공급 중단, 테스트 4개 (2026-06-20)
+- [ ] 🤖🙋 신규 화장품 이벤트 3건에서 source-mix 공급 수/중복률/QA 경고율 반복 측정 (사람 검수 동반)
 
 ## D. 운영 완성도 (6/14)
 

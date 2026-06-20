@@ -58,7 +58,7 @@ def source_mix_summary(search_root: Path = DEFAULT_SEARCH_ROOT) -> dict[str, Any
     ][:3]
     total_reviewed = sum(item["reviewedMedia"] for item in results)
     total_clean = sum(item["cleanProductVisuals"] for item in results)
-    return {
+    summary = {
         "createdAt": datetime.now(timezone.utc).isoformat(),
         "status": "validated_fallback" if recommended else "insufficient_evidence",
         "queryCount": len(results),
@@ -69,6 +69,47 @@ def source_mix_summary(search_root: Path = DEFAULT_SEARCH_ROOT) -> dict[str, Any
         "collectionPlan": collection_plan,
         "queries": results,
     }
+    summary["regressionGate"] = source_mix_regression_gate(summary)
+    return summary
+
+
+def source_mix_regression_gate(
+    summary: dict[str, Any],
+    *,
+    min_clean_rate: float = 0.2,
+    min_reviewed: int = 10,
+) -> dict[str, Any]:
+    """공급 품질 회귀를 자동 판정한다.
+
+    - insufficient_evidence: 검수 표본이 작아 회귀 판정 불가(공급 보류).
+    - disable: 충분한 표본인데 추천 쿼리가 0개 → 공급하면 안 됨(자동 비활성화 권고).
+    - warn: 전체 clean product rate가 기준 미만(추천 쿼리는 있으나 품질 저하 경고).
+    - ok: 정상 공급 가능.
+    """
+    reviewed = int(summary.get("reviewedMedia") or 0)
+    rate = summary.get("cleanProductRate")
+    recommended = len(summary.get("recommendedQueries") or [])
+
+    def result(status: str, reasons: list[str], allowed: bool) -> dict[str, Any]:
+        return {
+            "status": status,
+            "reasons": reasons,
+            "supplyAllowed": allowed,
+            "reviewedMedia": reviewed,
+            "cleanProductRate": rate,
+            "recommendedQueries": recommended,
+        }
+
+    # 추천 쿼리가 있으면 per-query gate를 이미 통과한 것이므로 공급을 막지 않는다.
+    # 회귀 gate는 전체 품질 저하를 경고/차단하는 역할만 한다.
+    if recommended >= 1:
+        if rate is not None and rate < min_clean_rate:
+            return result("warn", [f"overall_clean_product_rate<{min_clean_rate}"], True)
+        return result("ok", [], True)
+    # 추천 쿼리 0개: 표본이 충분한데도 없으면 품질 회귀로 보고 비활성화 권고.
+    if reviewed >= min_reviewed:
+        return result("disable", ["no_recommended_queries_despite_evidence"], False)
+    return result("insufficient_evidence", [f"reviewedMedia<{min_reviewed}"], False)
 
 
 def query_type(query: str) -> str:
