@@ -24,9 +24,9 @@
 
 - [ ] 🙋 마케팅 신호 50개를 `선택/보류/거절`로 실제 검수 (현재 selected 0)
 - [ ] 🙋 selected 신호 3개+ 만든 뒤 `InsightBrief 만들기` 실행
-- [ ] 🤖 ready InsightBrief로 파일럿 5건 재실행, 훅/타깃/제품 연결 점수 비교
-- [ ] 🤖 올리브영 랭킹·리뷰 키워드 CSV 업로드 포맷 만들기
-- [ ] 🤖 날씨·계절 캘린더 신호 자동 생성
+- [ ] 🤖 ready InsightBrief로 파일럿 5건 재실행, 훅/타깃/제품 연결 점수 비교 (🙋 selected 신호 3개+ 검수 선행 필요)
+- [x] 🤖 올리브영 랭킹·리뷰 키워드 CSV import 포맷 — `scripts/import_oliveyoung_ranking.py` + `services/marketing_intelligence/oliveyoung_csv.py` (2026-06-20)
+- [x] 🤖 날씨·계절 캘린더 신호 자동 생성 — `scripts/generate_calendar_signals.py` + `services/marketing_intelligence/calendar_signals.py` (2026-06-20)
 - [ ] 🙋 광고 카피 설득력: selected 전략 사례 30건+ 검수 후 재평가
 - [ ] 🙋 좋은/나쁜 광고 사례 사람 평가 데이터 보강
 

@@ -31,6 +31,7 @@ TEST_MODULES = [
     "tests.test_meta_collection_strategy",
     "tests.test_meta_source_mix_metrics",
     "tests.test_marketing_intelligence_signals",
+    "tests.test_marketing_signal_generators",
     "tests.test_marketing_intelligence_console",
     "tests.test_marketing_insight_brief",
     "tests.test_console_ui_playwright_audit",
