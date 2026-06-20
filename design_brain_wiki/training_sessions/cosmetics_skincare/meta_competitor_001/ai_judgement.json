@@ -8072,5 +8072,5 @@
     }
   ],
   "pretaggedBy": "taste-model",
-  "excludeFromTraining": true
+  "excludeFromTraining": false
 }

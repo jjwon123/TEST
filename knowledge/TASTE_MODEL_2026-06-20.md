@@ -41,7 +41,7 @@
 확정된 결정:
 1. **수집**: 일반 키워드 → **브랜드 기반 advertiser-match**(`collect_meta_brand_registry --strategy registry`). 등록 20개 경쟁사 전부. 광고주명 일치만 남겨 노이즈 제거.
 2. **사전 정제(가볍게)**: 취향모델 pretag + SHA 중복 제거 + 저해상도 게이트. (Qwen 카드뉴스/언어 필터는 당분간 미구축 — advertiser-match로 충분.)
-3. **학습 구성(편향 방지)**: 노이즈 세션은 학습 제외. `ai_judgement.json`의 `excludeFromTraining:true`(taste_labels가 스킵). meta_competitor_001은 제외 표시함. 깨끗한 브랜드 데이터로 재구성.
+3. **학습 구성(편향 방지)**: `ai_judgement.json`의 `excludeFromTraining:true`로 세션 단위 학습 제외 가능(taste_labels가 스킵). 단, **데이터로 검증한 결과 사람이 라벨한 노이즈 세션 일부(meta_competitor_001 35개)는 포함해도 AUC 무해(0.821→0.819) + top-10 lift 향상(2.18→2.68)** → 포함으로 전환. 편향 우려는 "라벨 안 된 쓰레기 대량 투입" 시나리오였고, 사람이 선별 라벨한 소수는 안전. (라벨 없는 대량 노이즈는 애초에 taste_labels가 미검수라 자동 제외됨.)
 
 ## 소스별 수집 (어느 게 나은가)
 
