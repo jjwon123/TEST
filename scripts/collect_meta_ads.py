@@ -62,6 +62,7 @@ def main() -> int:
     parser.add_argument("--qwen-limit", type=int, default=20)
     parser.add_argument("--run", default="")
     parser.add_argument("--advertiser-match", action="store_true")
+    parser.add_argument("--skip-video", action="store_true", help="영상 광고(포스터/캡처 프레임)는 이미지로 받지 않음.")
     parser.add_argument(
         "--creative-profile",
         choices=["product_visual", "single_image_ad", "brand_campaign", "promotion_structure", "all"],
@@ -80,6 +81,7 @@ def main() -> int:
         limit=max(1, args.limit),
         scrolls=max(0, args.scrolls),
         headless=args.headless,
+        skip_video=args.skip_video,
     ))
     if args.qwen:
         reviewed_media = 0

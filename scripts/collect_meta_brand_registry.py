@@ -45,6 +45,7 @@ def parse_args(argv: list[str] | None = None) -> argparse.Namespace:
     parser.add_argument("--ads-per-brand", type=int, default=5)
     parser.add_argument("--scrolls", type=int, default=5)
     parser.add_argument("--media-type", choices=["image", "all"], default="all")
+    parser.add_argument("--skip-video", action="store_true", help="영상 광고 미디어를 받지 않음(취향 학습 노이즈 제거).")
     parser.add_argument("--country", default="")
     parser.add_argument("--headful", action="store_true")
     parser.add_argument("--delay", type=float, default=1.5)
@@ -108,6 +109,7 @@ def run_collection(
                 limit=max(1, args.ads_per_brand),
                 scrolls=max(0, args.scrolls),
                 headless=not args.headful,
+                skip_video=getattr(args, "skip_video", False),
             ))
             accepted_ads = []
             excluded_ads = []

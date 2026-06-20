@@ -36,6 +36,7 @@ class MetaCollectorOptions:
     scrolls: int = 12
     headless: bool = False
     browser_channel: str = "msedge"
+    skip_video: bool = False
 
 
 def build_meta_ad_library_url(query: str, country: str = "KR", category: str = "all", media_type: str = "all") -> str:
@@ -72,7 +73,7 @@ def collect_meta_ads(options: MetaCollectorOptions) -> dict[str, Any]:
             _scroll(page, options.scrolls)
             cards = _find_cards(page)
             items = [
-                _capture_card(card, captures_dir, images_dir, source_url, index)
+                _capture_card(card, captures_dir, images_dir, source_url, index, skip_video=options.skip_video)
                 for index, card in enumerate(cards[: options.limit], 1)
             ]
         finally:
@@ -164,6 +165,8 @@ def _capture_card(
     images_dir: Path,
     source_url: str,
     index: int,
+    *,
+    skip_video: bool = False,
 ) -> dict[str, Any] | None:
     try:
         text = card.inner_text(timeout=3000).strip()
@@ -171,6 +174,7 @@ def _capture_card(
             return None
         library_id = _first_match(text, [r"(?:Library ID|라이브러리 ID)\s*[:：]\s*([0-9]+)"])
         item_id = f"meta_ad_{library_id or index:0>4}"
+        is_video = _card_is_video(card)
         capture_path = captures_dir / f"{item_id}.png"
         card.screenshot(path=str(capture_path))
         links = card.locator("a[href]").evaluate_all(
@@ -205,7 +209,11 @@ def _capture_card(
               item.visibleHeight >= 100
             ).slice(0, 10)"""
         )
-        media = _download_media(media_candidates, images_dir, item_id, source_url)
+        # 영상 광고는 포스터/캡처 프레임만 잡혀 취향 학습 노이즈가 되므로 옵션 시 미디어를 받지 않는다.
+        if skip_video and is_video:
+            media = []
+        else:
+            media = _download_media(media_candidates, images_dir, item_id, source_url)
         return {
             "id": item_id,
             "source": "meta_ad_library",
@@ -213,6 +221,7 @@ def _capture_card(
             "adLibraryUrl": source_url,
             "landingUrl": landing_url,
             "brand": brand,
+            "isVideo": is_video,
             "capturePath": str(capture_path),
             "captureFile": capture_path.name,
             "media": media,
@@ -228,6 +237,19 @@ def _capture_card(
         }
     except Exception:
         return None
+
+
+def _card_is_video(card: Locator) -> bool:
+    """카드가 영상 광고인지 감지. <video> 요소 또는 재생 버튼 오버레이로 판단."""
+    try:
+        if card.locator("video").count() > 0:
+            return True
+        play = card.locator(
+            "[aria-label*='재생'], [aria-label*='동영상'], [aria-label*='Play' i], [aria-label*='video' i]"
+        ).count()
+        return play > 0
+    except Exception:
+        return False
 
 
 def _first_match(text: str, patterns: list[str]) -> str:
