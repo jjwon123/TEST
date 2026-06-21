@@ -16,6 +16,7 @@ import argparse
 import json
 import shutil
 import sys
+from collections import Counter
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -83,6 +84,11 @@ def build_folder_session(
         "purpose": "임의 이미지 폴더 라벨링 → 취향 모델 학습 연료",
         "sourceFolder": str(image_dir),
         "excludeFromTraining": bool(exclude_from_training),
+        "summary": {
+            "total": len(items),
+            "decisionCounts": dict(Counter(it["decision"] for it in items)),
+            "sessionType": "folder_import",
+        },
         "items": items,
     }
     (session_dir / "ai_judgement.json").write_text(

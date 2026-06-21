@@ -8072,5 +8072,14 @@
     }
   ],
   "pretaggedBy": "taste-model",
-  "excludeFromTraining": false
+  "excludeFromTraining": false,
+  "summary": {
+    "total": 336,
+    "decisionCounts": {
+      "rejected": 270,
+      "shortlist": 21,
+      "selected": 45
+    },
+    "sessionType": "folder_import"
+  }
 }

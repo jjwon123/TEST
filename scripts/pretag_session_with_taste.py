@@ -76,6 +76,17 @@ def main() -> int:
         item["tasteScore"] = round(float(score), 2)
 
     judgement["pretaggedBy"] = "taste-model"
+    # 콘솔 목록 요약(total/decisionCounts) 갱신
+    all_counts = {"selected": 0, "shortlist": 0, "rejected": 0}
+    for it in items:
+        dec = it.get("decision")
+        if dec in all_counts:
+            all_counts[dec] += 1
+    judgement["summary"] = {
+        "total": len(items),
+        "decisionCounts": {k: v for k, v in all_counts.items() if v},
+        "sessionType": judgement.get("sessionType", "folder_import"),
+    }
     judgement_path.write_text(json.dumps(judgement, ensure_ascii=False, indent=2), encoding="utf-8")
     print(f"pretagged {len(valid)} items -> selected {counts['selected']} / shortlist {counts['shortlist']} / rejected {counts['rejected']}")
     print(f"세션: {args.profile}/{args.session_id} — 콘솔 판단 훈련에서 교정하세요.")
