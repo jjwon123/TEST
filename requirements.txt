@@ -1,0 +1,15 @@
+# Runtime and test dependencies for Windows/macOS. Python 3.10+.
+Pillow
+gallery-dl
+joblib
+jsonschema
+numpy
+ollama
+open_clip_torch
+pandas
+playwright
+pydantic
+requests
+scikit-learn
+torch
+tqdm
