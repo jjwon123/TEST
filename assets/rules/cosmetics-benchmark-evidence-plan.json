@@ -1,0 +1,164 @@
+{
+  "schemaVersion": "1.0.0",
+  "minimumSelectedSignals": 3,
+  "minimumSourceTypes": 2,
+  "eventTypeRequirements": {
+    "seasonal": {
+      "requiredEvidenceTypes": ["pain", "timing", "trend"],
+      "recommendedSourceTypes": ["review", "weather", "google_trends", "naver_datalab"]
+    },
+    "promotion": {
+      "requiredEvidenceTypes": ["desire", "objection", "offer"],
+      "recommendedSourceTypes": ["brand_site", "review", "meta_ad"]
+    },
+    "launch": {
+      "requiredEvidenceTypes": ["pain", "objection", "proof"],
+      "recommendedSourceTypes": ["brand_site", "review", "meta_ad"]
+    },
+    "education": {
+      "requiredEvidenceTypes": ["pain", "proof", "channel_pattern"],
+      "recommendedSourceTypes": ["brand_site", "review", "google_trends", "naver_datalab"]
+    },
+    "branding": {
+      "requiredEvidenceTypes": ["desire", "objection", "channel_pattern"],
+      "recommendedSourceTypes": ["review", "meta_ad", "brand_site"]
+    }
+  },
+  "events": [
+    {
+      "id": "season-monsoon-barrier",
+      "topic": "monsoon_barrier_reset",
+      "priority": 1,
+      "researchQuestions": [
+        "장마철 높은 습도와 실내 냉방 사이에서 고객이 실제로 표현하는 피부 불편은 무엇인가?",
+        "수분 장벽 제품을 고를 때 고객이 믿는 기준과 구매를 미루는 이유는 무엇인가?"
+      ]
+    },
+    {
+      "id": "promotion-gift",
+      "topic": "hydration_ampoule_gift",
+      "priority": 1,
+      "researchQuestions": [
+        "미니 크림 증정이 신규 루틴 시작의 부담을 실제로 낮추는가?",
+        "사은품보다 제품 선택 근거를 먼저 요구하는 고객 반응은 무엇인가?"
+      ]
+    },
+    {
+      "id": "launch-serum",
+      "topic": "elasticity_serum_launch",
+      "priority": 1,
+      "researchQuestions": [
+        "탄력 세럼을 찾는 고객이 과장으로 느끼지 않는 문제 표현은 무엇인가?",
+        "신제품을 시험하기 전에 확인하려는 제품 근거와 저항은 무엇인가?"
+      ]
+    },
+    {
+      "id": "education-barrier",
+      "topic": "skin_barrier_education",
+      "priority": 1,
+      "researchQuestions": [
+        "피부 장벽 관리에서 고객이 가장 자주 혼동하는 선택 기준은 무엇인가?",
+        "교육형 콘텐츠에서 저장과 다음 행동을 만드는 설명 순서는 무엇인가?"
+      ]
+    },
+    {
+      "id": "branding-minimal",
+      "topic": "minimal_skincare_routine",
+      "priority": 1,
+      "researchQuestions": [
+        "복잡한 루틴에 피로를 느끼는 고객이 실제로 줄이고 싶어 하는 단계는 무엇인가?",
+        "미니멀 스킨케어가 무성의함이 아니라 신뢰로 읽히게 만드는 근거는 무엇인가?"
+      ]
+    },
+    {
+      "id": "season-summer-brightening",
+      "topic": "summer_brightening_care",
+      "priority": 2,
+      "researchQuestions": ["여름철 칙칙한 피부 인상을 고객은 어떤 상황과 표현으로 설명하는가?"]
+    },
+    {
+      "id": "season-winter-dryness",
+      "topic": "winter_dryness_routine",
+      "priority": 2,
+      "researchQuestions": ["겨울 건조함이 반복되는 시간대와 생활 환경은 무엇인가?"]
+    },
+    {
+      "id": "season-spring-sensitive",
+      "topic": "spring_sensitive_routine",
+      "priority": 2,
+      "researchQuestions": ["봄 환절기에 고객이 민감함을 체감하는 순간과 제품 선택 저항은 무엇인가?"]
+    },
+    {
+      "id": "promotion-discount",
+      "topic": "skincare_set_discount",
+      "priority": 2,
+      "researchQuestions": ["기초 세트 할인에서 가격 외 구매 명분과 할인 피로 요인은 무엇인가?"]
+    },
+    {
+      "id": "promotion-bundle",
+      "topic": "cleansing_duo_bundle",
+      "priority": 2,
+      "researchQuestions": ["클렌징 듀오를 함께 사야 할 이유와 세안 후 당김에 대한 실제 저항은 무엇인가?"]
+    },
+    {
+      "id": "promotion-membership",
+      "topic": "membership_skincare_day",
+      "priority": 2,
+      "researchQuestions": ["재구매 고객이 멤버십 혜택에서 기대하는 차별점은 무엇인가?"]
+    },
+    {
+      "id": "launch-sunscreen",
+      "topic": "daily_sunscreen_launch",
+      "priority": 2,
+      "researchQuestions": ["매일 쓰는 선크림을 고를 때 고객이 가장 먼저 거르는 불편과 조건은 무엇인가?"]
+    },
+    {
+      "id": "launch-cleanser",
+      "topic": "low_irritation_cleanser_launch",
+      "priority": 2,
+      "researchQuestions": ["저자극 클렌저 주장 앞에서 고객이 요구하는 사용 근거와 불신은 무엇인가?"]
+    },
+    {
+      "id": "launch-mask",
+      "topic": "hydration_mask_launch",
+      "priority": 2,
+      "researchQuestions": ["짧은 보습 루틴이 필요한 실제 상황과 마스크 제품의 구매 저항은 무엇인가?"]
+    },
+    {
+      "id": "education-layering",
+      "topic": "skincare_layering_education",
+      "priority": 2,
+      "researchQuestions": ["토너와 앰플 사용 순서에서 고객이 가장 자주 묻는 질문은 무엇인가?"]
+    },
+    {
+      "id": "education-sunscreen",
+      "topic": "suncare_usage_education",
+      "priority": 2,
+      "researchQuestions": ["선크림 선택과 사용법에서 검색 수요가 높은 질문과 오해는 무엇인가?"]
+    },
+    {
+      "id": "education-cleansing",
+      "topic": "evening_cleansing_education",
+      "priority": 2,
+      "researchQuestions": ["과한 세정 없이 깔끔한 저녁 루틴을 원하는 고객의 핵심 질문은 무엇인가?"]
+    },
+    {
+      "id": "branding-calm",
+      "topic": "calm_daily_skincare_brand",
+      "priority": 2,
+      "researchQuestions": ["과장 없는 스킨케어를 선호하는 고객이 신뢰하는 브랜드 언어는 무엇인가?"]
+    },
+    {
+      "id": "branding-ingredient",
+      "topic": "ingredient_literacy_brand",
+      "priority": 2,
+      "researchQuestions": ["성분 중심 고객이 제품 선택 근거로 이해하고 싶어 하는 정보는 무엇인가?"]
+    },
+    {
+      "id": "retention-repurchase",
+      "topic": "skincare_repurchase_reward",
+      "priority": 2,
+      "researchQuestions": ["꾸준히 사용 중인 고객의 재구매 시점과 리워드에 대한 기대는 무엇인가?"]
+    }
+  ]
+}

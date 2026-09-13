@@ -18,33 +18,38 @@
             <span>콘텐츠 제작 콘솔</span>
           </div>
         </div>
-        <button class="nav-cta nav-item" data-view="new-event">새 이벤트</button>
+        <button class="nav-cta nav-item" data-view="new-event">새 이벤트 시작</button>
         <nav>
-          <span class="nav-group">제작</span>
-          <button class="nav-item active" data-view="dashboard">작업 현황</button>
-          <button class="nav-item" data-view="new-event">이벤트 생성</button>
-          <button class="nav-item" data-view="run-detail">진행 상세</button>
-          <button class="nav-item" data-view="references">작업 레퍼런스</button>
-          <button class="nav-item" data-view="ad-reference">Meta 광고 수집</button>
-          <span class="nav-group">검수·훈련</span>
-          <button class="nav-item" data-view="training">판단 훈련</button>
-          <span class="nav-group">산출물</span>
-          <button class="nav-item" data-view="prompts">프롬프트</button>
-          <button class="nav-item" data-view="images">이미지 선택</button>
-          <button class="nav-item" data-view="package">최종 패키지</button>
-          <span class="nav-group">시스템</span>
-          <button class="nav-item" data-view="activity">활동 로그</button>
-          <button class="nav-item" data-view="settings">설정</button>
+          <button class="nav-item active" data-view="dashboard">홈</button>
+          <details class="nav-section" open>
+            <summary>이벤트</summary>
+            <button class="nav-item" data-view="new-event">브리프 만들기</button>
+            <button class="nav-item" data-view="run-detail">현재 제작 보기</button>
+          </details>
+          <details class="nav-section">
+            <summary>제작 도구</summary>
+            <button class="nav-item" data-view="references">작업 레퍼런스</button>
+            <button class="nav-item" data-view="ad-reference">Meta 광고 수집</button>
+            <button class="nav-item" data-view="training">판단 훈련</button>
+            <button class="nav-item" data-view="prompts">프롬프트</button>
+            <button class="nav-item" data-view="images">이미지 선택</button>
+            <button class="nav-item" data-view="package">최종 패키지</button>
+          </details>
+          <details class="nav-section">
+            <summary>시스템</summary>
+            <button class="nav-item" data-view="activity">활동 로그</button>
+            <button class="nav-item" data-view="settings">설정</button>
+          </details>
         </nav>
         <div class="sidebar-status"><i></i> ComfyUI 상태 확인</div>
       </aside>
 
       <main class="workspace">
         <header class="topbar">
-          <div class="top-search"><span>이벤트, run, 레퍼런스 검색</span></div>
+          <div class="top-context"><strong>Production board</strong><span>한 번에 한 가지 결정에 집중하세요</span></div>
           <div class="top-actions">
             <select id="eventSelect"></select>
-            <button id="runSelectedEvent" class="primary">01-03 자동 실행</button>
+            <button id="runSelectedEvent">자동 제작 실행</button>
             <button id="refreshButton">새로고침</button>
           </div>
         </header>
@@ -174,7 +179,7 @@
           </section>
 
           <section class="view" id="promptsView">
-            <div class="panel"><div class="panel-head"><h2>프롬프트</h2><span id="promptCount"></span></div><div id="promptList" class="prompt-list"></div></div>
+            <div class="panel"><div class="panel-head"><div><h2>이미지 방향</h2><span>선택한 레퍼런스를 바탕으로 이미지 생성 방향을 확인합니다</span></div><span id="promptCount"></span></div><div class="chip-row action-row"><button id="continueFromPrompts" class="primary">이 방향으로 이미지 후보 만들기</button></div><div id="promptList" class="prompt-list"></div></div>
           </section>
 
           <section class="view" id="imagesView">
@@ -203,7 +208,7 @@
             <div class="panel package-panel">
               <div class="panel-head"><h2>최종 패키지</h2><span>production-package 산출물</span></div>
               <div id="packageSummary"></div>
-              <div class="chip-row action-row"><button id="createPackage" class="primary">패키지 생성</button><button data-open-folder="package">패키지 폴더 열기</button></div>
+              <div class="chip-row action-row"><button id="approveQaPackage" class="primary">QA 확인 후 패키지 만들기</button><button id="createPackage" class="primary" hidden>패키지 생성</button><button data-open-folder="package">패키지 폴더 열기</button></div>
             </div>
           </section>
 
@@ -259,6 +264,6 @@
       </section>
     </div>
     <div id="toast" class="toast hidden"></div>
-    <script src="/app.js"></script>
+    <script src="/app.js?v=journey-resume-qa-fix-20260725"></script>
   </body>
 </html>

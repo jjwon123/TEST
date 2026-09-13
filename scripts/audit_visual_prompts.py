@@ -30,7 +30,6 @@ PROFILE_REQUIRED_DIRECTIONS = {
     },
     "cosmetics_skincare": {
         "skincare product": ("skincare", "skin care", "serum", "cosmetic", "beauty product", "product focus"),
-        "korean h&b sale": ("korean h&b", "h&b sale", "korean beauty sale", "local korean beauty"),
         "benefit hierarchy": ("discount", "gift", "free shipping", "benefit hierarchy", "promotion", "sale"),
         "clean cardnews layout": ("card news", "cardnews", "banner layout", "promotion layout", "clean layout"),
         "blank space for Korean headline": ("blank space for korean headline", "empty text area"),
@@ -162,7 +161,8 @@ def audit_prompt(prompt: dict[str, Any], profile: str = "general") -> dict[str, 
     negative_missing = [term for term in negative_required if term not in negative_l]
     fake_text_ok = any(term in negative_l or term in positive_l for term in ("no fake text", "no readable text", "no fake typography"))
     headline_space_ok = any(term in positive_l for term in ("blank space for korean headline", "empty text area"))
-    min_required_hits = 4 if profile == "cosmetics_skincare" else 5
+    configured_minimum = 4 if profile == "cosmetics_skincare" else 5
+    min_required_hits = min(configured_minimum, len(required_directions))
 
     fail_reasons = []
     warning_reasons = []

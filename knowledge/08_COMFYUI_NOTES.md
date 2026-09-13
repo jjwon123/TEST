@@ -150,3 +150,30 @@ runs/[run-dir]/03_visual_candidates/
 - **프롬프트 구조(주입 시드)**: ①고정 제품-충실도 절(silhouette/stone count/cut/prong/metal 유지) + ②씬 절(브리프의 mood/배경/조명을 여기 주입) + ③그라운딩 절(never pasted, contact shadow, matched light). 네거티브는 person/hand/mascot/3d toy/fake text 고정.
 - **다음**: 누끼 입력(C:\Users\jinkiwon\iCloudDrive\자동화 프로젝트\0_자동화 샘플 이미지\다이아 누끼\) → 정본 템플릿 → 라이브 1~2컷으로 자동화 연결(03_visual_candidates) 재검증.
 - **연결 아키텍처 원칙(재확인)**: 스킬/자동화는 브리프를 읽되 **ComfyUI 그래프를 새로 생성하지 않는다.** 역할 = (템플릿 선택 + 누끼/프롬프트힌트/채널해상도 프리셋 주입). 그래프는 사람이 검증한 정본 라이브러리(`02_workflows`)에만 추가.
+
+## 2026-06-20 — 자동화↔ComfyUI 라이브 경로를 정본 키퍼 그래프로 연결 (API 템플릿 로더)
+
+### 문제 (실측 진단)
+- 기존 라이브 경로(`preset_adapters._qwen_candidate_2511`)는 **옛 불량 설정 고정**이었다: Unet Q3_K_M, Lightning LoRA 항상 ON, ModelSamplingAuraFlow shift 10.0, KSampler cfg1.0/10step/heun/beta. = CFG1에서 네거티브 死 → 마스코트/가짜텍스트 재발 구조.
+- `brand_workflows.load_brand_workflow_config`가 v2 템플릿에서 **엉뚱한 노드 id**(11=Boolean토글, 15=Switch)를 읽어 positive='False', sampler=heun 등 쓰레기값 반환 → 정본 템플릿 값이 라이브에 전혀 전달 안 됨.
+
+### 해결 = API 템플릿 로더
+- 검증된 키퍼 그래프를 **API-format 정본**으로 저장: `D:\CD\jewelry_ad_project\02_workflows\api\jewelry_product_hero_v2.api.json` (Q6_K, shift3.1, CFGNorm1, Lightning OFF, 24step/cfg3.5/euler/simple, ImageScaleToTotalPixels 1.6MP).
+- `brand_workflows.brand_api_template(id)`: `02_workflows/api/<stem>.api.json` 있으면 그 그래프 반환.
+- `preset_adapters._apply_brand_api_template()`: API 템플릿이 있으면 그래프를 **그대로 실행**하고 KSampler 입력을 역추적해 pos/neg TextEncode·LoadImage·SaveImage 노드를 자동 탐지 → **누끼/프롬프트(캠페인 direction append)/시드/세이브 prefix만 주입.** 그래프 토폴로지는 손대지 않음.
+- `build_api_prompt`: 브랜드 워크플로면 API 템플릿 우선, 없으면 기존 경로 폴백(하위호환).
+- 검증: dry-run에서 라이브 그래프 = 키퍼와 동일(Q6/shift3.1/Lightning없음/24/3.5) 확인. **프로젝트 테스트 164개 통과.**
+
+### 다른 카테고리 확장법
+- cosmetics/bullion도 동일하게 검증 키퍼 컷을 뽑아 `02_workflows/api/<name>.api.json`으로 저장만 하면 로더가 자동 사용(코드 수정 불필요).
+- 미작성 워크플로는 자동 폴백되지만, 폴백 경로(_qwen_candidate_2511)는 아직 옛 불량 설정이므로 **API 템플릿을 만들기 전엔 그 카테고리 라이브 생성 금지.**
+
+### 다음
+- 실제 `workflow.py --stage 03/04_visual_candidates --mode regenerate` 라이브 1컷으로 엔드투엔드 재검증(주얼리 run + GPU 단독 확보 시).
+- 속도: Q6 컷당 ~7분. 후보 대량은 Q4_0/Lightning 드래프트 API 템플릿 별도 추가 검토.
+
+### 2026-06-20 추가 — E2E 라이브 검증 완료
+- 실제 호출 경로 그대로 검증: `choose_brand_workflow("jewelry") → ComfyUIClient().run_image_job(ComfyUIJob)`.
+- 결과 `status=generated`, 출력 PNG 그래프 메타가 키퍼와 동일(Q6_K / shift3.1 / Lightning 없음 / 24step·cfg3.5·euler), 누끼 자동 업로드·캠페인 direction append 확인.
+- 소요 ~1071s(VRAM free 직후 Q6 콜드 리로드 포함). 보관: `output/Automation/jewelry/e2e_jewelry_hero_c01.png`.
+- 결론: 자동화↔ComfyUI 연결이 정본 키퍼 그래프로 라이브 동작함을 확인. 남은 건 cosmetics/bullion API 템플릿 작성 + 속도용 드래프트 템플릿.

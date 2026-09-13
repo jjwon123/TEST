@@ -1,5 +1,648 @@
 # 프로젝트 대시보드
 
+## 현재 상태 업데이트 (2026-09-13, macOS·Git 이식 준비)
+
+- 이미지 원본·ComfyUI 생성 결과 없이도 기획·문구·근거·검수 자동화를 이어갈 수 있도록
+  루트 `README.md`, `docs/MAC_HANDOFF.md`, `.env.example`, `requirements.txt`,
+  `scripts/start_brand_event_console.sh`를 추가했다.
+- Git에는 이벤트·제품 설정, URL/평가 기반 레퍼런스 지식, 문구·기획 학습 데이터와 코드를
+  포함한다. `runs/`, 수집·생성 이미지, 쿠키, API 키, 로컬 환경은 계속 제외한다.
+- 다음 공유 전에는 기존 미커밋 변경을 검토해 필요한 코드·설정·학습 데이터만 커밋하고,
+  수정된 `pinterest-board-collector` 서브모듈은 해당 저장소에서 별도 push해야 한다.
+
+### 다음 작업
+
+1. 회사 Git 원격을 정하고, 현재 작업 트리의 공유할 변경을 검토·커밋한다.
+2. Mac에서 `docs/MAC_HANDOFF.md`의 초기 설치와 이미지 없는 스모크 테스트를 실행한다.
+3. 실제 이미지 생성이 필요해지는 시점에만 ComfyUI와 이미지 자산 저장소를 별도로 복원한다.
+
+> 2026-07-22 approval-gate correction: the copy-review form now starts its eight human rubric scores at 4 (the documented minimum for final approval) and explains that requirement. Server approval now blocks only critical/error-severity scorecard findings; warnings stay as visible review context. This removes a dead end where an operator could select final approval but could not advance because of hidden default scores or unresolved warnings from the earlier planning critic.
+>
+> 2026-07-20 UX flow correction: copy review is now a gate, not a stop screen. Approval opens the matched image-candidate run immediately; a revision request stays in the same copy-review case. The legacy planning approval also opens image-direction prompts automatically.
+>
+> 2026-07-20 UX flow correction: when all evidence cards are decided but the selected-evidence requirement is still short, the console explains the exact gap and offers “보류한 자료 다시 보기” instead of returning to a repeated “근거 검수 시작” mission.
+
+> 2026-07-21 UX flow correction: the post-copy path is now continuous: reference collection and selection → image-direction prompts → image candidate generation → human image selection → QA packaging. Each completed background job advances to its next workspace automatically.
+
+> 2026-07-21 UX correction: evidence review no longer asks the operator to write a product-proof record. A single official product-page URL triggers capture and creates one reviewable proof candidate; direct entry remains a fallback only when a page is unavailable.
+
+> 2026-07-21 UX correction: a completed evidence review no longer blocks on a missing or rejected product-proof card. The console opens concept selection with a `no_unverified_product_claims` policy; it does not permit ingredient, efficacy, number, or result claims until an official page is captured and reviewed. The long direct-entry form is hidden from the normal mission flow.
+
+> 2026-07-21 UX correction: when a benchmark copy review has no separately linked image run, final save uses the production run currently selected in the console (only `prompt_ready` or `reference_ready`). It opens the reference workspace directly instead of leaving a detached completion screen.
+
+> 2026-07-22 UX correction: selecting a concept and generating copy immediately opens the step-3 copy-review mission for that same case; the operator is no longer left on the concept screen to find another CTA.
+
+> 2026-07-22 reliability correction: console background jobs finish with `done`; the client now treats both `done` and legacy `completed` as a successful handoff, so reference, image, selection, and QA workspaces advance automatically.
+
+> 2026-07-22 UX correction: a `quality_repair_required` planning case never exposes the invalid “select and create copy” CTA. The mission shows the exact quality issues and offers a tracked planning regeneration; after the job completes, the console reloads into the newly available step.
+
+> 2026-07-22 quality-gate correction: planning warnings do not dead-end an otherwise evidence-ready concept. Only critic failures or explicit error-severity issues block selection; warnings stay visible for human copy review. Verified by clicking the real `education-barrier` step-2 CTA and observing its step-3 copy review (20 cards).
+
+> 2026-07-22 journey handoff correction: when a completed benchmark copy review has no matching production run, the console creates the dedicated production bridge run and opens reference selection. Copy approval no longer stops at a detached completion screen.
+
+> 2026-07-22 console freshness correction: console HTML, JavaScript, and bootstrap API responses now use `Cache-Control: no-store`; a reopened or refreshed console always receives the current CTA flow and current run status.
+
+> 2026-07-18 UX correction: saving a copy review hands off to the matching prompt-ready event run's image-candidate stage, never to another benchmark review.
+
+> 2026-07-18 UX correction: starting evidence review opens the event-scoped review in the current mission area; it no longer sends the user below the mission into advanced details.
+
+> 2026-07-18 UX correction: evidence review is now a decision-only workspace. Raw ingestion controls and checkbox reason grids are hidden; source and hypothesis detail are opt-in per card.
+
+> 2026-07-18 UX correction: evidence review progresses one card at a time. Each decision immediately exposes the next candidate, and a ready evidence set opens the refreshed concept-selection mission automatically.
+
+## 현재 상태 업데이트 (2026-07-18, 제작 콘솔 UI/UX 재설계)
+
+- 프로젝트 루트에 `DESIGN.md`를 추가하고 `oh-my-design`의 Nexon 디자인
+  시스템을 LoopStudio 제작 콘솔 기준으로 적용했다.
+  - 흰 캔버스, `#17191d` 잉크, `#00de5a` 단일 주요 행동
+  - 카드 4px, 대형 컨테이너 8px, CTA 0px 라운드
+  - 추천안의 금색 표현과 반복 녹색 상태를 제거했다.
+- 콘솔 홈을 `제작 여정 → 현재 미션 → 콘셉트 3안 → 선택 근거 → 다음 행동`의
+  한 흐름으로 재구성했다.
+- 현재 데이터 상태에 따라 주요 행동이 바뀐다.
+  - 콘셉트 미선택: `선택하고 카피 만들기`
+  - 기존 선택 완료: `카피 검수 시작`
+  - 근거 미완료: `근거 검수 시작`
+- 전체 감사·근거 큐·배치 도구는 삭제하지 않고 `전체 작업과 고급 검수 보기`에
+  기본 접힘으로 보존했다.
+- 브리프 입력 부족 상태는 `부족한 브리프 정보 입력하기`로 연결한다.
+- 데스크톱과 768px 모바일 화면을 브라우저에서 확인했다.
+  - 콘셉트 선택, 브리프 화면 전환, 홈 복귀 정상
+  - 브라우저 오류·경고 0
+  - `design-qa.md` 최종 결과 `passed`
+- 검증: 콘솔 UI 감사 15개, 마케팅 콘솔·기획 패킷 29개 통과.
+- `카피 검수 시작`이 닫힌 고급 패널을 가리키던 문제를 수정했다.
+  - 클릭 즉시 전용 카피 검수 화면으로 전환한다.
+  - 채널 카피 4개, 직접 수정, 점수·사유·메모, 승인/수정 요청을 한 흐름으로
+    처리한다.
+- 최종 결정 패널의 checkbox 폭 상속 문제를 수정했다.
+  - 사유 태그는 한 줄 단일 열로 보이며 한국어가 글자 단위로 깨지지 않는다.
+  - 검수 저장 성공 시 다음 검수 또는 방금 검수 다시 보기 완료 화면을 표시한다.
+
+### 다음 작업
+
+1. 실제 운영자가 새 홈에서 장마철 카피 검수를 진행한다.
+2. 미입력 브리프의 날짜와 필수 정보를 갱신한 뒤 새 운영 런을 만든다.
+3. 모바일에서 제작 도구 전체 메뉴가 필요해지면 별도 메뉴 드로어를 추가한다.
+
+## 현재 상태 업데이트 (2026-07-18, 병목 점검·전체 경로 실증 및 운영 복구)
+
+- 전체 테스트 러너를 수동 목록에서 자동 발견 방식으로 바꿨다.
+  - `tests/test_*.py`는 자동 발견하고, 파이프라인·서비스·UI 외부 계약 테스트만 명시한다.
+  - 현재 `274개` 테스트가 모두 통과한다.
+- 콘솔, ComfyUI, Ollama를 실제로 기동하고 HTTP `200`을 확인했다.
+  - 콘솔: `http://127.0.0.1:5177/`
+  - ComfyUI: `http://127.0.0.1:8188/system_stats`
+  - Ollama: `http://127.0.0.1:11434/api/tags`
+- Playwright 라이브 콘솔 감사와 전체 프로젝트 훅이 통과했다.
+- 운영 자산과 런을 오염시키지 않는 `.tmp/archive-smoke/` 격리 환경에서
+  1→7단계를 실증했다.
+  - 기획 점수 `4.0`, QA `pass`, 선택 이미지 `4개`, 승인 아카이브 복사 `4개`.
+  - 최종 상태 `archived`; 전역 `assets/` 대신 임시 아카이브 루트만 사용했다.
+- 전체 실증을 `python scripts/smoke_test_full_pipeline.py`로 재실행 가능하게 고정했다.
+  - 최신 결과: `.tmp/full-pipeline-smoke/latest-report.json`
+  - 실제 기획 감사 `pass`, 프롬프트 감사 `12/12 pass`, 선택·아카이브·물리 복사 `4/4`.
+  - 비차단 QA 경고는 사유가 있는 6단계 승인 기록이 있을 때만 아카이브한다.
+- 최신 코드 실증용 새 런을 생성했다.
+  - 런: `runs/2026-07-18_06-20-09_6월-장마철-수분-장벽-리셋-위크`
+  - 현재 상태: `01_event_brief=needs_input`, `run_state=brief_input_required`
+  - 이벤트 종료일 `2026-06-30`이 현재일보다 과거라 일정 갱신 전 승인을 막았다.
+  - 사람 승인을 자동으로 대신하지 않아 이후 단계는 정상적으로 잠겨 있다.
+- 브리프·기획 품질 병목을 보정했다.
+  - 시즌 캠페인의 부가 증정 혜택이 이벤트 유형을 프로모션으로 뒤집지 않는다.
+  - 요청 채널 그룹을 실제 산출 채널로 확장해 비교한다.
+  - 채널 간 장문 재사용과 운영 근거 문구 노출을 제거했다.
+  - 증정품을 주력 제품으로 오인하던 로컬 비평을 수정했다.
+  - 시즌 화장품 프롬프트에 H&B 세일을 강제하던 감사 규칙과 한국어 깨짐
+    차단어 누락을 수정했다.
+  - 브리프의 `needs_input`이 런 상태에 전파되지 않던 문제를 수정하고,
+    미해결 입력이 있는 1단계 승인을 서버에서도 차단했다.
+- 대표 5건의 근거 큐, 파일럿 산출물, 검수 패킷, 목표 감사를 최신 코드로 재생성했다.
+  - 근거 준비 `1/5`: 장마철
+  - 근거 검수 필요 `4/5`
+  - 카피 준비 `1/5`: 장마철
+  - 최종 사람 평가 `0/5`
+  - 치명 오류 `0`
+- 현재 목표 감사 `fail`은 기능 오류가 아니라 사람 검수 게이트 때문에 정상이다.
+
+### 다음 작업
+
+1. 실제 집행할 이벤트의 시작·종료·발행일을 현재 또는 미래 일정으로 갱신한다.
+2. 갱신한 일정으로 새 운영 런을 만들고 브리프를 사람이 승인한다.
+3. 장마철은 사람이 선택한 `concept_01`의 채널별 카피를 검수한다.
+4. 프로모션·교육 후보 각 3개와 브랜딩 후보 4개를 빠른 검수안으로 확인한다.
+5. 탄력 세럼 후보 3개를 검수하고 공식 성분·사용법·시험 자료를 제품 proof로 추가한다.
+6. 5건 최종 사람 평가를 완료한 뒤 목표 감사를 다시 실행한다.
+
+## 현재 상태 업데이트 (2026-07-05, 대표 파일럿 5건 기준 통일)
+
+- 근거 계획의 `priority=1`을 파일럿 5건의 단일 기준으로 고정했다.
+  - 장마철 수분 장벽 리셋
+  - 수분 앰플 증정 행사
+  - 신제품 탄력 세럼 출시
+  - 피부 장벽 이해 교육
+  - 미니멀 스킨케어 브랜딩
+- 감사, 검수 패킷, 파일럿 생성, 검수 CSV가 모두
+  `services/ad_strategy/pilot_selection.py`를 사용한다.
+- 데이터셋의 앞 5건을 임의로 자르는 동작을 제거했다.
+- 근거가 준비되지 않은 이벤트는 콘셉트가 3개 있어도
+  `evidence_review_required`로 차단한다.
+- 입력에 명시된 이벤트 유형을 키워드 추정보다 우선한다.
+  - 장마철 이벤트에 증정 혜택이 있어도 `seasonal`을 유지한다.
+- 각 콘셉트의 근거를 `핵심 근거`와 `보조 근거`로 분리했다.
+  - 전략 축을 만든 핵심 신호 ID와 보강용 신호 ID를 별도로 기록한다.
+  - 콘솔에는 내부 ID 대신 근거 역할, 핵심 문장, 출처를 표시한다.
+- 이벤트 유형 불일치나 근거 추적 손상은 비평 `fail`로 처리하고
+  `quality_repair_required` 상태에서 선택을 차단한다.
+- 로컬 콘셉트 비평을 고정 4점 방식에서 근거 기반 루브릭으로 교체했다.
+  - 타깃 상황과 핵심 근거 연결
+  - 제품·입력 혜택 연결
+  - 전략 축·핵심 근거·CTA 차별성
+  - 한국어·업종·금지 표현·미확인 주장
+  - 채널 확장 준비도
+- 자동 비평은 최대 4점이다. 5점은 사람 평가에서만 기록한다.
+- `revise` 또는 `fail`이 남은 안은 `quality_repair_required`로 선택을 막는다.
+- 과거 `connection_test` 기록을 메인 검수 큐에서도 완료로 세지 않는다.
+- 현재 실제 파일럿 상태:
+  - 콘셉트 선택 가능 `1/5`: 장마철
+  - 근거 검수 필요 `4/5`
+  - 최종 카피 준비 `0/5`
+  - 최종 사람 평가 `0/5`
+  - 치명 오류 `0`
+- 목표 감사는 아직 `fail`이 맞다. 사람 선택과 카피 승인을 자동 생성하지
+  않았다.
+
+### 검증
+
+- 전체 프로젝트 테스트 `223개` 통과.
+- Playwright 라이브 UI 감사 통과.
+- 검수 패킷·목표 감사·검수 CSV의 대표 5건 ID와 순서가 일치한다.
+- 장마철 결과는 `eventType=seasonal`, 비평 `pass`, 콘셉트별 신호 3개다.
+- 장마철 자동 비평 평균 `4.0/5`, 이슈 `0`.
+- 메인 검수 데스크는 장마철 카드 1개를 `콘셉트 선택` 상태로 전면 표시한다.
+- 품질 요약과 콘셉트 선택 버튼 3개가 Playwright 계약을 통과했다.
+- 콘솔 서버: `http://127.0.0.1:5177/`, PID `29588`.
+
+### 다음 작업
+
+1. 장마철 콘셉트 3안 중 하나를 사람이 선택한다.
+2. 프로모션·교육·브랜딩 근거 후보를 사람이 검수한다.
+3. 탄력 세럼의 공식 제품 근거를 추가하고 검수한다.
+4. 근거 준비 완료 이벤트만 채널 카피를 생성·수정·승인한다.
+5. 5건 평균 4.0 이상, 무수정 승인율 50% 이상, 치명 오류 0을 확인한다.
+
+## 현재 상태 업데이트 (2026-07-01, 이벤트 단위 빠른 근거 검수)
+
+- 대표 이벤트 후보 3개를 하나씩 저장하지 않아도 되도록 `빠른 검수안`을
+  추가했다.
+- 추천 규칙:
+  - 필수 근거 역할마다 점수가 가장 높은 후보 1개를 selected 제안.
+  - 같은 역할의 나머지 후보는 shortlist 제안.
+  - 이미 사람이 선택한 역할은 덮어쓰지 않음.
+- 저장 안전장치:
+  - 사람이 확인창에서 명시적으로 승인해야 API 호출.
+  - 서버는 `humanConfirmed: true`가 없으면 거절.
+  - 이벤트 범위를 벗어난 신호 ID는 거절.
+  - 모든 후보에 사유 태그와 구체 메모 필수.
+  - 전체 검증 후 한 번만 저장해 부분 반영 방지.
+- 탄력 세럼은 빠른 검수안을 승인해도 제품 proof가 없으므로 ready가 되지
+  않는다.
+- 실제 브라우저에서 확인창 노출을 확인하고 취소했다.
+  - 저장소의 대표 후보 15개는 모두 `unreviewed`로 유지.
+
+### 검증
+
+- 전체 프로젝트 테스트 `200개` 통과.
+- Playwright UI 감사 통과.
+- 빠른 검수 확인창 취소 후 selected `0`.
+- 서버 PID `28084`, `http://127.0.0.1:5177/`.
+
+### 사람이 할 일
+
+1. `이벤트 근거 준비`에서 이벤트를 연다.
+2. 후보 출처와 관찰 요약 3개를 읽는다.
+3. `후보 3개 검수안 확인`을 누른다.
+4. 선택·보류 수를 확인하고 동의할 때만 확인한다.
+
+## 현재 상태 업데이트 (2026-07-01, 대표 5건 실제 근거 후보 수집)
+
+- 대표 5개 이벤트에 실제 출처 기반 근거 후보 15개를 수집했다.
+  - 시즌: 기상청, AAD, 소비자 리뷰 분석 보도
+  - 증정 프로모션: 소비자 프로모션 실험 2건, 이벤트 입력 혜택
+  - 탄력 세럼 출시: Euromonitor 소비자 조사, PubMed 체계적 문헌고찰
+  - 장벽 교육: AAD 전문 안내, 피부 건강 소셜미디어 단면 조사
+  - 미니멀 브랜딩: Euromonitor 소비자 조사, 투명성 관련 산업 인터뷰
+- 저장 파일:
+  `assets/rules/cosmetics-pilot-public-evidence-snapshot.json`
+- 모든 후보는 `unreviewed`로 저장했다. 자동 selected는 `0건`이다.
+- 신호 저장소는 `118 -> 133개`가 됐다.
+- 근거 큐 상태:
+  - 대표 5건 `needs_review`
+  - 나머지 15건 `needs_collection`
+  - ready `0`
+- 출처 감사:
+  - 후보 `15`, 이벤트 `5`, 오류 `0`, 주의 `3`
+  - 주의 2건은 5년이 지난 기초 프로모션 연구.
+  - 주의 1건은 가상 탄력 세럼의 제품 고유 근거가 없다는 의도적 차단.
+- 자료 후보와 실제 미확정 입력을 분리했다.
+  - 시즌·프로모션·교육·브랜딩은 역할별 후보가 모두 존재.
+  - 탄력 세럼만 공식 성분·사용법·시험 자료가 추가로 필요.
+- 독립 출처 수는 `public_web` 같은 저장 유형이 아니라 URL 도메인 기준으로
+  계산한다.
+- 콘솔 신호 카드에 기관명, 문서 제목, 발행일, 확인일, 조사 방법, 원문 링크를
+  표시한다.
+
+### 검증
+
+- 전체 프로젝트 테스트 `197개` 통과.
+- 실제 Playwright UI 감사 통과.
+- 출처 snapshot 감사 통과.
+- 서버 PID `25716`, `http://127.0.0.1:5177/`.
+
+### 바로 다음 작업
+
+1. 콘솔에서 대표 5건의 후보 3개씩을 사람이 읽고 선택·보류·거절한다.
+2. 탄력 세럼은 공식 제품 자료가 없으므로 proof를 selected 처리하지 않는다.
+3. 나머지 4건이 역할 3개·독립 출처 2곳을 충족하면 InsightBrief를 만든다.
+4. 탄력 세럼 제품 입력을 확보한 뒤 5번째 InsightBrief를 만든다.
+5. 대표 5건만 카피를 재생성하고 목표 감사를 다시 실행한다.
+
+## 현재 상태 업데이트 (2026-07-01, 이벤트 근거 수집·검수 큐)
+
+- 화장품 고정 평가 이벤트 20건의 근거 준비 계획을 구현했다.
+  - 계획: `assets/rules/cosmetics-benchmark-evidence-plan.json`
+  - 생성기: `scripts/build_cosmetics_evidence_queue.py`
+  - 결과: `.tmp/model-benchmarks/cosmetics-evidence-queue.json`
+- 시즌, 프로모션, 출시, 교육, 브랜딩 대표 1건씩 총 5건을 우선 파일럿으로
+  고정했다.
+- 이벤트 유형별로 서로 다른 근거 조합을 강제한다.
+  - 시즌: 고객 문제 + 시기 명분 + 검색·시장 흐름
+  - 프로모션: 고객 욕구 + 구매 저항 + 혜택 근거
+  - 출시: 고객 문제 + 구매 저항 + 제품 근거
+  - 교육: 고객 문제 + 제품 근거 + 채널 반응 구조
+  - 브랜딩: 고객 욕구 + 구매 저항 + 채널 반응 구조
+- 준비 완료 조건은 `selected 3개 이상 + 필수 근거 역할 충족 + 출처 종류
+  2개 이상`이다. 개수만 채운 동일 유형 신호는 통과하지 않는다.
+- 콘솔에 `이벤트 근거 준비` 작업 큐를 추가했다.
+  - 각 카드에서 조사 질문, 검색어, 부족한 근거, 현재 진행률을 확인한다.
+  - `수집·검수 시작`을 누르면 해당 이벤트 ID/topic 신호만 표시한다.
+  - 다른 이벤트 신호와 전체 랜덤 가설은 화면에서 섞이지 않는다.
+- 공개 URL 캡처 결과의 `sourceRef.eventId`를 수집 시점부터 저장한다.
+- 과거 사람 검수 기록이 있어도 이벤트 근거가 불일치하면 완료로 세지 않고
+  `근거 준비`로 되돌린다.
+
+### 현재 실제 수치
+
+- 저장 신호 `118개`
+- 검증 전 랜덤 가설 `100개`
+- 기존 selected `16개`는 HSGN 여름 톤케어 전용
+- 새 20개 평가 이벤트 전용 근거:
+  - 준비 완료 `0/20`
+  - 신호 검수 필요 `0/20`
+  - 근거 수집 필요 `20/20`
+  - 우선 파일럿 준비 완료 `0/5`
+- 자동 selected 또는 가짜 사람 검수는 생성하지 않았다.
+
+### 검증
+
+- 전체 프로젝트 테스트 `196개` 통과.
+- 실제 Playwright UI 감사 통과.
+- 인앱 브라우저에서 `신제품 탄력 세럼 출시` 선택 후:
+  - 필요한 근거 `고객 문제 · 구매 저항 · 제품 근거`
+  - 범위 내 신호 `0개`
+  - 타 이벤트 신호 노출 `0개`
+  - 근거 패킷 버튼 비활성
+  - 가로 넘침 없음
+- 콘솔 서버 PID `29200`, `http://127.0.0.1:5177/`.
+
+### 다음 핵심 작업
+
+1. 우선 파일럿 5건에 공개 URL 근거를 이벤트별로 수집한다.
+2. 각 이벤트에서 필수 근거 역할 3개와 출처 2종 이상을 사람이 검수한다.
+3. 준비 완료된 이벤트만 전용 InsightBrief를 생성한다.
+4. 5건만 재생성해 이벤트 근거 `5/5`와 카피 차별성을 확인한다.
+5. 이후 나머지 15건으로 확장하고 카피 사람 검수를 재개한다.
+
+## 현재 상태 업데이트 (2026-06-30, 이벤트 근거 격리)
+
+- 기존 `근거 연결 20/20`이 거짓 양성이었음을 확인했다.
+  - 화장품 벤치마크 20건 전체가 동일한 HSGN 여름 톤케어 신호 13개를 사용했다.
+  - 겨울 보습, 클렌저 출시, 멤버십 행사까지 같은 신호 ID 묶음이었다.
+- 이벤트별 근거 격리를 구현했다.
+  - 저장 위치: `design_brain_wiki/marketing_signals/insight-briefs/<event-id>.json`
+  - 생성기는 `InsightBrief.eventId`가 현재 이벤트와 정확히 일치할 때만 사용.
+  - 구체 이벤트의 신호 패킷은 `sourceRef.eventId` 정확 일치 또는 명시된
+    `topic` 일치 신호만 포함.
+  - `general` 패킷이나 다른 이벤트 패킷은 구체 이벤트 생성에 재사용하지 않음.
+- 벤치마크 캐시는 근거 이벤트 ID가 다르면 자동 재생성 대상으로 판정한다.
+- 목표 감사의 근거 기준을 ID 존재 여부에서 이벤트 정확 일치로 교체했다.
+- 현재 정직한 감사 결과:
+  - 이벤트 전용 근거 `0/20`
+  - 통과 케이스 `0/20`
+  - 치명 오류 `0`
+  - 사람 평가 기록 `5/20`은 보존
+- 오염된 기존 카피는 콘솔에서 `근거 준비 필요`로 표시한다.
+  - 문구 편집과 최종 검수 폼을 숨김.
+  - 서버도 이벤트 전용 근거가 없으면 벤치마크 검수 저장을 차단.
+- 콘솔에는 `이벤트 전용 근거 0/20`을 별도 표시한다.
+
+### 검증
+
+- 전체 프로젝트 테스트 `191개` 통과.
+- 실제 Playwright UI 감사 통과.
+- 이벤트 범위가 다른 selected 신호 제외, 타 이벤트 InsightBrief 차단,
+  오래된 캐시 무효화, 오염 결과 승인 차단 테스트 통과.
+
+### 다음 핵심 작업
+
+1. 대표 5개 이벤트부터 이벤트별 신호를 수집·검수한다.
+2. 이벤트당 selected 신호 3개 이상으로 전용 InsightBrief를 만든다.
+3. 해당 5건만 재생성해 `이벤트 전용 근거 5/5`를 먼저 확인한다.
+4. 이후 20건으로 확장하고 카피 사람 검수를 재개한다.
+
+## 현재 상태 업데이트 (2026-06-30, 검수 이어하기·피드백 품질 게이트)
+
+- 메인 광고 기획 검수 데스크에 영구 진행률을 추가했다.
+  - 카피 검수 `5/20`
+  - 전략 검수 `0/30`
+  - 실제 문구 교정 `0/1`
+- `카피 검수 이어하기` 버튼으로 첫 미검수 이벤트에 바로 이동한다.
+- 전략 또는 카피 저장 후 다음 미검수 카드로 자동 이동한다.
+- 새로고침하거나 서버를 다시 열어도 진행률은 실제 저장된 검수 데이터를
+  기준으로 다시 계산되므로 별도 세션 상태가 유실되지 않는다.
+- 학습 가치가 없는 빈 피드백 저장을 차단했다.
+  - 전략 `selected / shortlist / rejected`: 사유 태그 1개 이상과 구체 메모 필수.
+  - 카피 승인/수정 요청: 사유 태그 1개 이상과 구체 메모 필수.
+  - 이벤트 run 검수와 20건 벤치마크 검수 모두 동일 정책.
+  - 전략 CSV도 `검증` 단계에서 사유 태그/메모 누락을 먼저 차단.
+- 검증 실패는 카피 결과 파일을 수정하기 전에 발생해 부분 저장을 막는다.
+- 현재 사람 검수 수치는 자동으로 변경하지 않았다.
+- 콘솔 서버: PID `36660`, `http://127.0.0.1:5177/`.
+
+### 검증
+
+- 전체 프로젝트 테스트 `185개` 통과.
+- 실제 콘솔 Playwright UI 감사 통과.
+- 1280px 가로 넘침 0, 검수 진입 버튼과 진행률 노출 확인.
+
+## 현재 상태 업데이트 (2026-06-28, 교정 학습 실증 감사)
+
+- 사람이 수정한 카피가 다음 로컬 생성에 실제 반영되는지 확인하는 독립 감사를 추가했다.
+- 콘솔 광고 기획 검수 데스크에 `교정 학습 확인` 버튼과 상태 요약을 추가했다.
+  - `수정 데이터 필요`: 승인된 실제 수정문이 아직 없음.
+  - `적용 확인 대기`: 수정문은 있으나 새 생성 적용 검증 전.
+  - `학습 연결 통과`: 같은 이벤트를 새로 생성했을 때 교정 ID 적용 확인.
+  - `적용 확인 필요`: 이벤트·채널·원문 일치 조건 때문에 일부 교정 미적용.
+- 감사 스크립트:
+  - `scripts/audit_copy_correction_loop.py --verify-application`
+  - 결과: `.tmp/model-benchmarks/copy-correction-loop-audit.json`
+- 단순 승인본은 학습 수정으로 세지 않는다. `originalCopy != editedCopy`인 승인
+  레코드만 이벤트·채널별 최신 교정으로 검사한다.
+- 현재 실데이터 결과는 `needs_human_correction`이다.
+  - 저장 교정 `0`
+  - 승인된 실제 수정 `0`
+  - 이는 기능 실패가 아니라 아직 사람이 문구를 고쳐 저장하지 않은 상태다.
+- 콘솔 서버를 새 코드로 재시작했다: PID `24048`, `http://127.0.0.1:5177/`.
+
+### 검증
+
+- 전체 프로젝트 테스트 `183개` 통과.
+- 실제 콘솔 Playwright UI 감사 통과.
+- 교정 감사 버튼/요약 노출, 가로 넘침 0 확인.
+
+## 현재 체크포인트 (2026-06-28, 인수인계)
+
+- 활성 목표: 화장품 고정 평가 이벤트 20건에서 치명 오류 0건, 사람 평가 평균 4.0 이상, 무수정 승인율 50% 이상 달성.
+- 자동 생성 연결 상태:
+  - 콘셉트 3안 `20/20`
+  - 채널별 카피 패키지 `20/20`
+  - 콘셉트 차별성 통과 `20/20`
+  - 근거 연결 통과 `20/20`
+  - 치명 오류 `0`
+- 사람 검수 상태:
+  - 카피 평가 `5/20`
+  - 전략 `selected + shortlist 0/30`
+  - 실제 `CopyCorrectionRecord` `0건`
+- 따라서 목표 감사는 아직 `fail`이 정상이다. 남은 blocker는
+  `STRATEGY_REVIEW_BELOW_30`, `PILOT_HUMAN_REVIEWS_INCOMPLETE`다.
+- 콘솔 `http://127.0.0.1:5177/` 응답 `200` 확인.
+- 마지막 검증:
+  - 전체 테스트 `177개` 통과
+  - Playwright UI 감사 통과
+  - 1280px 가로 넘침, raw JSON, A/B 카드, 개발자 상태값 노출 없음
+
+### 바로 이어서 할 일
+
+1. 콘솔 `전략 검수 시작`에서 추천 상위 전략을 확인하고 `selected / shortlist` 합계 30건을 사람 판정으로 저장한다.
+2. 이벤트 기획 검수 큐에서 남은 카피 15건을 직접 수정 또는 승인한다.
+3. 최소 1건을 실제 수정 저장해 `CopyCorrectionRecord`를 만든다.
+4. 같은 이벤트를 재생성하고 `correctionSearch.appliedIds` 반영을 확인한다.
+5. `scripts/audit_cosmetics_pilot_goal.py --limit 20`을 다시 실행한다.
+
+상세 구현과 파일별 변경은 `knowledge/09_HANDOFF.md`의 최신 인수인계 및
+`C:\Users\jinkiwon\AppData\Local\Temp\codex-handoff-cosmetics-ad-planning-2026-06-28.md`를 따른다.
+
+## 현재 상태 업데이트 (2026-06-28, 전략 30건 집중 검수 UX)
+
+- 전략 검수 `0/30` 병목을 빠르게 처리하도록 콘솔을 개선했다.
+- 메인 광고 기획 검수 데스크에 `전략 검수 시작` 버튼을 추가했다.
+  - 클릭하면 고급 데이터 검수 영역을 열고 전략 집중 큐로 이동한다.
+- 전략 검수 큐는 추천 점수 높은 3건씩 표시한다.
+  - 저장 후 다음 미검수 전략이 자동으로 앞으로 온다.
+- 각 카드에서 광고 원문 미리보기와 추상 전략을 나란히 비교한다.
+  - 원문, 추상 훅, 설득 순서, 타깃 인사이트를 한 화면에서 확인.
+- `추천대로 생성 예시 후보/참고 후보/거절 후보 저장` 버튼을 추가했다.
+  - 확인창에서 사람이 명시적으로 승인해야 저장된다.
+  - 추천 전략 필드, 루브릭 점수, 사유 태그, 검수 메모가 함께 반영된다.
+  - 자동 selected 승격 정책은 여전히 금지다.
+- CSV 검수 경로도 그대로 유지한다.
+
+### 검증
+
+- 실제 UI에서 전략 카드 3개, 추천 판정 버튼 3개, 메인 진입 버튼 1개 확인.
+- 가로 넘침 0.
+- 전체 테스트 177개 통과.
+- Playwright UI 감사 통과.
+
+## 현재 상태 업데이트 (2026-06-28, 로컬 교정 학습 루프 연결)
+
+- `CopyCorrectionRecord`가 저장만 되고 로컬 생성에는 쓰이지 않던 빈칸을 수정했다.
+- 로컬 결정론적 카피 생성기도 승인된 교정 데이터를 검색한다.
+  - 업종과 브랜드를 기준으로 격리 검색.
+  - 브랜드가 없는 생성은 다른 브랜드 교정을 가져오지 않는다.
+  - 벤치마크는 `benchmark_cosmetics` 브랜드로 별도 격리.
+- 직접 문구 재사용 정책:
+  - 같은 이벤트·같은 채널이고 현재 생성 필드가 저장된 원문과 정확히 일치할 때만 승인 수정문을 재적용한다.
+  - 다른 이벤트의 수정문은 직접 복사하지 않는다.
+  - 결과에 `correctionSearch`, `correctionExampleIds`를 기록해 어떤 교정이 적용됐는지 추적한다.
+- 외부 모델 경로는 기존처럼 승인 교정 예시를 구조화 입력에 포함한다.
+- 테스트에서 같은 이벤트 수정문 재적용과 다른 이벤트 직접 복사 차단을 확인했다.
+
+### 검증
+
+- `.venv\Scripts\python.exe scripts\run_project_tests.py` 통과: 176 tests.
+- Playwright 콘솔 UI 감사 통과.
+
+## 현재 상태 업데이트 (2026-06-28, 카피 집중 검수·교정 데이터 저장)
+
+- 20건 벤치마크 카피를 콘솔에서 직접 수정할 수 있게 했다.
+  - 채널별 `헤드라인`, `첫 문장`, `본문`, `CTA`, 슬라이드 문장을 사람이 읽는 필드로 수정한다.
+  - raw JSON 편집은 사용하지 않는다.
+- 벤치마크 검수 저장 시 다음이 함께 처리된다.
+  - 수정문을 `.tmp/model-benchmarks/cosmetics-external-results.json`에 반영.
+  - 생성 원문은 각 출력의 `generatedCopy`로 보존.
+  - 사람 점수, 승인 여부, 사유 태그, 메모, edits를 human review에 저장.
+  - 채널별 `CopyCorrectionRecord`를 `design_brain_wiki/ad_strategy/copy-corrections.json`에 저장.
+  - 같은 교정 ID를 다시 저장하면 중복 추가하지 않고 최신 승인 상태로 갱신.
+- 최종 승인 조건을 강화했다.
+  - 사람 루브릭 평균 4.0 미만이면 승인 불가.
+  - QA issue가 남아 있으면 승인 불가.
+- 이벤트 기획 검수 데스크는 미검수 3건씩 집중 표시한다.
+  - 저장하면 다음 미검수 이벤트가 자동으로 앞으로 온다.
+  - 완료 건은 최근 3건을 접이식으로 다시 볼 수 있다.
+- Playwright UI 감사의 오래된 셀렉터를 실제 클래스명으로 수정했다.
+  - 기획 카드, 콘셉트 카드, 카피 카드, 수정 필드, 검수 폼을 실제 DOM에서 검사한다.
+
+### 실제 UI 감사 결과
+
+- 기획 검수 카드 `3`
+- 콘셉트 카드 `9`
+- 카피 카드 `16`
+- 카피 수정 필드 `200`
+- 검수 폼 `3`
+- 가로 넘침 `0`
+- raw JSON/A-B/개발자 용어 노출 `0`
+
+### 현재 남은 사람 작업
+
+1. 집중 검수 큐에서 미평가 카피 15건을 수정 또는 승인한다.
+2. 고급 데이터 검수에서 전략 30건을 `selected / shortlist`로 저장한다.
+3. 20건 사람 평가가 끝난 뒤 파일럿 목표 감사를 다시 실행한다.
+
+### 검증
+
+- `.venv\Scripts\python.exe scripts\run_project_tests.py` 통과: 175 tests.
+- `.venv\Scripts\python.exe scripts\audit_console_ui_playwright.py --url http://127.0.0.1:5177/ --timeout-ms 20000` 통과.
+- 콘솔 서버 `http://127.0.0.1:5177/` 실행 중.
+
+## 현재 상태 업데이트 (2026-06-21, 20건 카피 연결 확인 완료)
+
+- 화장품 평가셋 20건 전체가 카피 패키지 생성까지 완료됐다.
+  - 결과 상태: `complete 20/20`
+  - `candidateReady 20/20`, `copyReady 20/20`, `humanReviewed 5/20`
+  - 완료 20건 기준 `criticalErrorCount 0`
+- 남아 있던 15건의 콘셉트 선택은 `connection_check_default`로 기록했다.
+  - 이는 연결 확인용 기본 콘셉트 선택이며 사람 선호나 최종 승인으로 보지 않는다.
+  - 사람 평가와 최종 승인은 여전히 별도 검수에서 저장해야 한다.
+- 콘솔에 `선택 대기 카피 연결 확인` 버튼을 추가했다.
+  - `scripts/run_ad_planning_pilot.py --limit 20 --select-pending-concepts`를 실행하는 흐름이다.
+  - 자동 승인은 하지 않고, 카피 생성 연결만 확인한다.
+- 독립 파일럿 감사는 아직 `fail`이 정상이다.
+  - 이유: 사람 평가가 5/20이라 `PILOT_HUMAN_REVIEWS_INCOMPLETE`가 남아 있다.
+  - 전략 검수도 아직 0/30이라 `STRATEGY_REVIEW_BELOW_30`가 남아 있다.
+
+### 검증
+
+- `.venv\Scripts\python.exe scripts\run_ad_planning_pilot.py --limit 20 --select-pending-concepts` 실행.
+- `.venv\Scripts\python.exe scripts\audit_cosmetics_pilot_goal.py --limit 20` 결과: `copyReady 20`, `criticalErrorCount 0`, `humanReviewed 5`, status `fail`.
+- `.venv\Scripts\python.exe scripts\run_project_tests.py` 통과: 172 tests.
+- `.venv\Scripts\python.exe scripts\audit_console_ui_playwright.py --url http://127.0.0.1:5177/ --timeout-ms 20000` 통과.
+
+## 현재 상태 업데이트 (2026-06-20, 전략 검수 추천 초안 + 20건 콘셉트 확장)
+
+- 화장품 고정 평가셋 20건 전체에 대해 콘셉트 후보 3안을 생성했다.
+  - 결과 상태: `concept_review_pending 15건`, `complete 5건`.
+  - `candidateReady 20/20`, `copyReady 5/20`, `humanReviewed 5/20`.
+  - 현재 치명 오류는 완료 5건 기준 `0`.
+- 전략 검수 병목을 줄이기 위해 46개 레거시 Meta 전략에 `reviewRecommendation` 초안을 붙였다.
+  - 자동으로 `selected`를 저장하지 않는다. 사람 검수 기준을 속이지 않기 위해 추천은 입력 보조로만 쓴다.
+  - 추천 초안에는 `suggestedDecision`, 추천 점수, 추천 사유, 위험 플래그, 추천 전략 필드, 추천 루브릭 점수, 추천 reason tag가 포함된다.
+- 전략 CSV 내보내기 30건에 추천 컬럼을 추가했다.
+  - `suggestedDecision`, `recommendationScore`, `recommendationReasons`, `recommendationRisks`.
+  - 빈 전략 필드와 점수 칸은 추천 초안으로 미리 채워 사람이 빠르게 검수할 수 있다.
+- 콘솔 고급 데이터 검수 섹션을 개선했다.
+  - 추천 점수 높은 검수 대기 전략 12개를 먼저 보여준다.
+  - `추천값 입력칸에 채우기` 버튼을 추가했다.
+  - 최종 승격은 여전히 사람이 `선택 / 참고 / 거절`을 눌러야 저장된다.
+- 이벤트 기획 검수 데스크는 더 이상 5건만 자르지 않고 선택 대기/카피 검수 대기 전체를 우선순위로 보여준다.
+
+### 현재 남은 blocker
+
+1. `STRATEGY_REVIEW_BELOW_30`: 추천 초안은 준비됐지만 실제 selected/shortlist 저장은 아직 0/30이다.
+2. `PILOT_HUMAN_REVIEWS_INCOMPLETE`: 20건 중 15건은 콘셉트 선택과 카피 검수가 남아 있다.
+
+### 검증
+
+- `.venv\Scripts\python.exe scripts\run_ad_planning_pilot.py --limit 20` 실행.
+- `.venv\Scripts\python.exe scripts\run_project_tests.py` 통과: 170 tests.
+- `node --check ui\console\app.js` 통과.
+- `.venv\Scripts\python.exe scripts\audit_console_ui_playwright.py --url http://127.0.0.1:5177/ --timeout-ms 20000` 통과.
+
+## 현재 상태 업데이트 (2026-06-20, 화장품 파일럿 5건 품질 감사 정렬)
+
+- 화장품 광고 기획 파일럿 5건은 현재 `candidateReady 5/5`, `copyReady 5/5`, `humanReviewed 5/5`, `criticalErrorCount 0`, `averageHumanScore 4.0`, `unchangedApprovalRate 1.0`으로 통과 상태다.
+- 벤치마크 요약과 파일럿 목표 감사의 기준을 맞췄다. 이제 내부 `scorecard.criticalErrorCount`가 남아 있으면 파일럿 감사도 실패한다.
+- 콘셉트 단계 비평기가 아직 생성되지 않은 카피/채널을 검사해 `concept_critic_channel_mismatch`를 치명 오류로 남기던 문제를 수정했다.
+- 오래된 캐시가 깨진 한글, JSON/구조 노출, 근거 부족, scorecard 치명 오류를 포함하면 자동 재생성 대상으로 본다.
+- 전체 테스트 `scripts/run_project_tests.py` 170개 통과, `node --check ui\console\app.js` 통과, Playwright 콘솔 UI 감사 통과.
+
+### 바로 다음 작업
+
+1. 전략 검수 `selected / shortlist`를 30개 이상으로 올린다. 현재 파일럿의 주요 blocker는 `STRATEGY_REVIEW_BELOW_30`이다.
+2. 화장품 평가셋을 5건에서 20건으로 확장해 같은 감사 기준을 적용한다.
+3. HSGN/경쟁/트렌드/계절 신호를 더 모아 이벤트당 근거 신호 수를 늘린다.
+4. 사람이 실제로 수정한 카피 쌍을 누적해 다음 생성의 교정 예시로 연결한다.
+
+## 현재 상태 업데이트 (2026-06-20, 공개 마케팅 신호 수집 UI 연결)
+
+- 광고 기획 품질 목표를 문구 생성이 아니라 `근거 신호 수집 -> 사람 검수 -> InsightBrief -> 콘셉트/카피 생성` 흐름으로 정리했다.
+- 콘솔 `마케팅 신호 검수` 영역에 공개 관찰 도구를 추가했다.
+  - `Snapshot 가져오기`: `assets/rules/hsgn-public-marketing-snapshot.json` 같은 공개 관찰 묶음을 검수 대기 신호로 가져온다.
+  - `URL 캡처`: 브랜드/공개 페이지 URL을 입력하면 Playwright 기반 공개 페이지 텍스트를 추상화해 마케팅 신호 snapshot으로 저장하고 검수 CSV까지 갱신한다.
+- 서버 job 모드에 `public_capture`를 추가했다. 실행 시 `scripts/collect_marketing_signals.py --capture-url ... --source-kind ... --snapshot-output .tmp/marketing-signals/public-capture-latest.json --export-review`로 동작한다.
+- `--capture-url` 반복 입력과 `--capture-urls-file`을 지원해 공개 URL 여러 개를 한 번에 신호화할 수 있다.
+- 공개 URL 캡처 QA를 보강했다.
+  - HTML/JSON 조각, 깨진 텍스트, 너무 짧은 관찰은 `capture_quality_blocked`로 표시한다.
+  - `capture_quality_blocked` 신호는 `auto_select`가 켜져도 자동 selected로 승격하지 않는다.
+  - 사람이 selected로 바꾸더라도 InsightBrief에서는 blocked risk flag가 있는 신호를 제외한다.
+- 검수 저장 정책을 강화했다.
+  - 콘솔 버튼 또는 CSV import에서 `capture_quality_blocked` 신호를 selected로 저장하려 하면 자동으로 `shortlist`로 낮춘다.
+  - reason tag에 `capture_quality_blocked`를 붙이고, 검수 메모에 “selected 대신 보류” 사유를 남긴다.
+  - 콘솔 요약에 `사용 가능` selected 수와 `품질 차단` 신호 수를 별도 표시한다.
+  - InsightBrief 버튼과 상태 문구는 selected 전체 수가 아니라 `selectedUsable` 기준으로 열린다.
+- 차단 신호 정제 흐름을 추가했다.
+  - 마케팅 신호 카드에서 `관찰 요약`, `타깃 정의`, `기획 인사이트`를 사람이 직접 정제해 저장할 수 있다.
+  - 정제 저장 후 품질 차단 문제가 사라지면 `capture_quality_blocked` 계열 flag를 제거하고 `human_cleaned_public_signal`로 표시한다.
+  - 정제된 신호는 다시 selected로 승격되어 `selectedUsable`에 포함될 수 있다.
+- 마케팅 신호 -> InsightBrief -> 02 기획 산출물 연결 감사를 추가했다.
+  - `scripts/audit_marketing_planning_loop.py --run <run> --minimum-signals 5`
+  - 결과: `.tmp/model-benchmarks/marketing-planning-loop-audit.json`
+  - HSGN run 감사 결과 `pass`: selectedUsable 16, InsightBrief ready, scorecard pass, criticalErrorCount 0, averageScore 4.0.
+  - 콘셉트 3안과 카피 산출물 4개 모두 marketingSignalIds를 포함한다.
+- 콘솔에서 `근거 연결 감사` 버튼으로 위 감사를 job으로 실행할 수 있게 했다.
+  - API: `POST /api/marketing-planning-loop/audit`
+  - job label: `marketing planning loop audit <minimumSignals>`
+  - Playwright 감사가 버튼 노출을 확인한다.
+- 최신 근거 연결 감사 결과를 콘솔 광고 기획 검수 패널에 바로 표시한다.
+  - bootstrap과 `GET /api/marketing-planning-loop/audit`가 `.tmp/model-benchmarks/marketing-planning-loop-audit.json`을 반환한다.
+  - 표시 항목: 사용 가능 신호, 평균 점수, 치명 오류, 콘셉트 연결 수, 카피 연결 수.
+- 콘솔 UI 감사 기준:
+  - 1280px 화면에서 가로 넘침 없음.
+  - 메인 화면에 raw JSON, A/B 비교, 개발자 상태값 노출 없음.
+  - 마케팅 신호 job 버튼 6개 노출 확인.
+- 검증:
+  - `node --check ui\console\app.js` 통과.
+  - `python -m unittest tests.test_ad_planning_engine tests.test_ad_planning_upgrade tests.test_ad_planning_quality_gate tests.test_public_marketing_signal_collector tests.test_marketing_intelligence_console tests.test_marketing_intelligence_signals tests.test_marketing_insight_brief tests.test_console_ui_playwright_audit tests.test_marketing_planning_loop_audit tests.test_ad_planning_pilot_runner` => 79개 통과.
+  - `scripts\audit_console_ui_playwright.py --url http://127.0.0.1:5177/ --timeout-ms 20000` => pass.
+
+### 다음 작업
+
+1. HSGN 기준 공개 URL 5~10개를 캡처해 `unreviewed` 신호를 늘린다.
+2. 콘솔에서 공개 신호를 `selected / shortlist / rejected`로 검수한다.
+3. selected 신호 3개 이상으로 `InsightBrief`를 재생성한다.
+4. HSGN 이벤트 5건을 다시 02단계까지 실행해 콘셉트 3안의 근거 분리와 최종 카피 설득력을 비교한다.
+5. 공개 URL 캡처 결과에서 원문 복붙, 허위 주장, 깨진 텍스트가 들어오지 않는지 QA 항목을 더 세분화한다.
+
 ## 현재 상태 업데이트 (2026-06-20, Claude Code 전환 + 취향 모델 이미지 학습 루프)
 
 - Codex→Claude Code 전환. 점검·실행은 메인 폴더+메인 venv에서만(worktree는 코드만).
@@ -1539,3 +2182,237 @@ ComfyUI 노드/워크플로    -> 08_COMFYUI_NOTES.md
 1. 콘솔에서 공개 관찰 신호 5개를 selected/shortlist/rejected로 검수한다.
 2. selected 공개 신호를 포함해 HSGN InsightBrief를 재생성하고 카피 품질 변화를 비교한다.
 3. Playwright `--capture-url`을 실제 공개 브랜드/상품/트렌드 페이지에 적용해 snapshot을 자동 생성하는 job UI를 붙인다.
+# 현재 상태 업데이트 (2026-06-22, 공유 repo 수집기 범위 확장)
+
+- `pinterest-playwright-collector/` 공유 repo에 원래 프로젝트의 추가 Pinterest/Playwright/Meta 수집 도구를 확장 반영했다.
+  - 추가 커밋: `cd72716 Add Meta and expanded Playwright collectors`
+  - GitHub push 완료: `https://github.com/kiwonjin-hash/kiwon.git`
+- 추가 포함:
+  - Pinterest 검색 학습 수집: `scripts/collect_reference_learning_1000.py`
+  - Meta Ad Library Playwright 수집: `scripts/collect_meta_ads.py`, `services/ad_reference/meta_collector.py`
+  - Meta query benchmark, brand registry batch 수집, source-mix 수집 보조
+  - `assets/rules/meta-brand-registry.json`
+  - `meta_collect.bat`, `meta_brand_registry_collect.bat`
+  - `docs/INVENTORY.md`에 포함/제외 범위 정리
+- 제외 범위:
+  - 메인 이벤트 workflow, 콘솔 UI Playwright 감사, ComfyUI workflow, 원 프로젝트 wiki/run 구조에 묶인 학습 세션 생성 스크립트.
+- 검증:
+  - 공유 repo의 Pinterest/Meta 관련 Python 수집 스크립트 전체 `py_compile` 통과.
+
+# 현재 상태 업데이트 (2026-06-22, Pinterest Playwright 수집기 분리)
+
+- Pinterest/Playwright 기반 이미지 수집기를 공유용 독립 저장소로 추출했다.
+  - 위치: `pinterest-playwright-collector/`
+  - 별도 git 저장소 초기화 완료.
+  - 초기 커밋: `f8eb967 Initial Pinterest Playwright collector`
+- 포함 범위:
+  - Playwright 기반 Pinterest board/search/pin 이미지 수집기
+  - Pinterest 로그인 세션 저장/확인 스크립트
+  - Chrome remote debugging 기반 세션 저장 배치
+  - gallery-dl original download 보조 모드
+  - Windows 설치/실행 배치와 README
+- 메인 이벤트 자동화 파이프라인 의존성은 제거하고, `reference_collect.bat` 중심의 standalone 실행 흐름으로 정리했다.
+- 검증:
+  - `python -m py_compile scripts\collect_references.py scripts\collect_references_easy.py scripts\pinterest_login.py scripts\save_pinterest_session_from_chrome.py scripts\check_pinterest_session.py scripts\collect_pinterest_originals.py services\reference_collector\pinterest.py` 통과.
+## 2026-07-01 - 제품 공식 근거 입력 경로 구현
+
+- 화장품 파일럿 5건의 공개 근거 후보 15건은 수집 완료됐지만 아직 모두 `unreviewed`다.
+- 기존 제품 라이브러리의 `hydrating_serum`, `hsgn_niacinamide`는 `launch-serum` 탄력 세럼의 공식 근거가 아니므로 재사용하지 않았다.
+- 콘솔의 이벤트 근거 검수 화면에 `공식 제품 근거 추가` 폼을 구현했다.
+  - 브랜드 공식 페이지: HTTPS URL 필수
+  - 내부 자료: 확인 가능한 문서 번호 필수
+  - 확인된 사실, 기획 해석, 대상 고객, 주장 제한, 확인 방법 필수
+  - 확인된 사실에 없는 수치를 기획 해석에 추가하면 저장 차단
+- 저장된 제품 근거는 `proof` 후보이자 `unreviewed`로만 들어가며, 사람 검수 전에는 InsightBrief와 카피 생성 근거로 쓰이지 않는다.
+- 전체 자동 테스트 206개 및 JavaScript 문법 검사 통과.
+- 라이브 콘솔 UI 감사 통과. 탄력 세럼 이벤트에서 제품 근거 폼 표시, 빈 입력 한국어 차단, 1280px 가로 넘침 0건, 가짜 제품 근거 저장 0건을 확인했다.
+- 콘솔 서버: `http://127.0.0.1:5177/`, 현재 재시작 PID 32696.
+
+### 현재 실제 막힘
+
+1. 대표 5건의 근거 후보 15건을 사람이 선택/보류/거절해야 한다.
+2. `신제품 탄력 세럼 출시`는 실제 공식 성분·사용법·시험 자료 또는 검증된 내부 문서가 아직 없어 제품 근거가 비어 있다.
+3. 위 두 항목이 끝나기 전에는 전용 InsightBrief와 최종 카피 재생성을 진행하지 않는다.
+
+### 다음 작업
+
+1. 콘솔에서 각 이벤트의 `수집·검수 시작`을 눌러 후보를 읽고 `후보 3개 검수안 확인`을 확정한다.
+2. `신제품 탄력 세럼 출시`에서 실제 공식 제품 자료를 입력하고 생성된 제품 근거 후보를 검수한다.
+3. 5건 모두 근거 준비 완료가 되면 이벤트별 InsightBrief를 만들고 카피를 재생성한다.
+4. 5건 품질 감사 후 목표 통과 시 20건으로 확장한다.
+## 2026-07-02 - 장마철 이벤트 근거→콘셉트 연결 완료
+
+- 대표 5건 중 `장마철 수분 장벽 리셋`의 공개 근거 3건이 사람 선택 완료 상태임을 확인했다.
+- 이벤트 전용 InsightBrief를 생성했다.
+  - 상태: `ready`
+  - 선택 신호: 3개
+  - 근거 역할: 고객 문제 / 시기 명분 / 시장 흐름
+  - 다른 이벤트 신호 혼입: 0건
+- InsightBrief에 `evidenceDetails`를 추가해 근거 유형, 타깃 상황, 추상 인사이트, 출처, 확인일, 주장 제한을 구조적으로 전달한다.
+- 장마철 콘셉트 3안을 새 근거로 재생성했다.
+  - 불편의 원인을 다시 보는 루틴
+  - 복잡함을 덜어낸 선택 기준
+  - 지금 계절에 맞춘 리셋 타이밍
+- 3안이 추천안으로 표시되지만 자동 선택하지 않는다. 사람 선택 전 카피 생성은 계속 차단된다.
+- 기존 `connection_test` 평가는 최종 사람 평가에서 제외했다. 현재 공식 사람 평가 수는 0건이다.
+- 근거 검수가 완료되면 InsightBrief와 콘셉트 3안을 자동 갱신한다.
+- 근거가 다시 부족해지면 기존 콘셉트 선택과 카피를 즉시 무효화한다.
+- 메인 화면 행동은 `기획 검수 시작`, `기획안 최신화` 두 개로 단순화했다.
+- 라이브 UI 감사 통과: 추천 이유·주의사항·출처 표시, 선택 버튼 3개, 카피 카드 0개, 1280px 가로 넘침 0건.
+- 콘솔 서버: `http://127.0.0.1:5177/`, PID 10652.
+
+### 현재 다음 작업
+
+1. 장마철 이벤트의 추천 3안을 포함해 콘셉트 하나를 사람이 선택한다.
+2. 나머지 대표 4건의 근거 후보 12건을 사람 검수한다.
+3. 탄력 세럼은 공식 제품 proof를 추가 검수해야 준비 완료가 된다.
+4. 선택 후 생성되는 채널 카피를 사람이 채점·수정·승인한다.
+
+## 2026-07-02 - 최신 인수인계 체크포인트
+
+- 활성 목표는 계속 진행 중이다.
+  - 화장품 고정 평가 20건
+  - 치명 오류 0건
+  - 사람 평가 평균 4.0/5 이상
+  - 무수정 승인율 50% 이상
+- 외부 OpenAI API는 사용하지 않는다. Codex의
+  `ad-planning-copy-engine` 스킬과 로컬 결정론적 엔진을 사용한다.
+- 근거 후보 카드에 추천 판정, 추천 이유, 자료 한계를 추가했다.
+  - 오래된 연구, 해외 조사, 단면 연구, 전문가 인터뷰, 공개 카테고리
+    자료의 한계를 구분한다.
+  - 빠른 검수안은 필수 근거 역할별 최고 점수만 `selected`로 제안하고
+    중복 역할 후보는 `shortlist`로 제안한다.
+  - 추천은 자동 저장 또는 자동 콘셉트 선택이 아니다.
+- 실제 근거 큐:
+  - 대표 5건 중 준비 완료 `1/5`
+  - 장마철 `selected 3`, 전용 InsightBrief와 콘셉트 3안 생성 완료
+  - 프로모션·교육은 후보 각 3개 검수 대기
+  - 브랜딩은 후보 4개 검수 대기
+  - 탄력 세럼은 후보 3개와 별개로 제품 공식 proof가 부족
+- 전체 저장 신호는 `134개`다. 저장소 전체의 selected 수에는 과거 HSGN
+  데이터가 섞여 있으므로 파일럿 진행률로 해석하지 않는다.
+- 최종 사람 카피 평가는 `0건`이다. 과거 `connection_test` 기록은 공식
+  평가에서 제외한다.
+
+### 다음 작업 전 필수 수정
+
+근거 계획의 대표 5건과 일부 파일럿 스크립트가 고르는 첫 5건이 다르다.
+
+- 올바른 대표 5건:
+  `season-monsoon-barrier`, `promotion-gift`, `launch-serum`,
+  `education-barrier`, `branding-minimal`
+- 현재 데이터셋 첫 5건:
+  장마철, 여름 브라이트닝, 겨울 건조, 봄 민감, 증정 프로모션
+
+`audit_cosmetics_pilot_goal.py`, `export_ad_planning_review_packet.py`,
+`run_ad_planning_pilot.py`가 모두 근거 계획의 priority 1 목록을 공통으로
+사용하도록 먼저 통일한다. 이 수정 전에는 5건 목표 감사 결과를 최종
+판정으로 사용하지 않는다.
+
+### 다음 실행 순서
+
+1. 공통 대표 파일럿 선택기를 구현하고 관련 테스트를 추가한다.
+2. 전체 테스트와 Playwright 콘솔 감사를 다시 실행한다.
+3. 콘솔 서버를 최신 코드로 재시작한다.
+4. 장마철 추천 콘셉트는 사람이 직접 선택한다.
+5. 나머지 대표 4건의 근거를 사람이 확정한다.
+6. 대표 5건의 카피를 생성·수정·승인한 뒤 목표 감사를 실행한다.
+
+## 2026-07-05 - 카피 생성·비평 품질 보완 완료
+
+- 위의 공통 대표 파일럿 선택기와 이벤트 전용 근거 게이트는 구현 완료됐다.
+- 로컬 카피 생성은 Python 딕셔너리 길이가 아니라 화면에 보이는 실제 문장
+  길이를 `characterCount`로 기록한다.
+- 카드뉴스 전환 문구는 다음 슬라이드 제목을 사용해 같은 문장을 반복하지
+  않는다.
+- 제품명이 모음으로 끝나도 `토너를`, `토너와`, `토너는`처럼 자연스러운
+  조사를 사용한다.
+- 실제 생성 경로와 벤치마크 경로가 동일한 근거 기반 로컬 비평기를 사용한다.
+- 약한 제품 연결, 근거 누락, 채널 재사용, 반복 문장, 조사 오류, 과도한
+  질문형은 관련 루브릭을 낮추고 `revise`로 차단한다.
+- 전체 unittest `231개`와 라이브 Playwright 콘솔 감사가 통과했다.
+- 서버는 `http://127.0.0.1:5177/`에서 최신 코드로 실행 중이다.
+
+### 현재 사람 작업
+
+1. `장마철 수분 장벽 리셋`의 콘셉트 3안 중 하나를 선택한다.
+2. 생성된 채널별 카피를 수정 또는 승인한다.
+3. 프로모션·신제품·교육·브랜딩 대표 4건의 이벤트 전용 근거를 검수한다.
+4. 대표 5건의 사람 평가가 끝난 뒤 목표 감사를 다시 실행한다.
+
+## 2026-07-12 - 광고 기획 통합 검증 게이트 추가
+
+- 검수 준비용 통합 스키마를 추가했다.
+  - `core/schemas/ad-planning-output.schema.json`
+- 누락되어 있던 검증 명령을 구현했다.
+  - `python scripts/validate_ad_planning_output.py <json-file>`
+  - `python scripts/validate_ad_planning_output.py --run-dir runs/<run-id>`
+- 검증 항목:
+  - `needs_input → 콘셉트 선택 → 카피 검수 → 승인` 상태 전이
+  - 콘셉트 정확히 3안과 쌍별 전략 차이 2개 이상
+  - 사람 선택 ID와 카피 패키지 선택 ID 일치
+  - 요청하지 않은 채널 및 채널 중복 차단
+  - 화면 표시 문자열 기준 글자 수 일치
+  - 깨진 한글·JSON·HTML·프로그래밍 구조 차단
+  - 승인 시 경고 0, 치명 오류 0, 평균 4.0 이상, 사람 승인 기록
+- `02_content_planning` 단계 승인은 위 통합 검증을 추가로 통과해야 한다.
+- 전체 unittest `237개`, Playwright 라이브 UI 감사 `pass`.
+- 현재 실제 목표 감사는 변함없이 `candidate 1/5`, `copy 0/5`, 사람 평가
+  `0/5`, 치명 오류 `0`이다.
+
+### 현재 다음 작업
+
+1. 장마철 콘셉트 1개를 사람이 선택한다.
+2. 생성 카피를 수정 또는 승인한다.
+3. 나머지 4건의 이벤트 전용 근거를 사람이 검수한다.
+
+## 2026-07-12 - 메인 화면 영어 운영 문구 제거
+
+- 실제 인앱 브라우저에서 상단 파이프라인과 최근 작업을 다시 확인했다.
+- 광고 기획 카드 밖에 남아 있던 `Brief`, `Plan`, `References`,
+  `Candidates`, `Selection`, `QA`, `Archive`를 한국어 단계명으로 교체했다.
+- `Continue Plan`, `Generate and select image candidates`,
+  `Review selected references`, `Build output package` 같은 다음 작업 문구도
+  사람이 바로 이해할 수 있는 한국어 행동 문장으로 바꿨다.
+- 사용자 화면의 `QA Evidence`, `qa-checklist.json` 표기도 각각 품질 검사
+  근거와 품질 검사 항목으로 정리했다.
+- Playwright 감사가 메인 화면의 영어 운영 문구를 별도 실패 조건으로
+  검사한다.
+- 전체 unittest `238개`, 라이브 Playwright 감사 `pass`.
+- 실제 브라우저 재확인 결과 금지 영어 운영 문구 `0건`.
+
+## 2026-07-12 - 메인 검수 행동을 한 건으로 축소
+
+- 광고 기획 검수 데스크 상단에 `지금 할 일 1개` 카드를 추가했다.
+- 현재 우선 행동은 `장마철 수분 장벽 리셋 콘셉트 선택`이다.
+- 버튼 `콘셉트 3안 보러 가기`가 바로 이벤트 기획 검수 카드로 이동한다.
+- 상태가 바뀌면 같은 자리가 자동으로 다음 행동을 표시한다.
+  - 콘셉트 선택
+  - 최종 채널 문구 검수
+  - 이벤트 근거 검수
+  - 기획안 품질 보완
+- 전체 진행률, 파일럿 목표 감사, 근거 연결 감사, 교정 학습 감사는
+  `전체 진행률과 목표·학습 진단 보기` 아래 기본 접힘 상태로 이동했다.
+- Playwright 감사는 숨겨진 복제 패널을 제외하고 실제 보이는 핵심 행동이
+  정확히 1개인지 검사한다.
+- 전체 unittest `239개`, 라이브 Playwright 감사 `pass`.
+> 2026-07-25 journey verification: a real console run (`2026-07-25_07-14-17_production-branding-minimal`) was clicked through references → prompts → image candidates → image selection → QA package. The flow now resumes at the next unfinished decision after refresh. Reference selection automatically approves the non-human 03 gate, and the final QA screen exposes one `QA 확인 후 패키지 만들기` action that records the QA approval and creates the production package.
+>
+> Known test-data note: this verification run used placeholder image candidates because ComfyUI was offline. The final QA stayed `warn` (four evidence notices), but it can be explicitly approved and packaged; it is not presented as a clean image-production pass.
+
+## 2026-07-26 ComfyUI live connection check
+
+- The console's visual-candidate pipeline is verified against the canonical workflow root `D:\CD\jewelry_ad_project\02_workflows\api\`.
+- `jewelry/jewelry_product_hero_v2` resolves to `jewelry_product_hero_v2.api.json`; product upload, queue submission, output download, and candidate-manifest write-back use this production path.
+- A detached live regeneration is running for `2026-06-20_15-11-07_여름-다이아-하이주얼리-캠페인`, group `instagram_cardnews_01__key_visual`. Wait for the three outputs and manifest update before treating it as a live-image pass.
+
+## 2026-07-26 Brand-aware ComfyUI routing
+
+- Product category now determines the ComfyUI brand route: jewelry uses its canonical API keeper graph, while cosmetics materializes its approved product-hero canvas workflow into a queueable API graph at runtime.
+- This preserves jewelry's high-jewelry identity rules and cosmetics' label-preservation/clean-skincare rules before campaign-specific direction is appended.
+
+## 2026-07-26 HSGN innovation launch live test
+
+- New test event `hsgn-innovation-niacinamide-launch` completed the actual journey from brief through reference selection and candidate creation.
+- Test selection uses the evidence-backed “product name and concentration as a choice criterion” concept; no efficacy, clinical, discount, or gift claim was added.
+- Its Instagram card-news key-visual group is queued for live ComfyUI generation with the cosmetics-specific product-hero workflow and the original hsgn packshot.

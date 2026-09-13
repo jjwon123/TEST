@@ -5,7 +5,9 @@ from __future__ import annotations
 from pathlib import Path
 from typing import Any
 
+from services.ad_strategy.local_critic import review_local_concepts, review_local_copy
 from services.ad_strategy.planning_engine import build_concept_candidates, build_copy_package, detect_industry, score_planning
+from services.ad_strategy.quality_gate import copy_character_count
 from services.ad_strategy.repository import retrieve_corrections, retrieve_examples
 from services.llm.openai_provider import OpenAIPlanningProvider
 
@@ -115,7 +117,7 @@ def generate_concepts(brief: dict[str, Any], run_dir: Path) -> dict[str, Any]:
                 **baseline,
                 "status": "review_pending",
                 "providerExecution": [_local_provider_execution("strategist")],
-                "criticReview": _local_concept_critic(),
+                "criticReview": review_local_concepts(brief, baseline),
                 "repairHistory": [],
             }
         return {**baseline, "status": "provider_unavailable", "providerExecution": [result["providerExecution"]], "criticReview": {}, "repairHistory": []}
@@ -163,7 +165,7 @@ def generate_copy(brief: dict[str, Any], concept: dict[str, Any], deliverables: 
                 "model": "deterministic_planning_engine",
                 "status": "review_pending",
                 "providerExecution": [_local_provider_execution("copywriter")],
-                "criticReview": _local_copy_critic(brief, generated_concepts_stub(concept), baseline),
+                "criticReview": review_local_copy(brief, generated_concepts_stub(concept), baseline),
                 "repairHistory": [],
             }
         return {**baseline, "status": "provider_unavailable", "providerExecution": [result["providerExecution"]], "criticReview": {}, "repairHistory": []}
@@ -216,43 +218,6 @@ def _local_provider_execution(role: str) -> dict[str, Any]:
     }
 
 
-def _local_concept_critic() -> dict[str, Any]:
-    return {
-        "status": "pass",
-        "issues": [],
-        "rubric": {
-            "strategyClarity": 4,
-            "targetEmpathy": 4,
-            "productConnection": 4,
-            "distinctiveness": 4,
-            "channelFit": 4,
-            "koreanCopyQuality": 4,
-            "brandFit": 4,
-            "actionability": 4,
-        },
-    }
-
-
-def _local_copy_critic(brief: dict[str, Any], concepts: dict[str, Any], copy_package: dict[str, Any]) -> dict[str, Any]:
-    issues = []
-    if not copy_package.get("outputs"):
-        issues.append({"severity": "critical", "id": "copy_missing", "message": "카피 패키지가 생성되지 않았습니다.", "targetIds": []})
-    return {
-        "status": "fail" if any(item["severity"] == "critical" for item in issues) else "pass",
-        "issues": issues,
-        "rubric": {
-            "strategyClarity": 4,
-            "targetEmpathy": 4,
-            "productConnection": 4,
-            "distinctiveness": 4,
-            "channelFit": 4,
-            "koreanCopyQuality": 4,
-            "brandFit": 4,
-            "actionability": 4,
-        },
-    }
-
-
 def generated_concepts_stub(concept: dict[str, Any]) -> dict[str, Any]:
     return {"candidates": [concept], "status": "review_pending", "providerExecution": [_local_provider_execution("strategist")]}
 
@@ -270,6 +235,8 @@ def _parse_copy_json(package: dict[str, Any]) -> None:
     for output in package.get("outputs", []):
         if "copyJson" in output:
             output["copy"] = json.loads(output.pop("copyJson"))
+        if "copy" in output:
+            output["characterCount"] = copy_character_count(output["copy"])
 
 
 def _apply_targeted_concept_repair(draft: dict[str, Any], repaired: dict[str, Any], issues: list[dict[str, Any]]) -> None:

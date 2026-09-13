@@ -22,6 +22,7 @@ CHECKS = [
     ["python", "-m", "py_compile", "scripts/create_reference_training_session.py"],
     ["python", "-m", "py_compile", "scripts/audit_visual_prompts.py"],
     ["python", "-m", "py_compile", "scripts/audit_planning_quality.py"],
+    ["python", "-m", "py_compile", "scripts/validate_ad_planning_output.py"],
     ["python", "-m", "py_compile", "scripts/compare_reference_sessions.py"],
     ["python", "-m", "py_compile", "scripts/summarize_reference_training_session.py"],
     ["python", "-m", "py_compile", "scripts/project_hook_check.py"],

@@ -764,6 +764,7 @@ def _negative_prompt(product_profile: dict[str, Any], reference_research: dict[s
         "fake label text",
         "fake text",
         "fake typography",
+        "broken korean text",
         "readable text",
         "unreadable letters",
         "random product packaging",

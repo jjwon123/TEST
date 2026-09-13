@@ -1,0 +1,16 @@
+{
+  "brandName": "LoopStudio benchmark",
+  "tone": [
+    "명확하고 절제된 정보 중심"
+  ],
+  "styleRules": [
+    "확인된 사실만 사용",
+    "효능과 수치를 과장하지 않음"
+  ],
+  "preferredWords": [],
+  "avoidWords": [
+    "즉시 개선",
+    "완벽",
+    "보장"
+  ]
+}

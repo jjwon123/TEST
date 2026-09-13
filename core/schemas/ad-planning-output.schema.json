@@ -1,0 +1,129 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "title": "AdPlanningOutput",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "status", "brief", "conceptCandidates", "conceptReview", "copyPackage", "scorecard", "correctionRecord"],
+  "properties": {
+    "schemaVersion": { "const": "1.0.0" },
+    "status": {
+      "enum": ["needs_input", "concept_review_pending", "copy_review_pending", "approved", "rejected"]
+    },
+    "brief": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["industry", "eventName", "verifiedFacts", "unverifiedClaims", "missingInputs", "constraints"],
+      "properties": {
+        "industry": { "enum": ["cosmetics_skincare", "jewelry_luxury"] },
+        "eventName": { "type": "string" },
+        "verifiedFacts": { "type": "array", "items": { "type": "string" } },
+        "unverifiedClaims": { "type": "array", "items": { "type": "string" } },
+        "missingInputs": { "type": "array", "items": { "type": "string" } },
+        "constraints": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["requiredPhrases", "bannedWords", "channels"],
+          "properties": {
+            "requiredPhrases": { "type": "array", "items": { "type": "string" } },
+            "bannedWords": { "type": "array", "items": { "type": "string" } },
+            "channels": { "type": "array", "items": { "type": "string", "minLength": 1 } }
+          }
+        }
+      }
+    },
+    "conceptCandidates": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "additionalProperties": false,
+        "required": ["conceptId", "axis", "name", "targetInsight", "corePromise", "emotionalDirection", "persuasionSequence", "offerPresentation", "cta", "headlineDirections", "expectedEffect", "risks"],
+        "properties": {
+          "conceptId": { "type": "string", "minLength": 1 },
+          "axis": { "type": "string", "minLength": 1 },
+          "name": { "type": "string", "minLength": 1 },
+          "targetInsight": { "type": "string", "minLength": 1 },
+          "corePromise": { "type": "string", "minLength": 1 },
+          "emotionalDirection": { "type": "string", "minLength": 1 },
+          "persuasionSequence": { "type": "array", "items": { "type": "string" } },
+          "offerPresentation": { "type": "string" },
+          "cta": { "type": "string", "minLength": 1 },
+          "headlineDirections": { "type": "array", "items": { "type": "string" } },
+          "expectedEffect": { "type": "string" },
+          "risks": { "type": "array", "items": { "type": "string" } }
+        }
+      }
+    },
+    "conceptReview": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selectedConceptId", "rejectedConceptIds", "reasonTags", "reviewNote"],
+      "properties": {
+        "selectedConceptId": { "type": "string" },
+        "rejectedConceptIds": { "type": "array", "items": { "type": "string" } },
+        "reasonTags": { "type": "array", "items": { "type": "string" } },
+        "reviewNote": { "type": "string" }
+      }
+    },
+    "copyPackage": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["selectedConceptId", "outputs"],
+      "properties": {
+        "selectedConceptId": { "type": "string" },
+        "outputs": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "required": ["deliverableId", "channelId", "purpose", "strategyBasis", "copy", "characterCount"],
+            "properties": {
+              "deliverableId": { "type": "string", "minLength": 1 },
+              "channelId": { "type": "string", "minLength": 1 },
+              "purpose": { "type": "string", "minLength": 1 },
+              "strategyBasis": { "type": "string", "minLength": 1 },
+              "copy": { "type": "object" },
+              "characterCount": { "type": "integer", "minimum": 0 }
+            }
+          }
+        }
+      }
+    },
+    "scorecard": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["status", "criticalErrorCount", "issues", "rubric", "averageScore"],
+      "properties": {
+        "status": { "enum": ["pass", "warning", "fail"] },
+        "criticalErrorCount": { "type": "integer", "minimum": 0 },
+        "issues": { "type": "array" },
+        "rubric": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": ["strategyClarity", "targetEmpathy", "productConnection", "distinctiveness", "channelFit", "koreanCopyQuality", "brandFit", "actionability"],
+          "properties": {
+            "strategyClarity": { "type": "number", "minimum": 0, "maximum": 5 },
+            "targetEmpathy": { "type": "number", "minimum": 0, "maximum": 5 },
+            "productConnection": { "type": "number", "minimum": 0, "maximum": 5 },
+            "distinctiveness": { "type": "number", "minimum": 0, "maximum": 5 },
+            "channelFit": { "type": "number", "minimum": 0, "maximum": 5 },
+            "koreanCopyQuality": { "type": "number", "minimum": 0, "maximum": 5 },
+            "brandFit": { "type": "number", "minimum": 0, "maximum": 5 },
+            "actionability": { "type": "number", "minimum": 0, "maximum": 5 }
+          }
+        },
+        "averageScore": { "type": "number", "minimum": 0, "maximum": 5 }
+      }
+    },
+    "correctionRecord": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["generatedOriginal", "userEditedFinal", "reasonTags", "approved"],
+      "properties": {
+        "generatedOriginal": { "type": "object" },
+        "userEditedFinal": { "type": "object" },
+        "reasonTags": { "type": "array", "items": { "type": "string" } },
+        "approved": { "type": "boolean" }
+      }
+    }
+  }
+}

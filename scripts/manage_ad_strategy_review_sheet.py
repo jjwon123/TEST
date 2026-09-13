@@ -26,6 +26,10 @@ FIELDNAMES = [
     "industry",
     "sourceBrand",
     "sourceCopyPreview",
+    "suggestedDecision",
+    "recommendationScore",
+    "recommendationReasons",
+    "recommendationRisks",
     "decision",
     *STRATEGY_FIELDS,
     *SCORE_COLUMNS.values(),
@@ -94,21 +98,32 @@ def import_sheet(path: Path, *, apply: bool = False) -> dict[str, Any]:
 def example_to_row(item: dict[str, Any]) -> dict[str, Any]:
     review = item.get("review", {})
     source = item.get("sourceOriginal", {})
+    recommendation = item.get("reviewRecommendation") or {}
     scores = review.get("scores", {})
     row = {
         "id": item.get("id", ""),
         "industry": item.get("industry", ""),
         "sourceBrand": source.get("brand", ""),
         "sourceCopyPreview": preview(source.get("copy", "")),
+        "suggestedDecision": recommendation.get("suggestedDecision", ""),
+        "recommendationScore": recommendation.get("score", ""),
+        "recommendationReasons": " / ".join(recommendation.get("reasons", []) or []),
+        "recommendationRisks": " / ".join(recommendation.get("riskFlags", []) or []),
         "decision": "" if review.get("decision") == "unreviewed" else review.get("decision", ""),
         "reasonTags": ", ".join(review.get("reasonTags", []) or []),
         "reviewNote": review.get("reviewNote", ""),
     }
     for field in STRATEGY_FIELDS:
         value = item.get(field, "")
+        if not value and field in (recommendation.get("suggestedStrategy") or {}):
+            value = recommendation["suggestedStrategy"][field]
         row[field] = ", ".join(value) if isinstance(value, list) else value
     for field in SCORE_FIELDS:
-        row[SCORE_COLUMNS[field]] = scores.get(field, "")
+        row[SCORE_COLUMNS[field]] = scores.get(field, "") or (recommendation.get("suggestedScores") or {}).get(field, "")
+    if not row["reasonTags"]:
+        row["reasonTags"] = ", ".join(recommendation.get("suggestedReasonTags", []) or [])
+    if not row["reviewNote"]:
+        row["reviewNote"] = recommendation.get("reviewNote", "")
     return row
 
 
@@ -143,6 +158,10 @@ def validate_payload_shape(example_id: str, payload: dict[str, Any]) -> None:
         raise ValueError("decision must be selected, shortlist, rejected, or unreviewed")
     if decision != "unreviewed" and set(payload.get("scores", {})) != set(SCORE_FIELDS):
         raise ValueError("all eight rubric scores are required")
+    if decision != "unreviewed" and not payload.get("reasonTags"):
+        raise ValueError("at least one reason tag is required")
+    if decision != "unreviewed" and len(str(payload.get("reviewNote") or "").strip()) < 5:
+        raise ValueError("a specific review note is required")
     for key, value in payload.get("scores", {}).items():
         if value < 1 or value > 5:
             raise ValueError(f"{key} must be between 1 and 5")

@@ -10,8 +10,10 @@ from services.ad_strategy.planning_engine import (
     build_concept_candidates,
     build_copy_package,
     build_strategic_brief,
+    detect_event_type,
     score_planning,
 )
+from services.ad_strategy.quality_gate import copy_character_count
 from services.ad_strategy.repository import legacy_to_example
 from scripts.audit_planning_quality import audit_campaign_package
 from scripts.workflow import approve_stage
@@ -61,13 +63,133 @@ class AdPlanningEngineTests(unittest.TestCase):
         self.assertIn("세라마이드 앰플", first_output["planningEvidence"]["productRole"])
         self.assertIn("앰플 구매 시 샘플 증정", first_output["planningEvidence"]["offerRole"])
         self.assertIn("공감에서 이해와 행동까지 순차 설득", first_output["planningEvidence"]["channelRole"])
+        for output in package["outputs"]:
+            self.assertEqual(copy_character_count(output["copy"]), output["characterCount"])
+        transitions = [
+            slide["transition"]
+            for slide in first_output["copy"]["slides"]
+            if slide.get("transition")
+        ]
+        self.assertEqual(len(transitions), len(set(transitions)))
 
-    def test_scorecard_warns_when_marketing_signals_are_not_selected(self) -> None:
+    def test_channel_copy_variants_do_not_reuse_long_sentences(self) -> None:
         brief = sample_brief()
+        candidates = build_concept_candidates(brief)
+        concept = candidates["candidates"][2]
+        package = build_copy_package(brief, concept, [
+            {
+                "deliverable_id": "card",
+                "channel_id": "instagram_cardnews",
+                "purpose": "설득",
+                "slides": [
+                    {"role": "hook"},
+                    {"role": "problem"},
+                    {"role": "benefit"},
+                    {"role": "offer"},
+                    {"role": "cta"},
+                ],
+            },
+            {"deliverable_id": "feed", "channel_id": "instagram_feed", "purpose": "전환"},
+            {"deliverable_id": "thumb", "channel_id": "blog_thumbnail", "purpose": "진입"},
+            {"deliverable_id": "article", "channel_id": "blog_inline_image", "purpose": "설명"},
+        ])
+        scorecard = score_planning(brief, candidates, package)
+        issue_ids = {item["id"] for item in scorecard["issues"]}
+
+        self.assertNotIn("repetitive_copy", issue_ids)
+        self.assertNotIn("channel_copy_reuse", issue_ids)
+
+    def test_copy_uses_natural_particles_for_vowel_ending_product(self) -> None:
+        brief = {
+            **sample_brief(),
+            "constraints": {
+                **sample_brief()["constraints"],
+                "required_phrases": ["장마철 수분 루틴", "진정 토너"],
+            },
+        }
         candidates = build_concept_candidates(brief)
         package = build_copy_package(brief, candidates["candidates"][0], [
             {"deliverable_id": "feed", "channel_id": "instagram_feed", "purpose": "전환"},
+            {"deliverable_id": "community", "channel_id": "community_banner", "purpose": "전환"},
         ])
+
+        rendered = json.dumps(package, ensure_ascii=False)
+        self.assertIn("진정 토너를", rendered)
+        self.assertIn("진정 토너와", rendered)
+        self.assertNotIn("진정 토너을", rendered)
+        self.assertNotIn("진정 토너과", rendered)
+
+    def test_explicit_event_type_wins_over_offer_keywords(self) -> None:
+        brief = {
+            **sample_brief(),
+            "event_type": "seasonal",
+            "offer": {"summary": "앰플 구매 시 장벽 크림 증정"},
+        }
+
+        strategic = build_strategic_brief(brief)
+        candidates = build_concept_candidates(brief)
+
+        self.assertEqual("seasonal", strategic["eventType"])
+        self.assertEqual("seasonal", candidates["eventType"])
+
+    def test_seasonal_campaign_intent_wins_over_secondary_gift_offer(self) -> None:
+        brief = {
+            **sample_brief(),
+            "event_name": "6월 장마철 수분 장벽 리셋 위크",
+            "objective": {
+                "primary": "장마철 습도와 냉방 환경에 맞는 장벽 케어 루틴을 제안한다."
+            },
+            "offer": {"summary": "앰플 구매 시 장벽 크림 10ml 증정"},
+        }
+
+        self.assertEqual("seasonal", detect_event_type(brief))
+
+    def test_promotion_campaign_stays_promotion_when_gift_is_primary_intent(self) -> None:
+        brief = {
+            **sample_brief(),
+            "event_name": "앰플 구매 사은 행사",
+            "objective": {"primary": "증정 혜택으로 신규 구매 전환을 유도한다."},
+        }
+
+        self.assertEqual("promotion", detect_event_type(brief))
+
+    def test_local_copy_reuses_only_same_event_exact_corrections(self) -> None:
+        brief = sample_brief()
+        deliverables = [{"deliverable_id": "feed", "channel_id": "instagram_feed", "purpose": "전환"}]
+        candidates = build_concept_candidates(brief)
+        with patch("services.ad_strategy.planning_engine.retrieve_corrections", return_value=[]):
+            baseline = build_copy_package(brief, candidates["candidates"][0], deliverables)
+        original = baseline["outputs"][0]["copy"]
+        edited = {**original, "firstLine": "장마철 속당김, 루틴의 기준부터 다시 봅니다."}
+        correction = {
+            "id": "correction-1",
+            "eventId": "test-event",
+            "channelId": "instagram_feed",
+            "originalCopy": original,
+            "editedCopy": edited,
+            "approved": True,
+        }
+        with patch("services.ad_strategy.planning_engine.retrieve_corrections", return_value=[correction]):
+            corrected = build_copy_package(brief, candidates["candidates"][0], deliverables)
+        self.assertEqual(edited["firstLine"], corrected["outputs"][0]["copy"]["firstLine"])
+        self.assertEqual(["correction-1"], corrected["outputs"][0]["correctionExampleIds"])
+        self.assertEqual(["correction-1"], corrected["correctionSearch"]["appliedIds"])
+
+        other_event = {**correction, "id": "correction-2", "eventId": "another-event"}
+        with patch("services.ad_strategy.planning_engine.retrieve_corrections", return_value=[other_event]):
+            untouched = build_copy_package(brief, candidates["candidates"][0], deliverables)
+        self.assertEqual(original["firstLine"], untouched["outputs"][0]["copy"]["firstLine"])
+        self.assertEqual([], untouched["correctionSearch"]["appliedIds"])
+
+    def test_scorecard_warns_when_marketing_signals_are_not_selected(self) -> None:
+        brief = sample_brief()
+        with tempfile.TemporaryDirectory() as tmp:
+            insight_path = Path(tmp) / "missing-insight.json"
+            with patch("services.ad_strategy.planning_engine.INSIGHT_BRIEF_PATH", insight_path):
+                candidates = build_concept_candidates(brief)
+                package = build_copy_package(brief, candidates["candidates"][0], [
+            {"deliverable_id": "feed", "channel_id": "instagram_feed", "purpose": "전환"},
+                ])
         scorecard = score_planning(brief, candidates, package)
 
         self.assertIn("marketing_signal_review_required", {item["id"] for item in scorecard["issues"]})
@@ -79,7 +201,7 @@ class AdPlanningEngineTests(unittest.TestCase):
             insight_path = Path(tmp) / "insight-brief.json"
             insight_path.write_text(json.dumps({
                 "schemaVersion": "1.0.0",
-                "eventId": "general",
+                "eventId": "test-event",
                 "industry": "cosmetics_skincare",
                 "status": "ready",
                 "minimumSelectedSignals": 3,
@@ -93,6 +215,38 @@ class AdPlanningEngineTests(unittest.TestCase):
                 "productProofs": [],
                 "offerAngles": [],
                 "channelPatterns": ["첫 문장에서 내 상황을 바로 말해야 멈춘다."],
+                "evidenceDetails": [
+                    {
+                        "signalId": "signal-a",
+                        "evidenceType": "pain",
+                        "targetSegment": "냉방 실내에서 오후 속당김을 느끼는 사무직 고객",
+                        "insight": "냉방 환경의 불편을 생활 루틴 기준으로 다룬다.",
+                        "sourceType": "review",
+                        "sourceName": "고객 리뷰",
+                        "observedAt": "2026-06-18",
+                        "claimBoundary": "",
+                    },
+                    {
+                        "signalId": "signal-b",
+                        "evidenceType": "trend",
+                        "targetSegment": "복잡한 루틴을 줄이고 싶은 고객",
+                        "insight": "편안함과 단순함을 선택 기준으로 제안한다.",
+                        "sourceType": "public_web",
+                        "sourceName": "시장 조사",
+                        "observedAt": "2026-06-18",
+                        "claimBoundary": "",
+                    },
+                    {
+                        "signalId": "signal-c",
+                        "evidenceType": "timing",
+                        "targetSegment": "계절 변화에 맞춰 루틴을 점검하는 고객",
+                        "insight": "계절 변화는 루틴 점검의 시기 명분으로만 사용한다.",
+                        "sourceType": "weather",
+                        "sourceName": "날씨 자료",
+                        "observedAt": "2026-06-18",
+                        "claimBoundary": "",
+                    },
+                ],
                 "doNotClaim": ["랭킹을 단정하지 않는다."],
                 "evidenceSignalIds": ["signal-a", "signal-b", "signal-c"],
                 "createdAt": "2026-06-18T00:00:00+00:00",
@@ -105,13 +259,55 @@ class AdPlanningEngineTests(unittest.TestCase):
                 ])
 
         self.assertEqual("ready", candidates["marketingEvidenceStatus"])
+        self.assertEqual("test-event", candidates["marketingEvidenceEventId"])
         self.assertEqual(["signal-a", "signal-b", "signal-c"], candidates["marketingSignalIds"])
         self.assertEqual("ready", candidates["candidates"][0]["marketingEvidence"]["status"])
-        self.assertIn("냉방으로 건조해지는 사무직 고객", candidates["candidates"][0]["targetInsight"])
+        self.assertIn("냉방 실내에서 오후 속당김을 느끼는 사무직 고객", candidates["candidates"][0]["targetInsight"])
+        self.assertNotIn("날씨 자료", candidates["candidates"][0]["targetInsight"])
+        self.assertEqual(["pain"], candidates["candidates"][0]["marketingEvidence"]["evidenceTypes"])
+        self.assertEqual(["trend"], candidates["candidates"][1]["marketingEvidence"]["evidenceTypes"])
+        self.assertEqual(["timing", "trend"], candidates["candidates"][2]["marketingEvidence"]["evidenceTypes"])
+        for concept in candidates["candidates"]:
+            evidence = concept["marketingEvidence"]
+            self.assertEqual(3, len(evidence["signalIds"]))
+            self.assertTrue(set(evidence["primarySignalIds"]).issubset(set(evidence["signalIds"])))
+            self.assertEqual(
+                set(evidence["signalIds"]),
+                set(evidence["primarySignalIds"]) | set(evidence["supportingSignalIds"]),
+            )
+        self.assertEqual(["signal-a"], candidates["candidates"][0]["marketingEvidence"]["primarySignalIds"])
+        self.assertEqual(["signal-b"], candidates["candidates"][1]["marketingEvidence"]["primarySignalIds"])
+        self.assertEqual(
+            ["signal-c", "signal-b"],
+            candidates["candidates"][2]["marketingEvidence"]["primarySignalIds"],
+        )
+        self.assertEqual("concept_03", candidates["recommendation"]["recommendedConceptId"])
+        self.assertEqual(
+            "recommendation_only_human_selection_required",
+            candidates["recommendation"]["decisionPolicy"],
+        )
         output = package["outputs"][0]
         self.assertEqual("ready", output["planningEvidence"]["marketingEvidenceStatus"])
+        self.assertEqual("test-event", output["planningEvidence"]["marketingEvidenceEventId"])
         self.assertIn("검수된 마케팅 신호", output["strategyBasis"])
         self.assertIn("첫 문장에서 내 상황", output["planningEvidence"]["marketingSignals"][0])
+
+    def test_ready_evidence_from_another_event_is_blocked(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            insight_path = Path(tmp) / "insight-brief.json"
+            insight_path.write_text(json.dumps({
+                "eventId": "another-event",
+                "industry": "cosmetics_skincare",
+                "status": "ready",
+                "selectedSignalCount": 3,
+                "minimumSelectedSignals": 3,
+                "evidenceSignalIds": ["other-1", "other-2", "other-3"],
+                "doNotClaim": [],
+            }), encoding="utf-8")
+            with patch("services.ad_strategy.planning_engine.INSIGHT_BRIEF_PATH", insight_path):
+                candidates = build_concept_candidates(sample_brief())
+        self.assertEqual("needs_signal_review", candidates["marketingEvidenceStatus"])
+        self.assertEqual([], candidates["marketingSignalIds"])
 
     def test_scorecard_warns_on_awkward_and_repetitive_copy(self) -> None:
         brief = sample_brief()

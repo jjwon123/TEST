@@ -6,6 +6,7 @@ import csv
 import hashlib
 import json
 import random
+import re
 from datetime import datetime, timezone
 from pathlib import Path
 from typing import Any
@@ -20,17 +21,27 @@ SCHEMA_PATH = ROOT / "core" / "schemas" / "marketing-signal.schema.json"
 DEFAULT_REVIEW_SHEET = ROOT / ".tmp" / "marketing-signals" / "marketing-signal-review-sheet.csv"
 
 DECISIONS = {"unreviewed", "selected", "shortlist", "rejected"}
+SELECTED_BLOCKING_RISK_FLAGS = {
+    "capture_quality_blocked",
+    "raw_html_detected",
+    "raw_json_detected",
+    "broken_text_suspected",
+}
 REASON_TAGS = {
     "useful_target",
     "useful_trend",
     "useful_season",
     "useful_channel",
     "useful_objection",
+    "useful_proof",
+    "useful_offer",
     "too_generic",
     "needs_source",
     "unsupported_claim",
     "brand_mismatch",
     "duplicate",
+    "capture_quality_blocked",
+    "human_cleaned",
 }
 REVIEW_FIELDNAMES = [
     "id",
@@ -255,10 +266,16 @@ def import_review_sheet(path: Path, *, apply: bool = False, signals_path: Path =
             reason_tags = [tag for tag in _split_csvish(str(row.get("reasonTags") or "")) if tag in REASON_TAGS]
             if apply:
                 item = by_id[signal_id]
+                decision, forced_reason = review_decision_after_quality_gate(item, decision)
+                if forced_reason and forced_reason not in reason_tags:
+                    reason_tags.append(forced_reason)
+                review_note = str(row.get("reviewNote") or "").strip()
+                if forced_reason:
+                    review_note = _append_review_note(review_note, "캡처 품질 문제가 있어 selected 대신 보류로 저장했습니다. 원문 정리 후 다시 선택하세요.")
                 item["review"] = {
                     "decision": decision,
                     "reasonTags": reason_tags,
-                    "reviewNote": str(row.get("reviewNote") or "").strip(),
+                    "reviewNote": review_note,
                     "reviewedAt": datetime.now(timezone.utc).isoformat(),
                 }
                 applied += 1
@@ -283,23 +300,120 @@ def update_signal_review(signal_id: str, review: dict[str, Any], path: Path = SI
     item = next((signal for signal in signals if signal.get("id") == signal_id), None)
     if not item:
         raise ValueError(f"Unknown marketing signal: {signal_id}")
+    _apply_signal_review(item, review)
+    save_signals(signals, path)
+    return item
+
+
+def update_signal_reviews(reviews: list[dict[str, Any]], path: Path = SIGNALS_PATH) -> list[dict[str, Any]]:
+    if not reviews:
+        raise ValueError("reviews must contain at least one signal review")
+    signals = load_signals(path)
+    by_id = {str(item.get("id") or ""): item for item in signals}
+    updated: list[dict[str, Any]] = []
+    seen: set[str] = set()
+    for review in reviews:
+        signal_id = str(review.get("signalId") or review.get("id") or "").strip()
+        if not signal_id or signal_id not in by_id:
+            raise ValueError(f"Unknown marketing signal: {signal_id}")
+        if signal_id in seen:
+            raise ValueError(f"Duplicate marketing signal review: {signal_id}")
+        seen.add(signal_id)
+        item = by_id[signal_id]
+        _apply_signal_review(item, review)
+        updated.append(item)
+    save_signals(signals, path)
+    return updated
+
+
+def _apply_signal_review(item: dict[str, Any], review: dict[str, Any]) -> None:
     decision = str(review.get("decision") or "").strip().lower()
     if decision not in DECISIONS:
         raise ValueError("decision must be selected, shortlist, rejected, or unreviewed")
+    decision, forced_reason = review_decision_after_quality_gate(item, decision)
     reason_tags = [tag for tag in _dedupe_strings(review.get("reasonTags") or []) if tag in REASON_TAGS]
+    if forced_reason and forced_reason not in reason_tags:
+        reason_tags.append(forced_reason)
+    review_note = str(review.get("reviewNote") or "").strip()
+    if forced_reason:
+        review_note = _append_review_note(review_note, "캡처 품질 문제가 있어 selected 대신 보류로 저장했습니다. 원문 정리 후 다시 선택하세요.")
     item["review"] = {
         "decision": decision,
         "reasonTags": reason_tags,
-        "reviewNote": str(review.get("reviewNote") or "").strip(),
+        "reviewNote": review_note,
+        "reviewedAt": datetime.now(timezone.utc).isoformat(),
+    }
+
+
+def update_signal_content(signal_id: str, patch: dict[str, Any], path: Path = SIGNALS_PATH) -> dict[str, Any]:
+    signals = load_signals(path)
+    item = next((signal for signal in signals if signal.get("id") == signal_id), None)
+    if not item:
+        raise ValueError(f"Unknown marketing signal: {signal_id}")
+    for field in ("signalText", "normalizedInsight", "targetSegment"):
+        value = str(patch.get(field) or "").strip()
+        if value:
+            item[field] = value
+    if patch.get("evidenceType"):
+        item["evidenceType"] = str(patch.get("evidenceType")).strip()
+    if patch.get("usableFor"):
+        item["usableFor"] = _dedupe_strings(patch.get("usableFor") or [])
+    remaining_blockers = _content_quality_blockers(item)
+    flags = [flag for flag in item.get("riskFlags", []) if flag not in SELECTED_BLOCKING_RISK_FLAGS and flag != "capture_quality_blocked"]
+    flags.extend(remaining_blockers)
+    if not remaining_blockers:
+        flags.append("human_cleaned_public_signal")
+    item["riskFlags"] = _dedupe_strings(flags)
+    review = item.get("review") or {}
+    reason_tags = _dedupe_strings(review.get("reasonTags") or [])
+    if not remaining_blockers and "human_cleaned" not in reason_tags:
+        reason_tags.append("human_cleaned")
+    item["review"] = {
+        **review,
+        "reasonTags": reason_tags,
+        "reviewNote": _append_review_note(str(review.get("reviewNote") or ""), "사람이 공개 캡처 신호를 정제했습니다."),
         "reviewedAt": datetime.now(timezone.utc).isoformat(),
     }
     save_signals(signals, path)
     return item
 
 
+def review_decision_after_quality_gate(signal: dict[str, Any], decision: str) -> tuple[str, str]:
+    if decision == "selected" and SELECTED_BLOCKING_RISK_FLAGS.intersection(set(signal.get("riskFlags") or [])):
+        return "shortlist", "capture_quality_blocked"
+    return decision, ""
+
+
+def _append_review_note(existing: str, addition: str) -> str:
+    return f"{existing} {addition}".strip() if existing else addition
+
+
+def _content_quality_blockers(signal: dict[str, Any]) -> list[str]:
+    joined = " ".join(str(signal.get(field) or "") for field in ("signalText", "normalizedInsight", "targetSegment"))
+    blockers: list[str] = []
+    if re.search(r"<(html|body|div|script|style|span|section)\b", joined, re.IGNORECASE):
+        blockers.append("raw_html_detected")
+    if re.search(r"\{[\"'][A-Za-z0-9_\-]+[\"']\s*:|[\"']slides[\"']\s*:|[\"']headline[\"']\s*:", joined):
+        blockers.append("raw_json_detected")
+    if "�" in joined or re.search(r"(ì|ë|í|ê|ð|Ã|Â|爰|愿|怨|諛|섏|쒕|좏|留)", joined):
+        blockers.append("broken_text_suspected")
+    if len(str(signal.get("normalizedInsight") or "").strip()) < 35 or len(str(signal.get("targetSegment") or "").strip()) < 8:
+        blockers.append("thin_public_observation")
+    if blockers:
+        blockers.append("capture_quality_blocked")
+    return list(dict.fromkeys(blockers))
+
+
+
 def signal_metrics(signals: list[dict[str, Any]] | None = None) -> dict[str, Any]:
     items = signals if signals is not None else load_signals()
     decisions = {decision: sum(item.get("review", {}).get("decision") == decision for item in items) for decision in DECISIONS}
+    selected_usable = sum(
+        item.get("review", {}).get("decision") == "selected"
+        and not SELECTED_BLOCKING_RISK_FLAGS.intersection(set(item.get("riskFlags") or []))
+        for item in items
+    )
+    quality_blocked = sum(bool(SELECTED_BLOCKING_RISK_FLAGS.intersection(set(item.get("riskFlags") or []))) for item in items)
     source_types = sorted({str(item.get("sourceType") or "") for item in items if item.get("sourceType")})
     evidence_types = sorted({str(item.get("evidenceType") or "") for item in items if item.get("evidenceType")})
     return {
@@ -308,7 +422,8 @@ def signal_metrics(signals: list[dict[str, Any]] | None = None) -> dict[str, Any
         "reviewed": len(items) - decisions["unreviewed"],
         "sourceTypes": source_types,
         "evidenceTypes": evidence_types,
-        "selectedUsable": decisions["selected"],
+        "selectedUsable": selected_usable,
+        "qualityBlocked": quality_blocked,
     }
 
 

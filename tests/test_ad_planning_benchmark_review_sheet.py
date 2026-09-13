@@ -29,6 +29,52 @@ class AdPlanningBenchmarkReviewSheetTests(unittest.TestCase):
         self.assertNotIn("external", rows[0]["variantA"].lower())
         self.assertNotIn("baseline", rows[0]["variantA"].lower())
 
+    def test_export_uses_canonical_pilot_order(self) -> None:
+        ordered_ids = [
+            "season-monsoon-barrier",
+            "promotion-gift",
+            "launch-serum",
+            "education-barrier",
+            "branding-minimal",
+        ]
+        shuffled_ids = [
+            "season-summer-brightening",
+            "branding-minimal",
+            "launch-serum",
+            "season-monsoon-barrier",
+            "education-barrier",
+            "promotion-gift",
+        ]
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            dataset = root / "dataset.json"
+            external = root / "external.json"
+            reviews = root / "reviews.json"
+            sheet = root / "sheet.csv"
+            dataset.write_text(
+                json.dumps({
+                    "cases": [
+                        {**case_payload(), "id": case_id, "eventName": case_id}
+                        for case_id in shuffled_ids
+                    ],
+                }),
+                encoding="utf-8",
+            )
+            external.write_text('{"results":[]}', encoding="utf-8")
+            reviews.write_text('{"reviews":[]}', encoding="utf-8")
+
+            export_sheet(
+                sheet,
+                dataset_path=dataset,
+                external_path=external,
+                reviews_path=reviews,
+                limit=5,
+            )
+            with sheet.open("r", encoding="utf-8-sig", newline="") as handle:
+                rows = list(csv.DictReader(handle))
+
+        self.assertEqual(ordered_ids, [row["caseId"] for row in rows])
+
     def test_import_validates_without_apply(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)

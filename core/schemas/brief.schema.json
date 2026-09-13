@@ -29,6 +29,7 @@
     "schema_version": { "type": "string" },
     "event_id": { "type": "string" },
     "event_name": { "type": "string" },
+    "event_type": { "type": "string" },
     "brand": { "type": "object" },
     "objective": { "type": "object" },
     "target": { "type": "object" },

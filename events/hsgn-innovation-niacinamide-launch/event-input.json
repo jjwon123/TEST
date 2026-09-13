@@ -1,0 +1,22 @@
+{
+  "brandName": "hsgn",
+  "eventName": "hsgn 나이아신아마이드 100,000ppm 신제품 공개",
+  "objective": "나이아신아마이드 100,000ppm 신제품의 인지도를 만들고 제품 상세 페이지 유입을 유도한다.",
+  "target": "성분 표기와 제품 구성을 꼼꼼히 살펴보고, 새 스킨케어 루틴을 신중하게 고르는 20~40대 고객",
+  "productOrService": "hsgn 나이아신아마이드 100,000ppm",
+  "productLibraryId": "cosmetic/hsgn_niacinamide",
+  "channels": ["instagram", "naver_blog"],
+  "schedule": {
+    "startDate": "2026-07-27",
+    "endDate": "2026-08-16",
+    "publishDate": "2026-07-27"
+  },
+  "offer": "나이아신아마이드 100,000ppm 신제품 공개",
+  "references": [
+    "오렌지 포인트 컬러를 절제해 사용한 클린 스킨케어 제품 히어로 컷",
+    "제품 상단에 헤드라인을 둘 수 있는 여백 중심의 카드뉴스 구성"
+  ],
+  "requiredPhrases": ["나이아신아마이드 100,000ppm", "신제품 공개"],
+  "bannedWords": ["기적", "완치", "100% 보장", "무조건", "의학적 치료"],
+  "notes": "확인되지 않은 피부 개선, 임상, 수치 효과, 할인 또는 증정 문구는 사용하지 않는다. 제품 패키지의 오렌지 캡, 흰 보틀, hsgn 로고와 라벨 비율을 바꾸지 않는다."
+}

@@ -26,15 +26,56 @@ from services.marketing_intelligence.public_signal_collector import (  # noqa: E
     collect_public_signals_from_snapshot,
     load_public_signal_snapshot,
 )
+from core.utils.json_io import write_json  # noqa: E402
+
+
+def capture_public_urls_snapshot(
+    urls: list[str],
+    *,
+    topic: str,
+    event_id: str = "",
+    source_kind: str,
+    output_path: Path | None = None,
+) -> dict[str, object]:
+    observations: list[dict[str, object]] = []
+    for url in urls:
+        snapshot = capture_public_page_snapshot(
+            url,
+            topic=topic,
+            event_id=event_id,
+            source_kind=source_kind,
+            output_path=None,
+        )
+        observations.extend(snapshot.get("observations", []))
+    combined = {
+        "schemaVersion": "1.0.0",
+        "eventId": event_id,
+        "observations": observations,
+    }
+    if output_path:
+        write_json(output_path, combined)
+    return combined
+
+
+def load_capture_urls(path: Path) -> list[str]:
+    urls: list[str] = []
+    for line in path.read_text(encoding="utf-8").splitlines():
+        value = line.strip()
+        if not value or value.startswith("#"):
+            continue
+        urls.append(value)
+    return urls
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--industry", default="cosmetics_skincare", choices=["cosmetics_skincare", "jewelry_luxury"])
     parser.add_argument("--topic", default="", help="Optional topic label, e.g. monsoon_hydration.")
+    parser.add_argument("--event-id", default="", help="Bind public observations to one event.")
     parser.add_argument("--random-seed", action="store_true", help="Generate random hypothesis signals for later review.")
     parser.add_argument("--public-snapshot", type=Path, help="Import public marketing observations from a JSON snapshot.")
-    parser.add_argument("--capture-url", default="", help="Use Playwright to capture one public page into a public signal snapshot.")
+    parser.add_argument("--capture-url", action="append", default=[], help="Use Playwright to capture a public page into a public signal snapshot. Can be repeated.")
+    parser.add_argument("--capture-urls-file", type=Path, help="Text file with one public URL per line. Blank lines and # comments are ignored.")
     parser.add_argument("--source-kind", default="public_web", help="Source kind for --capture-url, e.g. brand_site, google_trends, weather.")
     parser.add_argument("--snapshot-output", type=Path, help="Where to save the Playwright page snapshot.")
     parser.add_argument("--auto-select-public", action="store_true", help="Mark imported public observations as selected. Default keeps them unreviewed.")
@@ -62,15 +103,19 @@ def main() -> int:
         result["collection"] = append_signals(generated, args.signals.resolve())
 
     public_snapshot = None
-    if args.capture_url:
-        public_snapshot = capture_public_page_snapshot(
-            args.capture_url,
+    capture_urls = [str(item).strip() for item in args.capture_url if str(item).strip()]
+    if args.capture_urls_file:
+        capture_urls.extend(load_capture_urls(args.capture_urls_file.resolve()))
+    if capture_urls:
+        public_snapshot = capture_public_urls_snapshot(
+            capture_urls,
             topic=args.topic or "public_web_capture",
+            event_id=args.event_id,
             source_kind=args.source_kind,
             output_path=args.snapshot_output.resolve() if args.snapshot_output else None,
         )
         result["publicCapture"] = {
-            "url": args.capture_url,
+            "urls": capture_urls,
             "sourceKind": args.source_kind,
             "observations": len(public_snapshot.get("observations", [])),
             "snapshotOutput": str(args.snapshot_output.resolve()) if args.snapshot_output else "",
@@ -83,6 +128,7 @@ def main() -> int:
             public_snapshot,
             industry=args.industry,
             default_topic=args.topic or "public_marketing_signals",
+            default_event_id=args.event_id,
             auto_select=args.auto_select_public,
         )
         result["publicSignals"] = append_signals(signals, args.signals.resolve())

@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "education-barrier",
+  "topic": "skin_barrier_education",
+  "scopePolicy": "exact_event_or_explicit_topic",
+  "industry": "cosmetics_skincare",
+  "status": "ready",
+  "minimumSelectedSignals": 3,
+  "selectedSignalCount": 3,
+  "targetHypotheses": [
+    "제품 종류와 사용 시점을 함께 알고 싶은 고객",
+    "소셜미디어에서 피부 정보를 접하지만 출처 신뢰도를 비교하는 고객",
+    "피부 장벽과 건조함의 관계를 쉽게 이해하고 싶은 고객"
+  ],
+  "customerPains": [
+    "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다."
+  ],
+  "customerDesires": [],
+  "purchaseObjections": [],
+  "trendHooks": [],
+  "seasonalHooks": [],
+  "productProofs": [
+    "교육 콘텐츠는 장벽 성분 이름만 나열하지 말고 언제 어떤 제형을 사용하는지 행동 기준으로 번역한다."
+  ],
+  "offerAngles": [],
+  "channelPatterns": [
+    "카드뉴스는 저장 가능한 짧은 기준을 제공하되 전문기관 출처와 광고 목적을 분명히 구분해 신뢰를 확보한다."
+  ],
+  "evidenceDetails": [
+    {
+      "signalId": "public_signal_b9cb7b997c642f79",
+      "evidenceType": "proof",
+      "targetSegment": "제품 종류와 사용 시점을 함께 알고 싶은 고객",
+      "insight": "교육 콘텐츠는 장벽 성분 이름만 나열하지 말고 언제 어떤 제형을 사용하는지 행동 기준으로 번역한다.",
+      "sourceType": "public_web",
+      "sourceName": "American Academy of Dermatology",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_7d66ac444b5eed21",
+      "evidenceType": "channel_pattern",
+      "targetSegment": "소셜미디어에서 피부 정보를 접하지만 출처 신뢰도를 비교하는 고객",
+      "insight": "카드뉴스는 저장 가능한 짧은 기준을 제공하되 전문기관 출처와 광고 목적을 분명히 구분해 신뢰를 확보한다.",
+      "sourceType": "public_web",
+      "sourceName": "PMC dermatology social media study",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_0efcfc026ac2d442",
+      "evidenceType": "pain",
+      "targetSegment": "피부 장벽과 건조함의 관계를 쉽게 이해하고 싶은 고객",
+      "insight": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+      "sourceType": "public_web",
+      "sourceName": "American Academy of Dermatology",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    }
+  ],
+  "doNotClaim": [
+    "사람이 선택한 근거에 없는 순위, 가격, 효능, 기간 수치를 만들지 않는다.",
+    "무작위 가설은 사람이 검수하기 전까지 사실 근거로 사용하지 않는다.",
+    "공식 출처가 없는 유행, 날씨, 판매 순위 주장을 단정하지 않는다."
+  ],
+  "evidenceSignalIds": [
+    "public_signal_b9cb7b997c642f79",
+    "public_signal_7d66ac444b5eed21",
+    "public_signal_0efcfc026ac2d442"
+  ],
+  "createdAt": "2026-07-21T14:14:29.769513+00:00"
+}

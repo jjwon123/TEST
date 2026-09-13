@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "season-monsoon-barrier",
+  "topic": "monsoon_barrier_reset",
+  "scopePolicy": "exact_event_or_explicit_topic",
+  "industry": "cosmetics_skincare",
+  "status": "ready",
+  "minimumSelectedSignals": 3,
+  "selectedSignalCount": 3,
+  "targetHypotheses": [
+    "여름철 생활 환경 변화에 맞춰 피부 루틴을 조정하려는 고객",
+    "강한 안티에이징보다 편안한 장벽 중심 루틴을 찾는 고객",
+    "장마철에도 냉방 실내에서 속당김과 건조함을 느끼는 고객"
+  ],
+  "customerPains": [
+    "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다."
+  ],
+  "customerDesires": [],
+  "purchaseObjections": [],
+  "trendHooks": [
+    "장벽을 유행 성분으로 과장하기보다 복잡한 루틴에 지친 고객이 편안함과 단순함을 찾는 시장 신호로 활용한다."
+  ],
+  "seasonalHooks": [
+    "여름 고온 전망은 루틴 점검의 시기 명분으로만 사용하고, 실제 장마·습도 표현은 집행 직전 최신 단기 자료로 다시 확인해야 한다."
+  ],
+  "productProofs": [],
+  "offerAngles": [],
+  "channelPatterns": [],
+  "evidenceDetails": [
+    {
+      "signalId": "public_signal_3fb16fe27d2414af",
+      "evidenceType": "timing",
+      "targetSegment": "여름철 생활 환경 변화에 맞춰 피부 루틴을 조정하려는 고객",
+      "insight": "여름 고온 전망은 루틴 점검의 시기 명분으로만 사용하고, 실제 장마·습도 표현은 집행 직전 최신 단기 자료로 다시 확인해야 한다.",
+      "sourceType": "weather",
+      "sourceName": "대한민국 기상청",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_f2df960e33b5146a",
+      "evidenceType": "trend",
+      "targetSegment": "강한 안티에이징보다 편안한 장벽 중심 루틴을 찾는 고객",
+      "insight": "장벽을 유행 성분으로 과장하기보다 복잡한 루틴에 지친 고객이 편안함과 단순함을 찾는 시장 신호로 활용한다.",
+      "sourceType": "public_web",
+      "sourceName": "CosmeticsDesign / Yogi review analysis",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_82c8ac5b90594027",
+      "evidenceType": "pain",
+      "targetSegment": "장마철에도 냉방 실내에서 속당김과 건조함을 느끼는 고객",
+      "insight": "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다.",
+      "sourceType": "public_web",
+      "sourceName": "American Academy of Dermatology",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    }
+  ],
+  "doNotClaim": [
+    "사람이 선택한 근거에 없는 순위, 가격, 효능, 기간 수치를 만들지 않는다.",
+    "무작위 가설은 사람이 검수하기 전까지 사실 근거로 사용하지 않는다.",
+    "공식 출처가 없는 유행, 날씨, 판매 순위 주장을 단정하지 않는다."
+  ],
+  "evidenceSignalIds": [
+    "public_signal_3fb16fe27d2414af",
+    "public_signal_f2df960e33b5146a",
+    "public_signal_82c8ac5b90594027"
+  ],
+  "createdAt": "2026-07-02T14:31:13.363328+00:00"
+}

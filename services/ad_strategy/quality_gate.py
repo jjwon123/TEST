@@ -6,6 +6,9 @@ import re
 from difflib import SequenceMatcher
 from typing import Any, Callable
 
+from core.utils import channel_registry
+from services.ad_strategy.text_quality import text_artifact_summary
+
 
 IssueFactory = Callable[[str, str, str], dict[str, str]]
 
@@ -31,7 +34,11 @@ HIGH_RISK_CLAIMS = {
     "완치", "치료", "효과 보장", "부작용 없음", "즉시 개선", "100% 개선",
     "무조건 개선", "임상으로 증명", "올리브영 1위", "리뷰 폭발",
 }
-INTERNAL_MARKERS = {"placeholder", "tbd", "작성 필요", "여기에 입력", "입력하세요", "초안 메모"}
+INTERNAL_MARKERS = {
+    "placeholder", "tbd", "작성 필요", "여기에 입력", "입력하세요", "초안 메모",
+    "집행 직전", "최신 단기 자료", "사람이 선택한 근거", "입력에 없는",
+    "무작위 가설", "근거로 사용하지",
+}
 INDUSTRY_TERMS = {
     "cosmetics_skincare": {"다이아몬드", "목걸이", "귀걸이", "반지", "팔찌", "캐럿", "주얼리"},
     "jewelry_luxury": {"나이아신아마이드", "앰플", "세럼", "토너", "크림", "피부 장벽", "스킨케어"},
@@ -61,6 +68,15 @@ def deterministic_quality_issues(
     texts = copy_text_values(copy_package)
     full_text = " ".join(texts)
     fact_text = _verified_fact_text(brief)
+    artifacts = text_artifact_summary(copy_package)
+
+    if artifacts["brokenKoreanCount"]:
+        issues.append(issue("critical", "broken_korean_text", "최종 카피에 깨진 한글 또는 인코딩 오류가 남아 있습니다."))
+    if artifacts["rawJsonCount"] or artifacts["rawHtmlCount"] or artifacts["programmingArtifactCount"]:
+        issues.append(issue("critical", "raw_structure_exposed", "최종 카피에 JSON/HTML/프로그래밍 구조가 노출되었습니다."))
+    if artifacts.get("particleMismatchCount"):
+        sample = artifacts.get("samples", {}).get("particleMismatch", ["조사 오류"])[0]
+        issues.append(issue("warning", "awkward_korean_particle", f"제품명 뒤 조사가 어색합니다: {sample}"))
 
     unsupported = unsupported_claims(full_text, fact_text)
     if unsupported:
@@ -77,7 +93,12 @@ def deterministic_quality_issues(
     missing_contract = channel_contract_failure(outputs)
     if missing_contract:
         issues.append(issue("warning", "channel_contract_missing", missing_contract))
-    requested_channels = {str(value) for value in brief.get("channels", []) if str(value)}
+    requested_channels = {
+        resolved
+        for value in brief.get("channels", [])
+        if str(value)
+        for resolved in channel_registry.resolve_requested(str(value))
+    }
     output_channels = {str(value.get("channelId") or "") for value in outputs if value.get("channelId")}
     if requested_channels and output_channels != requested_channels:
         issues.append(issue("critical", "channel_mismatch", f"요청 채널과 생성 채널이 다릅니다: 요청 {sorted(requested_channels)}, 생성 {sorted(output_channels)}"))
@@ -128,6 +149,11 @@ def copy_text_values(copy_package: dict[str, Any]) -> list[str]:
     return values
 
 
+def copy_character_count(copy: Any) -> int:
+    """Count user-visible copy text without Python/JSON structure characters."""
+    return len("\n".join(value.strip() for value in _copy_values(copy) if value.strip()))
+
+
 def unsupported_claims(copy_text: str, fact_text: str) -> list[str]:
     claims = []
     for pattern in CLAIM_PATTERNS:
@@ -173,7 +199,7 @@ def output_metadata_failure(outputs: list[dict[str, Any]]) -> str:
         if missing:
             return f"{channel} 결과 메타데이터가 비었습니다: {', '.join(missing)}"
         character_count = output.get("characterCount")
-        if not isinstance(character_count, int) or character_count != len(str(output.get("copy", {}))):
+        if not isinstance(character_count, int) or character_count != copy_character_count(output.get("copy", {})):
             return f"{channel} 결과의 characterCount가 실제 카피 길이와 다릅니다."
     return ""
 

@@ -8,7 +8,7 @@ LLM-assisted rewriting behind the same `run(...)` interface later.
 from __future__ import annotations
 
 import re
-from datetime import datetime, timezone
+from datetime import date, datetime, timezone
 from pathlib import Path
 from typing import Any
 
@@ -18,7 +18,7 @@ from core.utils.schema_validation import validate_json
 from services.llm.client import LLMClient, LLMRequest
 from services.research.client import ResearchClient, ResearchQuery
 from services.ad_strategy.library import retrieve_patterns
-from services.ad_strategy.planning_engine import build_strategic_brief
+from services.ad_strategy.planning_engine import build_strategic_brief, detect_event_type
 
 
 ROOT = Path(__file__).resolve().parents[3]
@@ -73,20 +73,22 @@ def run(
     brief_path = stage_dir / "brief.json"
     strategic_brief_path = stage_dir / "strategic-brief.json"
     notes_path = stage_dir / "notes.md"
+    strategic_brief = build_strategic_brief(brief)
+    needs_input = strategic_brief.get("status") == "needs_input"
     write_json(brief_path, brief)
-    write_json(strategic_brief_path, build_strategic_brief(brief))
+    write_json(strategic_brief_path, strategic_brief)
     write_text(notes_path, build_notes(brief))
 
     return {
         "stage_id": STAGE_ID,
-        "status": "review_pending",
+        "status": "needs_input" if needs_input else "review_pending",
         "outputs": [
             str(brief_path.relative_to(run_dir)),
             str(strategic_brief_path.relative_to(run_dir)),
             str(notes_path.relative_to(run_dir)),
         ],
         "notes": brief["open_questions"],
-        "next_state": "brief_review",
+        "next_state": "brief_input_required" if needs_input else "brief_review",
     }
 
 
@@ -132,6 +134,7 @@ def build_brief(
         "schema_version": "0.1.0",
         "event_id": event_id,
         "event_name": event_input.get("eventName") or event_input.get("name") or "",
+        "event_type": str(event_input.get("eventType") or event_input.get("event_type") or "").strip().lower(),
         "brand": {
             "name": brand_guide.get("brandName") or event_input.get("brandName") or "",
             "tone": tone,
@@ -175,7 +178,7 @@ def build_brief(
             "event_input": "event-input.json",
             "brand_guide": "brand-guide.json",
         },
-        "approval_status": "review_pending",
+        "approval_status": "needs_input" if open_questions else "review_pending",
         "created_at": datetime.now(timezone.utc).isoformat(),
     }
     reasoning_request = _build_reasoning_request(event_input, brand_guide, research_context)
@@ -245,6 +248,7 @@ def build_brief(
         generation_execution,
         quality_assessment,
     )
+    repaired["event_type"] = detect_event_type(repaired)
     return repaired
 
 
@@ -311,7 +315,12 @@ def _core_messages(
     return _unique_list(messages)[:5]
 
 
-def _open_questions(event_input: dict[str, Any], brand_guide: dict[str, Any]) -> list[str]:
+def _open_questions(
+    event_input: dict[str, Any],
+    brand_guide: dict[str, Any],
+    *,
+    today: date | None = None,
+) -> list[str]:
     checks = [
         ("eventName", event_input, "이벤트명이 필요합니다."),
         ("target", event_input, "타깃 설명이 비어 있습니다."),
@@ -329,9 +338,19 @@ def _open_questions(event_input: dict[str, Any], brand_guide: dict[str, Any]) ->
         and schedule["publishDate"] > schedule["startDate"]
     ):
         questions.append("게시일이 이벤트 시작일보다 늦습니다. 운영 의도를 확인해야 합니다.")
+    end_date = _parse_iso_date(schedule.get("endDate"))
+    if end_date and end_date < (today or date.today()):
+        questions.append("이벤트 종료일이 이미 지났습니다. 현재 집행 일정으로 갱신해야 합니다.")
     if not brand_guide.get("styleRules") and not brand_guide.get("voice", {}).get("style"):
         questions.append("브랜드 문체/표현 규칙이 부족합니다.")
     return questions
+
+
+def _parse_iso_date(value: Any) -> date | None:
+    try:
+        return date.fromisoformat(str(value or ""))
+    except ValueError:
+        return None
 
 
 def _build_research_context(

@@ -1,0 +1,14 @@
+{
+  "product_id": "diamond_ring",
+  "brand_name": "hsgn",
+  "product_name": "Soleil Double Halo Diamond Ring",
+  "category": "jewelry",
+  "main_image": "ring_packshot.png",
+  "mask_image": "",
+  "description": "더블 헤일로 다이아몬드 링. 라운드 브릴리언트 센터, 마이크로 파베 더블 헤일로, 파베 스플릿 샹크 밴드, 화이트골드/옐로골드 투톤.",
+  "tone": ["luxury", "elegant", "high-jewelry", "refined", "premium"],
+  "forbidden": ["worn on finger", "human hand", "altered stone count", "warped band", "dark muddy lighting"],
+  "recommended_workflows": [
+    "jewelry/jewelry_product_hero_v2"
+  ]
+}

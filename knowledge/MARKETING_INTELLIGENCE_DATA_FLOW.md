@@ -1,5 +1,147 @@
 # 마케팅 인텔리전스 데이터 플로우
 
+## 2026-07-01 대표 파일럿 실제 후보 데이터
+
+- 후보 snapshot:
+  `assets/rules/cosmetics-pilot-public-evidence-snapshot.json`
+- 후보 수: 대표 5개 이벤트 x 3개 = 15개.
+- 현재 모두 unreviewed.
+- 출처 메타데이터:
+  `sourceName`, `url`, `title`, `publishedAt`, `observedAt`, `methodology`,
+  `section`, `query`.
+- 독립 출처는 host 기준으로 계산한다.
+- 출처 감사:
+  `.tmp/model-benchmarks/cosmetics-pilot-source-audit.json`
+- 카테고리 연구는 고객 문제, 저항, 시장 흐름 설명에는 쓸 수 있지만
+  미확인 제품의 효능 proof에는 사용할 수 없다.
+
+## 2026-07-01 이벤트 근거 작업 큐
+
+근거 데이터는 양보다 이벤트 적합성과 역할 조합을 먼저 검사한다.
+
+```text
+이벤트 계획
+-> 필수 근거 역할 정의
+-> 출처별 공개 관찰 수집
+-> eventId/topic 범위 격리
+-> 사람 검수
+-> 역할·출처 다양성 게이트
+-> InsightBrief 승격
+```
+
+현재 필수 조합:
+
+| 이벤트 유형 | 필수 근거 |
+|---|---|
+| 시즌 | 고객 문제, 시기 명분, 검색·시장 흐름 |
+| 프로모션 | 고객 욕구, 구매 저항, 혜택 근거 |
+| 출시 | 고객 문제, 구매 저항, 제품 근거 |
+| 교육 | 고객 문제, 제품 근거, 채널 반응 구조 |
+| 브랜딩 | 고객 욕구, 구매 저항, 채널 반응 구조 |
+
+- 모든 이벤트는 selected 3개 이상, 출처 종류 2개 이상이 필요하다.
+- Playwright 공개 URL 캡처는 `sourceRef.eventId`와 전용 `topic`을 함께
+  저장한다.
+- 큐 파일:
+  `.tmp/model-benchmarks/cosmetics-evidence-queue.json`
+- 이벤트 선택 전에는 전체 랜덤 가설을 검수 목록에 보여주지 않는다.
+- 자동 수집 결과는 항상 unreviewed이며 사람이 선택하기 전 생성 근거가 아니다.
+
+## 2026-06-30 이벤트 범위 규칙
+
+- `MarketingSignal`은 가능하면 `sourceRef.eventId`를 가진다.
+- 여러 이벤트에 공통으로 쓸 수 있는 관찰은 명시적인 `topic`으로 묶고,
+  InsightBrief 생성 시 그 topic을 직접 지정한다.
+- 구체 이벤트에서 eventId와 topic을 모두 생략한 전체 selected 조회는 금지한다.
+- `general` InsightBrief는 탐색·대시보드용이며 구체 광고 생성 fallback이 아니다.
+- 이벤트별 승인 근거 파일은
+  `design_brain_wiki/marketing_signals/insight-briefs/`에 저장한다.
+- 품질 수치는 신호 개수뿐 아니라 이벤트 ID 일치 여부를 포함한다.
+
+## 2026-06-20 업데이트: 파일럿 감사와 근거 연결 기준
+
+화장품 파일럿 5건 감사는 이제 단순히 화면에 글이 보이는지만 보지 않는다. 다음 세 가지가 동시에 맞아야 통과한다.
+
+```text
+마케팅 신호/InsightBrief 연결
+-> 콘셉트 3안의 marketingSignalIds 연결
+-> 채널별 카피의 planningEvidence.marketingSignalIds 연결
+-> scorecard 치명 오류 0
+```
+
+- `scripts/audit_cosmetics_pilot_goal.py`는 텍스트 깨짐, JSON/HTML/프로그래밍 구조 노출, 내부 scorecard 치명 오류를 함께 본다.
+- `scripts/benchmark_ad_planning.py`는 오래된 결과 캐시에 치명 오류가 있으면 자동 재생성한다.
+- 콘셉트 비평은 콘셉트 단계에서 카피/채널 미생성을 실패로 보지 않는다. 카피/채널 검사는 카피 패키지 생성 이후 scorecard에서 판단한다.
+- 현재 5건 파일럿은 `criticalErrorCount 0`, 평균 사람 평가 `4.0`, 무수정 승인율 `1.0`으로 통과했다.
+
+다음 데이터 플로우 목표는 파일럿 5건이 아니라 화장품 평가셋 20건에 같은 기준을 적용하는 것이다. 특히 외부 광고, 계절, 제품 랭킹, SNS/검색 트렌드 신호를 더 모아 콘셉트별 근거가 실제 마케터 기획안처럼 설득되게 만들어야 한다.
+
+## 2026-06-20 업데이트: 공개 URL 캡처 경로
+
+마케팅 신호 수집은 이제 CSV/import뿐 아니라 콘솔에서 공개 URL을 직접 넣어 시작할 수 있다.
+
+```text
+공개 URL 입력
+-> Playwright/공개 페이지 텍스트 캡처
+-> 원문을 직접 쓰지 않고 추상 마케팅 신호로 변환
+-> unreviewed 신호 저장
+-> 검수 CSV export
+-> 사람이 selected / shortlist / rejected 판정
+-> selected 신호만 InsightBrief와 02_content_planning 생성 근거로 사용
+```
+
+콘솔 job 모드:
+
+- `public_snapshot`: 이미 정리된 공개 관찰 snapshot JSON을 가져온다.
+- `public_capture`: URL 하나를 캡처해 `.tmp/marketing-signals/public-capture-latest.json` snapshot으로 만들고 검수 대기 신호에 추가한다.
+- `public_capture`는 `urls` 배열과 `--capture-url` 반복 입력을 지원한다. CLI에서는 `--capture-urls-file`로 여러 URL을 한 번에 넣을 수 있다.
+
+주의:
+
+- 공개 URL 원문은 생성 카피에 직접 복사하지 않는다.
+- 기본 decision은 `unreviewed`이며 사람이 검수하기 전에는 생성 예시로 쓰지 않는다.
+- URL 캡처 결과에 깨진 텍스트, HTML/JSON 조각, 경쟁사 문구 직접 복제가 보이면 `rejected` 또는 QA 차단 규칙으로 승격한다.
+- HSGN 파일럿은 `hsgn_summer_tone_care` topic으로 공개 신호를 모은 뒤 selected 신호만 InsightBrief에 연결한다.
+
+### 공개 캡처 QA
+
+공개 페이지 캡처 결과는 다음 위험 플래그를 붙인다.
+
+- `raw_html_detected`: HTML 태그나 script/style 조각이 남아 있음.
+- `raw_json_detected`: JSON 키/배열 구조가 원문에 남아 있음.
+- `broken_text_suspected`: 깨진 인코딩 또는 사람이 읽기 어려운 텍스트 의심.
+- `thin_public_observation`: 관찰 텍스트가 너무 짧아 기획 근거로 쓰기 어려움.
+- `capture_quality_blocked`: 위 문제 중 치명적인 항목이 있어 InsightBrief 근거 사용 차단.
+
+`capture_quality_blocked` 신호는 자동 selected 승격을 허용하지 않는다. 사람이 selected로 바꿔도 InsightBrief는 해당 신호를 제외한다. 먼저 원문을 정리하거나 사람이 직접 추상화한 `normalizedInsight`를 만든 뒤 다시 검수해야 한다.
+
+검수 저장 정책:
+
+- 콘솔에서 `선택`을 눌러도 `capture_quality_blocked` 신호는 `shortlist`로 저장된다.
+- CSV import에서 decision을 `selected`로 넣어도 같은 정책이 적용된다.
+- 자동 보류된 신호에는 `capture_quality_blocked` reason tag와 보류 사유 메모가 붙는다.
+- 대시보드의 `사용 가능` 수는 selected 중 실제 InsightBrief 근거로 쓸 수 있는 신호만 계산한다.
+- InsightBrief 생성 버튼도 `사용 가능` 수가 최소 기준을 넘을 때만 열린다. selected 총량이 충분해도 품질 차단 신호가 섞여 있으면 다음 단계로 넘어가지 않는다.
+
+정제 흐름:
+
+- 품질 차단 신호는 버리는 것이 아니라 사람이 `관찰 요약`, `타깃 정의`, `기획 인사이트`를 고쳐 다시 저장할 수 있다.
+- 정제 저장 후 HTML/JSON/깨진 텍스트/얇은 관찰 문제가 사라지면 차단 flag를 제거하고 `human_cleaned_public_signal`을 붙인다.
+- 그 뒤 검수자가 selected로 다시 승격하면 `selectedUsable`에 포함되고 InsightBrief 근거로 사용할 수 있다.
+
+루프 감사:
+
+- `scripts/audit_marketing_planning_loop.py`는 검수된 신호가 실제 02 기획 산출물에 연결됐는지 확인한다.
+- 통과 조건:
+  - `selectedUsable`이 최소 기준 이상
+  - InsightBrief가 `ready`
+  - planning scorecard가 `pass`, 치명 오류 0, 평균 4.0 이상
+  - 콘셉트 3안이 marketingSignalIds를 가진다
+  - 채널별 카피 산출물이 planningEvidence.marketingSignalIds를 가진다
+- HSGN 파일럿 run은 현재 이 감사에서 `pass`다.
+- 콘솔의 `근거 연결 감사` 버튼은 같은 감사를 job으로 실행한다. 결과는 job 로그와 `.tmp/model-benchmarks/marketing-planning-loop-audit.json`에서 확인한다.
+- 콘솔은 최신 감사 리포트를 광고 기획 검수 패널에 요약 표시한다. 검수자는 터미널 없이 `사용 가능 신호`, `평균 점수`, `치명 오류`, `콘셉트/카피 근거 연결`을 확인할 수 있다.
+
 ## 목적
 
 현재 광고 기획 엔진은 이벤트 브리프와 일부 Meta 광고 전략 패턴만으로 카피를 만든다.
@@ -395,3 +537,16 @@ python scripts\collect_marketing_signals.py --import-review --apply
 1. Playwright URL capture를 콘솔 버튼으로 연결한다.
 2. 수집된 공개 신호를 검수 카드에서 sourceKind, riskFlags, normalizedInsight 중심으로 보여준다.
 3. selected 공개 신호가 늘어난 뒤 이벤트별 InsightBrief를 재생성하고 카피 품질 변화를 측정한다.
+## 2026-06-20 업데이트: 파일럿 목표 감사와 텍스트 품질 게이트
+
+- 마케팅 신호가 연결되어도 표시 텍스트가 깨지면 파일럿 목표는 통과하지 않는다.
+- `scripts/audit_cosmetics_pilot_goal.py`는 파일럿 5건에서 다음을 함께 본다.
+  - 콘셉트 3안 준비
+  - 채널별 카피 준비
+  - 사람 평가 저장
+  - 깨진 한글/raw JSON/HTML/프로그래밍 구조 노출
+  - 콘셉트 3안 분리
+- 콘셉트와 카피의 근거 신호 연결
+- 현재 리포트는 `.tmp/model-benchmarks/cosmetics-pilot-goal-audit.json`이며, 콘솔의 `파일럿 목표 감사` 카드가 이 값을 보여준다.
+- 현재 파일럿 5건은 후보·카피·사람평가·치명 오류 기준을 통과했다.
+- 다음 데이터 플로우 우선순위는 화장품 20건으로 확대하고, 외부 광고/트렌드/계절/고객 반응 신호를 더 쌓아 콘셉트 설득력을 높이는 것이다.

@@ -29,6 +29,7 @@ SOURCE_KIND_TO_SOURCE_TYPE = {
     "calendar": "calendar",
     "meta_ad": "meta_ad",
     "review": "review",
+    "event_brief": "internal",
 }
 
 EVIDENCE_TYPE_BY_SOURCE = {
@@ -41,6 +42,7 @@ EVIDENCE_TYPE_BY_SOURCE = {
     "calendar": "timing",
     "meta_ad": "channel_pattern",
     "review": "objection",
+    "event_brief": "offer",
 }
 
 USABLE_FOR_BY_EVIDENCE = {
@@ -60,11 +62,18 @@ class PublicObservation:
     source_kind: str
     observed_text: str
     topic: str
+    event_id: str = ""
     url: str = ""
     title: str = ""
     evidence_type: str = ""
     target_segment: str = ""
     normalized_insight: str = ""
+    published_at: str = ""
+    observed_at: str = ""
+    source_name: str = ""
+    section: str = ""
+    query: str = ""
+    methodology: str = ""
     strength: int = 3
     freshness: int = 3
     confidence: int = 2
@@ -84,10 +93,15 @@ def collect_public_signals_from_snapshot(
     *,
     industry: str = "cosmetics_skincare",
     default_topic: str = "public_marketing_signals",
+    default_event_id: str = "",
     auto_select: bool = False,
 ) -> list[dict[str, Any]]:
     observations = [
-        _normalize_observation(item, default_topic=default_topic)
+        _normalize_observation(
+            item,
+            default_topic=default_topic,
+            default_event_id=default_event_id or str(snapshot.get("eventId") or ""),
+        )
         for item in snapshot.get("observations", [])
         if isinstance(item, dict)
     ]
@@ -108,11 +122,17 @@ def public_observation_to_signal(
     evidence_type = observation.evidence_type or EVIDENCE_TYPE_BY_SOURCE.get(observation.source_kind, "trend")
     insight = observation.normalized_insight or infer_normalized_insight(observation)
     now = datetime.now(timezone.utc).isoformat()
-    risk_flags = ["needs_human_review", "public_observation_not_copy_source"]
+    signal_text = sanitize_public_observation_text(observation.observed_text)
+    risk_flags = (
+        ["needs_human_review", "verified_brief_fact"]
+        if observation.source_kind == "event_brief"
+        else ["needs_human_review", "public_observation_not_copy_source"]
+    )
     if source_type in {"meta_ad", "public_web"}:
         risk_flags.append("do_not_copy_original_expression")
     if source_type in {"google_trends", "naver_datalab", "oliveyoung_rank"}:
         risk_flags.append("ranking_or_trend_requires_source_date")
+    risk_flags.extend(public_observation_quality_flags(observation, signal_text))
     return normalize_signal({
         "id": _public_signal_id(observation, industry, insight),
         "industry": industry,
@@ -120,13 +140,20 @@ def public_observation_to_signal(
         "sourceRef": {
             "collector": "public_signal_collector",
             "sourceKind": observation.source_kind,
+            "eventId": observation.event_id,
             "url": observation.url,
             "title": observation.title,
             "host": urlparse(observation.url).netloc if observation.url else "",
+            "sourceName": observation.source_name,
+            "publishedAt": observation.published_at,
+            "observedAt": observation.observed_at,
+            "section": observation.section,
+            "query": observation.query,
+            "methodology": observation.methodology,
         },
         "collectedAt": now,
         "topic": observation.topic,
-        "signalText": _compact(observation.observed_text, 260),
+        "signalText": _compact(signal_text, 260),
         "normalizedInsight": insight,
         "targetSegment": observation.target_segment or infer_target_segment(observation),
         "funnelStage": _funnel_stage_for(evidence_type),
@@ -137,12 +164,49 @@ def public_observation_to_signal(
         "riskFlags": risk_flags,
         "usableFor": USABLE_FOR_BY_EVIDENCE.get(evidence_type, ["concept", "copy"]),
         "review": {
-            "decision": "selected" if auto_select else "unreviewed",
+            "decision": "selected" if auto_select and "capture_quality_blocked" not in risk_flags else "unreviewed",
             "reasonTags": ["useful_trend"] if auto_select else [],
             "reviewNote": "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용.",
+            "reviewNote": public_review_note(risk_flags, source_kind=observation.source_kind),
             "reviewedAt": now if auto_select else "",
         },
     })
+
+
+def sanitize_public_observation_text(text: str) -> str:
+    value = _clean_text(text)
+    value = re.sub(r"<(script|style)[^>]*>.*?</\1>", " ", value, flags=re.IGNORECASE | re.DOTALL)
+    value = re.sub(r"<[^>]+>", " ", value)
+    value = re.sub(r"\{[\"'][A-Za-z0-9_\-]+[\"']\s*:", " ", value)
+    value = re.sub(r"[{}\[\]]", " ", value)
+    return _clean_text(value)
+
+
+def public_observation_quality_flags(observation: PublicObservation, sanitized_text: str | None = None) -> list[str]:
+    raw_text = str(observation.observed_text or "")
+    text = sanitized_text if sanitized_text is not None else sanitize_public_observation_text(raw_text)
+    flags: list[str] = []
+    if re.search(r"<(html|body|div|span|script|style|meta|section|article)\b", raw_text, re.IGNORECASE):
+        flags.append("raw_html_detected")
+    if re.search(r"\{[\"'][A-Za-z0-9_\-]+[\"']\s*:|[\"']slides[\"']\s*:|[\"']headline[\"']\s*:", raw_text):
+        flags.append("raw_json_detected")
+    if "�" in raw_text or re.search(r"(ì|ë|í|ê|ð|Ã|Â|爰|愿|怨|諛|섏|쒕|좏|留)", raw_text):
+        flags.append("broken_text_suspected")
+    if len(raw_text) > 1800:
+        flags.append("source_text_too_long")
+    if len(text) < 35:
+        flags.append("thin_public_observation")
+    if any(flag in flags for flag in ("raw_html_detected", "raw_json_detected", "broken_text_suspected", "thin_public_observation")):
+        flags.append("capture_quality_blocked")
+    return list(dict.fromkeys(flags))
+
+
+def public_review_note(risk_flags: list[str], *, source_kind: str = "") -> str:
+    if source_kind == "event_brief":
+        return "이벤트 입력에서 확인된 사실 후보. 원본 이벤트 조건과 대조한 뒤 selected로 승격합니다."
+    if "capture_quality_blocked" in risk_flags:
+        return "공개 관찰 신호지만 캡처 품질 문제가 있어 selected 승격 전 원문/요약을 반드시 정리해야 합니다."
+    return "공개 관찰 신호. 원문 복사 금지, 추상화된 인사이트만 생성 근거로 사용."
 
 
 def infer_normalized_insight(observation: PublicObservation) -> str:
@@ -182,6 +246,7 @@ def capture_public_page_snapshot(
     url: str,
     *,
     topic: str,
+    event_id: str = "",
     source_kind: str = "public_web",
     output_path: Path | None = None,
     timeout_ms: int = 15000,
@@ -209,6 +274,7 @@ def capture_public_page_snapshot(
             "url": url,
             "title": title,
             "topic": topic,
+            "eventId": event_id,
             "observedText": _compact(body_text, 1200),
         }],
     }
@@ -230,16 +296,23 @@ def _launch_browser(playwright: Any, *, browser_channel: str = "") -> Any:
     raise RuntimeError("No Playwright browser could be launched. " + " | ".join(errors[-3:]))
 
 
-def _normalize_observation(item: dict[str, Any], *, default_topic: str) -> PublicObservation:
+def _normalize_observation(item: dict[str, Any], *, default_topic: str, default_event_id: str = "") -> PublicObservation:
     return PublicObservation(
         source_kind=str(item.get("sourceKind") or item.get("source_type") or "public_web").strip(),
         observed_text=str(item.get("observedText") or item.get("text") or item.get("summary") or "").strip(),
         topic=str(item.get("topic") or default_topic).strip() or default_topic,
+        event_id=str(item.get("eventId") or default_event_id).strip(),
         url=str(item.get("url") or "").strip(),
         title=str(item.get("title") or "").strip(),
         evidence_type=str(item.get("evidenceType") or "").strip(),
         target_segment=str(item.get("targetSegment") or "").strip(),
         normalized_insight=str(item.get("normalizedInsight") or "").strip(),
+        published_at=str(item.get("publishedAt") or "").strip(),
+        observed_at=str(item.get("observedAt") or "").strip(),
+        source_name=str(item.get("sourceName") or "").strip(),
+        section=str(item.get("section") or "").strip(),
+        query=str(item.get("query") or "").strip(),
+        methodology=str(item.get("methodology") or "").strip(),
         strength=_score(item.get("strength"), 3),
         freshness=_score(item.get("freshness"), 3),
         confidence=_score(item.get("confidence"), 2),
@@ -250,6 +323,7 @@ def _public_signal_id(observation: PublicObservation, industry: str, insight: st
     key = "|".join([
         industry,
         observation.source_kind,
+        observation.event_id,
         observation.topic,
         observation.url,
         observation.title,

@@ -54,6 +54,69 @@ class AdPlanningReviewPacketTests(unittest.TestCase):
         self.assertEqual("Brand", packet["strategyReviewQueue"][0]["sourceBrand"])
         self.assertIn("targetInsight", packet["strategyReviewQueue"][0]["missingForSelected"])
 
+    def test_packet_does_not_treat_connection_check_as_human_concept_selection(self) -> None:
+        packet = build_packet(
+            dataset={"cases": [{
+                "id": "season-case", "eventName": "Season", "eventType": "seasonal",
+                "product": "Ampoule", "target": "Target", "offer": "Gift",
+            }]},
+            benchmark={},
+            external_results={"results": [{
+                "caseId": "season-case",
+                "status": "complete",
+                "selectedConceptId": "concept_01",
+                "selectionSource": "connection_check_default",
+                "concepts": {"candidates": [{}, {}, {}]},
+                "copyPackage": {"outputs": [{}, {}, {}, {}]},
+            }]},
+            human_reviews={"reviews": []},
+            strategy_examples=[],
+            strategy_metrics={"decisions": {"selected": 0, "shortlist": 0}},
+            evidence_queue={"cases": [{
+                "eventId": "season-case",
+                "status": "ready",
+                "progress": {"selected": 3, "reviewCandidates": 0},
+                "requirements": {"evidenceTypeLabels": ["고객 문제", "시기 명분", "검색 흐름"]},
+                "gaps": {"evidenceTypeLabels": [], "missingInputs": []},
+            }]},
+            pilot_limit=1,
+        )
+
+        item = packet["benchmarkReviewQueue"][0]
+        self.assertEqual("concept_selection_pending", item["status"])
+        self.assertEqual("connection_check_default", item["selectionSource"])
+        self.assertIn("최종 선택이 아닙니다", item["nextAction"])
+        self.assertEqual(3, item["evidence"]["selected"])
+
+    def test_packet_lists_exact_evidence_review_work_and_missing_input(self) -> None:
+        packet = build_packet(
+            dataset={"cases": [{
+                "id": "launch-case", "eventName": "Launch", "eventType": "launch",
+                "product": "Serum", "target": "Target", "offer": "",
+            }]},
+            benchmark={},
+            external_results={"results": [{"caseId": "launch-case", "status": "evidence_review_required"}]},
+            human_reviews={"reviews": []},
+            strategy_examples=[],
+            strategy_metrics={"decisions": {"selected": 0, "shortlist": 0}},
+            evidence_queue={"cases": [{
+                "eventId": "launch-case",
+                "status": "needs_review",
+                "progress": {"selected": 0, "reviewCandidates": 3},
+                "requirements": {"evidenceTypeLabels": ["고객 문제", "구매 저항", "제품 근거"]},
+                "gaps": {
+                    "evidenceTypeLabels": ["제품 근거"],
+                    "missingInputs": ["공식 성분·사용법 자료"],
+                },
+            }]},
+            pilot_limit=1,
+        )
+
+        item = packet["benchmarkReviewQueue"][0]
+        self.assertIn("후보 3개", item["nextAction"])
+        self.assertIn("공식 성분·사용법 자료", item["nextAction"])
+        self.assertEqual(["제품 근거"], item["evidence"]["missingRoles"])
+
     def test_main_writes_json_and_markdown_packet(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
             root = Path(tmp)
@@ -88,7 +151,20 @@ class AdPlanningReviewPacketTests(unittest.TestCase):
         packet = ad_planning_review_packet()
         self.assertEqual(20, packet["summary"]["fixedEvaluationCases"])
         self.assertEqual(5, packet["summary"]["pilotLimit"])
-        self.assertLessEqual(len(packet["benchmarkReviewQueue"]), 5)
+        self.assertEqual(
+            [
+                "season-monsoon-barrier",
+                "promotion-gift",
+                "launch-serum",
+                "education-barrier",
+                "branding-minimal",
+            ],
+            packet["summary"]["pilotCaseIds"],
+        )
+        self.assertEqual(
+            packet["summary"]["pilotCaseIds"],
+            [item["caseId"] for item in packet["benchmarkReviewQueue"]],
+        )
         self.assertIn("strategySelectedOrShortlist", packet["summary"])
 
 

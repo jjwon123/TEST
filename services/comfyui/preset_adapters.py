@@ -2,13 +2,21 @@
 
 from __future__ import annotations
 
+import copy
 from typing import Any
 
-from services.comfyui.brand_workflows import has_brand_workflow, load_brand_workflow_config
+from services.comfyui.brand_workflows import (
+    brand_api_template,
+    has_brand_workflow,
+    load_brand_workflow_config,
+)
 
 
 def build_api_prompt(workflow_preset: str, payload: dict[str, Any]) -> dict[str, Any]:
     if has_brand_workflow(workflow_preset):
+        api_graph = brand_api_template(workflow_preset)
+        if api_graph is not None:
+            return _apply_brand_api_template(api_graph, payload)
         return _brand_workflow_qwen(payload, load_brand_workflow_config(workflow_preset))
     if workflow_preset in {"korean_poster_overlay_1024", "campaign_keyvisual"}:
         return _korean_poster_overlay_1024(payload)
@@ -17,6 +25,76 @@ def build_api_prompt(workflow_preset: str, payload: dict[str, Any]) -> dict[str,
     if workflow_preset == "qwen_candidate_2511":
         return _qwen_candidate_2511(payload)
     raise ValueError(f"No ComfyUI adapter registered for preset: {workflow_preset}")
+
+
+def _apply_brand_api_template(graph: dict[str, Any], payload: dict[str, Any]) -> dict[str, Any]:
+    """Run a verified API-format brand graph, swapping only product image, prompts,
+    seed and save prefix.
+
+    Graph topology (unet/GGUF model, LoRA/Lightning toggle, ModelSampling shift,
+    CFGNorm, reference method, sampler/steps/cfg/denoise) is left exactly as authored
+    so live output matches the human-approved keeper cut for that workflow.
+    """
+    g = copy.deepcopy(graph)
+
+    def node_of(ref: Any) -> tuple[str | None, dict[str, Any] | None]:
+        if isinstance(ref, list) and ref and str(ref[0]) in g:
+            return str(ref[0]), g[str(ref[0])]
+        return None, None
+
+    def trace_text_encode(start_ref: Any) -> dict[str, Any] | None:
+        """Follow a conditioning link back to its TextEncode* source node."""
+        seen: set[str] = set()
+        nid, node = node_of(start_ref)
+        while node is not None and nid not in seen:
+            seen.add(str(nid))
+            if str(node.get("class_type", "")).startswith("TextEncode"):
+                return node
+            nid, node = node_of(node.get("inputs", {}).get("conditioning"))
+        return None
+
+    ksampler = next((n for n in g.values() if n.get("class_type") == "KSampler"), None)
+    pos_node = neg_node = None
+    if ksampler is not None:
+        pos_node = trace_text_encode(ksampler["inputs"].get("positive"))
+        neg_node = trace_text_encode(ksampler["inputs"].get("negative"))
+        if payload.get("seed") not in (None, ""):
+            ksampler["inputs"]["seed"] = int(payload["seed"])
+
+    # Keep the template base prompt; append campaign-specific direction from the brief.
+    campaign_pos = str(payload.get("positive_prompt") or "").strip()
+    campaign_neg = str(payload.get("negative_prompt") or "").strip()
+    if pos_node is not None and campaign_pos:
+        base = str(pos_node["inputs"].get("prompt") or "")
+        pos_node["inputs"]["prompt"] = "\n\n".join(
+            item for item in [base, "Campaign-specific direction:", campaign_pos] if item
+        )
+    if neg_node is not None and campaign_neg:
+        base = str(neg_node["inputs"].get("prompt") or "")
+        neg_node["inputs"]["prompt"] = ", ".join(item for item in [base, campaign_neg] if item)
+
+    product_image = (
+        payload.get("product_image")
+        or payload.get("base_image")
+        or "product_input.png"
+    )
+    for node in g.values():
+        if node.get("class_type") == "LoadImage":
+            node["inputs"]["image"] = product_image
+            node.pop("is_changed", None)
+
+    metadata = payload.get("metadata", {})
+    prefix = (
+        payload.get("filename_prefix")
+        or metadata.get("candidate_id")
+        or metadata.get("prompt_id")
+    )
+    if prefix:
+        for node in g.values():
+            if node.get("class_type") == "SaveImage":
+                node["inputs"]["filename_prefix"] = _safe_prefix(prefix)
+
+    return g
 
 
 def _brand_workflow_qwen(payload: dict[str, Any], config: dict[str, Any]) -> dict[str, Any]:

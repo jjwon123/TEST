@@ -16,6 +16,7 @@ if str(ROOT) not in sys.path:
 
 from core.utils.json_io import read_json
 from scripts.benchmark_ad_planning import DEFAULT_RESULTS, DEFAULT_REVIEWS, RUBRIC_KEYS, evaluate_case, save_human_review
+from services.ad_strategy.pilot_selection import select_pilot_cases
 
 
 DATASET_PATH = ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json"
@@ -71,9 +72,10 @@ def export_sheet(path: Path, *, dataset_path: Path = DATASET_PATH, external_path
     dataset = read_json(dataset_path, default={"cases": []})
     external = {item.get("caseId"): item for item in read_json(external_path, default={"results": []}).get("results", [])}
     reviews = {item.get("caseId"): item for item in read_json(reviews_path, default={"reviews": []}).get("reviews", [])}
+    selected_cases = select_pilot_cases(dataset, limit=limit)
     rows = [
         case_to_row(case, reviews.get(case.get("id"), {}), external.get(case.get("id"), {}))
-        for case in dataset.get("cases", [])[:limit or None]
+        for case in selected_cases
     ]
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as handle:

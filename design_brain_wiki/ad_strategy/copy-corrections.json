@@ -1,0 +1,4441 @@
+{
+  "records": [
+    {
+      "id": "eaa19ddd8e4bf9bb",
+      "runId": "benchmark:season-monsoon-barrier",
+      "eventId": "season-monsoon-barrier",
+      "eventName": "장마철 수분 장벽 리셋",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+            "body": "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "세라마이드 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "앰플 구매 시 장벽 크림 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": "1",
+            "role": "hook",
+            "headline": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+            "body": "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": "2",
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": "3",
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "세라마이드 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": "4",
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "앰플 구매 시 장벽 크림 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": "5",
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "channel_mismatch",
+        "good_hook",
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "repetitive_copy",
+            "message": "동일 문장이 과도하게 반복됩니다. 습도와 냉방 사이, 보습 루틴을 다시 볼 때"
+          },
+          {
+            "severity": "warning",
+            "id": "awkward_korean",
+            "message": "반복된 문장 때문에 한국어 카피 품질 확인이 필요합니다."
+          },
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.50"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.5,
+        "createdAt": "2026-07-18T08:58:58.827655+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-18T08:58:58.839162+00:00"
+    },
+    {
+      "id": "0e25955fb9e39a62",
+      "runId": "benchmark:season-monsoon-barrier",
+      "eventId": "season-monsoon-barrier",
+      "eventName": "장마철 수분 장벽 리셋",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "body": "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다.\n세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n세라마이드 앰플을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n앰플 구매 시 장벽 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "장마철수분장벽리셋",
+          "세라마이드앰플",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "body": "장마 자체가 건조함의 원인이라고 단정하지 말고, 실외 습도와 냉방 실내 환경 사이에서 고객이 체감하는 건조 상황을 먼저 확인해야 한다.\n세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n세라마이드 앰플을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n앰플 구매 시 장벽 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "장마철수분장벽리셋",
+          "세라마이드앰플",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "channel_mismatch",
+        "good_hook",
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "repetitive_copy",
+            "message": "동일 문장이 과도하게 반복됩니다. 습도와 냉방 사이, 보습 루틴을 다시 볼 때"
+          },
+          {
+            "severity": "warning",
+            "id": "awkward_korean",
+            "message": "반복된 문장 때문에 한국어 카피 품질 확인이 필요합니다."
+          },
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.50"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.5,
+        "createdAt": "2026-07-18T08:58:58.827655+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-18T08:58:58.847324+00:00"
+    },
+    {
+      "id": "32d74042e460cd48",
+      "runId": "benchmark:season-monsoon-barrier",
+      "eventId": "season-monsoon-barrier",
+      "eventName": "장마철 수분 장벽 리셋",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "세라마이드 앰플 루틴을 다시 볼 시간",
+        "subcopy": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+        "offer": "앰플 구매 시 장벽 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "세라마이드 앰플 루틴을 다시 볼 시간",
+        "subcopy": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+        "offer": "앰플 구매 시 장벽 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "channel_mismatch",
+        "good_hook",
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "repetitive_copy",
+            "message": "동일 문장이 과도하게 반복됩니다. 습도와 냉방 사이, 보습 루틴을 다시 볼 때"
+          },
+          {
+            "severity": "warning",
+            "id": "awkward_korean",
+            "message": "반복된 문장 때문에 한국어 카피 품질 확인이 필요합니다."
+          },
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.50"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.5,
+        "createdAt": "2026-07-18T08:58:58.827655+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-18T08:58:58.852834+00:00"
+    },
+    {
+      "id": "ad5015eda9968b15",
+      "runId": "benchmark:season-monsoon-barrier",
+      "eventId": "season-monsoon-barrier",
+      "eventName": "장마철 수분 장벽 리셋",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+          "세라마이드 앰플로 시작하는 생활 환경 맞춤 루틴"
+        ],
+        "intro": "여름 고온 전망은 루틴 점검의 시기 명분으로만 사용하고, 실제 장마·습도 표현은 집행 직전 최신 단기 자료로 다시 확인해야 한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "장마철에도 냉방 실내에서 속당김과 건조함을 느끼는 고객은 날씨 하나로 단정한 설명보다 자신의 생활 환경에 맞춰 루틴을 조정할 기준을 원합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "세라마이드 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "앰플 구매 시 장벽 크림 증정"
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+          "세라마이드 앰플로 시작하는 생활 환경 맞춤 루틴"
+        ],
+        "intro": "여름 고온 전망은 루틴 점검의 시기 명분으로만 사용하고, 실제 장마·습도 표현은 집행 직전 최신 단기 자료로 다시 확인해야 한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "장마철에도 냉방 실내에서 속당김과 건조함을 느끼는 고객은 날씨 하나로 단정한 설명보다 자신의 생활 환경에 맞춰 루틴을 조정할 기준을 원합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "세라마이드 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "세라마이드 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "앰플 구매 시 장벽 크림 증정"
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "channel_mismatch",
+        "good_hook",
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "repetitive_copy",
+            "message": "동일 문장이 과도하게 반복됩니다. 습도와 냉방 사이, 보습 루틴을 다시 볼 때"
+          },
+          {
+            "severity": "warning",
+            "id": "awkward_korean",
+            "message": "반복된 문장 때문에 한국어 카피 품질 확인이 필요합니다."
+          },
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.50"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.5,
+        "createdAt": "2026-07-18T08:58:58.827655+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-18T08:58:58.858833+00:00"
+    },
+    {
+      "id": "0608bc0926134792",
+      "runId": "benchmark:promotion-gift",
+      "eventId": "promotion-gift",
+      "eventName": "앰플 구매 사은 행사",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "수분 앰플로 시작하는 생활 환경 맞춤 루틴",
+            "body": "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "수분 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "수분 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "구매 시 미니 크림 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": "1",
+            "role": "hook",
+            "headline": "수분 앰플로 시작하는 생활 환경 맞춤 루틴",
+            "body": "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": "2",
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "수분 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": "3",
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "수분 앰플은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": "4",
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "구매 시 미니 크림 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": "5",
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "weak_cta",
+        "channel_mismatch",
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-20T13:55:51.816065+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-20T13:55:51.826369+00:00"
+    },
+    {
+      "id": "f67eecb2a97632d9",
+      "runId": "benchmark:promotion-gift",
+      "eventId": "promotion-gift",
+      "eventName": "앰플 구매 사은 행사",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "수분 앰플, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다.\n수분 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n수분 앰플을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n구매 시 미니 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "앰플구매사은행사",
+          "수분앰플",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "수분 앰플, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다.\n수분 앰플을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n수분 앰플을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n구매 시 미니 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "앰플구매사은행사",
+          "수분앰플",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "weak_cta",
+        "channel_mismatch",
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-20T13:55:51.816065+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-20T13:55:51.833878+00:00"
+    },
+    {
+      "id": "06eae4a3d219dae9",
+      "runId": "benchmark:promotion-gift",
+      "eventId": "promotion-gift",
+      "eventName": "앰플 구매 사은 행사",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "수분 앰플 루틴을 다시 볼 시간",
+        "subcopy": "수분 앰플을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 미니 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "수분 앰플 루틴을 다시 볼 시간",
+        "subcopy": "수분 앰플을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 미니 크림 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "weak_cta",
+        "channel_mismatch",
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-20T13:55:51.816065+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-20T13:55:51.843107+00:00"
+    },
+    {
+      "id": "10d1e95ba5cd1a8a",
+      "runId": "benchmark:promotion-gift",
+      "eventId": "promotion-gift",
+      "eventName": "앰플 구매 사은 행사",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "수분 앰플, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 수분 앰플을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "수분 앰플을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "수분 앰플의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 구매 시 미니 크림 증정입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "수분 앰플, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 수분 앰플을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "수분 앰플을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "수분 앰플의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 구매 시 미니 크림 증정입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "weak_cta",
+        "channel_mismatch",
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-20T13:55:51.816065+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-20T13:55:51.850615+00:00"
+    },
+    {
+      "id": "e97327338d291315",
+      "runId": "benchmark:launch-serum",
+      "eventId": "launch-serum",
+      "eventName": "신제품 탄력 세럼 출시",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "탄력 세럼으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "탄력 세럼을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "탄력 세럼은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "출시 기념 샘플 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": "1",
+            "role": "hook",
+            "headline": "탄력 세럼으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": "2",
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "탄력 세럼을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": "3",
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "탄력 세럼은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": "4",
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "출시 기념 샘플 증정",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": "5",
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "generic",
+        "weak_insight",
+        "unsupported_claim"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-21T14:01:48.283303+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 3,
+        "targetEmpathy": 3,
+        "productConnection": 3,
+        "distinctiveness": 3,
+        "channelFit": 3,
+        "koreanCopyQuality": 3,
+        "brandFit": 3,
+        "actionability": 3
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-21T14:00:36.511274+00:00",
+      "updatedAt": "2026-07-21T14:01:48.294809+00:00"
+    },
+    {
+      "id": "2c23a95c975be9e9",
+      "runId": "benchmark:launch-serum",
+      "eventId": "launch-serum",
+      "eventName": "신제품 탄력 세럼 출시",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "탄력 세럼, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다.\n탄력 세럼을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n탄력 세럼을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n출시 기념 샘플 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "신제품탄력세럼출시",
+          "탄력세럼",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "탄력 세럼, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다.\n탄력 세럼을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n탄력 세럼을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n출시 기념 샘플 증정",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "신제품탄력세럼출시",
+          "탄력세럼",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "generic",
+        "weak_insight",
+        "unsupported_claim"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-21T14:01:48.283303+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 3,
+        "targetEmpathy": 3,
+        "productConnection": 3,
+        "distinctiveness": 3,
+        "channelFit": 3,
+        "koreanCopyQuality": 3,
+        "brandFit": 3,
+        "actionability": 3
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-21T14:00:36.519568+00:00",
+      "updatedAt": "2026-07-21T14:01:48.302823+00:00"
+    },
+    {
+      "id": "414435f2703c31ed",
+      "runId": "benchmark:launch-serum",
+      "eventId": "launch-serum",
+      "eventName": "신제품 탄력 세럼 출시",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "탄력 세럼 루틴을 다시 볼 시간",
+        "subcopy": "탄력 세럼을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 출시 기념 샘플 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "탄력 세럼 루틴을 다시 볼 시간",
+        "subcopy": "탄력 세럼을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 출시 기념 샘플 증정",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "generic",
+        "weak_insight",
+        "unsupported_claim"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-21T14:01:48.283303+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 3,
+        "targetEmpathy": 3,
+        "productConnection": 3,
+        "distinctiveness": 3,
+        "channelFit": 3,
+        "koreanCopyQuality": 3,
+        "brandFit": 3,
+        "actionability": 3
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-21T14:00:36.525581+00:00",
+      "updatedAt": "2026-07-21T14:01:48.309330+00:00"
+    },
+    {
+      "id": "6af8d3d0a3709574",
+      "runId": "benchmark:launch-serum",
+      "eventId": "launch-serum",
+      "eventName": "신제품 탄력 세럼 출시",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "탄력 세럼, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 탄력 세럼을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "탄력 세럼을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "탄력 세럼의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 출시 기념 샘플 증정입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "탄력 세럼, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 탄력 세럼을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "탄력 세럼을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "탄력 세럼의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 출시 기념 샘플 증정입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "generic",
+        "weak_insight",
+        "unsupported_claim"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "pass",
+        "criticalErrorCount": 0,
+        "issues": [],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 4,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 4.0,
+        "createdAt": "2026-07-21T14:01:48.283303+00:00"
+      },
+      "approved": false,
+      "humanScores": {
+        "strategyClarity": 3,
+        "targetEmpathy": 3,
+        "productConnection": 3,
+        "distinctiveness": 3,
+        "channelFit": 3,
+        "koreanCopyQuality": 3,
+        "brandFit": 3,
+        "actionability": 3
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-21T14:00:36.532595+00:00",
+      "updatedAt": "2026-07-21T14:01:48.315833+00:00"
+    },
+    {
+      "id": "55335b04dd108bcc",
+      "runId": "benchmark:education-barrier",
+      "eventId": "education-barrier",
+      "eventName": "피부 장벽 루틴 가이드",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "장벽 케어 라인으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "장벽 케어 라인을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "장벽 케어 라인은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "자세한 내용은 이벤트 페이지에서 확인하세요.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": "1",
+            "role": "hook",
+            "headline": "장벽 케어 라인으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": "2",
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "장벽 케어 라인을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": "3",
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "장벽 케어 라인은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": "4",
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "자세한 내용은 이벤트 페이지에서 확인하세요.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": "5",
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.38."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.38"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 3,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.38,
+        "createdAt": "2026-07-22T13:51:01.390254+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-22T13:51:01.402781+00:00"
+    },
+    {
+      "id": "bb3de748ca647bbd",
+      "runId": "benchmark:education-barrier",
+      "eventId": "education-barrier",
+      "eventName": "피부 장벽 루틴 가이드",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "장벽 케어 라인, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n장벽 케어 라인을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n장벽 케어 라인을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "피부장벽루틴가이드",
+          "장벽케어라인",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "장벽 케어 라인, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n장벽 케어 라인을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n장벽 케어 라인을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "피부장벽루틴가이드",
+          "장벽케어라인",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.38."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.38"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 3,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.38,
+        "createdAt": "2026-07-22T13:51:01.390254+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-22T13:51:01.411293+00:00"
+    },
+    {
+      "id": "96df9a7727ac2e1b",
+      "runId": "benchmark:education-barrier",
+      "eventId": "education-barrier",
+      "eventName": "피부 장벽 루틴 가이드",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "장벽 케어 라인 루틴을 다시 볼 시간",
+        "subcopy": "장벽 케어 라인을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "장벽 케어 라인 루틴을 다시 볼 시간",
+        "subcopy": "장벽 케어 라인을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.38."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.38"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 3,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.38,
+        "createdAt": "2026-07-22T13:51:01.390254+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-22T13:51:01.418797+00:00"
+    },
+    {
+      "id": "859a4966a5030058",
+      "runId": "benchmark:education-barrier",
+      "eventId": "education-barrier",
+      "eventName": "피부 장벽 루틴 가이드",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "장벽 케어 라인, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 장벽 케어 라인을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "장벽 케어 라인을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "장벽 케어 라인의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "자세한 내용과 참여 방법은 이벤트 페이지에서 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "장벽 케어 라인, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 장벽 케어 라인을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "장벽 케어 라인을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "장벽 케어 라인의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "자세한 내용과 참여 방법은 이벤트 페이지에서 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.38."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.38"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 3,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.38,
+        "createdAt": "2026-07-22T13:51:01.390254+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-22T13:51:01.427802+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-29_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:30.732111+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "e327a8472bfd9fc8",
+      "createdAt": "2026-07-22T13:57:30.920584+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-29_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productioneducationbarri",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productioneducationbarri",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:30.732111+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "6633becb9c47df5f",
+      "createdAt": "2026-07-22T13:57:30.929091+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-29_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:30.732111+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "32c8e495a8a197b0",
+      "createdAt": "2026-07-22T13:57:30.938079+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-29_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:30.732111+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "bc532e0ea13a6183",
+      "createdAt": "2026-07-22T13:57:30.947116+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-29_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "community_banner",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:30.732111+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "26f1c841c01a727b",
+      "createdAt": "2026-07-22T13:57:30.956986+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-57_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:58.408378+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "cbf2ced6493cac70",
+      "createdAt": "2026-07-22T13:57:58.588061+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-57_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productioneducationbarri",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productioneducationbarri",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:58.408378+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "33eaa704eba3f011",
+      "createdAt": "2026-07-22T13:57:58.597584+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-57_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:58.408378+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "746a43ac5f4a10c1",
+      "createdAt": "2026-07-22T13:57:58.607857+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-57_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "장벽을 추상적인 유행어로 설명하지 말고 수분 손실과 고객이 느끼는 건조 상황부터 풀어낸다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:58.408378+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "c2804d2868ffe286",
+      "createdAt": "2026-07-22T13:57:58.618515+00:00"
+    },
+    {
+      "runId": "2026-07-22_13-57-57_production-education-barrier",
+      "eventId": "production-education-barrier",
+      "eventName": "Production education-barrier",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "community_banner",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_target_insight",
+            "message": "구체적인 고객 상황과 핵심 근거가 연결되지 않은 타깃 인사이트가 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_evidence_distinction",
+            "message": "전략 문장은 다르지만 각 안을 만든 핵심 근거가 충분히 분리되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.00"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 3,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.0,
+        "createdAt": "2026-07-22T13:57:58.408378+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "ab5911bd5359b04f",
+      "createdAt": "2026-07-22T13:57:58.629034+00:00"
+    },
+    {
+      "id": "84e75d8280f3ef63",
+      "runId": "benchmark:branding-minimal",
+      "eventId": "branding-minimal",
+      "eventName": "필요한 것만 남긴 루틴",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "미니멀 스킨케어로 시작하는 생활 환경 맞춤 루틴",
+            "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "미니멀 스킨케어를 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "미니멀 스킨케어는 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "자세한 내용은 이벤트 페이지에서 확인하세요.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "미니멀 스킨케어로 시작하는 생활 환경 맞춤 루틴",
+            "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "미니멀 스킨케어를 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "미니멀 스킨케어는 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "offer",
+            "headline": "참여 이유",
+            "body": "자세한 내용은 이벤트 페이지에서 확인하세요.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.62."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-25T07:13:51.056386+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-25T07:13:51.068962+00:00"
+    },
+    {
+      "id": "97fc7dbb85cf741d",
+      "runId": "benchmark:branding-minimal",
+      "eventId": "branding-minimal",
+      "eventName": "필요한 것만 남긴 루틴",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "미니멀 스킨케어, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.\n미니멀 스킨케어를 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n미니멀 스킨케어를 중심으로 지금 필요한 선택 기준을 정리했습니다.\n자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "필요한것만남긴루틴",
+          "미니멀스킨케어",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "미니멀 스킨케어, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.\n미니멀 스킨케어를 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n미니멀 스킨케어를 중심으로 지금 필요한 선택 기준을 정리했습니다.\n자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "필요한것만남긴루틴",
+          "미니멀스킨케어",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.62."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-25T07:13:51.056386+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-25T07:13:51.080031+00:00"
+    },
+    {
+      "id": "6715b79c6feee48f",
+      "runId": "benchmark:branding-minimal",
+      "eventId": "branding-minimal",
+      "eventName": "필요한 것만 남긴 루틴",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "미니멀 스킨케어 루틴을 다시 볼 시간",
+        "subcopy": "미니멀 스킨케어를 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "미니멀 스킨케어 루틴을 다시 볼 시간",
+        "subcopy": "미니멀 스킨케어를 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 자세한 내용은 이벤트 페이지에서 확인하세요.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.62."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-25T07:13:51.056386+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-25T07:13:51.089069+00:00"
+    },
+    {
+      "id": "c38183c192af3881",
+      "runId": "benchmark:branding-minimal",
+      "eventId": "branding-minimal",
+      "eventName": "필요한 것만 남긴 루틴",
+      "brandName": "benchmark_cosmetics",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "미니멀 스킨케어, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 미니멀 스킨케어를 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "미니멀 스킨케어를 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "미니멀 스킨케어의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "자세한 내용과 참여 방법은 이벤트 페이지에서 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "미니멀 스킨케어, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 미니멀 스킨케어를 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "미니멀 스킨케어를 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "미니멀 스킨케어의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "자세한 내용과 참여 방법은 이벤트 페이지에서 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "good_hook"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.62."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-25T07:13:51.056386+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "conceptSelectionSource": "human",
+      "createdAt": "2026-07-25T07:13:51.098095+00:00"
+    },
+    {
+      "runId": "2026-07-25_07-14-17_production-branding-minimal",
+      "eventId": "production-branding-minimal",
+      "eventName": "Production branding-minimal",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "cover": "습도와 냉방 사이, 보습 루틴을 다시 볼 때",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품으로 시작하는 생활 환경 맞춤 루틴",
+            "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "제품은 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "내 루틴에 맞는지 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.12"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.12,
+        "createdAt": "2026-07-25T07:14:18.895723+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "1dca671ec0c88313",
+      "createdAt": "2026-07-25T07:14:19.085306+00:00"
+    },
+    {
+      "runId": "2026-07-25_07-14-17_production-branding-minimal",
+      "eventId": "production-branding-minimal",
+      "eventName": "Production branding-minimal",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productionbrandingminima",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "제품, 지금 루틴의 불편부터 다시 봅니다",
+        "body": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.\n제품을 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.\n제품을 중심으로 지금 필요한 선택 기준을 정리했습니다.\n추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기",
+        "hashtagDirection": [
+          "Productionbrandingminima",
+          "제품",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.12"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.12,
+        "createdAt": "2026-07-25T07:14:18.895723+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "59e4c6561e873409",
+      "createdAt": "2026-07-25T07:14:19.095813+00:00"
+    },
+    {
+      "runId": "2026-07-25_07-14-17_production-branding-minimal",
+      "eventId": "production-branding-minimal",
+      "eventName": "Production branding-minimal",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "제품 루틴을 다시 볼 시간",
+        "subcopy": "제품을 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.12"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.12,
+        "createdAt": "2026-07-25T07:14:18.895723+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "67906be1d223dfd9",
+      "createdAt": "2026-07-25T07:14:19.105839+00:00"
+    },
+    {
+      "runId": "2026-07-25_07-14-17_production-branding-minimal",
+      "eventId": "production-branding-minimal",
+      "eventName": "Production branding-minimal",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "제품, 불편의 원인부터 다시 보기",
+          "내 생활 환경에 맞는 선택 기준 점검하기"
+        ],
+        "intro": "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다.",
+        "sections": [
+          {
+            "heading": "상황 공감",
+            "keySentence": "이 고객 상황을 출발점으로 제품을 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "문제 재정의",
+            "keySentence": "제품을 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "제품 역할",
+            "keySentence": "제품의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "가벼운 행동 제안",
+            "keySentence": "혜택은 추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.12"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.12,
+        "createdAt": "2026-07-25T07:14:18.895723+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "d661494dd923823c",
+      "createdAt": "2026-07-25T07:14:19.115866+00:00"
+    },
+    {
+      "runId": "2026-07-25_07-14-17_production-branding-minimal",
+      "eventId": "production-branding-minimal",
+      "eventName": "Production branding-minimal",
+      "brandName": "LoopStudio benchmark",
+      "industry": "cosmetics_skincare",
+      "channelId": "community_banner",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "editedCopy": {
+        "headline": "지금 케어를 고를 기준",
+        "subcopy": "제품과 함께 지금 루틴의 기준을 확인하세요.",
+        "offer": "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "cta": "내 루틴에 맞는지 확인하기"
+      },
+      "reasonTags": [
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_revision_unresolved",
+            "message": "copy 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_channel_copy_reuse",
+            "message": "여러 채널에서 동일한 긴 문장을 재사용했습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "copy_critic_rubric_below_four",
+            "message": "평균 품질 점수가 4점 미만입니다: 3.50."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.12"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 2,
+          "channelFit": 2,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.12,
+        "createdAt": "2026-07-25T07:14:18.895723+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "strategyClarity": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "distinctiveness": 4,
+        "channelFit": 4,
+        "koreanCopyQuality": 4,
+        "brandFit": 4,
+        "actionability": 4
+      },
+      "blindPreferred": "",
+      "id": "7e45aecfd47036d5",
+      "createdAt": "2026-07-25T07:14:19.125888+00:00"
+    },
+    {
+      "runId": "2026-07-26_01-43-11_hsgn-나이아신아마이드-100-000ppm-신제품-공개",
+      "eventId": "hsgn-innovation-niacinamide-launch",
+      "eventName": "hsgn 나이아신아마이드 100,000ppm 신제품 공개",
+      "brandName": "hsgn",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_cardnews",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "cover": "루틴은 덜고, 나이아신아마이드를 고를 기준은 분명하게",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품 역할과 혜택 범위부터 확인하세요",
+            "body": "Keep the hero visual product-led with a calm headline-safe area; the orange cap is a restrained brand accent rather than a promotional device.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "나이아신아마이드의 공식 제품 근거와 사용 맥락을 구분해 선택 기준을 설명합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "나이아신아마이드는 막연한 기대가 아니라 선택 기준과 사용 맥락을 설명하는 근거입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "나이아신아마이드 100,000ppm 신제품 공개",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "선택 기준 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "선택 기준 확인하기"
+      },
+      "editedCopy": {
+        "cover": "루틴은 덜고, 나이아신아마이드를 고를 기준은 분명하게",
+        "slides": [
+          {
+            "slide": 1,
+            "role": "hook",
+            "headline": "제품 역할과 혜택 범위부터 확인하세요",
+            "body": "Keep the hero visual product-led with a calm headline-safe area; the orange cap is a restrained brand accent rather than a promotional device.",
+            "transition": "다음 장: 지금 루틴에서 확인할 점"
+          },
+          {
+            "slide": 2,
+            "role": "problem",
+            "headline": "지금 루틴에서 확인할 점",
+            "body": "나이아신아마이드의 공식 제품 근거와 사용 맥락을 구분해 선택 기준을 설명합니다.",
+            "transition": "다음 장: 제품은 어떤 역할인가요"
+          },
+          {
+            "slide": 3,
+            "role": "benefit",
+            "headline": "제품은 어떤 역할인가요",
+            "body": "나이아신아마이드는 막연한 기대가 아니라 선택 기준과 사용 맥락을 설명하는 근거입니다.",
+            "transition": "다음 장: 참여 이유"
+          },
+          {
+            "slide": 4,
+            "role": "how_to_join",
+            "headline": "참여 이유",
+            "body": "나이아신아마이드 100,000ppm 신제품 공개",
+            "transition": "다음 장: 다음 행동"
+          },
+          {
+            "slide": 5,
+            "role": "cta",
+            "headline": "다음 행동",
+            "body": "선택 기준 확인하기",
+            "transition": ""
+          }
+        ],
+        "cta": "선택 기준 확인하기"
+      },
+      "reasonTags": [
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-26T01:46:47.984681+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "blindPreferred": "",
+      "id": "bd9ae57f0f6cae49",
+      "createdAt": "2026-07-26T01:46:48.229451+00:00"
+    },
+    {
+      "runId": "2026-07-26_01-43-11_hsgn-나이아신아마이드-100-000ppm-신제품-공개",
+      "eventId": "hsgn-innovation-niacinamide-launch",
+      "eventName": "hsgn 나이아신아마이드 100,000ppm 신제품 공개",
+      "brandName": "hsgn",
+      "industry": "cosmetics_skincare",
+      "channelId": "instagram_feed",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "firstLine": "나이아신아마이드, 고를 기준부터 차분히 확인해요",
+        "body": "Keep the hero visual product-led with a calm headline-safe area; the orange cap is a restrained brand accent rather than a promotional device.\n나이아신아마이드의 공식 제품 근거와 사용 맥락을 구분해 선택 기준을 설명합니다.\n나이아신아마이드를 중심으로 지금 필요한 선택 기준을 정리했습니다.\n나이아신아마이드 100,000ppm 신제품 공개",
+        "cta": "선택 기준 확인하기",
+        "hashtagDirection": [
+          "hsgn나이아신아마이드100000ppm신제품",
+          "나이아신아마이드",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "editedCopy": {
+        "firstLine": "나이아신아마이드, 고를 기준부터 차분히 확인해요",
+        "body": "Keep the hero visual product-led with a calm headline-safe area; the orange cap is a restrained brand accent rather than a promotional device.\n나이아신아마이드의 공식 제품 근거와 사용 맥락을 구분해 선택 기준을 설명합니다.\n나이아신아마이드를 중심으로 지금 필요한 선택 기준을 정리했습니다.\n나이아신아마이드 100,000ppm 신제품 공개",
+        "cta": "선택 기준 확인하기",
+        "hashtagDirection": [
+          "hsgn나이아신아마이드100000ppm신제품",
+          "나이아신아마이드",
+          "여름스킨케어",
+          "루틴"
+        ]
+      },
+      "reasonTags": [
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-26T01:46:47.984681+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "blindPreferred": "",
+      "id": "6e9ef6755531f219",
+      "createdAt": "2026-07-26T01:46:48.239451+00:00"
+    },
+    {
+      "runId": "2026-07-26_01-43-11_hsgn-나이아신아마이드-100-000ppm-신제품-공개",
+      "eventId": "hsgn-innovation-niacinamide-launch",
+      "eventName": "hsgn 나이아신아마이드 100,000ppm 신제품 공개",
+      "brandName": "hsgn",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_thumbnail",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "headline": "구매 전 확인할 기준을 먼저 보여드립니다",
+        "subcopy": "나이아신아마이드를 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 나이아신아마이드 100,000ppm 신제품 공개",
+        "cta": "선택 기준 확인하기"
+      },
+      "editedCopy": {
+        "headline": "구매 전 확인할 기준을 먼저 보여드립니다",
+        "subcopy": "나이아신아마이드를 고를 기준을 한눈에 확인하세요.",
+        "offer": "혜택: 나이아신아마이드 100,000ppm 신제품 공개",
+        "cta": "선택 기준 확인하기"
+      },
+      "reasonTags": [
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-26T01:46:47.984681+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "blindPreferred": "",
+      "id": "d01139abf9c0c6d0",
+      "createdAt": "2026-07-26T01:46:48.249461+00:00"
+    },
+    {
+      "runId": "2026-07-26_01-43-11_hsgn-나이아신아마이드-100-000ppm-신제품-공개",
+      "eventId": "hsgn-innovation-niacinamide-launch",
+      "eventName": "hsgn 나이아신아마이드 100,000ppm 신제품 공개",
+      "brandName": "hsgn",
+      "industry": "cosmetics_skincare",
+      "channelId": "blog_inline_image",
+      "model": "deterministic_planning_engine",
+      "strategyExampleIds": [],
+      "originalCopy": {
+        "titleCandidates": [
+          "나이아신아마이드, 구매 전 무엇을 확인해야 할까",
+          "지금 케어를 고를 때 필요한 선택 기준"
+        ],
+        "intro": "The launch creative can make the verified product name and 100,000ppm label the reason to inspect the product detail, without adding benefit claims.",
+        "sections": [
+          {
+            "heading": "선택 기준 제시",
+            "keySentence": "이 고객 상황을 출발점으로 나이아신아마이드를 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "제품 역할 설명",
+            "keySentence": "나이아신아마이드를 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "사용 맥락 연결",
+            "keySentence": "나이아신아마이드의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "혜택 확인",
+            "keySentence": "혜택은 나이아신아마이드 100,000ppm 신제품 공개입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "선택 기준 확인하기"
+      },
+      "editedCopy": {
+        "titleCandidates": [
+          "나이아신아마이드, 구매 전 무엇을 확인해야 할까",
+          "지금 케어를 고를 때 필요한 선택 기준"
+        ],
+        "intro": "The launch creative can make the verified product name and 100,000ppm label the reason to inspect the product detail, without adding benefit claims.",
+        "sections": [
+          {
+            "heading": "선택 기준 제시",
+            "keySentence": "이 고객 상황을 출발점으로 나이아신아마이드를 고를 기준을 정리합니다."
+          },
+          {
+            "heading": "제품 역할 설명",
+            "keySentence": "나이아신아마이드를 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다."
+          },
+          {
+            "heading": "사용 맥락 연결",
+            "keySentence": "나이아신아마이드의 역할과 선택 이유를 과장 없이 확인합니다."
+          },
+          {
+            "heading": "혜택 확인",
+            "keySentence": "혜택은 나이아신아마이드 100,000ppm 신제품 공개입니다. 적용 조건을 함께 확인하세요."
+          }
+        ],
+        "cta": "선택 기준 확인하기"
+      },
+      "reasonTags": [
+        "good_structure",
+        "strong_product_link"
+      ],
+      "qaResult": {
+        "schemaVersion": "1.0.0",
+        "status": "warning",
+        "criticalErrorCount": 0,
+        "issues": [
+          {
+            "severity": "warning",
+            "id": "concept_critic_revision_unresolved",
+            "message": "concept 비평의 수정 요청이 남아 있습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "concept_critic_weak_product_connection",
+            "message": "제품과 입력 혜택이 세 콘셉트의 설득 논리에 충분히 연결되지 않았습니다."
+          },
+          {
+            "severity": "warning",
+            "id": "rubric_below_four",
+            "message": "평균 루브릭 점수가 4점 미만입니다. 3.62"
+          }
+        ],
+        "rubric": {
+          "strategyClarity": 4,
+          "targetEmpathy": 4,
+          "productConnection": 1,
+          "distinctiveness": 4,
+          "channelFit": 4,
+          "koreanCopyQuality": 4,
+          "brandFit": 4,
+          "actionability": 4
+        },
+        "averageScore": 3.62,
+        "createdAt": "2026-07-26T01:46:47.984681+00:00"
+      },
+      "approved": true,
+      "humanScores": {
+        "koreanCopyQuality": 4,
+        "targetEmpathy": 4,
+        "productConnection": 4,
+        "channelFit": 4,
+        "strategyClarity": 4,
+        "brandFit": 4,
+        "actionability": 4,
+        "distinctiveness": 4
+      },
+      "blindPreferred": "",
+      "id": "b4bd94c2fba7e3fb",
+      "createdAt": "2026-07-26T01:46:48.260454+00:00"
+    }
+  ],
+  "schemaVersion": "1.0.0",
+  "updatedAt": "2026-07-26T01:46:48.260454+00:00"
+}

@@ -25,6 +25,8 @@
   "properties": {
     "schemaVersion": { "type": "string" },
     "eventId": { "type": "string" },
+    "topic": { "type": "string" },
+    "scopePolicy": { "type": "string" },
     "industry": { "type": "string", "enum": ["cosmetics_skincare", "jewelry_luxury"] },
     "status": { "type": "string", "enum": ["ready", "needs_signal_review"] },
     "minimumSelectedSignals": { "type": "integer", "minimum": 1 },
@@ -38,6 +40,23 @@
     "productProofs": { "type": "array", "items": { "type": "string" } },
     "offerAngles": { "type": "array", "items": { "type": "string" } },
     "channelPatterns": { "type": "array", "items": { "type": "string" } },
+    "evidenceDetails": {
+      "type": "array",
+      "items": {
+        "type": "object",
+        "required": ["signalId", "evidenceType", "targetSegment", "insight", "sourceType", "sourceName", "observedAt", "claimBoundary"],
+        "properties": {
+          "signalId": { "type": "string" },
+          "evidenceType": { "type": "string" },
+          "targetSegment": { "type": "string" },
+          "insight": { "type": "string" },
+          "sourceType": { "type": "string" },
+          "sourceName": { "type": "string" },
+          "observedAt": { "type": "string" },
+          "claimBoundary": { "type": "string" }
+        }
+      }
+    },
     "doNotClaim": { "type": "array", "items": { "type": "string" } },
     "evidenceSignalIds": { "type": "array", "items": { "type": "string" } },
     "createdAt": { "type": "string" }

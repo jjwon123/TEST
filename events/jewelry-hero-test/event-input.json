@@ -1,0 +1,30 @@
+{
+  "brandName": "hsgn 주얼리",
+  "eventName": "여름 다이아 하이주얼리 캠페인",
+  "productLibraryId": "jewelry/diamond_ring",
+  "purpose": "더블 헤일로 다이아 링의 프리미엄 비주얼로 신규 상담 문의를 늘린다.",
+  "target": "기념일·예물을 준비하는 30~40대 고객",
+  "channels": [
+    "instagram",
+    "naver_blog"
+  ],
+  "schedule": {
+    "startDate": "2026-07-01",
+    "endDate": "2026-07-15",
+    "publishDate": "2026-06-30"
+  },
+  "offer": "상담 예약 고객에게 프라이빗 피팅과 클리닝 서비스 제공",
+  "references": [
+    "기존 하이주얼리 카드뉴스",
+    "럭셔리 제품 히어로 컷"
+  ],
+  "requiredPhrases": [
+    "상담 예약",
+    "더블 헤일로"
+  ],
+  "bannedWords": [
+    "최저가",
+    "땡처리"
+  ],
+  "notes": "제품 형태는 원본에 충실하게 유지하고, 사람/손 없이 제품 단독 럭셔리 히어로 컷으로 간다."
+}

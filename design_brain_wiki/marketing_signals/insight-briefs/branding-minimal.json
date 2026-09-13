@@ -1,0 +1,72 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "branding-minimal",
+  "topic": "minimal_skincare_routine",
+  "scopePolicy": "exact_event_or_explicit_topic",
+  "industry": "cosmetics_skincare",
+  "status": "ready",
+  "minimumSelectedSignals": 3,
+  "selectedSignalCount": 3,
+  "targetHypotheses": [
+    "바쁜 일상에서 단계 수는 줄이되 결과 기준은 포기하고 싶지 않은 고객",
+    "루틴 단계는 줄여도 제품을 남길 근거까지 포기하고 싶지 않은 고객",
+    "간단한 루틴을 원하지만 과학적 근거와 사용 안내를 확인하는 고객"
+  ],
+  "customerPains": [],
+  "customerDesires": [
+    "미니멀 루틴은 적게 바르는 미학보다 시간과 선택 피로를 줄이면서 필요한 역할을 남기는 가치로 설명한다."
+  ],
+  "purchaseObjections": [
+    "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다."
+  ],
+  "trendHooks": [],
+  "seasonalHooks": [],
+  "productProofs": [],
+  "offerAngles": [],
+  "channelPatterns": [
+    "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다."
+  ],
+  "evidenceDetails": [
+    {
+      "signalId": "public_signal_3b5e6357e906f6ff",
+      "evidenceType": "desire",
+      "targetSegment": "바쁜 일상에서 단계 수는 줄이되 결과 기준은 포기하고 싶지 않은 고객",
+      "insight": "미니멀 루틴은 적게 바르는 미학보다 시간과 선택 피로를 줄이면서 필요한 역할을 남기는 가치로 설명한다.",
+      "sourceType": "public_web",
+      "sourceName": "Euromonitor Voice of the Consumer 2024",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_c0dce269977043ad",
+      "evidenceType": "objection",
+      "targetSegment": "루틴 단계는 줄여도 제품을 남길 근거까지 포기하고 싶지 않은 고객",
+      "insight": "미니멀 루틴을 제품 수 축소만으로 설득하지 말고, 남긴 제품마다 역할과 확인 가능한 근거, 기대 범위를 설명한다.",
+      "sourceType": "public_web",
+      "sourceName": "Euromonitor Voice of the Consumer Beauty Survey 2025",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_93dfb01cc9425578",
+      "evidenceType": "channel_pattern",
+      "targetSegment": "간단한 루틴을 원하지만 과학적 근거와 사용 안내를 확인하는 고객",
+      "insight": "브랜드 콘텐츠는 제품 수를 줄이라는 구호보다 한 장씩 선택 기준, 사용 순서, 기대 범위를 설명하는 교육형 구조를 사용한다.",
+      "sourceType": "public_web",
+      "sourceName": "Euromonitor Voice of the Consumer Beauty Survey 2025",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    }
+  ],
+  "doNotClaim": [
+    "사람이 선택한 근거에 없는 순위, 가격, 효능, 기간 수치를 만들지 않는다.",
+    "무작위 가설은 사람이 검수하기 전까지 사실 근거로 사용하지 않는다.",
+    "공식 출처가 없는 유행, 날씨, 판매 순위 주장을 단정하지 않는다."
+  ],
+  "evidenceSignalIds": [
+    "public_signal_3b5e6357e906f6ff",
+    "public_signal_c0dce269977043ad",
+    "public_signal_93dfb01cc9425578"
+  ],
+  "createdAt": "2026-07-22T11:36:55.831322+00:00"
+}

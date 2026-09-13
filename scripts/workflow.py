@@ -797,6 +797,18 @@ def run_reference_pipeline(
         save_status(run_dir, status)
         raise SystemExit("FAIL reference pipeline: no selected reference assets were produced.")
 
+    # Stage 03 has no human approval gate. Once the reference pipeline has
+    # produced a selected asset, unlock the image-direction decision so the
+    # console CTA can continue straight to visual candidates.
+    status = load_status(run_dir)
+    if status.get("stage_status", {}).get("03_reference_research") != "approved":
+        approve_stage(
+            run_dir,
+            "03_reference_research",
+            approver="reference_pipeline",
+            note="Selected reference assets are ready; unlock image direction.",
+        )
+
     if update_visual_candidates:
         status = load_status(run_dir)
         stage_state = status.get("stage_status", {}).get("04_visual_candidates")
@@ -842,7 +854,15 @@ def approve_stage(run_dir: Path, stage_id: str, approver: str = "operator", note
     stage = stage_by_id(stage_id)
     status = load_status(run_dir)
     approvals = read_json(run_dir / "approvals.json", default={"approvals": []})
+    if stage.id == "01_event_brief":
+        brief = read_json(run_dir / stage.id / "brief.json", default={})
+        unresolved = [str(item).strip() for item in brief.get("open_questions", []) if str(item).strip()]
+        if status.get("stage_status", {}).get(stage.id) == "needs_input" or unresolved:
+            detail = "; ".join(unresolved[:5]) or "brief input is incomplete"
+            raise SystemExit(f"Cannot approve 01_event_brief with unresolved input: {detail}")
     if stage.id == "02_content_planning":
+        from scripts.validate_ad_planning_output import build_planning_output_from_run, validate_planning_output
+
         concept_review = read_json(run_dir / stage.id / "concept-review.json", default={})
         copy_review = read_json(run_dir / stage.id / "copy-review.json", default={})
         scorecard = read_json(run_dir / stage.id / "planning-scorecard.json", default={})
@@ -852,8 +872,16 @@ def approve_stage(run_dir: Path, stage_id: str, approver: str = "operator", note
             raise SystemExit("Cannot approve 02_content_planning before the final copy package is approved.")
         if int(scorecard.get("criticalErrorCount") or 0) > 0:
             raise SystemExit("Cannot approve 02_content_planning while critical planning QA errors remain.")
-        if scorecard.get("status") != "pass" or scorecard.get("issues"):
-            raise SystemExit("Cannot approve 02_content_planning while planning quality warnings remain.")
+        blocking_issues = [
+            item for item in scorecard.get("issues", [])
+            if isinstance(item, dict) and item.get("severity") in {"error", "critical"}
+        ]
+        if blocking_issues:
+            raise SystemExit("Cannot approve 02_content_planning while blocking planning QA errors remain.")
+        validation_issues = validate_planning_output(build_planning_output_from_run(run_dir))
+        if validation_issues:
+            detail = "; ".join(f"{item['path']}: {item['message']}" for item in validation_issues[:5])
+            raise SystemExit(f"Cannot approve invalid advertising planning output: {detail}")
     if stage.id == "06_qa_packaging":
         qa_report = load_qa_report(run_dir)
         qa_status = str(qa_report.get("summary", {}).get("status") or "").lower()

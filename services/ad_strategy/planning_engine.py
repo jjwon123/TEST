@@ -7,8 +7,9 @@ from datetime import datetime, timezone
 from typing import Any
 
 from core.utils.json_io import read_json
-from services.ad_strategy.quality_gate import deterministic_quality_issues
-from services.ad_strategy.repository import load_examples_for_review, retrieve_selected
+from services.ad_strategy.quality_gate import copy_character_count, deterministic_quality_issues
+from services.ad_strategy.repository import load_examples_for_review, retrieve_corrections, retrieve_selected
+from services.ad_strategy.text_quality import has_broken_korean
 from services.marketing_intelligence.insight_brief import INSIGHT_BRIEF_PATH
 
 
@@ -24,23 +25,24 @@ CONCEPT_AXES = [
         "axis": "proof_and_choice",
         "name": "선택 근거를 분명히 보여주는 캠페인",
         "emotion": "납득과 신뢰",
-        "sequence": ["선택 기준 제시", "제품 역할 설명", "사용 맥락 연결", "오퍼 확인"],
+        "sequence": ["선택 기준 제시", "제품 역할 설명", "사용 맥락 연결", "혜택 확인"],
         "cta": "선택 기준 확인하기",
     },
     {
         "axis": "identity_and_moment",
         "name": "지금의 나에게 맞는 순간으로 연결하는 캠페인",
         "emotion": "기대와 자기관리",
-        "sequence": ["원하는 피부 인상", "시즌 루틴 제안", "브랜드 태도 연결", "구매 행동 제안"],
-        "cta": "여름 루틴 시작하기",
+        "sequence": ["원하는 피부 인상", "계절 루틴 제안", "브랜드 태도 연결", "구매 행동 제안"],
+        "cta": "오늘의 루틴 시작하기",
     },
 ]
 
 COSMETIC_PRODUCT_TOKENS = (
     "나이아신아마이드", "앰플", "세럼", "크림", "토너", "로션", "마스크", "에센스", "선크림",
-    "스킨케어", "수분", "장벽", "톤",
+    "스킨케어", "수분", "장벽", "탄력", "진정", "보습",
 )
 JEWELRY_PRODUCT_TOKENS = ("반지", "목걸이", "귀걸이", "팔찌", "다이아", "주얼리", "골드", "실버")
+EVENT_TYPES = {"launch", "seasonal", "promotion", "education", "branding", "retention"}
 
 
 def detect_industry(brief: dict[str, Any]) -> str:
@@ -51,8 +53,29 @@ def detect_industry(brief: dict[str, Any]) -> str:
 
 
 def detect_event_type(brief: dict[str, Any]) -> str:
+    explicit = str(brief.get("event_type") or brief.get("eventType") or "").strip().lower()
+    if explicit in EVENT_TYPES:
+        return explicit
+
+    event_name = str(brief.get("event_name") or brief.get("eventName") or "")
+    objective = brief.get("objective") or ""
+    if isinstance(objective, dict):
+        objective = objective.get("primary") or ""
+    intent_text = f"{event_name} {objective}"
+
+    # Classify the stated campaign intent before secondary offer details. A
+    # seasonal campaign can still include a gift-with-purchase mechanic.
+    if any(token in intent_text for token in ("출시", "신제품", "런칭", "론칭")):
+        return "launch"
+    if any(token in intent_text for token in ("가이드", "방법", "교육", "알아보기", "사용법")):
+        return "education"
+    if any(token in intent_text for token in ("할인", "증정", "쿠폰", "%", "세일", "프로모션", "사은")):
+        return "promotion"
+    if any(token in intent_text for token in ("여름", "겨울", "장마", "환절기", "봄", "가을")):
+        return "seasonal"
+
     text = str(brief)
-    if any(token in text for token in ("할인", "증정", "쿠폰", "%", "세일", "프로모션")):
+    if any(token in text for token in ("할인", "증정", "쿠폰", "%", "세일", "프로모션", "사은")):
         return "promotion"
     if any(token in text for token in ("출시", "신제품", "런칭", "론칭")):
         return "launch"
@@ -101,13 +124,12 @@ def build_concept_candidates(brief: dict[str, Any]) -> dict[str, Any]:
     candidates = []
     for index, axis in enumerate(CONCEPT_AXES, start=1):
         evidence = _concept_marketing_evidence(insight_brief, axis["axis"], index)
-        promise = _promise(industry, axis["axis"], product, evidence)
         candidates.append({
             "conceptId": f"concept_{index:02d}",
             "axis": axis["axis"],
-            "name": axis["name"],
+            "name": _concept_name(axis["axis"], product, evidence),
             "targetInsight": _insight(_target_from_evidence(target, evidence), axis["axis"], evidence),
-            "corePromise": promise,
+            "corePromise": _promise(industry, axis["axis"], product, evidence),
             "emotionalDirection": axis["emotion"],
             "persuasionSequence": axis["sequence"],
             "offerPresentation": _offer_presentation(offer, axis["axis"]),
@@ -115,7 +137,7 @@ def build_concept_candidates(brief: dict[str, Any]) -> dict[str, Any]:
             "headlineDirections": _headlines(product, evidence, axis["axis"]),
             "expectedEffect": _expected_effect(axis["axis"]),
             "risks": [
-                "입력에 없는 효능, 가격, 기간, 순위, 리뷰 주장은 추가하지 않는다.",
+                "입력에 없는 효능, 가격, 기간, 순위, 리뷰 주장은 추가하지 않습니다.",
                 *insight_brief.get("doNotClaim", [])[:2],
             ],
             "strategyExampleIds": [item["id"] for item in examples[index - 1::3][:2]],
@@ -124,6 +146,7 @@ def build_concept_candidates(brief: dict[str, Any]) -> dict[str, Any]:
             "differencePoint": _difference_point(axis["axis"], evidence),
             "status": "candidate",
         })
+    recommendation = _recommend_concept(candidates)
     return {
         "schemaVersion": "1.0.0",
         "industry": industry,
@@ -131,25 +154,84 @@ def build_concept_candidates(brief: dict[str, Any]) -> dict[str, Any]:
         "sourcePolicy": "selected_examples_only",
         "reviewedExampleCount": len(examples),
         "marketingEvidenceStatus": insight_brief.get("status", "needs_signal_review"),
+        "marketingEvidenceEventId": insight_brief.get("eventId", ""),
         "selectedMarketingSignalCount": insight_brief.get("selectedSignalCount", 0),
         "marketingSignalIds": insight_brief.get("evidenceSignalIds", []),
         "candidates": candidates,
+        "recommendation": recommendation,
         "status": "review_pending",
         "createdAt": datetime.now(timezone.utc).isoformat(),
     }
 
 
+def _recommend_concept(candidates: list[dict[str, Any]]) -> dict[str, Any]:
+    scored: list[tuple[int, int, dict[str, Any]]] = []
+    for index, concept in enumerate(candidates):
+        axis = str(concept.get("axis") or "")
+        evidence = concept.get("marketingEvidence") if isinstance(concept.get("marketingEvidence"), dict) else {}
+        evidence_types = set(evidence.get("evidenceTypes") or [])
+        score = len(set(evidence.get("primarySourceNames") or evidence.get("sourceNames") or []))
+        if axis == "problem_reframe":
+            score += 3 * int("pain" in evidence_types) + 2 * int("objection" in evidence_types)
+        elif axis == "proof_and_choice":
+            score += 4 * int("proof" in evidence_types) + 2 * int("objection" in evidence_types) + int("trend" in evidence_types)
+            if "proof" not in evidence_types:
+                score -= 1
+        else:
+            score += 3 * int("timing" in evidence_types) + 2 * int("desire" in evidence_types) + int("trend" in evidence_types)
+        scored.append((score, -index, concept))
+    if not scored:
+        return {"recommendedConceptId": "", "reason": "", "cautions": []}
+    score, _, selected = max(scored, key=lambda item: (item[0], item[1]))
+    axis = str(selected.get("axis") or "")
+    reasons = {
+        "problem_reframe": "고객이 실제로 느끼는 불편에서 시작해 제품을 생활 루틴의 해법으로 자연스럽게 연결할 수 있습니다.",
+        "proof_and_choice": "제품을 과장하지 않고 확인 가능한 선택 기준과 입력된 혜택을 중심으로 구매 망설임을 줄일 수 있습니다.",
+        "identity_and_moment": "계절의 시기 명분과 시장 흐름을 함께 활용해 지금 루틴을 점검해야 할 이유를 가장 선명하게 만들 수 있습니다.",
+    }
+    cautions: list[str] = []
+    evidence_types = set((selected.get("marketingEvidence") or {}).get("evidenceTypes") or [])
+    if axis == "identity_and_moment" and "timing" in evidence_types:
+        cautions.append("실제 장마·습도 표현은 집행 직전 최신 날씨 자료로 다시 확인해야 합니다.")
+    if axis == "proof_and_choice" and "proof" not in evidence_types:
+        cautions.append("제품별 공식 근거가 없으므로 효능이 아니라 제품 역할과 혜택 범위만 설명해야 합니다.")
+    return {
+        "recommendedConceptId": str(selected.get("conceptId") or ""),
+        "score": score,
+        "reason": reasons.get(axis, "현재 검수된 근거와 가장 직접적으로 연결되는 안입니다."),
+        "cautions": cautions,
+        "decisionPolicy": "recommendation_only_human_selection_required",
+    }
+
+
 def build_copy_package(brief: dict[str, Any], concept: dict[str, Any], deliverables: list[dict[str, Any]]) -> dict[str, Any]:
     event_name = str(brief.get("event_name") or "")
+    event_id = str(brief.get("event_id") or "")
     offer = _offer_summary(brief)
     product = _product_phrase(brief)
     target = _target_summary(brief)
-    insight_brief = _ready_insight_brief(industry=detect_industry(brief), event_id=str(brief.get("event_id") or ""))
+    industry = detect_industry(brief)
+    brand_name = str(brief.get("brand", {}).get("name") or brief.get("brand_name") or "")
+    insight_brief = _ready_insight_brief(industry=industry, event_id=event_id)
+    corrections = retrieve_corrections(
+        industry=industry,
+        brand_name=brand_name,
+        approved_only=True,
+        limit=12,
+    )
     outputs = []
+    applied_correction_ids: list[str] = []
     for deliverable in deliverables:
         channel = str(deliverable.get("channel_id") or "")
         marketing_evidence = _copy_marketing_evidence(insight_brief, concept, channel)
         copy = _channel_copy(channel, concept, event_name, product, offer, deliverable, marketing_evidence)
+        channel_correction_ids = _apply_same_event_corrections(
+            copy,
+            corrections,
+            event_id=event_id,
+            channel_id=channel,
+        )
+        applied_correction_ids.extend(channel_correction_ids)
         outputs.append({
             "deliverableId": deliverable.get("deliverable_id"),
             "channelId": channel,
@@ -164,20 +246,73 @@ def build_copy_package(brief: dict[str, Any], concept: dict[str, Any], deliverab
                 "marketingSignals": marketing_evidence.get("signals", []),
                 "marketingSignalIds": marketing_evidence.get("signalIds", []),
                 "marketingEvidenceStatus": insight_brief.get("status", "needs_signal_review"),
+                "marketingEvidenceEventId": insight_brief.get("eventId", ""),
             },
             "copy": copy,
-            "characterCount": len(str(copy)),
+            "characterCount": copy_character_count(copy),
+            "correctionExampleIds": channel_correction_ids,
         })
     return {
         "schemaVersion": "1.0.0",
         "conceptId": concept.get("conceptId"),
         "model": "deterministic_planning_engine",
         "marketingEvidenceStatus": insight_brief.get("status", "needs_signal_review"),
+        "marketingEvidenceEventId": insight_brief.get("eventId", ""),
         "marketingSignalIds": insight_brief.get("evidenceSignalIds", []),
+        "correctionSearch": {
+            "brandName": brand_name,
+            "retrievedCount": len(corrections),
+            "appliedIds": list(dict.fromkeys(applied_correction_ids)),
+            "policy": "same_event_exact_match_only",
+        },
         "outputs": outputs,
         "status": "review_pending",
         "createdAt": datetime.now(timezone.utc).isoformat(),
     }
+
+
+def _apply_same_event_corrections(
+    copy: dict[str, Any],
+    corrections: list[dict[str, Any]],
+    *,
+    event_id: str,
+    channel_id: str,
+) -> list[str]:
+    applied: list[str] = []
+    if not event_id:
+        return applied
+    for record in corrections:
+        if str(record.get("eventId") or "") != event_id:
+            continue
+        if str(record.get("channelId") or "") != channel_id:
+            continue
+        original = record.get("originalCopy")
+        edited = record.get("editedCopy")
+        if not isinstance(original, dict) or not isinstance(edited, dict):
+            continue
+        if _apply_exact_copy_delta(copy, original, edited):
+            applied.append(str(record.get("id") or ""))
+    return [item for item in dict.fromkeys(applied) if item]
+
+
+def _apply_exact_copy_delta(target: Any, original: Any, edited: Any) -> bool:
+    changed = False
+    if isinstance(target, dict) and isinstance(original, dict) and isinstance(edited, dict):
+        for key in set(original) & set(edited) & set(target):
+            if isinstance(target[key], (dict, list)):
+                changed = _apply_exact_copy_delta(target[key], original[key], edited[key]) or changed
+            elif original[key] != edited[key] and target[key] == original[key]:
+                target[key] = edited[key]
+                changed = True
+        return changed
+    if isinstance(target, list) and isinstance(original, list) and isinstance(edited, list):
+        for index in range(min(len(target), len(original), len(edited))):
+            if isinstance(target[index], (dict, list)):
+                changed = _apply_exact_copy_delta(target[index], original[index], edited[index]) or changed
+            elif original[index] != edited[index] and target[index] == original[index]:
+                target[index] = edited[index]
+                changed = True
+    return changed
 
 
 def score_planning(brief: dict[str, Any], candidates: dict[str, Any], copy_package: dict[str, Any]) -> dict[str, Any]:
@@ -196,17 +331,17 @@ def score_planning(brief: dict[str, Any], candidates: dict[str, Any], copy_packa
     text = str(copy_package)
     for word in brief.get("constraints", {}).get("banned_words", []):
         if word and word in text:
-            issues.append(_issue("critical", "banned_expression", f"금지 표현이 포함되었습니다: {word}"))
+            issues.append(_issue("critical", "banned_expression", f"금지 표현이 포함되었습니다. {word}"))
 
     questions = len(re.findall(r"\?", text))
     if questions > max(2, len(copy_package.get("outputs", []))):
         issues.append(_issue("warning", "excessive_questions", "질문형 문장이 과도하게 반복됩니다."))
-    if _has_broken_korean(text):
+    if has_broken_korean(text):
         issues.append(_issue("warning", "awkward_korean", "깨진 한글, 번역투, 내부 작성용 문구가 최종 카피에 포함되었습니다."))
 
     repeated = _repeated_copy_sentences(copy_package)
     if repeated:
-        issues.append(_issue("warning", "repetitive_copy", f"동일 문장이 과도하게 반복됩니다: {repeated[0]}"))
+        issues.append(_issue("warning", "repetitive_copy", f"동일 문장이 과도하게 반복됩니다. {repeated[0]}"))
         if not any(item["id"] == "awkward_korean" for item in issues):
             issues.append(_issue("warning", "awkward_korean", "반복된 문장 때문에 한국어 카피 품질 확인이 필요합니다."))
 
@@ -260,7 +395,7 @@ def score_planning(brief: dict[str, Any], candidates: dict[str, Any], copy_packa
             rubric[key] = max(1, min(5, min(values)))
     average_score = sum(rubric.values()) / len(rubric)
     if average_score < 4:
-        issues.append(_issue("warning", "rubric_below_four", f"평균 루브릭 점수가 4점 미만입니다: {average_score:.2f}"))
+        issues.append(_issue("warning", "rubric_below_four", f"평균 루브릭 점수가 4점 미만입니다. {average_score:.2f}"))
     critical = [item for item in issues if item["severity"] == "critical"]
     return {
         "schemaVersion": "1.0.0",
@@ -282,62 +417,70 @@ def _channel_copy(
     deliverable: dict[str, Any],
     evidence: dict[str, Any],
 ) -> dict[str, Any]:
-    headline = concept.get("headlineDirections", [""])[0]
+    headline_directions = [str(value).strip() for value in concept.get("headlineDirections", []) if str(value).strip()]
+    headline = headline_directions[0] if headline_directions else ""
+    alternate_headline = headline_directions[1] if len(headline_directions) > 1 else _feed_first_line(concept, product)
     cta = concept.get("cta", "자세히 보기")
     primary_signal = _user_facing_signal(_first(evidence.get("signals")) or concept.get("targetInsight", ""))
-    offer_line = offer or "상세 내용은 이벤트 페이지에서 확인하세요."
+    offer_line = offer or "자세한 내용은 이벤트 페이지에서 확인하세요."
     if channel == "instagram_cardnews":
         roles = [item.get("role", "support") for item in deliverable.get("slides", [])] or ["hook", "problem", "benefit", "offer", "cta"]
         slide_lines = [
-            (headline, primary_signal),
-            ("왜 지금 이 루틴인가요?", concept.get("corePromise", "")),
-            ("제품은 어떤 역할인가요?", _product_role(concept, product)),
+            (alternate_headline, primary_signal),
+            ("지금 루틴에서 확인할 점", concept.get("corePromise", "")),
+            ("제품은 어떤 역할인가요", _product_role(concept, product)),
             ("참여 이유", offer_line),
             ("다음 행동", cta),
         ]
         slides = []
         for index, role in enumerate(roles):
             title, body = slide_lines[min(index, len(slide_lines) - 1)]
+            next_title = slide_lines[min(index + 1, len(slide_lines) - 1)][0]
             slides.append({
                 "slide": index + 1,
                 "role": role,
                 "headline": title,
                 "body": body,
-                "transition": "다음 장에서 선택 기준을 더 구체적으로 보여줍니다." if index < len(roles) - 1 else "",
+                "transition": f"다음 장: {next_title}" if index < len(roles) - 1 else "",
             })
         return {"cover": headline, "slides": slides, "cta": cta}
     if channel == "instagram_feed":
         body_parts = [
             primary_signal,
             concept.get("corePromise", ""),
-            f"{product}를 중심으로 지금 필요한 선택 기준을 정리했습니다.",
+            f"{product}{_particle(product, '을', '를')} 중심으로 지금 필요한 선택 기준을 정리했습니다.",
             offer_line,
         ]
         return {
-            "firstLine": headline,
+            "firstLine": _feed_first_line(concept, product),
             "body": "\n".join(part for part in body_parts if part),
             "cta": cta,
             "hashtagDirection": _hashtag_direction(event, product),
         }
     if channel in {"blog_thumbnail", "brunch_cover"}:
-        return {"headline": _compact(_channel_headline(channel, concept, product), 48), "subcopy": _compact(concept.get("corePromise", ""), 54), "offer": _offer_badge(offer_line), "cta": cta}
+        return {
+            "headline": _compact(_channel_headline(channel, concept, product), 48),
+            "subcopy": _compact(f"{product}{_particle(product, '을', '를')} 고를 기준을 한눈에 확인하세요.", 54),
+            "offer": f"혜택: {_offer_badge(offer_line)}",
+            "cta": cta,
+        }
     if channel == "community_banner":
         return {
             "headline": _compact(_channel_headline(channel, concept, product), 34),
-            "subcopy": _compact(f"{product}와 함께 여름 루틴 기준을 확인하세요.", 56),
+            "subcopy": _compact(f"{product}{_particle(product, '과', '와')} 함께 지금 루틴의 기준을 확인하세요.", 56),
             "offer": _offer_badge(offer_line),
             "cta": cta,
         }
     if channel == "blog_inline_image":
         section_sentences = [
-            _user_facing_signal(concept.get("targetInsight", "")),
-            concept.get("corePromise", ""),
-            _product_role(concept, product),
-            offer_line,
+            f"이 고객 상황을 출발점으로 {product}{_particle(product, '을', '를')} 고를 기준을 정리합니다.",
+            f"{product}{_particle(product, '을', '를')} 지금의 상황에 맞는 루틴으로 연결해 살펴봅니다.",
+            f"{product}의 역할과 선택 이유를 과장 없이 확인합니다.",
+            f"혜택은 {offer_line}입니다. 적용 조건을 함께 확인하세요." if offer else "자세한 내용과 참여 방법은 이벤트 페이지에서 확인하세요.",
         ]
         return {
             "titleCandidates": _blog_title_candidates(concept, product),
-            "intro": _blog_intro(evidence, concept),
+            "intro": _blog_intro(evidence, concept, product),
             "sections": [
                 {"heading": step, "keySentence": section_sentences[min(index, len(section_sentences) - 1)]}
                 for index, step in enumerate(concept.get("persuasionSequence", []))
@@ -376,48 +519,63 @@ def _product_phrase(brief: dict[str, Any]) -> str:
     return phrases[-1] if phrases else "제품"
 
 
-def _promise(industry: str, axis: str, product: str, evidence: dict[str, Any]) -> str:
+def _concept_name(axis: str, product: str, evidence: dict[str, Any]) -> str:
+    if axis == "problem_reframe":
+        return f"불편의 원인을 다시 보는 {product} 루틴"
+    if axis == "proof_and_choice":
+        if "proof" in set(evidence.get("evidenceTypes") or []):
+            return f"확인할수록 분명해지는 {product} 선택 기준"
+        return f"복잡함을 덜어낸 {product} 선택 기준"
+    return f"지금 계절에 맞춘 {product} 리셋 타이밍"
+
+
+def _promise(industry: str, axis: str, product: str, evidence: dict[str, Any] | None = None) -> str:
     if industry == "jewelry_luxury":
         values = {
-            "problem_reframe": f"{product}를 단순 장식이 아니라 취향을 정리하는 선택 기준으로 제안합니다.",
-            "proof_and_choice": f"{product}를 골라야 하는 이유를 소재, 형태, 착용 장면 기준으로 보여줍니다.",
-            "identity_and_moment": f"{product}를 나를 표현하는 순간과 연결합니다.",
+            "problem_reframe": f"{product}{_particle(product, '을', '를')} 단순 장식이 아니라 취향을 정리하는 선택 기준으로 제안합니다.",
+            "proof_and_choice": f"{product}{_particle(product, '을', '를')} 골라야 하는 이유를 소재, 형태, 착용 장면 기준으로 보여줍니다.",
+            "identity_and_moment": f"{product}{_particle(product, '을', '를')} 나를 표현하는 순간과 연결합니다.",
         }
     else:
         values = {
-            "problem_reframe": f"{product}를 여름철 피부 인상 고민을 정리하는 데일리 루틴의 시작점으로 제안합니다.",
-            "proof_and_choice": f"{product}를 선택해야 하는 이유를 성분명, 사용 맥락, 구매 전 확인 포인트로 설명합니다.",
-            "identity_and_moment": f"{product}를 지금 계절에 맞는 자기관리 루틴으로 연결합니다.",
+            "problem_reframe": f"{product}{_particle(product, '을', '를')} 생활 환경에 맞춰 보습 루틴을 다시 점검하는 시작점으로 제안합니다.",
+            "proof_and_choice": (
+                f"{product}의 공식 제품 근거와 사용 맥락을 구분해 선택 기준을 설명합니다."
+                if "proof" in set((evidence or {}).get("evidenceTypes") or [])
+                else f"{product}의 제품명, 사용 맥락, 입력된 혜택만으로 과장 없는 선택 기준을 제안합니다."
+            ),
+            "identity_and_moment": f"{product}{_particle(product, '을', '를')} 지금 계절에 맞는 자기관리 루틴으로 연결합니다.",
         }
     return values[axis]
 
 
 def _insight(target: str, axis: str, evidence: dict[str, Any] | None = None) -> str:
     endings = {
-        "problem_reframe": "이 고객은 문제를 참으라는 말보다 불편을 줄이는 현실적인 기준에 반응합니다.",
-        "proof_and_choice": "이 고객은 광고 문구보다 스스로 납득할 수 있는 선택 근거를 원합니다.",
-        "identity_and_moment": "이 고객은 구매 자체보다 지금의 나에게 맞는 관리 경험을 원합니다.",
+        "problem_reframe": "날씨 하나로 단정한 설명보다 자신의 생활 환경에 맞춰 루틴을 조정할 기준을 원합니다.",
+        "proof_and_choice": "새 제품을 더하는 이유보다 무엇을 확인하고 고를지 분명한 기준을 원합니다.",
+        "identity_and_moment": "과장된 계절 위기감보다 지금 루틴을 점검할 자연스러운 명분을 원합니다.",
     }
-    evidence_line = (evidence or {}).get("primaryInsight", "")
-    if evidence_line and (_normalize_for_compare(evidence_line) in _normalize_for_compare(target)):
-        evidence_line = ""
-    return " ".join(part for part in [target, evidence_line, endings[axis]] if part).strip()
+    subject = str(target or "").strip().rstrip(".")
+    if not subject:
+        return endings[axis]
+    if subject.endswith("고객"):
+        return f"{subject}은 {endings[axis]}"
+    return f"{subject}. {endings[axis]}"
 
 
 def _headlines(product: str, evidence: dict[str, Any], axis: str) -> list[str]:
-    signal = _first(evidence.get("signals"))
     if axis == "problem_reframe":
-        return [f"불편을 참기보다, 여름 루틴의 기준을 바꿀 때", f"{product}로 시작하는 여름 피부 루틴"]
+        return ["습도와 냉방 사이, 보습 루틴을 다시 볼 때", f"{product}{_particle(product, '으로', '로')} 시작하는 생활 환경 맞춤 루틴"]
     if axis == "proof_and_choice":
-        return [f"좋아 보이는 말보다, 선택 이유가 분명한 {product}", "구매 전 확인할 기준을 먼저 보여드립니다"]
-    return [f"오늘 피부 인상에 맞춘 {product} 루틴", signal or "여름 피부 인상을 다시 정리하는 시간"]
+        return [f"루틴은 덜고, {product}{_particle(product, '을', '를')} 고를 기준은 분명하게", "제품 역할과 혜택 범위부터 확인하세요"]
+    return [f"장마와 냉방 사이, 오늘의 {product} 루틴", "계절이 바뀌면 루틴도 한 번 점검할 때"]
 
 
 def _offer_presentation(offer: str, axis: str) -> str:
     if not offer:
-        return "입력에 없는 가격, 기간, 수량 혜택을 만들지 않고 제품 이해와 행동 유도 중심으로 마무리합니다."
+        return "별도 혜택보다 제품 이해와 지금 필요한 루틴 확인을 중심으로 제안합니다."
     return {
-        "problem_reframe": f"불편을 줄이는 루틴을 시작하는 계기로 제시: {offer}",
+        "problem_reframe": f"루틴을 시작하는 계기로 제시: {offer}",
         "proof_and_choice": f"선택을 마무리할 추가 이유로 제시: {offer}",
         "identity_and_moment": f"지금 루틴을 시작할 명분으로 제시: {offer}",
     }[axis]
@@ -432,10 +590,10 @@ def _expected_effect(axis: str) -> str:
 
 
 def _difference_point(axis: str, evidence: dict[str, Any]) -> str:
-    signal = _first(evidence.get("signals"))
+    signal = _user_facing_signal(_first(evidence.get("signals")))
     return {
         "problem_reframe": f"고객 불편을 먼저 잡고 제품을 해결 루틴으로 배치합니다. {signal}",
-        "proof_and_choice": f"성분과 선택 기준을 먼저 보여주고 오퍼를 마지막 근거로 배치합니다. {signal}",
+        "proof_and_choice": f"선택 기준을 먼저 보여주고 혜택을 마지막 근거로 배치합니다. {signal}",
         "identity_and_moment": f"계절감과 자기관리 감정을 먼저 열고 브랜드 경험으로 연결합니다. {signal}",
     }[axis].strip()
 
@@ -450,7 +608,7 @@ def _channel_role(channel: str) -> str:
         "instagram_feed": "첫 문장으로 관심을 만들고 저장 또는 클릭 유도",
         "blog_thumbnail": "검색 진입과 클릭 유도",
         "brunch_cover": "콘텐츠 진입과 클릭 유도",
-        "blog_inline_image": "근거와 사용 맥락을 설명",
+        "blog_inline_image": "근거와 사용 맥락 설명",
         "community_banner": "짧은 문장으로 이벤트 행동 유도",
         "threads_image": "짧은 문제 제기로 반응 유도",
         "twitter_image": "짧은 문제 제기로 반응 유도",
@@ -473,17 +631,17 @@ def _strategy_basis(brief: dict[str, Any], concept: dict[str, Any], channel: str
 def _product_role(concept: dict[str, Any], product: str) -> str:
     axis = concept.get("axis", "")
     if axis == "problem_reframe":
-        return f"{product}는 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다."
+        return f"{product}{_particle(product, '은', '는')} 고객의 불편을 루틴 문제로 다시 보게 만드는 연결 장치입니다."
     if axis == "proof_and_choice":
-        return f"{product}는 막연한 기대가 아니라 선택 기준과 사용 맥락을 설명하는 근거입니다."
+        return f"{product}{_particle(product, '은', '는')} 막연한 기대가 아니라 선택 기준과 사용 맥락을 설명하는 근거입니다."
     if axis == "identity_and_moment":
-        return f"{product}는 기능 설명보다 지금 계절의 자기관리 순간을 만드는 매개입니다."
-    return f"{product}를 이번 이벤트의 핵심 제품으로 연결했습니다."
+        return f"{product}{_particle(product, '은', '는')} 기능 설명보다 지금 계절의 자기관리 순간을 만드는 매개입니다."
+    return f"{product}{_particle(product, '을', '를')} 이번 이벤트의 핵심 제품으로 연결했습니다."
 
 
 def _offer_role(offer: str, axis: str) -> str:
     if not offer:
-        return "입력에 없는 가격, 기간, 수량 혜택을 만들지 않고 제품 이해와 행동 유도 중심으로 마무리했습니다."
+        return "별도 혜택 없이 제품 이해와 루틴 확인을 중심으로 마무리했습니다."
     if axis == "problem_reframe":
         return f"{offer}{_particle(offer, '은', '는')} 루틴을 시작하는 부담을 낮추는 계기로 제시했습니다."
     if axis == "proof_and_choice":
@@ -504,35 +662,102 @@ def _verified_facts(brief: dict[str, Any]) -> list[str]:
 
 
 def _ready_insight_brief(*, industry: str, event_id: str = "") -> dict[str, Any]:
-    payload = read_json(INSIGHT_BRIEF_PATH, default={})
-    payload_event_id = str(payload.get("eventId") or "")
-    event_matches = not event_id or not payload_event_id or payload_event_id in {event_id, "general"}
-    if payload.get("status") != "ready" or payload.get("industry") != industry or not event_matches:
-        return {
-            "status": "needs_signal_review",
-            "selectedSignalCount": int(payload.get("selectedSignalCount") or 0),
-            "minimumSelectedSignals": int(payload.get("minimumSelectedSignals") or 3),
-            "evidenceSignalIds": [],
-            "doNotClaim": payload.get("doNotClaim", []),
-        }
-    return payload
+    requested_event_id = str(event_id or "general").strip()
+    slug = re.sub(r"[^\w가-힣-]+", "-", requested_event_id.lower())
+    slug = re.sub(r"-+", "-", slug).strip("-") or "general"
+    paths = [
+        INSIGHT_BRIEF_PATH.parent / "insight-briefs" / f"{slug}.json",
+        INSIGHT_BRIEF_PATH,
+    ]
+    last_payload: dict[str, Any] = {}
+    for path in dict.fromkeys(paths):
+        payload = read_json(path, default={})
+        if payload:
+            last_payload = payload
+        if (
+            payload.get("status") == "ready"
+            and payload.get("industry") == industry
+            and str(payload.get("eventId") or "").strip() == requested_event_id
+        ):
+            return payload
+    return {
+        "eventId": requested_event_id,
+        "sourceEventId": str(last_payload.get("eventId") or ""),
+        "status": "needs_signal_review",
+        "reason": "event_evidence_missing_or_mismatched",
+        "selectedSignalCount": 0,
+        "minimumSelectedSignals": int(last_payload.get("minimumSelectedSignals") or 3),
+        "evidenceSignalIds": [],
+        "doNotClaim": last_payload.get("doNotClaim", []),
+    }
 
 
 def _concept_marketing_evidence(insight_brief: dict[str, Any], axis: str, index: int) -> dict[str, Any]:
     if insight_brief.get("status") != "ready":
         return {"status": "needs_signal_review", "signals": [], "signalIds": []}
-    if axis == "problem_reframe":
-        signals = insight_brief.get("customerPains", []) + insight_brief.get("purchaseObjections", [])
-    elif axis == "proof_and_choice":
-        signals = insight_brief.get("purchaseObjections", []) + insight_brief.get("productProofs", []) + insight_brief.get("customerDesires", [])
+    preferred_types = {
+        "problem_reframe": ("pain", "objection"),
+        "proof_and_choice": ("proof", "objection", "desire", "trend"),
+        "identity_and_moment": ("timing", "desire", "trend"),
+    }[axis]
+    all_details = [
+        item for item in insight_brief.get("evidenceDetails", [])
+        if isinstance(item, dict) and str(item.get("signalId") or "").strip()
+    ]
+    preferred_details = [
+        item for evidence_type in preferred_types
+        for item in all_details
+        if item.get("evidenceType") == evidence_type
+    ]
+    if preferred_details:
+        preferred_ids = {str(item.get("signalId") or "") for item in preferred_details}
+        supporting_details = [
+            item for item in all_details
+            if str(item.get("signalId") or "") not in preferred_ids
+        ]
+        selected_details = (preferred_details + supporting_details)[:3]
+        primary_details = preferred_details[:3]
+        selected = _unique_texts(item.get("insight", "") for item in selected_details)
+        primary_detail = primary_details[0]
+        target_segment = str(primary_detail.get("targetSegment") or "")
+        evidence_types = _unique_texts(item.get("evidenceType", "") for item in primary_details)
+        supporting_types = _unique_texts(
+            item.get("evidenceType", "")
+            for item in selected_details
+            if item not in primary_details
+        )
+        source_names = _unique_texts(item.get("sourceName", "") for item in selected_details)
+        primary_source_names = _unique_texts(item.get("sourceName", "") for item in primary_details)
+        signal_ids = _unique_texts(item.get("signalId", "") for item in selected_details)
+        primary_signal_ids = _unique_texts(item.get("signalId", "") for item in primary_details)
     else:
-        signals = insight_brief.get("seasonalHooks", []) + insight_brief.get("trendHooks", []) + insight_brief.get("customerDesires", [])
-    selected = _rotate_signals(signals, index, limit=3)
+        if axis == "problem_reframe":
+            signals = insight_brief.get("customerPains", []) + insight_brief.get("purchaseObjections", [])
+        elif axis == "proof_and_choice":
+            signals = insight_brief.get("purchaseObjections", []) + insight_brief.get("productProofs", []) + insight_brief.get("customerDesires", []) + insight_brief.get("trendHooks", [])
+        else:
+            signals = insight_brief.get("seasonalHooks", []) + insight_brief.get("trendHooks", []) + insight_brief.get("customerDesires", [])
+        selected = _rotate_signals(signals, max(0, index - 1), limit=3)
+        target_segment = ""
+        evidence_types = []
+        supporting_types = []
+        source_names = []
+        primary_source_names = []
+        signal_ids = list(insight_brief.get("evidenceSignalIds", []))[:3]
+        primary_signal_ids = signal_ids[:1]
     return {
         "status": "ready",
+        "sourceEventId": insight_brief.get("eventId", ""),
         "primaryInsight": selected[0] if selected else "",
+        "targetSegment": target_segment,
         "signals": selected,
-        "signalIds": insight_brief.get("evidenceSignalIds", [])[:5],
+        "evidenceTypes": evidence_types,
+        "supportingEvidenceTypes": supporting_types,
+        "sourceNames": source_names,
+        "primarySourceNames": primary_source_names,
+        "signalIds": signal_ids,
+        "primarySignalIds": primary_signal_ids,
+        "supportingSignalIds": [item for item in signal_ids if item not in set(primary_signal_ids)],
     }
 
 
@@ -545,12 +770,16 @@ def _copy_marketing_evidence(insight_brief: dict[str, Any], concept: dict[str, A
     signals = _unique_texts([*channel_signals[:1], *concept_signals[:2], *offer_signals[:1]])
     return {
         "status": "ready",
+        "sourceEventId": insight_brief.get("eventId", ""),
         "signals": signals,
         "signalIds": concept.get("marketingSignalIds") or insight_brief.get("evidenceSignalIds", [])[:5],
     }
 
 
 def _target_from_evidence(default_target: str, evidence: dict[str, Any]) -> str:
+    target_segment = str(evidence.get("targetSegment") or "").strip()
+    if 4 <= len(target_segment) <= 120:
+        return target_segment
     primary = evidence.get("primaryInsight", "")
     if not primary:
         return default_target
@@ -567,7 +796,7 @@ def _marketing_basis(evidence: dict[str, Any]) -> str:
 
 def _hashtag_direction(event: str, product: str) -> list[str]:
     values = []
-    for text in [event, product, "여름스킨케어", "톤케어"]:
+    for text in [event, product, "여름스킨케어", "루틴"]:
         cleaned = re.sub(r"[^가-힣A-Za-z0-9]", "", str(text))
         if cleaned:
             values.append(cleaned[:24])
@@ -632,8 +861,17 @@ def _channel_headline(channel: str, concept: dict[str, Any], product: str) -> st
     if channel == "blog_thumbnail":
         return "구매 전 확인할 기준을 먼저 보여드립니다" if axis == "proof_and_choice" else f"{product} 루틴을 다시 볼 시간"
     if channel == "community_banner":
-        return "여름 톤 케어 선택 기준"
+        return "지금 케어를 고를 기준"
     return concept.get("headlineDirections", [""])[0]
+
+
+def _feed_first_line(concept: dict[str, Any], product: str) -> str:
+    axis = concept.get("axis")
+    if axis == "problem_reframe":
+        return f"{product}, 지금 루틴의 불편부터 다시 봅니다"
+    if axis == "proof_and_choice":
+        return f"{product}, 고를 기준부터 차분히 확인해요"
+    return f"{product}, 지금의 순간에 맞는 루틴을 시작할 때"
 
 
 def _blog_title_candidates(concept: dict[str, Any], product: str) -> list[str]:
@@ -641,25 +879,36 @@ def _blog_title_candidates(concept: dict[str, Any], product: str) -> list[str]:
     if axis == "proof_and_choice":
         return [
             f"{product}, 구매 전 무엇을 확인해야 할까",
-            "여름 톤 케어를 고를 때 필요한 선택 기준",
+            "지금 케어를 고를 때 필요한 선택 기준",
         ]
-    return [value for value in concept.get("headlineDirections", []) if value]
+    if axis == "problem_reframe":
+        return [
+            f"{product}, 불편의 원인부터 다시 보기",
+            "내 생활 환경에 맞는 선택 기준 점검하기",
+        ]
+    return [
+        f"{product}, 지금의 순간에 맞춘 루틴 점검",
+        "상황이 달라질 때 루틴을 살펴보는 기준",
+    ]
 
 
-def _blog_intro(evidence: dict[str, Any], concept: dict[str, Any]) -> str:
+def _blog_intro(evidence: dict[str, Any], concept: dict[str, Any], product: str) -> str:
     signals = evidence.get("signals", [])
-    if signals:
-        return _user_facing_signal(signals[1] if len(signals) > 1 else signals[0])
-    return _user_facing_signal(concept.get("targetInsight", ""))
+    if len(signals) > 1:
+        return _user_facing_signal(signals[1])
+    return f"{product} 루틴을 고민하는 고객의 상황과 선택 기준을 차분히 살펴봅니다."
 
 
 def _user_facing_signal(text: str) -> str:
     value = str(text or "").strip()
     if not value:
         return ""
-    internal_markers = ("카피", "광고", "주장", "순위", "임상", "입력된", "만들지 않는다", "인스타그램 피드", "블로그", "배너")
+    internal_markers = (
+        "카피", "광고", "주장", "순위", "임상", "입력", "만들지", "인스타그램", "블로그", "배너",
+        "집행 직전", "최신 단기 자료", "사람이 선택한 근거", "무작위 가설", "근거로 사용하지",
+    )
     if any(marker in value for marker in internal_markers):
-        return "여름 피부 인상과 성분 선택 기준을 함께 확인하려는 고객에게, 과장보다 납득 가능한 루틴 이유를 먼저 보여줍니다."
+        return "고객은 과장된 말보다 지금 루틴에 적용 가능한 선택 이유를 먼저 확인하려고 합니다."
     return value
 
 
@@ -668,7 +917,7 @@ def _normalize_for_compare(text: str) -> str:
 
 
 def _offer_badge(offer: str) -> str:
-    if "미니 크림" in offer and "증정" in offer:
+    if "미니" in offer and "증정" in offer:
         return "미니 크림 증정"
     if "증정" in offer:
         return _compact(offer, 24)
@@ -676,7 +925,7 @@ def _offer_badge(offer: str) -> str:
 
 
 def _particle(text: str, consonant: str, vowel: str) -> str:
-    stripped = re.sub(r"[\s.。!?]+$", "", str(text or "").strip())
+    stripped = re.sub(r"[\s.!?]+$", "", str(text or "").strip())
     if not stripped:
         return vowel
     if stripped[-1].isdigit():
@@ -684,12 +933,10 @@ def _particle(text: str, consonant: str, vowel: str) -> str:
     code = ord(stripped[-1])
     if not 0xAC00 <= code <= 0xD7A3:
         return vowel
-    return consonant if (code - 0xAC00) % 28 else vowel
-
-
-def _has_broken_korean(text: str) -> bool:
-    markers = ("�", "占", "筌", "揶", "甕", "媛", "吏", "怨", "??", "?낅젰", "placeholder", "tbd")
-    return any(marker in text for marker in markers) or bool(re.search(r"\?{3,}", text))
+    jong = (code - 0xAC00) % 28
+    if (consonant, vowel) == ("으로", "로") and jong == 8:
+        return vowel
+    return consonant if jong else vowel
 
 
 def _issue(severity: str, issue_id: str, message: str) -> dict[str, str]:

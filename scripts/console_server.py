@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import json
+import hashlib
 import mimetypes
 import os
 import re
@@ -11,7 +12,7 @@ import subprocess
 import sys
 import threading
 import time
-from datetime import datetime, timezone
+from datetime import datetime, timezone, timedelta
 from http.server import BaseHTTPRequestHandler, ThreadingHTTPServer
 from pathlib import Path
 from typing import Any
@@ -32,6 +33,10 @@ REFERENCE_LEARNING_DIR = ROOT / "design_brain_wiki" / "reference_learning_1000"
 PYTHON = ROOT / ".venv" / "Scripts" / "python.exe"
 COMFY_URL = os.environ.get("COMFYUI_URL", "http://127.0.0.1:8188").rstrip("/")
 JOBS_PATH = ROOT / ".tmp" / "console-jobs" / "jobs.json"
+MARKETING_PLANNING_LOOP_AUDIT_PATH = ROOT / ".tmp" / "model-benchmarks" / "marketing-planning-loop-audit.json"
+COSMETICS_PILOT_GOAL_AUDIT_PATH = ROOT / ".tmp" / "model-benchmarks" / "cosmetics-pilot-goal-audit.json"
+COPY_CORRECTION_LOOP_AUDIT_PATH = ROOT / ".tmp" / "model-benchmarks" / "copy-correction-loop-audit.json"
+COSMETICS_EVIDENCE_SOURCE_AUDIT_PATH = ROOT / ".tmp" / "model-benchmarks" / "cosmetics-pilot-source-audit.json"
 JOBS_LOCK = threading.Lock()
 
 if str(ROOT) not in sys.path:
@@ -45,13 +50,16 @@ from services.ad_reference.registry_metrics import collection_metrics_summary
 from services.ad_reference.collection_strategy import strategy_summary
 from services.ad_reference.source_mix_metrics import source_mix_summary
 from services.ad_strategy.planning_engine import score_planning
+from services.ad_strategy.quality_gate import copy_character_count
 from services.ad_strategy.generation import generate_copy
 from services.ad_strategy.repository import append_correction, load_examples_for_review, strategy_quality_metrics, update_example_review
 from services.marketing_intelligence.insight_brief import INSIGHT_BRIEF_PATH, build_and_save_insight_brief
-from services.marketing_intelligence.repository import load_signals, signal_metrics, update_signal_review
-from scripts.benchmark_ad_planning import DEFAULT_REPORT, DEFAULT_RESULTS, DEFAULT_REVIEWS, aggregate, evaluate_case, run_external_cases, save_human_review, select_external_concept
+from services.marketing_intelligence.evidence_queue import build_and_save_evidence_queue, signals_for_event
+from services.marketing_intelligence.repository import append_signals, load_signals, signal_metrics, update_signal_content, update_signal_review, update_signal_reviews
+from services.marketing_intelligence.product_proof import create_product_proof_candidate
+from scripts.benchmark_ad_planning import DEFAULT_REPORT, DEFAULT_RESULTS, DEFAULT_REVIEWS, aggregate, build_brief, evaluate_case, run_external_cases, save_human_review, select_external_concept
 from scripts.export_ad_planning_review_packet import build_packet as build_ad_planning_review_packet
-from scripts.workflow import approve_stage
+from scripts.workflow import approve_stage, setup_run
 
 
 JOBS: dict[str, dict[str, Any]] = {}
@@ -135,6 +143,16 @@ def event_relative_path(event_dir: Path) -> str:
 
 def python_exe() -> str:
     return str(PYTHON if PYTHON.exists() else Path(sys.executable))
+
+
+def scorecard_has_blocking_issue(scorecard: dict[str, Any]) -> bool:
+    """Warnings inform the reviewer; only critical/error issues stop approval."""
+    if scorecard.get("criticalErrorCount"):
+        return True
+    return any(
+        isinstance(issue, dict) and issue.get("severity") == "error"
+        for issue in (scorecard.get("issues") or [])
+    )
 
 
 def list_events() -> list[dict[str, Any]]:
@@ -752,6 +770,30 @@ def job_log(job_id: str) -> dict[str, Any]:
     return {"ok": True, "job": job, "log": text[-12000:]}
 
 
+def marketing_planning_loop_audit_report() -> dict[str, Any]:
+    return read_json(MARKETING_PLANNING_LOOP_AUDIT_PATH, {})
+
+
+def cosmetics_pilot_goal_audit_report() -> dict[str, Any]:
+    return read_json(COSMETICS_PILOT_GOAL_AUDIT_PATH, {})
+
+
+def copy_correction_loop_audit_report() -> dict[str, Any]:
+    return read_json(COPY_CORRECTION_LOOP_AUDIT_PATH, {})
+
+
+def cosmetics_evidence_source_audit_report() -> dict[str, Any]:
+    return read_json(COSMETICS_EVIDENCE_SOURCE_AUDIT_PATH, {})
+
+
+def run_cosmetics_evidence_source_audit_job(payload: dict[str, Any] | None = None) -> dict[str, Any]:
+    return start_process(
+        [python_exe(), "scripts/audit_cosmetics_pilot_evidence_sources.py"],
+        ROOT,
+        "cosmetics pilot evidence source audit",
+    )
+
+
 def run_detail(run_id: str) -> dict[str, Any]:
     run_dir = run_dir_from_id(run_id)
     manifest = build_manifest(run_dir) if os.environ.get("VERCEL") else write_manifest(run_dir)
@@ -809,6 +851,8 @@ def select_planning_concept(run_id: str, payload: dict[str, Any]) -> dict[str, A
     if not selected:
         raise ValueError("A valid conceptId is required.")
     reason_tags = normalize_planning_reason_tags(payload.get("reasonTags"))
+    review_note = str(payload.get("reviewNote") or "").strip()
+    require_planning_review_rationale(reason_tags, review_note, label="Concept review")
     rejected = [item.get("conceptId") for item in candidates if item.get("conceptId") != concept_id]
     review = {
         "schemaVersion": "1.0.0",
@@ -816,7 +860,7 @@ def select_planning_concept(run_id: str, payload: dict[str, Any]) -> dict[str, A
         "selectedConceptId": concept_id,
         "rejectedConceptIds": rejected,
         "reasonTags": reason_tags,
-        "reviewNote": str(payload.get("reviewNote") or ""),
+        "reviewNote": review_note,
         "approvedAt": datetime.now(timezone.utc).isoformat(),
     }
     brief = read_json(run_dir / "01_event_brief" / "brief.json", {})
@@ -850,12 +894,14 @@ def review_planning_copy(run_id: str, payload: dict[str, Any]) -> dict[str, Any]
     if not isinstance(edits, list):
         raise ValueError("edits must be a list")
     reason_tags = normalize_planning_reason_tags(payload.get("reasonTags"))
+    review_note = str(payload.get("reviewNote") or "").strip()
+    require_planning_review_rationale(reason_tags, review_note, label="Copy review")
     outputs_by_channel = {item.get("channelId"): item for item in package.get("outputs", [])}
     for edit in edits:
         channel_id = edit.get("channelId")
         if channel_id in outputs_by_channel and isinstance(edit.get("editedCopy"), dict):
             outputs_by_channel[channel_id]["copy"] = edit["editedCopy"]
-            outputs_by_channel[channel_id]["characterCount"] = len(str(edit["editedCopy"]))
+            outputs_by_channel[channel_id]["characterCount"] = copy_character_count(edit["editedCopy"])
     if edits:
         package["criticReview"] = {**package.get("criticReview", {}), "status": "human_revised", "issues": []}
     scorecard = score_planning(
@@ -882,13 +928,13 @@ def review_planning_copy(run_id: str, payload: dict[str, Any]) -> dict[str, Any]
         "approved": approved,
         "edits": edits,
         "reasonTags": reason_tags,
-        "reviewNote": str(payload.get("reviewNote") or ""),
+        "reviewNote": review_note,
         "scores": human_scores,
         "blindPreferred": str(payload.get("blindPreferred") or ""),
         "reviewedAt": datetime.now(timezone.utc).isoformat(),
     }
-    if approved and scorecard.get("issues"):
-        raise ValueError("Resolve all planning quality warnings before approving final copy.")
+    if approved and scorecard_has_blocking_issue(scorecard):
+        raise ValueError("Resolve all blocking planning quality issues before approving final copy.")
     write_json(stage_dir / "copy-package.json", package)
     write_json(stage_dir / "copy-review.json", review)
     selected = read_json(stage_dir / "selected-concept.json", {}).get("concept", {})
@@ -931,10 +977,11 @@ def review_strategy_example(payload: dict[str, Any]) -> dict[str, Any]:
     return {"ok": True, "example": updated, "metrics": strategy_quality_metrics(), "reviewPacket": ad_planning_review_packet()}
 
 
-def marketing_signal_packet(limit: int = 24) -> dict[str, Any]:
+def marketing_signal_packet(limit: int = 24, *, event_id: str = "", topic: str = "") -> dict[str, Any]:
     signals = load_signals()
     metrics = signal_metrics(signals)
-    enriched = [with_signal_recommendation(item) for item in signals]
+    scoped = signals_for_event(signals, event_id=event_id, topic=topic) if event_id or topic else signals
+    enriched = [with_signal_recommendation(item) for item in scoped]
     ordered = sorted(enriched, key=lambda item: (
         item.get("review", {}).get("decision") != "unreviewed",
         -int(item.get("reviewRecommendation", {}).get("score") or 0),
@@ -942,16 +989,157 @@ def marketing_signal_packet(limit: int = 24) -> dict[str, Any]:
         item.get("topic", ""),
         item.get("id", ""),
     ))
+    scoped_decisions = {
+        decision: sum((item.get("review") or {}).get("decision") == decision for item in scoped)
+        for decision in ("selected", "shortlist", "rejected", "unreviewed")
+    }
     return {
         "signals": ordered[:limit],
         "metrics": metrics,
-        "reviewQueue": [item for item in ordered if item.get("review", {}).get("decision") == "unreviewed"][:limit],
+        "reviewQueue": (
+            ordered[:limit]
+            if event_id or topic
+            else [item for item in ordered if item.get("review", {}).get("decision") == "unreviewed"][:limit]
+        ),
         "insightBrief": read_json(INSIGHT_BRIEF_PATH, {}),
+        "scope": {
+            "eventId": event_id,
+            "topic": topic,
+            "matched": len(scoped),
+            "decisions": scoped_decisions,
+        },
+    }
+
+
+def marketing_evidence_queue() -> dict[str, Any]:
+    return build_and_save_evidence_queue()
+
+
+def refresh_planning_for_ready_evidence(
+    *,
+    event_id: str,
+    topic: str,
+    evidence_queue: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    if not event_id:
+        return {"status": "not_requested"}
+    queue = evidence_queue or marketing_evidence_queue()
+    queue_case = next(
+        (item for item in queue.get("cases", []) if item.get("eventId") == event_id),
+        None,
+    )
+    if not queue_case or queue_case.get("status") != "ready":
+        invalidated = invalidate_planning_for_evidence(
+            event_id,
+            evidence_status=(queue_case or {}).get("status", "missing"),
+        )
+        benchmark = refresh_planning_benchmark() if invalidated else None
+        review_packet = ad_planning_review_packet() if invalidated else None
+        return {
+            "status": "evidence_not_ready",
+            "eventId": event_id,
+            "evidenceStatus": (queue_case or {}).get("status", "missing"),
+            "planningInvalidated": invalidated,
+            "benchmark": benchmark,
+            "reviewPacket": review_packet,
+        }
+    minimum = int((queue_case.get("requirements") or {}).get("minimumSelectedSignals") or 3)
+    claim_policy = str((queue_case.get("requirements") or {}).get("claimPolicy") or "standard")
+    brief_kwargs = {
+        "event_id": event_id,
+        "industry": "cosmetics_skincare",
+        "topic": topic,
+        "minimum_selected": minimum,
+    }
+    if claim_policy == "no_unverified_product_claims":
+        brief_kwargs["additional_do_not_claim"] = [
+            "공식 제품 근거가 확인되기 전에는 성분, 효능, 수치, 사용 결과를 주장하지 않는다."
+        ]
+    brief = build_and_save_insight_brief(**brief_kwargs)
+    if brief.get("status") != "ready":
+        return {"status": "insight_brief_not_ready", "eventId": event_id, "insightBrief": brief}
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {"cases": []})
+    case = next((item for item in dataset.get("cases", []) if item.get("id") == event_id), None)
+    if not case:
+        return {"status": "benchmark_case_missing", "eventId": event_id, "insightBrief": brief}
+    results = run_external_cases(
+        {"cases": [case]},
+        DEFAULT_RESULTS,
+        limit=1,
+        provider="local",
+        force_refresh=True,
+    )
+    result = next(
+        (item for item in results.get("results", []) if item.get("caseId") == event_id),
+        {},
+    )
+    benchmark = refresh_planning_benchmark()
+    review_packet = ad_planning_review_packet()
+    return {
+        "status": result.get("status", "concept_review_pending"),
+        "eventId": event_id,
+        "insightBrief": brief,
+        "result": result,
+        "benchmark": benchmark,
+        "reviewPacket": review_packet,
+    }
+
+
+def invalidate_planning_for_evidence(event_id: str, *, evidence_status: str) -> bool:
+    payload = read_json(DEFAULT_RESULTS, {"schemaVersion": "1.0.0", "results": []})
+    result = next(
+        (item for item in payload.get("results", []) if item.get("caseId") == event_id),
+        None,
+    )
+    if not result:
+        return False
+    already_invalid = (
+        result.get("status") == "evidence_review_required"
+        and not result.get("selectedConceptId")
+        and "copyPackage" not in result
+    )
+    if already_invalid:
+        return False
+    result["status"] = "evidence_review_required"
+    result["selectedConceptId"] = ""
+    result["selectionSource"] = ""
+    result["evidenceStatus"] = evidence_status
+    result["invalidatedAt"] = datetime.now(timezone.utc).isoformat()
+    result["invalidationReason"] = "event_evidence_no_longer_ready"
+    result.pop("copyPackage", None)
+    result.pop("scorecard", None)
+    payload["updatedAt"] = result["invalidatedAt"]
+    write_json(DEFAULT_RESULTS, payload)
+    return True
+
+
+def focus_marketing_signals(payload: dict[str, Any]) -> dict[str, Any]:
+    event_id = str(payload.get("eventId") or "").strip()
+    topic = str(payload.get("topic") or "").strip()
+    if not event_id:
+        raise ValueError("eventId is required")
+    evidence_queue = marketing_evidence_queue()
+    planning_refresh = refresh_planning_for_ready_evidence(
+        event_id=event_id,
+        topic=topic,
+        evidence_queue=evidence_queue,
+    )
+    return {
+        "ok": True,
+        "marketingSignals": marketing_signal_packet(
+            limit=max(1, min(100, int(payload.get("limit") or 24))),
+            event_id=event_id,
+            topic=topic,
+        ),
+        "evidenceQueue": evidence_queue,
+        "planningRefresh": planning_refresh,
+        "planningReviewPacket": planning_refresh.get("reviewPacket"),
+        "planningBenchmark": planning_refresh.get("benchmark"),
     }
 
 
 def with_signal_recommendation(signal: dict[str, Any]) -> dict[str, Any]:
-    score, reasons = signal_recommendation_score(signal)
+    score, reasons, limitations, suggested_decision = signal_recommendation_score(signal)
     if score >= 8:
         label = "우선 검토"
     elif score >= 6:
@@ -964,15 +1152,29 @@ def with_signal_recommendation(signal: dict[str, Any]) -> dict[str, Any]:
             "score": score,
             "label": label,
             "reasons": reasons,
+            "limitations": limitations,
+            "suggestedDecision": suggested_decision,
         },
     }
 
 
-def signal_recommendation_score(signal: dict[str, Any]) -> tuple[int, list[str]]:
-    score = int(signal.get("strength") or 0) + int(signal.get("freshness") or 0) + int(signal.get("confidence") or 0)
+def signal_recommendation_score(signal: dict[str, Any]) -> tuple[int, list[str], list[str], str]:
+    quality_scores = [
+        max(1, min(5, int(signal.get(field) or 1)))
+        for field in ("strength", "freshness", "confidence")
+    ]
+    score = round(sum(quality_scores) / len(quality_scores))
     reasons: list[str] = []
+    limitations: list[str] = []
     evidence_type = str(signal.get("evidenceType") or "")
     usable_for = set(signal.get("usableFor") or [])
+    source = signal.get("sourceRef") if isinstance(signal.get("sourceRef"), dict) else {}
+    source_type = str(signal.get("sourceType") or "")
+    source_name = str(source.get("sourceName") or source.get("title") or "").lower()
+    methodology = str(source.get("methodology") or "").lower()
+    published_at = str(source.get("publishedAt") or "")
+    risk_flags = set(signal.get("riskFlags") or [])
+
     if evidence_type in {"pain", "desire", "objection"}:
         score += 2
         reasons.append("타깃 감정/저항을 바로 설명할 수 있음")
@@ -982,14 +1184,69 @@ def signal_recommendation_score(signal: dict[str, Any]) -> tuple[int, list[str]]
     elif evidence_type == "channel_pattern":
         score += 1
         reasons.append("채널 문구 구조 검토에 유용")
-    if {"concept", "copy"}.issubset(usable_for):
+    elif evidence_type == "proof":
         score += 1
-        reasons.append("콘셉트와 카피에 모두 연결 가능")
-    if "random_seed" in set(signal.get("riskFlags") or []):
-        reasons.append("랜덤 가설이라 선택 전 사실 근거로는 사용 금지")
+        reasons.append("제품 또는 교육 기준의 근거 역할을 검토할 수 있음")
+    elif evidence_type == "offer":
+        score += 2
+        reasons.append("입력된 혜택 범위를 직접 확인할 수 있음")
+
+    if source_type == "internal" and "verified_brief_fact" in risk_flags:
+        score += 2
+        reasons.append("이벤트 입력에서 직접 확인된 사실")
+    elif any(token in source_name for token in ("pubmed", "pmc", "journal", "academy of dermatology")):
+        score += 2
+        reasons.append("학술지 또는 전문기관 출처")
+    elif any(token in source_name for token in ("euromonitor", "기상청")):
+        score += 1
+        reasons.append("시장 조사 또는 공공기관 출처")
+
+    if {"concept", "copy"}.issubset(usable_for):
+        reasons.append("콘셉트와 카피의 근거로 연결 가능")
+
+    published_year = _published_year(published_at)
+    source_age = datetime.now(timezone.utc).year - published_year if published_year else 0
+    if source_age > 10:
+        score -= 1
+        limitations.append("10년 이상 지난 자료로 최신 시장 반응이 아니라 기초 행동 원리 참고용입니다.")
+    elif source_age > 5:
+        limitations.append("5년 이상 지난 자료이므로 최신 소비자 반응과 함께 해석해야 합니다.")
+    if "글로벌" in methodology or "global" in source_name or "euromonitor" in source_name:
+        limitations.append("글로벌 조사 결과를 한국 브랜드 고객에게 그대로 일반화하지 않습니다.")
+    if "단면 조사" in methodology:
+        limitations.append("단면 조사는 인과관계를 증명하지 않으므로 채널 이용 맥락으로만 사용합니다.")
+    if "인터뷰" in methodology:
+        limitations.append("전문가 인터뷰는 단일 관점이므로 대규모 소비자 조사보다 보조적으로 사용합니다.")
+    if evidence_type == "proof" and source_type == "public_web":
+        limitations.append("개별 제품 효능 proof가 아니라 교육·카테고리 행동 기준으로만 사용합니다.")
+    if "random_seed" in risk_flags or source_type == "seed_random":
+        score -= 2
+        limitations.append("출처가 없는 가설이므로 사실 근거로 선택할 수 없습니다.")
+    if not source.get("sourceName") and not source.get("url") and source_type != "internal":
+        score -= 1
+        limitations.append("확인 가능한 출처 정보가 없습니다.")
+    if BLOCKED_SIGNAL_RISKS.intersection(risk_flags):
+        suggested_decision = "rejected"
+    elif score >= 6:
+        suggested_decision = "selected"
+    else:
+        suggested_decision = "shortlist"
     if not reasons:
         reasons.append("검토 가능한 후보")
-    return max(1, min(10, score)), reasons[:3]
+    return max(1, min(10, score)), reasons[:3], limitations[:3], suggested_decision
+
+
+BLOCKED_SIGNAL_RISKS = {
+    "capture_quality_blocked",
+    "raw_html_detected",
+    "raw_json_detected",
+    "broken_text_suspected",
+}
+
+
+def _published_year(value: str) -> int:
+    match = re.match(r"^(\d{4})", str(value or "").strip())
+    return int(match.group(1)) if match else 0
 
 
 def evidence_priority(signal: dict[str, Any]) -> int:
@@ -1012,7 +1269,108 @@ def review_marketing_signal(payload: dict[str, Any]) -> dict[str, Any]:
         "reasonTags": payload.get("reasonTags") or [],
         "reviewNote": payload.get("reviewNote") or "",
     })
-    return {"ok": True, "signal": updated, "marketingSignals": marketing_signal_packet()}
+    event_id = str(payload.get("eventId") or "")
+    topic = str(payload.get("topic") or "")
+    evidence_queue = marketing_evidence_queue()
+    planning_refresh = refresh_planning_for_ready_evidence(
+        event_id=event_id,
+        topic=topic,
+        evidence_queue=evidence_queue,
+    )
+    return {
+        "ok": True,
+        "signal": updated,
+        "marketingSignals": marketing_signal_packet(
+            event_id=event_id,
+            topic=topic,
+        ),
+        "evidenceQueue": evidence_queue,
+        "planningRefresh": planning_refresh,
+        "planningReviewPacket": planning_refresh.get("reviewPacket"),
+        "planningBenchmark": planning_refresh.get("benchmark"),
+    }
+
+
+def review_marketing_signals_batch(payload: dict[str, Any]) -> dict[str, Any]:
+    if payload.get("humanConfirmed") is not True:
+        raise ValueError("Explicit human confirmation is required for batch signal review.")
+    event_id = str(payload.get("eventId") or "").strip()
+    topic = str(payload.get("topic") or "").strip()
+    reviews = payload.get("reviews")
+    if not event_id or not isinstance(reviews, list) or not 1 <= len(reviews) <= 20:
+        raise ValueError("eventId and 1-20 reviews are required")
+    scoped_ids = {
+        str(item.get("id") or "")
+        for item in signals_for_event(load_signals(), event_id=event_id, topic=topic)
+    }
+    normalized: list[dict[str, Any]] = []
+    for review in reviews:
+        signal_id = str(review.get("signalId") or "").strip()
+        reason_tags = [str(item).strip() for item in review.get("reasonTags", []) if str(item).strip()]
+        review_note = str(review.get("reviewNote") or "").strip()
+        if signal_id not in scoped_ids:
+            raise ValueError(f"Signal does not belong to the focused event: {signal_id}")
+        if not reason_tags or len(review_note) < 10:
+            raise ValueError("Each batch review requires a reason tag and a concrete review note.")
+        normalized.append({
+            "signalId": signal_id,
+            "decision": review.get("decision"),
+            "reasonTags": reason_tags,
+            "reviewNote": review_note,
+        })
+    updated = update_signal_reviews(normalized)
+    evidence_queue = marketing_evidence_queue()
+    planning_refresh = refresh_planning_for_ready_evidence(
+        event_id=event_id,
+        topic=topic,
+        evidence_queue=evidence_queue,
+    )
+    return {
+        "ok": True,
+        "signals": updated,
+        "marketingSignals": marketing_signal_packet(event_id=event_id, topic=topic, limit=60),
+        "evidenceQueue": evidence_queue,
+        "planningRefresh": planning_refresh,
+        "planningReviewPacket": planning_refresh.get("reviewPacket"),
+        "planningBenchmark": planning_refresh.get("benchmark"),
+    }
+
+
+def add_product_proof_candidate(payload: dict[str, Any]) -> dict[str, Any]:
+    created = create_product_proof_candidate(payload)
+    event_id = str(payload.get("eventId") or "").strip()
+    topic = str(payload.get("topic") or "").strip()
+    return {
+        "ok": True,
+        **created,
+        "marketingSignals": marketing_signal_packet(
+            event_id=event_id,
+            topic=topic,
+            limit=60,
+        ),
+        "evidenceQueue": marketing_evidence_queue(),
+    }
+
+
+def repair_marketing_signal(payload: dict[str, Any]) -> dict[str, Any]:
+    signal_id = str(payload.get("signalId") or "").strip()
+    if not signal_id:
+        raise ValueError("signalId is required")
+    updated = update_signal_content(signal_id, {
+        "signalText": payload.get("signalText") or "",
+        "targetSegment": payload.get("targetSegment") or "",
+        "normalizedInsight": payload.get("normalizedInsight") or "",
+        "evidenceType": payload.get("evidenceType") or "",
+    })
+    return {
+        "ok": True,
+        "signal": updated,
+        "marketingSignals": marketing_signal_packet(
+            event_id=str(payload.get("eventId") or ""),
+            topic=str(payload.get("topic") or ""),
+        ),
+        "evidenceQueue": marketing_evidence_queue(),
+    }
 
 
 def build_marketing_insight_brief(payload: dict[str, Any]) -> dict[str, Any]:
@@ -1022,7 +1380,15 @@ def build_marketing_insight_brief(payload: dict[str, Any]) -> dict[str, Any]:
         topic=str(payload.get("topic") or ""),
         minimum_selected=max(1, int(payload.get("minimumSelected") or 3)),
     )
-    return {"ok": True, "insightBrief": brief, "marketingSignals": marketing_signal_packet()}
+    return {
+        "ok": True,
+        "insightBrief": brief,
+        "marketingSignals": marketing_signal_packet(
+            event_id=str(payload.get("eventId") or ""),
+            topic=str(payload.get("topic") or ""),
+        ),
+        "evidenceQueue": marketing_evidence_queue(),
+    }
 
 
 def run_marketing_signal_job(payload: dict[str, Any]) -> dict[str, Any]:
@@ -1053,12 +1419,18 @@ def run_marketing_signal_job(payload: dict[str, Any]) -> dict[str, Any]:
         industry = str(payload.get("industry") or "cosmetics_skincare")
         topic = str(payload.get("topic") or "public_marketing_signals")
         command.extend(["--industry", industry, "--topic", topic, "--public-snapshot", snapshot, "--export-review"])
+        event_id = str(payload.get("eventId") or "").strip()
+        if event_id:
+            command.extend(["--event-id", event_id])
         if payload.get("autoSelect"):
             command.append("--auto-select-public")
         label = "marketing signal public snapshot import"
     elif mode == "public_capture":
         url = str(payload.get("url") or payload.get("captureUrl") or "").strip()
-        if not url:
+        urls = [str(item).strip() for item in payload.get("urls", []) if str(item).strip()] if isinstance(payload.get("urls"), list) else []
+        if url:
+            urls.insert(0, url)
+        if not urls:
             raise ValueError("url is required for public_capture mode")
         industry = str(payload.get("industry") or "cosmetics_skincare")
         topic = str(payload.get("topic") or "public_web_capture")
@@ -1067,25 +1439,303 @@ def run_marketing_signal_job(payload: dict[str, Any]) -> dict[str, Any]:
         command.extend([
             "--industry", industry,
             "--topic", topic,
-            "--capture-url", url,
             "--source-kind", source_kind,
             "--snapshot-output", snapshot_output,
             "--export-review",
         ])
+        event_id = str(payload.get("eventId") or "").strip()
+        if event_id:
+            command.extend(["--event-id", event_id])
+        for item in urls:
+            command.extend(["--capture-url", item])
         label = "marketing signal public URL capture"
+    elif mode == "evidence_queue":
+        command = [python_exe(), "scripts/build_cosmetics_evidence_queue.py"]
+        label = "cosmetics event evidence queue refresh"
     else:
-        raise ValueError("mode must be random_seed, export, import_dry_run, import_apply, public_snapshot, or public_capture")
+        raise ValueError("mode must be random_seed, export, import_dry_run, import_apply, public_snapshot, public_capture, or evidence_queue")
     return start_process(command, ROOT, label)
+
+
+def seed_benchmark_evidence_for_production(case_id: str, production_event_id: str) -> dict[str, Any]:
+    """Carry the already-reviewed benchmark evidence into its bridge event.
+
+    The bridge is a continuation of a human-approved benchmark case, not a
+    new research request.  Clone only selected source signals, keep their
+    original provenance, and scope the clones to the generated production
+    event so the normal planning critic can validate the handoff correctly.
+    """
+    if not case_id or not production_event_id:
+        raise ValueError("Benchmark bridge requires source and production event ids.")
+    selected = [
+        signal for signal in load_signals()
+        if str((signal.get("sourceRef") or {}).get("eventId") or signal.get("eventId") or "") == case_id
+        and str((signal.get("review") or {}).get("decision") or "") == "selected"
+    ]
+    if len(selected) < 3:
+        raise ValueError("Benchmark bridge requires at least three reviewed marketing signals.")
+    clones: list[dict[str, Any]] = []
+    for source in selected:
+        source_id = str(source.get("id") or "").strip()
+        if not source_id:
+            continue
+        source_ref = dict(source.get("sourceRef") or {})
+        source_ref["eventId"] = production_event_id
+        source_ref["bridgeSourceEventId"] = case_id
+        source_ref["bridgeSourceSignalId"] = source_id
+        clones.append({
+            **source,
+            "id": f"benchmark_bridge_{case_id}_{production_event_id}_{source_id}",
+            "sourceRef": source_ref,
+        })
+    appended = append_signals(clones)
+    insight = build_and_save_insight_brief(
+        event_id=production_event_id,
+        industry="cosmetics_skincare",
+        minimum_selected=3,
+    )
+    if insight.get("status") != "ready":
+        raise ValueError("Benchmark bridge could not prepare event-scoped reviewed evidence.")
+    return {"signals": appended, "insightBrief": insight}
+
+
+def handoff_benchmark_case_to_production(payload: dict[str, Any]) -> dict[str, Any]:
+    """Create the real production run that follows a benchmark copy decision.
+
+    Benchmark planning used to end at a detached review record.  This bridge
+    creates a normal event/run, completes the two planning gates, and leaves
+    the operator on the reference-selection step.
+    """
+    case_id = str(payload.get("caseId") or "").strip()
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {})
+    case = next((item for item in dataset.get("cases", []) if item.get("id") == case_id), None)
+    if not case:
+        raise ValueError("Unknown benchmark case.")
+
+    event_name = f"Production {case_id}"
+    existing_event = next((item for item in list_events() if item.get("event_name") == event_name), None)
+    schedule_start = datetime.now(timezone.utc).date() + timedelta(days=7)
+    schedule_end = schedule_start + timedelta(days=14)
+    event_payload = {
+        "eventName": event_name,
+        "brandName": "LoopStudio benchmark",
+        "objective": f"{case.get('eventName') or case_id} 콘텐츠 제작",
+        "target": case.get("target") or "",
+        "productOrService": case.get("product") or "",
+        # A bridge run must be self-contained.  A blank commercial offer is
+        # still an intentional decision, but the brief validator needs it
+        # expressed as an operator-safe message rather than an empty field.
+        "offer": case.get("offer") or "추가 혜택 없이 제품 정보와 사용 맥락을 확인합니다.",
+        "channels": ["instagram", "naver_blog", "community"],
+        "toneAndManner": "명확하고 절제된 정보 중심",
+        "styleRules": "확인된 사실만 사용\n효능과 수치를 과장하지 않음",
+        "bannedWords": "즉시 개선\n완벽\n보장",
+        "startDate": schedule_start.isoformat(),
+        "endDate": schedule_end.isoformat(),
+        "publishDate": schedule_start.isoformat(),
+        "notes": f"benchmarkCaseId={case_id}; 검수 완료 카피에서 이어진 제작 run",
+    }
+    if existing_event:
+        event = existing_event
+        event_dir = safe_child(ROOT, str(event["path"]))
+        event_input = read_json(event_dir / "event-input.json", {})
+        event_input["schedule"] = {
+            "startDate": schedule_start.isoformat(),
+            "endDate": schedule_end.isoformat(),
+            "publishDate": schedule_start.isoformat(),
+        }
+        event_input["toneAndManner"] = event_payload["toneAndManner"]
+        event_input["offer"] = event_payload["offer"]
+        event_input["bannedWords"] = split_lines(event_payload["bannedWords"])
+        write_json(event_dir / "event-input.json", event_input)
+        brand_guide = read_json(event_dir / "brand-guide.json", {})
+        brand_guide["tone"] = split_lines(event_payload["toneAndManner"])
+        brand_guide["styleRules"] = split_lines(event_payload["styleRules"])
+        brand_guide["avoidWords"] = split_lines(event_payload["bannedWords"])
+        write_json(event_dir / "brand-guide.json", brand_guide)
+    else:
+        event = create_event({
+            **event_payload,
+        })["event"]
+
+    reusable = next(
+        (
+            run for run in list_runs()
+            if str(run.get("event_id") or "") == str(event.get("id") or "")
+            and str(run.get("status") or "") in {"plan_review", "reference_ready", "prompt_ready", "selection_pending"}
+        ),
+        None,
+    )
+    if reusable:
+        return {"ok": True, "runId": reusable["run_id"], "reused": True}
+
+    event_dir = safe_child(ROOT, str(event["path"]))
+    seed_benchmark_evidence_for_production(case_id, str(event.get("id") or ""))
+    run_dir = setup_run(event_dir)
+    for command in (
+        [python_exe(), "scripts/workflow.py", "--run", str(run_dir), "--stage", "01_event_brief"],
+        [python_exe(), "scripts/workflow.py", "--run", str(run_dir), "--approve", "01_event_brief"],
+        [python_exe(), "scripts/workflow.py", "--run", str(run_dir), "--stage", "02_content_planning"],
+    ):
+        completed = subprocess.run(command, cwd=ROOT, capture_output=True, text=True, encoding="utf-8", errors="replace")
+        if completed.returncode != 0:
+            raise RuntimeError((completed.stderr or "").strip() or (completed.stdout or "").strip() or "Production handoff failed")
+    candidates = read_json(run_dir / "02_content_planning" / "concept-candidates.json", {}).get("candidates", [])
+    selected_concept_id = str((candidates[0] if candidates else {}).get("conceptId") or "")
+    if not selected_concept_id:
+        raise RuntimeError("Production handoff could not prepare a concept.")
+    select_planning_concept(run_dir.name, {
+        "conceptId": selected_concept_id,
+        "reasonTags": ["good_structure"],
+        "reviewNote": "검수 완료된 벤치마크 카피에서 제작 단계로 연결했습니다.",
+    })
+    copy_outputs = read_json(run_dir / "02_content_planning" / "copy-package.json", {}).get("outputs", [])
+    review_planning_copy(run_dir.name, {
+        "approved": True,
+        "edits": [
+            {
+                "channelId": output.get("channelId") or "",
+                "originalCopy": output.get("copy") or {},
+                "editedCopy": output.get("copy") or {},
+            }
+            for output in copy_outputs
+        ],
+        "scores": {key: 4 for key in ("strategyClarity", "targetEmpathy", "productConnection", "distinctiveness", "channelFit", "koreanCopyQuality", "brandFit", "actionability")},
+        "reasonTags": ["strong_product_link"],
+        "reviewNote": "검수 완료된 벤치마크 카피의 승인 결정을 제작 run에 연결했습니다.",
+    })
+    completed = subprocess.run(
+        [python_exe(), "scripts/workflow.py", "--run", str(run_dir), "--approve", "02_content_planning"],
+        cwd=ROOT,
+        capture_output=True,
+        text=True,
+        encoding="utf-8",
+        errors="replace",
+    )
+    if completed.returncode != 0:
+        raise RuntimeError((completed.stderr or "").strip() or (completed.stdout or "").strip() or "Production handoff failed")
+    return {"ok": True, "runId": run_dir.name, "reused": False}
 
 
 def review_planning_benchmark(payload: dict[str, Any]) -> dict[str, Any]:
     case_id = str(payload.get("caseId") or "").strip()
     if not case_id:
         raise ValueError("caseId is required")
-    save_human_review(case_id, payload)
+    dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {})
+    case = next((item for item in dataset.get("cases", []) if item.get("id") == case_id), None)
+    if not case:
+        raise ValueError("Unknown benchmark case.")
+    results_payload = read_json(DEFAULT_RESULTS, {"schemaVersion": "1.0.0", "results": []})
+    result = next((item for item in results_payload.get("results", []) if item.get("caseId") == case_id), None)
+    if not result or result.get("status") != "complete":
+        raise ValueError("Generate the benchmark copy package before human review.")
+    if result.get("selectionSource") != "human":
+        raise ValueError("Final copy review requires a concept selected by a person.")
+    if not benchmark_event_evidence_ready(case_id, result):
+        raise ValueError("Event-specific reviewed marketing evidence is required before benchmark copy review.")
+    edits = payload.get("edits", [])
+    if not isinstance(edits, list):
+        raise ValueError("edits must be a list")
+    reason_tags = normalize_planning_reason_tags(payload.get("reasonTags"))
+    review_note = str(payload.get("reviewNote") or "").strip()
+    require_planning_review_rationale(reason_tags, review_note, label="Benchmark copy review")
+    outputs_by_channel = {
+        item.get("channelId"): item
+        for item in (result.get("copyPackage") or {}).get("outputs", [])
+        if item.get("channelId")
+    }
+    for edit in edits:
+        channel_id = str(edit.get("channelId") or "")
+        edited_copy = edit.get("editedCopy")
+        output = outputs_by_channel.get(channel_id)
+        if not output or not isinstance(edited_copy, dict):
+            raise ValueError(f"Invalid benchmark copy edit: {channel_id or 'unknown channel'}")
+        if "generatedCopy" not in output:
+            output["generatedCopy"] = edit.get("originalCopy") if isinstance(edit.get("originalCopy"), dict) else output.get("copy", {})
+        output["copy"] = edited_copy
+        output["characterCount"] = copy_character_count(edited_copy)
+    result["scorecard"] = score_planning(build_brief(case), result.get("concepts", {}), result.get("copyPackage", {}))
+    scores = [value for value in (payload.get("scores") or {}).values() if isinstance(value, (int, float))]
+    approved = bool(payload.get("approved"))
+    if approved and (not scores or sum(scores) / len(scores) < 4):
+        raise ValueError("Final approval requires an average human rubric score of at least 4.")
+    if approved and scorecard_has_blocking_issue(result["scorecard"]):
+        raise ValueError("Resolve all blocking benchmark planning quality issues before final approval.")
+    result["lastHumanReviewAt"] = datetime.now(timezone.utc).isoformat()
+    results_payload["updatedAt"] = result["lastHumanReviewAt"]
+    write_json(DEFAULT_RESULTS, results_payload)
+    has_edited_output = any(
+        isinstance(output.get("generatedCopy"), dict)
+        and output.get("generatedCopy") != output.get("copy")
+        for output in outputs_by_channel.values()
+    )
+    review_payload = {
+        **payload,
+        "edited": has_edited_output,
+        "edits": edits,
+        "reasonTags": reason_tags,
+        "reviewNote": review_note,
+        "conceptSelectionSource": str(result.get("selectionSource") or "human"),
+    }
+    review = save_human_review(case_id, review_payload, DEFAULT_REVIEWS)
+    selected = next(
+        (
+            item for item in (result.get("concepts") or {}).get("candidates", [])
+            if item.get("conceptId") == result.get("selectedConceptId")
+        ),
+        {},
+    )
+    reason_tags = list(review.get("reasonTags") or [])
+    for channel_id, output in outputs_by_channel.items():
+        original_copy = output.get("generatedCopy") if isinstance(output.get("generatedCopy"), dict) else output.get("copy", {})
+        edited_copy = output.get("copy", {})
+        correction_key = json.dumps(edited_copy, ensure_ascii=False, sort_keys=True)
+        correction_id = hashlib.sha256(f"benchmark|{case_id}|{channel_id}|{correction_key}".encode("utf-8")).hexdigest()[:16]
+        append_correction({
+            "id": correction_id,
+            "runId": f"benchmark:{case_id}",
+            "eventId": case_id,
+            "eventName": str(case.get("eventName") or case_id),
+            "brandName": "benchmark_cosmetics",
+            "industry": "cosmetics_skincare",
+            "channelId": channel_id,
+            "model": str((result.get("copyPackage") or {}).get("model") or result.get("provider") or "local"),
+            "strategyExampleIds": selected.get("strategyExampleIds", []),
+            "originalCopy": original_copy,
+            "editedCopy": edited_copy,
+            "reasonTags": reason_tags,
+            "qaResult": result.get("scorecard", {}),
+            "approved": approved,
+            "humanScores": review.get("scores", {}),
+            "conceptSelectionSource": review.get("conceptSelectionSource", ""),
+        })
     report = refresh_planning_benchmark()
     reviewed_case = next(item for item in report.get("cases", []) if item.get("caseId") == case_id)
-    return {"ok": True, "case": reviewed_case, "report": report, "metrics": strategy_quality_metrics(), "reviewPacket": ad_planning_review_packet()}
+    return {
+        "ok": True,
+        "case": reviewed_case,
+        "review": review,
+        "report": report,
+        "metrics": strategy_quality_metrics(),
+        "reviewPacket": ad_planning_review_packet(),
+    }
+
+
+def benchmark_event_evidence_ready(case_id: str, result: dict[str, Any]) -> bool:
+    concepts = result.get("concepts") if isinstance(result.get("concepts"), dict) else {}
+    package = result.get("copyPackage") if isinstance(result.get("copyPackage"), dict) else {}
+    candidates = concepts.get("candidates") or []
+    outputs = package.get("outputs") or []
+    return (
+        concepts.get("marketingEvidenceStatus") == "ready"
+        and package.get("marketingEvidenceStatus") == "ready"
+        and str(concepts.get("marketingEvidenceEventId") or "") == case_id
+        and str(package.get("marketingEvidenceEventId") or "") == case_id
+        and len(candidates) == 3
+        and all(len(item.get("marketingSignalIds") or []) >= 3 for item in candidates)
+        and bool(outputs)
+        and all((item.get("planningEvidence") or {}).get("marketingSignalIds") for item in outputs)
+    )
 
 
 def select_planning_benchmark_concept(payload: dict[str, Any]) -> dict[str, Any]:
@@ -1106,7 +1756,38 @@ def select_planning_benchmark_concept(payload: dict[str, Any]) -> dict[str, Any]
 
 def run_planning_pilot_job(payload: dict[str, Any]) -> dict[str, Any]:
     limit = max(1, int(payload.get("limit") or 5))
-    return start_process([python_exe(), "scripts/run_ad_planning_pilot.py", "--limit", str(limit)], ROOT, f"ad planning pilot {limit}")
+    command = [python_exe(), "scripts/run_ad_planning_pilot.py", "--limit", str(limit)]
+    label = f"ad planning pilot {limit}"
+    if payload.get("selectPendingConcepts"):
+        command.append("--select-pending-concepts")
+        label = f"ad planning pilot connection copy {limit}"
+    return start_process(command, ROOT, label)
+
+
+def run_marketing_planning_loop_audit_job(payload: dict[str, Any]) -> dict[str, Any]:
+    run_path = str(payload.get("run") or payload.get("runDir") or "runs/2026-06-20_01-26-50_hsgn-여름-톤-케어-집중-이벤트").strip()
+    minimum = max(1, int(payload.get("minimumSignals") or 5))
+    return start_process(
+        [python_exe(), "scripts/audit_marketing_planning_loop.py", "--run", run_path, "--minimum-signals", str(minimum)],
+        ROOT,
+        f"marketing planning loop audit {minimum}",
+    )
+
+
+def run_cosmetics_pilot_goal_audit_job(payload: dict[str, Any]) -> dict[str, Any]:
+    limit = max(1, int(payload.get("limit") or 5))
+    return start_process(
+        [python_exe(), "scripts/audit_cosmetics_pilot_goal.py", "--limit", str(limit)],
+        ROOT,
+        f"cosmetics pilot goal audit {limit}",
+    )
+
+
+def run_copy_correction_loop_audit_job(payload: dict[str, Any]) -> dict[str, Any]:
+    command = [python_exe(), "scripts/audit_copy_correction_loop.py"]
+    if payload.get("verifyApplication", True):
+        command.append("--verify-application")
+    return start_process(command, ROOT, "copy correction learning audit")
 
 
 def run_ad_strategy_review_sheet_job(payload: dict[str, Any]) -> dict[str, Any]:
@@ -1157,6 +1838,32 @@ def refresh_planning_benchmark() -> dict[str, Any]:
     return report
 
 
+def planning_benchmark_console_summary() -> dict[str, Any]:
+    """Return only the planning state needed for the operator's next CTA.
+
+    The complete benchmark report includes every generated channel package and
+    can exceed a megabyte.  Sending it in the initial console bootstrap makes
+    a normal reload unreliable over a remote test tunnel, even though the
+    home screen only needs the selected concept, review state and evidence.
+    """
+    report = read_json(DEFAULT_REPORT, {})
+    cases: list[dict[str, Any]] = []
+    for case in report.get("cases", []):
+        external = case.get("external") or {}
+        cases.append({
+            "caseId": case.get("caseId"),
+            "eventType": case.get("eventType"),
+            "external": {
+                key: external.get(key)
+                for key in ("status", "selectedConceptId", "concepts", "scorecard")
+            },
+            "humanReview": case.get("humanReview"),
+            "humanAverage": case.get("humanAverage"),
+            "humanReviewEligible": case.get("humanReviewEligible"),
+        })
+    return {"schemaVersion": report.get("schemaVersion", "1.0.0"), "cases": cases}
+
+
 def ad_planning_review_packet() -> dict[str, Any]:
     dataset = read_json(ROOT / "assets" / "rules" / "cosmetics-planning-benchmark.json", {"cases": []})
     benchmark = read_json(DEFAULT_REPORT, {})
@@ -1169,6 +1876,7 @@ def ad_planning_review_packet() -> dict[str, Any]:
         human_reviews=reviews,
         strategy_examples=load_examples_for_review(),
         strategy_metrics=strategy_quality_metrics(),
+        evidence_queue=read_json(ROOT / ".tmp" / "model-benchmarks" / "cosmetics-evidence-queue.json", {"cases": []}),
         provider="local",
         pilot_limit=5,
     )
@@ -1182,6 +1890,13 @@ def normalize_planning_reason_tags(value: Any) -> list[str]:
     }
     values = value if isinstance(value, list) else split_lines(value)
     return [item for item in dict.fromkeys(str(item).strip() for item in values) if item in allowed]
+
+
+def require_planning_review_rationale(reason_tags: list[str], review_note: str, *, label: str) -> None:
+    if not reason_tags:
+        raise ValueError(f"{label} requires at least one reason tag.")
+    if len(review_note.strip()) < 5:
+        raise ValueError(f"{label} requires a specific review note.")
 
 
 def approve_run_stage(run_id: str, payload: dict[str, Any]) -> dict[str, Any]:
@@ -1613,7 +2328,6 @@ def run_reference_pipeline(run_id: str, payload: dict[str, Any]) -> dict[str, An
         "--run",
         str(run_dir),
         "--run-reference-pipeline",
-        "--reference-update-03",
         "--reference-reviewer",
         str(payload.get("reviewer") or "qwen"),
         "--reference-query-limit",
@@ -1673,6 +2387,10 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         body = json.dumps(data, ensure_ascii=False).encode("utf-8")
         self.send_response(status)
         self.send_header("Content-Type", "application/json; charset=utf-8")
+        # This is a local live-production console. Stale bootstrap data or an
+        # older app bundle can leave an operator on a CTA whose transition was
+        # already fixed, so never cache the current workspace state.
+        self.send_header("Cache-Control", "no-store, max-age=0")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)
@@ -1696,7 +2414,10 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                     "products": list_products(),
                     "trainingSessions": list_training_sessions(),
                     "referenceLearning": reference_learning_status(),
-                    "metaAdCollections": list_meta_ad_collections(),
+                    # Large collection payloads are loaded only from their
+                    # dedicated screens.  Keep the first paint focused on
+                    # the production journey and its next decision.
+                    "metaAdCollections": [],
                     "metaBrandRegistry": registry_summary(),
                     "metaBrandMetrics": collection_metrics_summary(),
                     "metaBrandStrategy": strategy_summary(),
@@ -1704,10 +2425,15 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                     "operationsReadiness": read_json(ROOT / ".tmp" / "operations-readiness" / "latest-operations-readiness.json", {}),
                     "repeatedOperations": read_json(ROOT / ".tmp" / "repeated-operations" / "latest-repeated-operations.json", {}),
                     "adStrategyQuality": strategy_quality_metrics(),
-                    "adStrategyExamples": load_examples_for_review(),
+                    "adStrategyExamples": [],
                     "marketingSignals": marketing_signal_packet(),
-                    "planningBenchmark": read_json(DEFAULT_REPORT, {}),
+                    "evidenceQueue": marketing_evidence_queue(),
+                    "planningBenchmark": planning_benchmark_console_summary(),
                     "planningReviewPacket": ad_planning_review_packet(),
+                    "marketingPlanningLoopAudit": marketing_planning_loop_audit_report(),
+                    "cosmeticsPilotGoalAudit": cosmetics_pilot_goal_audit_report(),
+                    "copyCorrectionLoopAudit": copy_correction_loop_audit_report(),
+                    "evidenceSourceAudit": cosmetics_evidence_source_audit_report(),
                     "jobs": list(JOBS.values()),
                     "comfy": comfy_status(),
                 })
@@ -1748,6 +2474,16 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 self.send_json({"examples": load_examples_for_review(), "metrics": strategy_quality_metrics()})
             elif path == "/api/marketing-signals":
                 self.send_json(marketing_signal_packet())
+            elif path == "/api/marketing-signals/evidence-queue":
+                self.send_json(marketing_evidence_queue())
+            elif path == "/api/marketing-planning-loop/audit":
+                self.send_json(marketing_planning_loop_audit_report())
+            elif path == "/api/cosmetics-pilot-goal/audit":
+                self.send_json(cosmetics_pilot_goal_audit_report())
+            elif path == "/api/copy-correction-loop/audit":
+                self.send_json(copy_correction_loop_audit_report())
+            elif path == "/api/marketing-signals/source-audit":
+                self.send_json(cosmetics_evidence_source_audit_report())
             elif path == "/api/planning-benchmark":
                 self.send_json(refresh_planning_benchmark())
             elif path == "/api/planning-review-packet":
@@ -1796,16 +2532,36 @@ class ConsoleHandler(BaseHTTPRequestHandler):
                 self.send_json(review_strategy_example(payload))
             elif path == "/api/marketing-signals/review":
                 self.send_json(review_marketing_signal(payload))
+            elif path == "/api/marketing-signals/review-batch":
+                self.send_json(review_marketing_signals_batch(payload))
+            elif path == "/api/marketing-signals/product-proof":
+                self.send_json(add_product_proof_candidate(payload))
+            elif path == "/api/marketing-signals/repair":
+                self.send_json(repair_marketing_signal(payload))
+            elif path == "/api/marketing-signals/focus":
+                self.send_json(focus_marketing_signals(payload))
             elif path == "/api/marketing-signals/insight-brief":
                 self.send_json(build_marketing_insight_brief(payload))
+            elif path == "/api/marketing-signals/evidence-queue":
+                self.send_json({"ok": True, "evidenceQueue": marketing_evidence_queue()})
             elif path == "/api/marketing-signals/job":
                 self.send_json(run_marketing_signal_job(payload))
             elif path == "/api/planning-benchmark/review":
                 self.send_json(review_planning_benchmark(payload))
+            elif path == "/api/planning-benchmark/production-handoff":
+                self.send_json(handoff_benchmark_case_to_production(payload))
             elif path == "/api/planning-benchmark/concept-selection":
                 self.send_json(select_planning_benchmark_concept(payload))
             elif path == "/api/planning-pilot/run":
                 self.send_json(run_planning_pilot_job(payload))
+            elif path == "/api/marketing-planning-loop/audit":
+                self.send_json(run_marketing_planning_loop_audit_job(payload))
+            elif path == "/api/cosmetics-pilot-goal/audit":
+                self.send_json(run_cosmetics_pilot_goal_audit_job(payload))
+            elif path == "/api/copy-correction-loop/audit":
+                self.send_json(run_copy_correction_loop_audit_job(payload))
+            elif path == "/api/marketing-signals/source-audit":
+                self.send_json(run_cosmetics_evidence_source_audit_job(payload))
             elif path == "/api/ad-strategy/review-sheet":
                 self.send_json(run_ad_strategy_review_sheet_job(payload))
             elif path == "/api/ad-planning/benchmark-review-sheet":
@@ -1897,6 +2653,8 @@ class ConsoleHandler(BaseHTTPRequestHandler):
         body = file_path.read_bytes()
         self.send_response(200)
         self.send_header("Content-Type", content_type)
+        if file_path.is_relative_to(UI_DIR):
+            self.send_header("Cache-Control", "no-store, max-age=0")
         self.send_header("Content-Length", str(len(body)))
         self.end_headers()
         self.wfile.write(body)

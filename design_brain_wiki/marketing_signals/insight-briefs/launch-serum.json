@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "1.0.0",
+  "eventId": "launch-serum",
+  "topic": "hydration_ampoule_gift",
+  "scopePolicy": "exact_event_or_explicit_topic",
+  "industry": "cosmetics_skincare",
+  "status": "ready",
+  "minimumSelectedSignals": 3,
+  "selectedSignalCount": 6,
+  "targetHypotheses": [
+    "새 루틴을 부담 없이 시작하려는 고객",
+    "신제품을 사기 전에 입증 자료와 성분 투명성을 확인하는 고객",
+    "즉각적인 변화보다 장기적인 피부 관리 기준을 찾는 고객",
+    "탄력 화장품의 근거 수준과 과장 가능성을 확인하는 고객",
+    "사은품보다 본품 가치와 증정 이유를 먼저 따지는 고객",
+    "할인보다 루틴을 시험할 추가 가치를 원하는 고객"
+  ],
+  "customerPains": [
+    "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다."
+  ],
+  "customerDesires": [
+    "미니 크림 증정은 무조건 큰 혜택이라고 단정하지 말고, 앰플과 함께 새 루틴을 시험할 수 있는 보완 가치로 설명한다."
+  ],
+  "purchaseObjections": [
+    "신제품이라는 이유만으로 기대를 부풀리지 말고, 제품별 공식 성분과 시험 자료가 없으면 탄력 효능을 주장하지 않는다.",
+    "카테고리 연구를 이 가상 탄력 세럼의 효능 근거로 전이하지 않는다. 실제 제품 성분과 시험 자료가 확보될 때까지 제품 역할은 루틴 제안으로 제한한다.",
+    "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다."
+  ],
+  "trendHooks": [],
+  "seasonalHooks": [],
+  "productProofs": [],
+  "offerAngles": [
+    "혜택은 입력된 증정 조건까지만 표현하고 기간, 수량, 할인율, 선착순 조건은 추가로 만들지 않는다."
+  ],
+  "channelPatterns": [],
+  "evidenceDetails": [
+    {
+      "signalId": "public_signal_d999411dfa885aa4",
+      "evidenceType": "offer",
+      "targetSegment": "새 루틴을 부담 없이 시작하려는 고객",
+      "insight": "혜택은 입력된 증정 조건까지만 표현하고 기간, 수량, 할인율, 선착순 조건은 추가로 만들지 않는다.",
+      "sourceType": "internal",
+      "sourceName": "화장품 고정 평가 이벤트 입력",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_95d5e407ffa08b45",
+      "evidenceType": "objection",
+      "targetSegment": "신제품을 사기 전에 입증 자료와 성분 투명성을 확인하는 고객",
+      "insight": "신제품이라는 이유만으로 기대를 부풀리지 말고, 제품별 공식 성분과 시험 자료가 없으면 탄력 효능을 주장하지 않는다.",
+      "sourceType": "public_web",
+      "sourceName": "Euromonitor Voice of the Consumer Beauty Survey 2025",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_786ec2978ac46f5d",
+      "evidenceType": "pain",
+      "targetSegment": "즉각적인 변화보다 장기적인 피부 관리 기준을 찾는 고객",
+      "insight": "탄력 고민을 나이 불안으로 자극하지 말고, 꾸준히 관리할 수 있는 장기 루틴의 선택 문제로 다룬다.",
+      "sourceType": "public_web",
+      "sourceName": "Euromonitor Voice of the Consumer Beauty Survey 2025",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_8f3bebcd4b71d594",
+      "evidenceType": "objection",
+      "targetSegment": "탄력 화장품의 근거 수준과 과장 가능성을 확인하는 고객",
+      "insight": "카테고리 연구를 이 가상 탄력 세럼의 효능 근거로 전이하지 않는다. 실제 제품 성분과 시험 자료가 확보될 때까지 제품 역할은 루틴 제안으로 제한한다.",
+      "sourceType": "public_web",
+      "sourceName": "PubMed / Journal of Cosmetic Dermatology",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_e0de4ff7134ee2f3",
+      "evidenceType": "objection",
+      "targetSegment": "사은품보다 본품 가치와 증정 이유를 먼저 따지는 고객",
+      "insight": "수분 앰플과 미니 크림이 같은 루틴에서 어떤 역할을 나누는지 먼저 설명하고 사은품 크기만 강조하지 않는다.",
+      "sourceType": "public_web",
+      "sourceName": "European Journal of Marketing",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    },
+    {
+      "signalId": "public_signal_cdba34816001d2bf",
+      "evidenceType": "desire",
+      "targetSegment": "할인보다 루틴을 시험할 추가 가치를 원하는 고객",
+      "insight": "미니 크림 증정은 무조건 큰 혜택이라고 단정하지 말고, 앰플과 함께 새 루틴을 시험할 수 있는 보완 가치로 설명한다.",
+      "sourceType": "public_web",
+      "sourceName": "Journal of Consumer Psychology",
+      "observedAt": "2026-07-01",
+      "claimBoundary": ""
+    }
+  ],
+  "doNotClaim": [
+    "사람이 선택한 근거에 없는 순위, 가격, 효능, 기간 수치를 만들지 않는다.",
+    "무작위 가설은 사람이 검수하기 전까지 사실 근거로 사용하지 않는다.",
+    "공식 출처가 없는 유행, 날씨, 판매 순위 주장을 단정하지 않는다.",
+    "공식 제품 근거가 확인되기 전에는 성분, 효능, 수치, 사용 결과를 주장하지 않는다."
+  ],
+  "evidenceSignalIds": [
+    "public_signal_d999411dfa885aa4",
+    "public_signal_95d5e407ffa08b45",
+    "public_signal_786ec2978ac46f5d",
+    "public_signal_8f3bebcd4b71d594",
+    "public_signal_e0de4ff7134ee2f3",
+    "public_signal_cdba34816001d2bf"
+  ],
+  "createdAt": "2026-07-21T13:57:53.084890+00:00"
+}

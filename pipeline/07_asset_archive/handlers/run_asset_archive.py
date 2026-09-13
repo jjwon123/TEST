@@ -87,10 +87,12 @@ def run(
 
     blocked_frame_ids = _collect_blocked_frames(qa_report, policy)
     qa_overall = qa_report.get("summary", {}).get("status", "fail")
+    qa_warnings_approved = _qa_warnings_approved(run_dir)
 
     assets, qa_filtered_out = _build_asset_records(
         frames=frames,
         qa_overall=qa_overall,
+        qa_warnings_approved=qa_warnings_approved,
         blocked_frame_ids=blocked_frame_ids,
         event_id=event_id,
         source_run_id=source_run_id,
@@ -179,6 +181,22 @@ def _collect_blocked_frames(qa_report: dict[str, Any], policy: dict[str, Any]) -
     return blocked
 
 
+def _qa_warnings_approved(run_dir: Path) -> bool:
+    approvals = read_json(run_dir / "approvals.json", default={})
+    return any(
+        item.get("stage_id") == "06_qa_packaging"
+        and item.get("status") == "approved"
+        and bool(str(item.get("note") or "").strip())
+        for item in approvals.get("approvals", [])
+        if isinstance(item, dict)
+    )
+
+
+def _qa_status_allows_archive(qa_overall: str, qa_warnings_approved: bool) -> bool:
+    normalized = str(qa_overall or "").strip().lower()
+    return normalized == "pass" or (normalized == "warn" and qa_warnings_approved)
+
+
 # ---------------------------------------------------------------------------
 # Asset record construction
 # ---------------------------------------------------------------------------
@@ -186,6 +204,7 @@ def _collect_blocked_frames(qa_report: dict[str, Any], policy: dict[str, Any]) -
 def _build_asset_records(
     frames: list[dict[str, Any]],
     qa_overall: str,
+    qa_warnings_approved: bool,
     blocked_frame_ids: set[str],
     event_id: str,
     source_run_id: str,
@@ -196,8 +215,10 @@ def _build_asset_records(
     policy: dict[str, Any],
     archived_at: str,
 ) -> tuple[list[dict[str, Any]], int]:
-    if qa_overall != "pass":
+    if not _qa_status_allows_archive(qa_overall, qa_warnings_approved):
         return [], len(frames)
+
+    archived_qa_status = "warn" if str(qa_overall).strip().lower() == "warn" else "pass"
 
     # selected-assets.json may be a bare list or wrapped in an object
     if isinstance(selected_assets, list):
@@ -282,7 +303,7 @@ def _build_asset_records(
             "intended_use": intended_use,
             "visual_keywords": visual_keywords,
             "tags": tags,
-            "qa_status": "pass",
+            "qa_status": archived_qa_status,
             "reuse_score": round(score, 3),
             "reuse_score_breakdown": breakdown,
             "reuse_recommended_for": reuse_recommended,

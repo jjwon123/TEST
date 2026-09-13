@@ -2,6 +2,7 @@
   "states": [
     "created",
     "briefing",
+    "brief_input_required",
     "brief_review",
     "planning",
     "plan_review",

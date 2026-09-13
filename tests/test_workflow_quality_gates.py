@@ -2,6 +2,7 @@ from __future__ import annotations
 
 import json
 import importlib
+import shutil
 import tempfile
 import unittest
 from datetime import datetime, timezone
@@ -9,6 +10,7 @@ from pathlib import Path
 from unittest.mock import patch
 
 from scripts.audit_full_pipeline_health import find_downstream_state_inconsistencies
+from scripts import workflow as workflow_module
 from scripts.console_server import create_package, recover_persisted_jobs
 from scripts.reconcile_run_states import reconcile_status
 from scripts.workflow import (
@@ -18,7 +20,8 @@ from scripts.workflow import (
     process_qa_failures,
     setup_run,
 )
-from services.comfyui.brand_workflows import choose_brand_workflow
+from services.comfyui.brand_workflows import brand_api_template, choose_brand_workflow
+from services.comfyui.preset_adapters import build_api_prompt
 from services.comfyui.workflow_registry import list_presets
 
 archive_module = importlib.import_module("pipeline.07_asset_archive.handlers.run_asset_archive")
@@ -26,6 +29,33 @@ archive_completion_status = archive_module.archive_completion_status
 
 
 class WorkflowQualityGateTests(unittest.TestCase):
+    def test_brief_input_required_is_registered_run_state(self) -> None:
+        states = self._read(Path(__file__).resolve().parents[1] / "core" / "states" / "run-states.json")
+        self.assertIn("brief_input_required", states["states"])
+
+    def test_expired_brief_propagates_needs_input_and_blocks_approval(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            root = Path(temp)
+            event = root / "event"
+            event.mkdir()
+            source = Path(__file__).resolve().parents[1] / "events" / "june-monsoon-barrier-care"
+            shutil.copy2(source / "event-input.json", event / "event-input.json")
+            shutil.copy2(source / "brand-guide.json", event / "brand-guide.json")
+            runs = root / "runs"
+            runs.mkdir()
+
+            with patch.object(workflow_module, "RUNS_DIR", runs):
+                run = setup_run(event)
+                mark_stage(run, "01_event_brief")
+
+            status = self._read(run / "run-status.json")
+            brief = self._read(run / "01_event_brief" / "brief.json")
+            self.assertEqual("needs_input", status["stage_status"]["01_event_brief"])
+            self.assertEqual("brief_input_required", status["run_state"])
+            self.assertEqual("needs_input", brief["approval_status"])
+            with self.assertRaisesRegex(SystemExit, "unresolved input"):
+                approve_stage(run, "01_event_brief", approver="test")
+
     def test_failed_qa_cannot_be_approved(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             run = self._run(Path(temp))
@@ -79,6 +109,47 @@ class WorkflowQualityGateTests(unittest.TestCase):
             self.assertEqual("archived_no_assets", result["next_state"])
             self.assertEqual("done_no_assets", archive["summary"]["completion_status"])
 
+    def test_archive_accepts_human_approved_qa_warnings(self) -> None:
+        with tempfile.TemporaryDirectory() as temp:
+            run = Path(temp) / "run"
+            (run / "06_qa_packaging").mkdir(parents=True)
+            self._write(run / "06_qa_packaging" / "final-package-manifest.json", [{
+                "frameId": "instagram_feed_01__key_visual_c01",
+                "frameName": "Instagram feed",
+                "channel": "instagram_feed",
+                "deliverableId": "instagram_feed_01",
+                "exportFileName": "feed.png",
+                "sourceExportPath": "03_visual_candidates/previews/feed.png",
+                "finalPackagePath": "package/final/feed.png",
+            }])
+            self._write(run / "06_qa_packaging" / "qa-report.json", {
+                "summary": {"status": "warn", "frames": 1, "issues": 1, "blocking": 0},
+                "issues": [{"severity": "warning", "message": "Human review required."}],
+            })
+            self._write(run / "approvals.json", {"approvals": [{
+                "stage_id": "06_qa_packaging",
+                "status": "approved",
+                "note": "Reviewed the non-blocking reference warning.",
+            }]})
+            self._write(run / "run-status.json", {"run_id": "test-run", "event_id": "test-event"})
+            self._write(run / "event-input.json", {"eventName": "Test Event"})
+            self._write(run / "brand-guide.json", {})
+            with (
+                patch.object(archive_module, "_copy_to_assets"),
+                patch.object(archive_module, "_upsert_global_index"),
+                patch.object(archive_module, "_write_event_index"),
+            ):
+                result = archive_module.run(run)
+
+            archive = self._read(run / "07_asset_archive" / "asset-archive.json")
+            self.assertEqual("done", result["status"])
+            self.assertEqual(1, archive["summary"]["total_assets"])
+            self.assertEqual("warn", archive["assets"][0]["qa_status"])
+
+    def test_archive_rejects_unapproved_qa_warnings(self) -> None:
+        self.assertFalse(archive_module._qa_status_allows_archive("warn", False))
+        self.assertFalse(archive_module._qa_status_allows_archive("fail", True))
+
     def test_archive_copy_is_idempotent_and_returns_actual_versioned_path(self) -> None:
         with tempfile.TemporaryDirectory() as temp:
             root = Path(temp)
@@ -103,6 +174,27 @@ class WorkflowQualityGateTests(unittest.TestCase):
             choose_brand_workflow("bullion", "key_visual", "instagram_feed"),
         ]
         self.assertTrue(all(item in presets for item in expected))
+
+    def test_cosmetics_product_hero_uses_its_authored_brand_graph_at_runtime(self) -> None:
+        template = brand_api_template("cosmetics/cosmetic_product_hero_v2")
+        self.assertIsNotNone(template)
+        self.assertEqual("qwen-image-edit-2511-Q6_K.gguf", template["1"]["inputs"]["unet_name"])
+        self.assertIn("exact skincare product source", template["6"]["inputs"]["prompt"])
+        self.assertIn("distorted label", template["7"]["inputs"]["prompt"])
+
+        graph = build_api_prompt("cosmetics/cosmetic_product_hero_v2", {
+            "product_image": "niacinamide_packshot.png",
+            "positive_prompt": "Campaign-specific direction: calm clinical confidence.",
+            "negative_prompt": "no neon trend props",
+            "seed": 42,
+            "filename_prefix": "cosmetics_test",
+        })
+        self.assertEqual("niacinamide_packshot.png", graph["4"]["inputs"]["image"])
+        self.assertIn("exact skincare product source", graph["6"]["inputs"]["prompt"])
+        self.assertIn("calm clinical confidence", graph["6"]["inputs"]["prompt"])
+        self.assertIn("distorted label", graph["7"]["inputs"]["prompt"])
+        self.assertIn("no neon trend props", graph["7"]["inputs"]["prompt"])
+        self.assertEqual(42, graph["20"]["inputs"]["seed"])
 
     def test_reset_upstream_with_completed_downstream_is_inconsistent(self) -> None:
         inconsistent = find_downstream_state_inconsistencies({

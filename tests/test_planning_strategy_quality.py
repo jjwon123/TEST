@@ -1,6 +1,7 @@
 from __future__ import annotations
 
 import unittest
+from datetime import date
 from importlib import import_module
 from pathlib import Path
 
@@ -8,6 +9,8 @@ from scripts.audit_planning_quality import audit_brief, audit_plan
 from services.ad_strategy.library import adapt_patterns, extract_strategy_record
 
 _core_messages = import_module("pipeline.01_event_brief.handlers.generate_brief")._core_messages
+_build_brief = import_module("pipeline.01_event_brief.handlers.generate_brief").build_brief
+_open_questions = import_module("pipeline.01_event_brief.handlers.generate_brief")._open_questions
 _slides = import_module("pipeline.02_content_planning.handlers.generate_content_plan")._slides
 _build_reference_direction = import_module(
     "pipeline.03_reference_research.handlers.run_reference_research"
@@ -15,6 +18,63 @@ _build_reference_direction = import_module(
 
 
 class PlanningStrategyQualityTests(unittest.TestCase):
+    def test_expired_event_schedule_requires_review_update(self) -> None:
+        questions = _open_questions(
+            {
+                "eventName": "지난 이벤트",
+                "target": "고객",
+                "channels": ["instagram"],
+                "offer": "샘플 증정",
+                "schedule": {
+                    "startDate": "2026-06-01",
+                    "endDate": "2026-06-30",
+                },
+            },
+            {"brandName": "테스트", "styleRules": ["과장하지 않는다."]},
+            today=date(2026, 7, 18),
+        )
+
+        self.assertIn("이벤트 종료일이 이미 지났습니다. 현재 집행 일정으로 갱신해야 합니다.", questions)
+
+    def test_event_brief_preserves_explicit_event_type(self) -> None:
+        brief = _build_brief(
+            "seasonal-event",
+            {
+                "eventName": "장마철 루틴",
+                "eventType": "seasonal",
+                "objective": "장마철 루틴을 제안한다.",
+                "target": "냉방 속 속당김을 느끼는 고객",
+                "offer": "앰플 구매 시 크림 증정",
+                "channels": ["instagram"],
+                "schedule": {
+                    "startDate": "2026-06-01",
+                    "endDate": "2026-06-30",
+                },
+            },
+            {"brandName": "테스트", "styleRules": ["과장하지 않는다."]},
+        )
+
+        self.assertEqual("seasonal", brief["event_type"])
+
+    def test_event_brief_persists_inferred_seasonal_type_with_gift_offer(self) -> None:
+        brief = _build_brief(
+            "seasonal-event",
+            {
+                "eventName": "6월 장마철 수분 장벽 리셋 위크",
+                "objective": "장마철 습도와 냉방 환경에 맞는 루틴을 제안한다.",
+                "target": "냉방 속 속당김을 느끼는 고객",
+                "offer": "앰플 구매 시 크림 증정",
+                "channels": ["instagram"],
+                "schedule": {
+                    "startDate": "2026-06-01",
+                    "endDate": "2026-06-30",
+                },
+            },
+            {"brandName": "테스트", "styleRules": ["과장하지 않는다."]},
+        )
+
+        self.assertEqual("seasonal", brief["event_type"])
+
     def test_core_messages_turn_inputs_into_strategy_roles(self) -> None:
         objective = "제품 구매 전환을 유도한다."
         offer = "구매 시 미니 크림을 증정한다."

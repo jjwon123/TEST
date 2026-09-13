@@ -23,6 +23,16 @@ class AdStrategyReviewSheetTests(unittest.TestCase):
                     "persuasionSequence": ["hook", "offer"],
                     "review": {"decision": "unreviewed", "scores": {}, "reasonTags": []},
                     "sourceOriginal": {"brand": "Brand", "copy": "A strong source ad copy."},
+                    "reviewRecommendation": {
+                        "suggestedDecision": "shortlist",
+                        "score": 7,
+                        "reasons": ["구조가 선명합니다."],
+                        "riskFlags": [],
+                        "suggestedStrategy": {"targetInsight": "추천 인사이트"},
+                        "suggestedScores": {"strategyClarity": 4},
+                        "suggestedReasonTags": ["good_structure"],
+                        "reviewNote": "추천 참고",
+                    },
                 }
             ]), patch("scripts.manage_ad_strategy_review_sheet.strategy_quality_metrics", return_value={}):
                 summary = export_sheet(sheet)
@@ -32,6 +42,11 @@ class AdStrategyReviewSheetTests(unittest.TestCase):
         self.assertEqual("one", rows[0]["id"])
         self.assertEqual("", rows[0]["decision"])
         self.assertEqual("Brand", rows[0]["sourceBrand"])
+        self.assertEqual("shortlist", rows[0]["suggestedDecision"])
+        self.assertEqual("7", rows[0]["recommendationScore"])
+        self.assertEqual("추천 인사이트", rows[0]["targetInsight"])
+        self.assertEqual("4", rows[0]["score_strategyClarity"])
+        self.assertEqual("good_structure", rows[0]["reasonTags"])
 
     def test_import_validates_selected_rows_without_apply(self) -> None:
         with tempfile.TemporaryDirectory() as tmp:
@@ -75,8 +90,23 @@ class AdStrategyReviewSheetTests(unittest.TestCase):
         self.assertEqual(1, len(summary["errors"]))
         self.assertIn("missing strategy fields", summary["errors"][0]["error"])
 
+    def test_import_reports_missing_review_rationale(self) -> None:
+        with tempfile.TemporaryDirectory() as tmp:
+            sheet = Path(tmp) / "sheet.csv"
+            write_sheet(sheet, decision="shortlist", review_note="")
+            with patch("scripts.manage_ad_strategy_review_sheet.strategy_quality_metrics", return_value={}):
+                summary = import_sheet(sheet, apply=False)
+        self.assertEqual(1, len(summary["errors"]))
+        self.assertIn("review note", summary["errors"][0]["error"])
 
-def write_sheet(path: Path, *, decision: str, targetInsight: str = "고객 인사이트") -> None:
+
+def write_sheet(
+    path: Path,
+    *,
+    decision: str,
+    targetInsight: str = "고객 인사이트",
+    review_note: str = "설득 구조가 명확해 참고 가치가 있습니다.",
+) -> None:
     fields = [
         "id", "industry", "sourceBrand", "sourceCopyPreview", "decision",
         "targetInsight", "hookMechanism", "persuasionSequence", "offerMechanism", "proofMechanism", "ctaType", "toneTraits", "channelFit",
@@ -104,7 +134,7 @@ def write_sheet(path: Path, *, decision: str, targetInsight: str = "고객 인�
         "score_strategyClarity": "4",
         "score_targetEmpathy": "4",
         "reasonTags": "good_structure",
-        "reviewNote": "ok",
+        "reviewNote": review_note,
     }
     path.parent.mkdir(parents=True, exist_ok=True)
     with path.open("w", encoding="utf-8-sig", newline="") as handle:

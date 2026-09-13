@@ -15,13 +15,16 @@ if str(ROOT) not in sys.path:
     sys.path.insert(0, str(ROOT))
 
 from core.utils.json_io import read_json, write_json, write_text
+from services.ad_strategy.pilot_selection import select_pilot_cases
 from services.ad_strategy.repository import load_examples_for_review, strategy_quality_metrics
+from scripts.benchmark_ad_planning import is_final_human_review
 
 
 DEFAULT_OUTPUT = ROOT / ".tmp" / "model-benchmarks" / "ad-planning-review-packet.json"
 DEFAULT_MARKDOWN = ROOT / ".tmp" / "model-benchmarks" / "ad-planning-review-packet.md"
 DEFAULT_STRATEGY_SHEET = ROOT / ".tmp" / "model-benchmarks" / "ad-strategy-review-sheet.csv"
 DEFAULT_BENCHMARK_SHEET = ROOT / ".tmp" / "model-benchmarks" / "ad-planning-benchmark-review-sheet.csv"
+DEFAULT_EVIDENCE_QUEUE = ROOT / ".tmp" / "model-benchmarks" / "cosmetics-evidence-queue.json"
 RUBRIC_KEYS = [
     "strategyClarity",
     "targetEmpathy",
@@ -40,6 +43,7 @@ def main() -> int:
     parser.add_argument("--benchmark", type=Path, default=ROOT / ".tmp" / "model-benchmarks" / "cosmetics-planning-benchmark.json")
     parser.add_argument("--external-results", type=Path, default=ROOT / ".tmp" / "model-benchmarks" / "cosmetics-external-results.json")
     parser.add_argument("--reviews", type=Path, default=ROOT / ".tmp" / "model-benchmarks" / "cosmetics-human-reviews.json")
+    parser.add_argument("--evidence-queue", type=Path, default=DEFAULT_EVIDENCE_QUEUE)
     parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT)
     parser.add_argument("--markdown", type=Path, default=DEFAULT_MARKDOWN)
     parser.add_argument("--pilot-limit", type=int, default=5)
@@ -52,6 +56,7 @@ def main() -> int:
         human_reviews=read_json(args.reviews.resolve(), default={"reviews": []}),
         strategy_examples=load_examples_for_review(),
         strategy_metrics=strategy_quality_metrics(),
+        evidence_queue=read_json(args.evidence_queue.resolve(), default={"cases": []}),
         provider="local",
         pilot_limit=args.pilot_limit,
     )
@@ -69,14 +74,26 @@ def build_packet(
     human_reviews: dict[str, Any],
     strategy_examples: list[dict[str, Any]],
     strategy_metrics: dict[str, Any],
+    evidence_queue: dict[str, Any] | None = None,
     provider: str = "local",
     pilot_limit: int = 5,
 ) -> dict[str, Any]:
     external_by_id = {item.get("caseId"): item for item in external_results.get("results", []) if isinstance(item, dict)}
     reviews_by_id = {item.get("caseId"): item for item in human_reviews.get("reviews", []) if isinstance(item, dict)}
-    cases = dataset.get("cases", [])
+    evidence_by_id = {
+        item.get("eventId"): item
+        for item in (evidence_queue or {}).get("cases", [])
+        if isinstance(item, dict)
+    }
+    all_cases = [item for item in dataset.get("cases", []) if isinstance(item, dict)]
+    cases = select_pilot_cases(dataset, limit=pilot_limit)
     benchmark_queue = [
-        build_case_review_item(case, external_by_id.get(case.get("id"), {}), reviews_by_id.get(case.get("id"), {}))
+        build_case_review_item(
+            case,
+            external_by_id.get(case.get("id"), {}),
+            reviews_by_id.get(case.get("id"), {}),
+            evidence_by_id.get(case.get("id"), {}),
+        )
         for case in cases
     ]
     strategy_queue = build_strategy_queue(strategy_examples)
@@ -86,9 +103,9 @@ def build_packet(
     blockers = []
     if selected_or_shortlist < 30:
         blockers.append("STRATEGY_REVIEW_BELOW_30")
-    if candidate_complete < min(pilot_limit, len(cases)):
+    if candidate_complete < len(cases):
         blockers.append("PILOT_CANDIDATE_RESULTS_INCOMPLETE")
-    if human_reviewed < min(pilot_limit, len(cases)):
+    if human_reviewed < len(cases):
         blockers.append("PILOT_HUMAN_REVIEWS_INCOMPLETE")
     return {
         "schemaVersion": "1.0.0",
@@ -97,8 +114,9 @@ def build_packet(
             "status": "ready_for_human_review" if not blockers else "human_review_setup_incomplete",
             "provider": provider,
             "apiKeyAvailable": provider == "openai",
-            "fixedEvaluationCases": len(cases),
-            "pilotLimit": min(pilot_limit, len(cases)),
+            "fixedEvaluationCases": len(all_cases),
+            "pilotLimit": len(cases),
+            "pilotCaseIds": [str(item.get("id") or "") for item in cases],
             "pilotExternalReady": candidate_complete,
             "pilotCandidateReady": candidate_complete,
             "pilotHumanReviewed": human_reviewed,
@@ -137,25 +155,42 @@ def build_packet(
             },
         },
         "strategyReviewQueue": strategy_queue[:30],
-        "benchmarkReviewQueue": benchmark_queue[:pilot_limit],
+        "benchmarkReviewQueue": benchmark_queue,
     }
 
 
-def build_case_review_item(case: dict[str, Any], external: dict[str, Any], review: dict[str, Any]) -> dict[str, Any]:
+def build_case_review_item(
+    case: dict[str, Any],
+    external: dict[str, Any],
+    review: dict[str, Any],
+    evidence: dict[str, Any] | None = None,
+) -> dict[str, Any]:
+    evidence = evidence or {}
+    final_human_review = is_final_human_review(review)
     status = "missing_external_result"
-    next_action = "Run local candidate generation."
+    next_action = "로컬 기획 후보를 생성하세요."
     if external.get("status") == "provider_unavailable":
         status = "provider_unavailable"
-        next_action = "Switch to local provider or inspect provider failure."
+        next_action = "로컬 생성기로 전환하거나 생성기 오류를 확인하세요."
+    elif external.get("status") == "evidence_review_required":
+        status = "evidence_review_required"
+        next_action = _evidence_next_action(evidence)
+    elif external.get("status") == "quality_repair_required":
+        status = "quality_repair_required"
+        next_action = "콘셉트 선택 전에 실패한 품질 항목을 수정하세요."
     elif external.get("status") == "concept_review_pending":
         status = "concept_selection_pending"
-        next_action = "Select one concept before copy generation."
+        next_action = "콘셉트 1개를 선택하면 채널별 카피를 만들 수 있습니다."
     elif external.get("status") == "complete":
-        status = "human_review_pending"
-        next_action = "Complete blind A/B copy review."
-    if review:
+        if external.get("selectionSource") == "human":
+            status = "human_review_pending"
+            next_action = "채널별 카피를 검수하고 승인하거나 수정을 요청하세요."
+        else:
+            status = "concept_selection_pending"
+            next_action = "연결 점검용 자동 선택은 최종 선택이 아닙니다. 콘셉트 3안을 비교해 사람이 1개를 선택하세요."
+    if final_human_review:
         status = "complete"
-        next_action = "No action required unless scores need correction."
+        next_action = "검수가 완료되었습니다. 점수 수정이 필요할 때만 다시 여세요."
     return {
         "caseId": case.get("id", ""),
         "eventName": case.get("eventName", ""),
@@ -167,11 +202,41 @@ def build_case_review_item(case: dict[str, Any], external: dict[str, Any], revie
         "nextAction": next_action,
         "providerStatus": _provider_status(external),
         "selectedConceptId": external.get("selectedConceptId", ""),
+        "selectionSource": external.get("selectionSource", ""),
         "conceptCount": len(external.get("concepts", {}).get("candidates", [])),
         "copyOutputCount": len(external.get("copyPackage", {}).get("outputs", [])),
-        "humanReviewStatus": "reviewed" if review else "pending",
+        "humanReviewStatus": "reviewed" if final_human_review else "pending",
+        "excludedReviewReason": "connection_check_not_final_review" if review and not final_human_review else "",
         "requiredScores": RUBRIC_KEYS,
+        "evidence": _evidence_summary(evidence),
     }
+
+
+def _evidence_summary(evidence: dict[str, Any]) -> dict[str, Any]:
+    progress = evidence.get("progress", {}) if isinstance(evidence, dict) else {}
+    gaps = evidence.get("gaps", {}) if isinstance(evidence, dict) else {}
+    requirements = evidence.get("requirements", {}) if isinstance(evidence, dict) else {}
+    return {
+        "status": evidence.get("status", "") if isinstance(evidence, dict) else "",
+        "selected": int(progress.get("selected") or 0),
+        "reviewCandidates": int(progress.get("reviewCandidates") or 0),
+        "requiredRoles": list(requirements.get("evidenceTypeLabels") or []),
+        "missingRoles": list(gaps.get("evidenceTypeLabels") or []),
+        "missingInputs": list(gaps.get("missingInputs") or []),
+        "candidateSources": list(progress.get("candidateDistinctSources") or []),
+    }
+
+
+def _evidence_next_action(evidence: dict[str, Any]) -> str:
+    summary = _evidence_summary(evidence)
+    count = summary["reviewCandidates"]
+    roles = " · ".join(summary["missingRoles"] or summary["requiredRoles"])
+    parts = [f"후보 {count}개를 검수하세요." if count else "이벤트 전용 근거를 먼저 검수하세요."]
+    if roles:
+        parts.append(f"확인 역할: {roles}.")
+    if summary["missingInputs"]:
+        parts.append("추가 입력: " + "; ".join(summary["missingInputs"]))
+    return " ".join(parts)
 
 
 def build_strategy_queue(examples: list[dict[str, Any]]) -> list[dict[str, Any]]:
@@ -228,6 +293,10 @@ def render_markdown(packet: dict[str, Any]) -> str:
             f"- Status: {item['status']}",
             f"- Next action: {item['nextAction']}",
             f"- Provider: {item['providerStatus']}",
+            f"- Selection source: {item['selectionSource'] or '-'}",
+            f"- Evidence: selected {item['evidence']['selected']} / review candidates {item['evidence']['reviewCandidates']}",
+            f"- Evidence roles: {', '.join(item['evidence']['requiredRoles']) or '-'}",
+            f"- Missing input: {'; '.join(item['evidence']['missingInputs']) or '-'}",
             "",
         ])
     lines.extend(["## Strategy Queue", ""])
